@@ -78,5 +78,19 @@ end
 #
 target 'NetworkingTests' do
   project '../Networking/Networking.xcodeproj'
-  networking_pods
+end
+
+# Components Target:
+# ==================
+#
+target 'Components' do
+  project '../Components/Components.xcodeproj'
+  hud
+end
+
+# Unit Tests
+# ==========
+#
+target 'ComponentsTests' do
+  project '../Components/Components.xcodeproj'
 end

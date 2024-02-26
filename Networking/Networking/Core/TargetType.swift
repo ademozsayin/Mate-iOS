@@ -15,8 +15,6 @@ public enum HTTPMethod: String {
     case delete = "DELETE"
 }
 
-
-
 /// Represents an HTTP task.
 public enum HTTPTask {
 
@@ -29,11 +27,9 @@ public enum HTTPTask {
 }
 
 public protocol TargetType {
-    
     var baseURL: String { get }
     var task: HTTPTask { get }
     var headers: [String: String]? { get }
     var path: String { get }
     var method: HTTPMethod { get }
-    
 }

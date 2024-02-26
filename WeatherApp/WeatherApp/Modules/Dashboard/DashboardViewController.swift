@@ -6,11 +6,40 @@
 //
 
 import Foundation
+import UIKit
+import Components
 
 protocol DashboardViewControllerProtocol: AnyObject {
     func setTitle(_ title: String)
 }
 
-class DashboardViewController: BaseViewController, LoadingShowable, UISearchControllerDelegate {
+final class DashboardViewController: BaseViewController {
+   
+    var presenter: DashboardPresenter?
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemBackground
+    }
+}
+
+extension DashboardViewController: DashboardViewControllerProtocol {
+    func setTitle(_ title: String) {
+        self.title = title
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = UIBarStyle.black
+        nav?.tintColor = UIColor.orange
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+    }
+}
+
+extension DashboardViewController:LoadingShowable {
+    func showLoading() {
+        DDLogInfo(#function)
+    }
+    
+    func hideLoading() {
+        DDLogInfo(#function)
+    }
+    
 }

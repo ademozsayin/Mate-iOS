@@ -3,4 +3,4 @@ ${BUILT_PRODUCTS_DIR}/Alamofire-framework/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/CocoaLumberjack-framework/CocoaLumberjack.framework
 ${BUILT_PRODUCTS_DIR}/KeychainAccess-framework/KeychainAccess.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
-${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/SVProgressHUD-framework/SVProgressHUD.framework

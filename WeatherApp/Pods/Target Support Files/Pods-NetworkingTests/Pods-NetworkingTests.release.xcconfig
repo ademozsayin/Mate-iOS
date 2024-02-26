@@ -1,7 +1,7 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/SVProgressHUD"
 LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire-library" "${PODS_CONFIGURATION_BUILD_DIR}/CocoaLumberjack-library" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess-library" "${TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
 OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/Alamofire-library/Alamofire.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/CocoaLumberjack-library/CocoaLumberjack.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess-library/KeychainAccess.modulemap"
 OTHER_LDFLAGS = $(inherited) -ObjC -l"Alamofire-library" -l"CocoaLumberjack-library" -l"KeychainAccess-library" -framework "CFNetwork"

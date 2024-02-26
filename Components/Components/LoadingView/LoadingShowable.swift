@@ -14,7 +14,7 @@ import UIKit
 
  - Important: Ensure that the `LoadingView` is properly configured before invoking the `showLoading()` method.
  */
-protocol LoadingShowable where Self: UIViewController {
+public protocol LoadingShowable where Self: UIViewController {
     /**
      Displays the loading indicator using the shared `LoadingView`.
 

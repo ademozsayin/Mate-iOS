@@ -6,26 +6,35 @@
 //
 
 import Foundation
+import Networking
 
 protocol DashboardPresenterProtocol: AnyObject {
     func viewDidLoad()
 }
 
-
 final class DashboardPresenter: DashboardPresenterProtocol {
 
     unowned var view: DashboardViewControllerProtocol?
+    let router: DashboardRouterProtocol?
+    let interactor: DashboardInteractorProtocol?
     
-    init(view: DashboardViewControllerProtocol){
+    init(
+        view: DashboardViewControllerProtocol,
+        router: DashboardRouterProtocol,
+        interactor: DashboardInteractorProtocol
+    ){
         self.view = view
-    }
-
-    func viewDidLoad() {
-        view?.setTitle("Moviehive")
+        self.router = router
+        self.interactor = interactor
     }
     
+    func viewDidLoad() {
+        view?.setTitle("Weather")
+    }
 }
 
-//extension DashboardPresenter: DashboardInteractorOutputProtocol {
-//
-//}
+extension DashboardPresenter: DashboardInteractorOutputProtocol {
+    func fetchWeatherOutput(result: Networking.CurrentWeather) {
+        DDLogInfo(#function)
+    }
+}

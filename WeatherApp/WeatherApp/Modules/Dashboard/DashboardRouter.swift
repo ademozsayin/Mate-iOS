@@ -7,21 +7,25 @@
 
 import Foundation
 
-protocol HomeRouterProtocol: AnyObject{
+protocol DashboardRouterProtocol: AnyObject{
 //    func navigate(_ route: HomeRoutes)
 }
-enum HomeRoutes {
+enum DashboardRoutes {
 //    case detail(movie: Movie)
 }
 
 final class DashboardRouter {
     weak var viewController: DashboardViewController?
     
-    static func createModule() -> HomeViewController{
-        let view = HomeViewController()
-        let interactor = HomeInteractor()
-        let router = HomeRouter()
-        let presenter = HomePresenter(view: view, router: router, interactor: interactor)
+    static func createModule() -> DashboardViewController {
+        let view = DashboardViewController()
+        let interactor = DashboardInteractor()
+        let router = DashboardRouter()
+        let presenter = DashboardPresenter(
+            view: view,
+            router: router,
+            interactor: interactor
+        )
         view.presenter = presenter
         interactor.output = presenter
         router.viewController = view
@@ -29,13 +33,6 @@ final class DashboardRouter {
     }
 }
 
-extension HomeRouter: HomeRouterProtocol {
-    func navigate(_ route: HomeRoutes) {
-        switch route {
-        case .detail(let movie):
-            let detailVC = DetailRouter.createModule()
-            detailVC.movie = movie
-            viewController?.navigationController?.pushViewController(detailVC, animated: true)
-        }
-    }
+extension DashboardRouter: DashboardRouterProtocol {
+    func navigate(_ route: DashboardRoutes) {}
 }
