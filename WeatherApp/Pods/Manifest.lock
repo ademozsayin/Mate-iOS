@@ -1,0 +1,51 @@
+PODS:
+  - Alamofire (5.8.1)
+  - CocoaLumberjack (3.8.4):
+    - CocoaLumberjack/Core (= 3.8.4)
+  - CocoaLumberjack/Core (3.8.4)
+  - CocoaLumberjack/Swift (3.8.4):
+    - CocoaLumberjack/Core
+  - KeychainAccess (4.2.2)
+  - Kingfisher (7.6.2)
+  - SVProgressHUD (2.3.1):
+    - SVProgressHUD/Core (= 2.3.1)
+  - SVProgressHUD/Core (2.3.1)
+  - Wormholy (1.6.6)
+
+DEPENDENCIES:
+  - Alamofire
+  - CocoaLumberjack
+  - CocoaLumberjack/Swift
+  - KeychainAccess
+  - Kingfisher (~> 7.6.2)
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
+  - Wormholy (~> 1.6.6)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CocoaLumberjack
+    - KeychainAccess
+    - Kingfisher
+    - Wormholy
+
+EXTERNAL SOURCES:
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
+CHECKOUT OPTIONS:
+  SVProgressHUD:
+    :commit: 34482a5479e24a1e0783b853102d91e761e6814b
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+
+SPEC CHECKSUMS:
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
+  CocoaLumberjack: df59726690390bb8aaaa585938564ba1c8dbbb44
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
+  Wormholy: 09da0b876f9276031fd47383627cb75e194fc068
+
+PODFILE CHECKSUM: f0318194594924d95453857abb2d9989d6e5e8b2
+
+COCOAPODS: 1.15.2

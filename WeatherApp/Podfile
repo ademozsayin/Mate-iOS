@@ -1,0 +1,56 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+workspace 'WeatherApp.xcworkspace'
+
+## Pods shared between all the targets
+## =====================================
+
+def hud
+  pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+end
+
+def keychain
+  pod 'KeychainAccess'
+end
+
+def alamofire
+  pod 'Alamofire'
+end
+
+def cocoa_lumberjack
+  pod 'CocoaLumberjack'
+  pod 'CocoaLumberjack/Swift'
+end
+
+# Main Target!
+# ============
+#
+
+target 'WeatherApp' do
+  project 'WeatherApp.xcodeproj'
+
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for WeatherApp
+  # External Libraries
+  # ==================
+  #
+  alamofire
+  cocoa_lumberjack
+  keychain
+  hud
+  pod 'Kingfisher', '~> 7.6.2'
+  pod 'Wormholy', '~> 1.6.6', configurations: ['Debug']
+
+  target 'WeatherAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'WeatherAppUITests' do
+    # Pods for testing
+  end
+
+end
