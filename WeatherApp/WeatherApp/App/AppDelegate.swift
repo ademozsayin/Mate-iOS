@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         // Setup Components
       
+       
         setupCocoaLumberjack()
         setupLogLevel(.verbose)
         DDLogVerbose("👀 Application started...")

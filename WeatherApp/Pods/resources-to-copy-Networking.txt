@@ -1,0 +1,1 @@
+/Users/ademozsayin/Desktop/WeatherApp-iOS/Networking/../WeatherApp/Pods/CocoaLumberjack/Sources/CocoaLumberjack/PrivacyInfo.xcprivacy
