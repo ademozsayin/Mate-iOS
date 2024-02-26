@@ -8,6 +8,9 @@
       location = "group:../Networking/Networking.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:../Components/Components.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

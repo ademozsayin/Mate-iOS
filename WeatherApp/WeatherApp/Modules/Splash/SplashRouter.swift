@@ -53,6 +53,9 @@ extension SplashRouter: SplashRouterProtocol {
         switch route {
         case .homeScreen:
             guard let window = viewController?.view.window else {return}
+//            let homeVC = HomeRouter.createModule()
+//            let navigationController = UINavigationController(rootViewController: homeVC)
+//            window.rootViewController = navigationController
         }
     }
 }

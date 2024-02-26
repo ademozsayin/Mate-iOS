@@ -34,6 +34,12 @@
 		0D8E455B2B8CE7880057100C /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E45592B8CE7880057100C /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D8E45862B8D00CD0057100C /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45852B8D00CD0057100C /* ConnectionManager.swift */; };
 		0D8E45882B8D017C0057100C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45872B8D017C0057100C /* Reachability.swift */; };
+		0D8E45A12B8D132B0057100C /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45A02B8D132B0057100C /* DashboardInteractor.swift */; };
+		0D8E45A32B8D145E0057100C /* DashboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45A22B8D145E0057100C /* DashboardPresenter.swift */; };
+		0D8E45A52B8D14DD0057100C /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45A42B8D14DD0057100C /* DashboardViewController.swift */; };
+		0D8E45A72B8D15860057100C /* DashboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45A62B8D15860057100C /* DashboardRouter.swift */; };
+		0D8E45D22B8D18AF0057100C /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E45D12B8D18AF0057100C /* Components.framework */; };
+		0D8E45D32B8D18AF0057100C /* Components.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E45D12B8D18AF0057100C /* Components.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7094A60B6F74F31C78006326 /* Pods_WeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBB2D93161002654FB49C17C /* Pods_WeatherApp.framework */; };
 		87008D4A3C9438708E0DC3D2 /* Pods_WeatherAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D533334AECC7DA826F464ADF /* Pods_WeatherAppTests.framework */; };
 		CC716132290CB77C7B327E3B /* Pods_WeatherApp_WeatherAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13F6B8718832F42165DFA320 /* Pods_WeatherApp_WeatherAppUITests.framework */; };
@@ -63,6 +69,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0D8E45D32B8D18AF0057100C /* Components.framework in Embed Frameworks */,
 				0D8E455B2B8CE7880057100C /* Networking.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -102,6 +109,11 @@
 		0D8E45592B8CE7880057100C /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E45852B8D00CD0057100C /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		0D8E45872B8D017C0057100C /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		0D8E45A02B8D132B0057100C /* DashboardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardInteractor.swift; sourceTree = "<group>"; };
+		0D8E45A22B8D145E0057100C /* DashboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPresenter.swift; sourceTree = "<group>"; };
+		0D8E45A42B8D14DD0057100C /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		0D8E45A62B8D15860057100C /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
+		0D8E45D12B8D18AF0057100C /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		13F6B8718832F42165DFA320 /* Pods_WeatherApp_WeatherAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp_WeatherAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A129DF129E022C9B42EB398 /* Pods-WeatherApp-WeatherAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp-WeatherAppUITests.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp-WeatherAppUITests/Pods-WeatherApp-WeatherAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		629EBF6587BA09E3C7A42501 /* Pods-WeatherApp-WeatherAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp-WeatherAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherApp-WeatherAppUITests/Pods-WeatherApp-WeatherAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8E455A2B8CE7880057100C /* Networking.framework in Frameworks */,
+				0D8E45D22B8D18AF0057100C /* Components.framework in Frameworks */,
 				7094A60B6F74F31C78006326 /* Pods_WeatherApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,6 +235,7 @@
 		0D8E44142B8CD0110057100C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0D8E459F2B8D130A0057100C /* Dashboard */,
 				0D8E44152B8CD0310057100C /* Splash */,
 			);
 			path = Modules;
@@ -259,6 +273,17 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		0D8E459F2B8D130A0057100C /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				0D8E45A02B8D132B0057100C /* DashboardInteractor.swift */,
+				0D8E45A22B8D145E0057100C /* DashboardPresenter.swift */,
+				0D8E45A42B8D14DD0057100C /* DashboardViewController.swift */,
+				0D8E45A62B8D15860057100C /* DashboardRouter.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
 		4E17B79CE6D18A17527B4AE0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +300,7 @@
 		5E002269266C8CBD25337E38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D8E45D12B8D18AF0057100C /* Components.framework */,
 				0D8E45592B8CE7880057100C /* Networking.framework */,
 				0D8E43AC2B8CCBB00057100C /* Splash.framework */,
 				FBB2D93161002654FB49C17C /* Pods_WeatherApp.framework */,
@@ -526,6 +552,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8E43B72B8CCC290057100C /* InteractorInterface.swift in Sources */,
+				0D8E45A52B8D14DD0057100C /* DashboardViewController.swift in Sources */,
 				0D8E441D2B8CD0310057100C /* SplashRouter.swift in Sources */,
 				0D2D26522B8C95FA008EB605 /* WeatherApp.xcdatamodeld in Sources */,
 				0D8E43BB2B8CCC290057100C /* ViewInterface.swift in Sources */,
@@ -533,7 +560,9 @@
 				0D8E44222B8CD0F30057100C /* BaseViewController.swift in Sources */,
 				0D8E441E2B8CD0310057100C /* SplashInteractor.swift in Sources */,
 				0D8E441C2B8CD0310057100C /* SplashPresenter.swift in Sources */,
+				0D8E45A12B8D132B0057100C /* DashboardInteractor.swift in Sources */,
 				0D8E43B92B8CCC290057100C /* BaseWireframe.swift in Sources */,
+				0D8E45A32B8D145E0057100C /* DashboardPresenter.swift in Sources */,
 				0D8E43B82B8CCC290057100C /* FormatterInterface.swift in Sources */,
 				0D2D264A2B8C95FA008EB605 /* SceneDelegate.swift in Sources */,
 				0D8E44282B8CD6700057100C /* AppDelegate+Init.swift in Sources */,
@@ -543,6 +572,7 @@
 				0D8E43BC2B8CCC290057100C /* PresenterInterface.swift in Sources */,
 				0D8E441B2B8CD0310057100C /* SplashViewController.swift in Sources */,
 				0D8E442B2B8CD8060057100C /* Logging.swift in Sources */,
+				0D8E45A72B8D15860057100C /* DashboardRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
