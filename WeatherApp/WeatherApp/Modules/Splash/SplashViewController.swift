@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Networking
 
 // MARK: - SplashViewControllerProtocol
 protocol SplashViewControllerProtocol: AnyObject {
@@ -21,6 +22,7 @@ final class SplashViewController: BaseViewController {
         super.viewDidLoad()
         
         presenter?.viewDidAppear()
+        
     }
 }
 

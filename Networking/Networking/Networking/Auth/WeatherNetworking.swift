@@ -56,7 +56,9 @@ extension WeatherNetworking: TargetType {
     }
     
     /// The version of the weather API.
-    private let version = "/data/2.5/"
+    private var version:String {
+        return  "/data/2.5/"
+    }
     
     /// The API key suffix for the weather API.
     private var appIdSuffix: String {
