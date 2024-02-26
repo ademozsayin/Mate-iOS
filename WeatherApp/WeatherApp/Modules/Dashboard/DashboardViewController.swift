@@ -15,6 +15,9 @@ protocol DashboardViewControllerProtocol: AnyObject {
 
 final class DashboardViewController: BaseViewController {
    
+    @IBOutlet private weak var locationLabel: UILabel!
+    @IBOutlet private weak var dateLabel: UILabel!
+    
     var presenter: DashboardPresenter?
 
     override func viewDidLoad() {

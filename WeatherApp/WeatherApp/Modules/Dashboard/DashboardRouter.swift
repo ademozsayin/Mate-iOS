@@ -7,12 +7,9 @@
 
 import Foundation
 
-protocol DashboardRouterProtocol: AnyObject{
-//    func navigate(_ route: HomeRoutes)
-}
-enum DashboardRoutes {
-//    case detail(movie: Movie)
-}
+protocol DashboardRouterProtocol: AnyObject{}
+
+enum DashboardRoutes {}
 
 final class DashboardRouter {
     weak var viewController: DashboardViewController?

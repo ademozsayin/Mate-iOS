@@ -22,6 +22,9 @@ final class SplashViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidAppear()
+        WeatherAPI().getCurrentWeather(request: WeatherRequest(latitude: "41.0624841", longitude: "28.988858")) { CurrentWeather in
+            
+        }
     }
 }
 

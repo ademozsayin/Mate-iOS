@@ -1,31 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
+                <outlet property="dateLabel" destination="YNw-T1-k7o" id="P1w-Le-oUo"/>
+                <outlet property="locationLabel" destination="kgy-u1-NSM" id="iVT-IF-9aQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="Fns-rA-Hqh"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZW-eu-wJt" userLabel="NavView">
+                    <rect key="frame" x="0.0" y="0.0" width="390" height="140"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today 18:08" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNw-T1-k7o" userLabel="DateLabel">
+                            <rect key="frame" x="155.33333333333334" y="107" width="79.333333333333343" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Los Anageles, USA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgy-u1-NSM" userLabel="LocationLabel">
+                            <rect key="frame" x="108.66666666666669" y="79" width="173" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qV-dD-ysN" userLabel="Umbrella">
+                            <rect key="frame" x="16" y="85" width="51" height="35"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <buttonConfiguration key="configuration" style="plain" image="umbrella" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
+                            </buttonConfiguration>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOZ-ON-ytC" userLabel="Add">
+                            <rect key="frame" x="327" y="85" width="47" height="35"/>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="WOZ-ON-ytC" secondAttribute="trailing" constant="16" id="4kP-RF-RMT"/>
+                        <constraint firstItem="2qV-dD-ysN" firstAttribute="leading" secondItem="wZW-eu-wJt" secondAttribute="leading" constant="16" id="AAU-xh-FFy"/>
+                        <constraint firstItem="kgy-u1-NSM" firstAttribute="centerX" secondItem="wZW-eu-wJt" secondAttribute="centerX" id="BKK-4M-dzO"/>
+                        <constraint firstItem="YNw-T1-k7o" firstAttribute="centerX" secondItem="wZW-eu-wJt" secondAttribute="centerX" id="Fwu-vC-SOM"/>
+                        <constraint firstItem="WOZ-ON-ytC" firstAttribute="top" secondItem="kgy-u1-NSM" secondAttribute="bottom" constant="-18" id="Ise-0b-Qdd"/>
+                        <constraint firstItem="2qV-dD-ysN" firstAttribute="top" secondItem="kgy-u1-NSM" secondAttribute="bottom" constant="-18" id="a1m-07-gTT"/>
+                        <constraint firstAttribute="bottom" secondItem="YNw-T1-k7o" secondAttribute="bottom" constant="16" id="nFw-yX-TjB"/>
+                        <constraint firstItem="YNw-T1-k7o" firstAttribute="top" secondItem="kgy-u1-NSM" secondAttribute="bottom" constant="4" id="z5D-wg-PiS"/>
+                        <constraint firstAttribute="height" constant="140" id="zdQ-zK-v5Q" userLabel="height = 140"/>
+                    </constraints>
+                </view>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" name="CustomDarkBlue"/>
-            <point key="canvasLocation" x="132" y="56"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="wZW-eu-wJt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PX1-im-Xoe"/>
+                <constraint firstItem="wZW-eu-wJt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SBe-7f-1gN"/>
+                <constraint firstItem="wZW-eu-wJt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="jeP-5w-zdE"/>
+            </constraints>
+            <point key="canvasLocation" x="130.76923076923077" y="55.45023696682464"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="CustomDarkBlue">
-            <color red="0.030999999493360519" green="0.125" blue="0.19599999487400055" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="umbrella" catalog="system" width="124" height="128"/>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
