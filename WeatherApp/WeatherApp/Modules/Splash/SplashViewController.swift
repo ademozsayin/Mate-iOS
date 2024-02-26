@@ -22,6 +22,8 @@ final class SplashViewController: BaseViewController {
         super.viewDidLoad()
         
         presenter?.viewDidAppear()
+        
+        WeatherAPI()
     
     }
 }
