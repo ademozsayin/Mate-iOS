@@ -29,6 +29,9 @@ final class SplashRouter {
     ///
     /// - Returns: An instance of `SplashViewController` configured with the Splash module.
     static func createModule() -> SplashViewController {
+        
+        DDLogVerbose("👀 Create Module SplashRouter")
+        
         let view = SplashViewController()
         let interactor = SplashInteractor()
         let router = SplashRouter()
