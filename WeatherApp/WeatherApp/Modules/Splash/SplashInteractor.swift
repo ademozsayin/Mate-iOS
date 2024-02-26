@@ -14,7 +14,8 @@ protocol SplashInteractorProtocol: AnyObject {
 
 // MARK: - SplashInteractorOutputProtocol
 protocol SplashInteractorOutputProtocol: AnyObject {
-    func internetConnection(status: Bool)
+    func isReachable(status: Bool)
+    func isUnreachable(status: Bool)
 }
 
 // MARK: - SplashInteractor
@@ -33,5 +34,13 @@ final class SplashInteractor {
 }
 
 extension SplashInteractor: SplashInteractorProtocol {
-    func checkInternetConnection() {}
+    func checkInternetConnection() {
+        ConnectionManager.isUnreachable { [weak self] con in
+            self?.output?.isUnreachable(status: true)
+        }
+        
+        ConnectionManager.isReachable { [weak self]  r  in
+            self?.output?.isReachable(status: true)
+        }
+    }
 }

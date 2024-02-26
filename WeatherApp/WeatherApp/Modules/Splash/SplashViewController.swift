@@ -11,6 +11,7 @@ import Networking
 // MARK: - SplashViewControllerProtocol
 protocol SplashViewControllerProtocol: AnyObject {
     func noInternetConnection()
+    func isReachable(status:Bool)
 }
 
 // MARK: - SplashViewController
@@ -20,16 +21,23 @@ final class SplashViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         presenter?.viewDidAppear()
-        
-        WeatherAPI()
-    
     }
 }
 
 // MARK: - SplashViewControllerProtocol
 extension SplashViewController: SplashViewControllerProtocol {
     
-    func noInternetConnection() {}
+    func noInternetConnection() {
+        func noInternetConnection() {
+            showAlert(title: "Error", message: "No Internet Connection, Please check your connection!")
+        }
+    }
+    
+    final func isReachable(status:Bool) {
+        print(status)
+        status ? print("online") : noInternetConnection()
+
+    }
+
 }

@@ -40,28 +40,47 @@ final class SplashPresenter: SplashPresenterProtocol {
         self.view = view
         self.router = router
         self.interactor = interactor
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(networkStatusChanged(_:)),
+            name: NSNotification.Name(rawValue: "ReachiblityChange"),
+            object: nil
+        )
     }
     
     /// Notifies the presenter that the view did appear.
     func viewDidAppear() {
         interactor?.checkInternetConnection()
     }
+    
+    @objc func networkStatusChanged(_ notification: Notification) {
+        print(notification)
+        // Update the view or inform the interactor about network status changes
+        // Example:
+        // view?.updateNetworkStatus()
+        // interactor?.handleNetworkStatusChange()
+//        interactor?.checkInternetConnection()
+        ConnectionManager.isUnreachable { [weak self] _ in
+            print("isUnreachable")
+            self?.view?.isReachable(status: true)
+        }
+        
+        ConnectionManager.isReachable {[weak self]  r  in
+            print("isReachable")
+            self?.view?.isReachable(status: false)
+        }
+    }
 }
 
 // MARK: - SplashInteractorOutputProtocol
 extension SplashPresenter: SplashInteractorOutputProtocol {
+    func isReachable(status: Bool) {
+        view?.isReachable(status: status)
+        router?.navigate(.homeScreen)
+    }
     
-    /// Handles the internet connection status received from the interactor.
-    ///
-    /// - Parameters:
-    ///   - status: A Boolean value indicating whether there is internet connection or not.
-    func internetConnection(status: Bool) {
-        if status {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.router?.navigate(.homeScreen)
-            }
-        } else {
-            view?.noInternetConnection()
-        }
+    func isUnreachable(status: Bool) {
+        view?.isReachable(status: !status)
     }
 }

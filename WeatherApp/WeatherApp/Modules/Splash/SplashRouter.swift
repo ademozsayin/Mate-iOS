@@ -52,7 +52,7 @@ extension SplashRouter: SplashRouterProtocol {
     func navigate(_ route: SplashRoutes) {
         switch route {
         case .homeScreen:
-            guard let window = viewController?.view.window else { return }
+            guard let window = viewController?.view.window else {return}
         }
     }
 }
