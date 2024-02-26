@@ -27,7 +27,7 @@ extension WeatherNetworking: TargetType {
     public var path: String {
         switch self {
         case .getCurrentWeather(let request):
-            return "weather?lat=\(request.latitude)&lon=\(request.longitude)/\(appIdSuffix)"
+            return "\(version)/weather?lat=\(request.latitude)&lon=\(request.longitude)&\(appIdSuffix)"
         }
     }
     
@@ -35,7 +35,7 @@ extension WeatherNetworking: TargetType {
     public var method: HTTPMethod {
         switch self {
         case .getCurrentWeather:
-            return .post
+            return .get
         }
     }
     

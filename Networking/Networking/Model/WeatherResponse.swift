@@ -9,19 +9,12 @@ import Foundation
 
 // MARK: - WeatherResponse
 public struct WeatherResponse: Codable {
-    let coord: Coord
-    let weather: [Weather]
-    let base: String
-    let main: Main
-    let visibility: Int
-    let wind: Wind
-    let rain: Rain
-    let clouds: Clouds
-    let dt: Int
-    let sys: Sys
-    let timezone, id: Int
-    let name: String
-    let cod: Int
+    let coord: Coord?
+    let weather: [Weather]?
+    let main: Main?
+    let wind: Wind?
+    let name: String?
+    let cod: Int?
 }
 
 // MARK: - Clouds
@@ -36,8 +29,8 @@ public struct Coord: Codable {
 
 // MARK: - Main
 public struct Main: Codable {
-    let temp, feelsLike, tempMin, tempMax: Double
-    let pressure, humidity, seaLevel, grndLevel: Int
+    let temp, feelsLike, tempMin, tempMax: Double?
+    let pressure, humidity, seaLevel, grndLevel: Double?
 
     enum CodingKeys: String, CodingKey {
         case temp
@@ -74,7 +67,7 @@ public struct Weather: Codable {
 
 // MARK: - Wind
 public struct Wind: Codable {
-    let speed: Double
-    let deg: Int
-    let gust: Double
+    let speed: Double?
+    let deg: Int?
+    let gust: Double?
 }

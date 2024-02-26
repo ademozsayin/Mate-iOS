@@ -19,6 +19,7 @@
 		0D8E457D2B8CE87F0057100C /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45742B8CE87F0057100C /* WeatherRequest.swift */; };
 		0D8E45802B8CEB470057100C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E457F2B8CEB470057100C /* Settings.swift */; };
 		0D8E45822B8CF5B50057100C /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45812B8CF5B50057100C /* WeatherResponse.swift */; };
+		0D8E45842B8CFB2E0057100C /* Extension+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45832B8CFB2E0057100C /* Extension+Data.swift */; };
 		4E862D96A603749222818443 /* libPods-NetworkingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9976ECAC316DFC37DB0FC967 /* libPods-NetworkingTests.a */; };
 		D57BE253BCCE70E420E1365C /* libPods-Networking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0048B76615A670C237606F5A /* libPods-Networking.a */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		0D8E45742B8CE87F0057100C /* WeatherRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
 		0D8E457F2B8CEB470057100C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0D8E45812B8CF5B50057100C /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
+		0D8E45832B8CFB2E0057100C /* Extension+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Data.swift"; sourceTree = "<group>"; };
 		18057CBF5A1D66DD7BF13597 /* Pods-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.debug.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.debug.xcconfig"; sourceTree = "<group>"; };
 		48318ED02BE24EF3584D4FF9 /* Pods-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.release.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.release.xcconfig"; sourceTree = "<group>"; };
 		95625733E9AF55D69A4E7726 /* Pods-NetworkingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkingTests.release.xcconfig"; path = "Target Support Files/Pods-NetworkingTests/Pods-NetworkingTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				0D8E45702B8CE87F0057100C /* KeyedDecodingContainer+Pickslam.swift */,
+				0D8E45832B8CFB2E0057100C /* Extension+Data.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				0D8E45822B8CF5B50057100C /* WeatherResponse.swift in Sources */,
 				0D8E45782B8CE87F0057100C /* ArrayEncoding.swift in Sources */,
 				0D8E45802B8CEB470057100C /* Settings.swift in Sources */,
+				0D8E45842B8CFB2E0057100C /* Extension+Data.swift in Sources */,
 				0D8E457A2B8CE87F0057100C /* WeatherNetworking.swift in Sources */,
 				0D8E45772B8CE87F0057100C /* BaseAPI.swift in Sources */,
 				0D8E457D2B8CE87F0057100C /* WeatherRequest.swift in Sources */,

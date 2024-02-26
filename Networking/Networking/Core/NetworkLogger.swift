@@ -8,7 +8,26 @@
 import Foundation
 import Alamofire
 
+/**
+ A utility class for logging network requests and responses.
+
+ Use this class to log outgoing requests and incoming responses for debugging purposes.
+
+ - Note: This class is intended for debugging and logging purposes only and should not be used in production code.
+
+ ### Example:
+
+ ```swift
+ let request = URLRequest(url: URL(string: "https://api.example.com/data")!)
+ NetworkLogger.log(request: request)
+ */
+
 public class NetworkLogger {
+    /**
+     Logs the outgoing network request.
+
+     - Parameter request: The outgoing `URLRequest` to be logged.
+     */
     public static func log(request: URLRequest) {
         
         #if DEBUG
@@ -44,6 +63,11 @@ public class NetworkLogger {
     public static func log(response: URLResponse) {}
     
     
+    /**
+     Logs the incoming network response.
+
+     - Parameter response: The incoming `AFDataResponse<Any>` to be logged.
+     */
     public static func log(response: AFDataResponse<Any>) {
     #if DEBUG
         print("\n - - - - - - - - - - RESPONSE INCOMING - - - - - - - - - - \n")
@@ -57,6 +81,14 @@ public class NetworkLogger {
         print(jsonResponse)
     }
     
+    /**
+        Logs the incoming network response.
+
+        - Parameters:
+           - response: The incoming `HTTPURLResponse` to be logged.
+           - data: The response `Data`.
+           - error: An optional `Error` object representing any error that occurred during the response.
+        */
     public static func log(response: HTTPURLResponse?, data: Data?, error: Error?) {
        print("\n - - - - - - - - - - INCOMING RESPONSE- - - - - - - - - - \n")
        defer { print("\n - - - - - - - - - - INCOMING RESPONSE END - - - - - - - - - - \n") }
@@ -79,7 +111,7 @@ public class NetworkLogger {
           output += "\(key): \(value)\n"
        }
        if let body = data {
-          output += "\n\(String(data: body, encoding: .utf8) ?? "")\n"
+           body.printJson()
        }
        if error != nil {
           output += "\nError: \(error!.localizedDescription)\n"
@@ -87,6 +119,4 @@ public class NetworkLogger {
        print(output)
         
     }
-
 }
-
