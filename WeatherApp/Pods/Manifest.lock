@@ -7,6 +7,7 @@ PODS:
     - CocoaLumberjack/Core
   - KeychainAccess (4.2.2)
   - Kingfisher (7.6.2)
+  - Sourcery (1.0.3)
   - SVProgressHUD (2.3.1):
     - SVProgressHUD/Core (= 2.3.1)
   - SVProgressHUD/Core (2.3.1)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - CocoaLumberjack/Swift
   - KeychainAccess
   - Kingfisher (~> 7.6.2)
+  - Sourcery (~> 1.0.3)
   - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
   - Wormholy (~> 1.6.6)
 
@@ -27,6 +29,7 @@ SPEC REPOS:
     - CocoaLumberjack
     - KeychainAccess
     - Kingfisher
+    - Sourcery
     - Wormholy
 
 EXTERNAL SOURCES:
@@ -43,9 +46,10 @@ SPEC CHECKSUMS:
   CocoaLumberjack: df59726690390bb8aaaa585938564ba1c8dbbb44
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
+  Sourcery: 70a6048014bd4f37ea80e6bd4354d47bf3b760e1
   SVProgressHUD: 4837c74bdfe2e51e8821c397825996a8d7de6e22
   Wormholy: 09da0b876f9276031fd47383627cb75e194fc068
 
-PODFILE CHECKSUM: f0318194594924d95453857abb2d9989d6e5e8b2
+PODFILE CHECKSUM: b8fa581ab3cd1565137f5db3db9d1ff706ed9083
 
 COCOAPODS: 1.15.2

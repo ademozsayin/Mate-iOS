@@ -23,6 +23,16 @@ def cocoa_lumberjack
   pod 'CocoaLumberjack/Swift'
 end
 
+def networking_pods
+  alamofire
+  cocoa_lumberjack
+
+  pod 'Sourcery', '~> 1.0.3', configuration: 'Debug'
+
+  # Used for storing application password
+  keychain
+end
+
 # Main Target!
 # ============
 #
@@ -53,4 +63,20 @@ target 'WeatherApp' do
     # Pods for testing
   end
 
+end
+
+# Networking Target:
+# ==================
+#
+target 'Networking' do
+  project '../Networking/Networking.xcodeproj'
+  networking_pods
+end
+
+# Unit Tests
+# ==========
+#
+target 'NetworkingTests' do
+  project '../Networking/Networking.xcodeproj'
+  networking_pods
 end

@@ -11,6 +11,8 @@
 		0D8E44412B8CD9700057100C /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E44362B8CD9700057100C /* Networking.framework */; };
 		0D8E44462B8CD9700057100C /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E44452B8CD9700057100C /* NetworkingTests.swift */; };
 		0D8E44472B8CD9700057100C /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D8E44392B8CD9700057100C /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4E862D96A603749222818443 /* libPods-NetworkingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9976ECAC316DFC37DB0FC967 /* libPods-NetworkingTests.a */; };
+		D57BE253BCCE70E420E1365C /* libPods-Networking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0048B76615A670C237606F5A /* libPods-Networking.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +26,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0048B76615A670C237606F5A /* libPods-Networking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Networking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E44362B8CD9700057100C /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E44392B8CD9700057100C /* Networking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Networking.h; sourceTree = "<group>"; };
 		0D8E443A2B8CD9700057100C /* Networking.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Networking.docc; sourceTree = "<group>"; };
 		0D8E44402B8CD9700057100C /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E44452B8CD9700057100C /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
+		18057CBF5A1D66DD7BF13597 /* Pods-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.debug.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.debug.xcconfig"; sourceTree = "<group>"; };
+		48318ED02BE24EF3584D4FF9 /* Pods-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.release.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.release.xcconfig"; sourceTree = "<group>"; };
+		95625733E9AF55D69A4E7726 /* Pods-NetworkingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkingTests.release.xcconfig"; path = "Target Support Files/Pods-NetworkingTests/Pods-NetworkingTests.release.xcconfig"; sourceTree = "<group>"; };
+		9976ECAC316DFC37DB0FC967 /* libPods-NetworkingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NetworkingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B574B18E8BB5A6F2799DD3D6 /* Pods-NetworkingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkingTests.debug.xcconfig"; path = "Target Support Files/Pods-NetworkingTests/Pods-NetworkingTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D57BE253BCCE70E420E1365C /* libPods-Networking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,18 +53,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D8E44412B8CD9700057100C /* Networking.framework in Frameworks */,
+				4E862D96A603749222818443 /* libPods-NetworkingTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08F29CF92833B6278AC10B20 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0048B76615A670C237606F5A /* libPods-Networking.a */,
+				9976ECAC316DFC37DB0FC967 /* libPods-NetworkingTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0D8E442C2B8CD9700057100C = {
 			isa = PBXGroup;
 			children = (
 				0D8E44382B8CD9700057100C /* Networking */,
 				0D8E44442B8CD9700057100C /* NetworkingTests */,
 				0D8E44372B8CD9700057100C /* Products */,
+				91C3E0F85686EB34B6298C40 /* Pods */,
+				08F29CF92833B6278AC10B20 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +106,18 @@
 			path = NetworkingTests;
 			sourceTree = "<group>";
 		};
+		91C3E0F85686EB34B6298C40 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				18057CBF5A1D66DD7BF13597 /* Pods-Networking.debug.xcconfig */,
+				48318ED02BE24EF3584D4FF9 /* Pods-Networking.release.xcconfig */,
+				B574B18E8BB5A6F2799DD3D6 /* Pods-NetworkingTests.debug.xcconfig */,
+				95625733E9AF55D69A4E7726 /* Pods-NetworkingTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../WeatherApp/Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -103,10 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D8E444A2B8CD9700057100C /* Build configuration list for PBXNativeTarget "Networking" */;
 			buildPhases = (
+				6D2207730DF42042F2443C55 /* [CP] Check Pods Manifest.lock */,
 				0D8E44312B8CD9700057100C /* Headers */,
 				0D8E44322B8CD9700057100C /* Sources */,
 				0D8E44332B8CD9700057100C /* Frameworks */,
 				0D8E44342B8CD9700057100C /* Resources */,
+				AFF7C788D1626035E73A94F9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -121,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D8E444D2B8CD9700057100C /* Build configuration list for PBXNativeTarget "NetworkingTests" */;
 			buildPhases = (
+				581C3A8F9359F5898F680872 /* [CP] Check Pods Manifest.lock */,
 				0D8E443C2B8CD9700057100C /* Sources */,
 				0D8E443D2B8CD9700057100C /* Frameworks */,
 				0D8E443E2B8CD9700057100C /* Resources */,
+				56453C8D5A441BE2A6E5F07D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,6 +225,87 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		56453C8D5A441BE2A6E5F07D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NetworkingTests/Pods-NetworkingTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NetworkingTests/Pods-NetworkingTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NetworkingTests/Pods-NetworkingTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		581C3A8F9359F5898F680872 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NetworkingTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D2207730DF42042F2443C55 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Networking-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFF7C788D1626035E73A94F9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Networking/Pods-Networking-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Networking/Pods-Networking-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Networking/Pods-Networking-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0D8E44322B8CD9700057100C /* Sources */ = {
@@ -344,6 +462,7 @@
 		};
 		0D8E444B2B8CD9700057100C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 18057CBF5A1D66DD7BF13597 /* Pods-Networking.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -375,6 +494,7 @@
 		};
 		0D8E444C2B8CD9700057100C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48318ED02BE24EF3584D4FF9 /* Pods-Networking.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -406,6 +526,7 @@
 		};
 		0D8E444E2B8CD9700057100C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B574B18E8BB5A6F2799DD3D6 /* Pods-NetworkingTests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -422,6 +543,7 @@
 		};
 		0D8E444F2B8CD9700057100C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95625733E9AF55D69A4E7726 /* Pods-NetworkingTests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;

@@ -1,0 +1,6 @@
+module KeychainAccess {
+  umbrella header "KeychainAccess-library-umbrella.h"
+
+  export *
+  module * { export * }
+}
