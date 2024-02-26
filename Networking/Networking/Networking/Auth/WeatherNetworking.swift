@@ -20,10 +20,7 @@ extension WeatherNetworking: TargetType {
     
     /// The base URL for weather networking requests.
     public var baseURL: String {
-        guard let base = Bundle.main.object(forInfoDictionaryKey: "BASE_URL") as? String else {
-            fatalError("Base URL not found in Info.plist.")
-        }
-        return base
+        return Settings.baseURL
     }
     
     /// The path for the weather networking request.
@@ -57,14 +54,11 @@ extension WeatherNetworking: TargetType {
     
     /// The version of the weather API.
     private var version:String {
-        return  "/data/2.5/"
+        return "/data/2.5/"
     }
     
     /// The API key suffix for the weather API.
     private var appIdSuffix: String {
-        guard let key = Bundle.main.object(forInfoDictionaryKey: "WEATHER_API_KEY") as? String else {
-            fatalError("Weather API key not found in Info.plist.")
-        }
-        return "appid=\(key)"
+        return "appid=\(Settings.appIdSuffix)"
     }
 }
