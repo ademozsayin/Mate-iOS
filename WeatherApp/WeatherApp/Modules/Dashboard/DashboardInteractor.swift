@@ -12,6 +12,8 @@ import Networking
 protocol DashboardInteractorProtocol: AnyObject {
     /// Fetches the current weather data.
     func fetchCurrentWeather()
+    func fetchWeatherForUserLocation()
+
 }
 
 /// Protocol defining the output interactions of the DashboardInteractor.
