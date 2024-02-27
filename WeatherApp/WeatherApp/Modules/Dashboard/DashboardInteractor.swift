@@ -9,15 +9,17 @@ import Foundation
 import Networking
 import LocationService
 import CoreLocation
+import CoreData
+import UIKit
 
-public typealias StorageLocationInfo = (location: CLLocation, name: String, degree: Double)
+public typealias UserLocationResult = UserLocation
 /// Protocol defining the interactions handled by the DashboardInteractor.
 protocol DashboardInteractorProtocol: AnyObject {
     /// Fetches the current weather data.
     func fetchCurrentWeather()
     func fetchWeatherForUserLocation()
     /// Fetches the last saved user location.
-    func fetchLastSavedLocation() -> (location: CLLocation, name: String, degree: Double)?
+    func fetchLastSavedLocation() -> UserLocationResult?
     
 }
 
@@ -60,7 +62,7 @@ final class DashboardInteractor {
     }
     
     // Retrieve the last saved user location from Core Data
-    func fetchLastSavedLocation() -> StorageLocationInfo? {
+    func fetchLastSavedLocation() -> UserLocationResult? {
         return locationDataManager.fetchLastLocation()
     }
 }
@@ -86,12 +88,22 @@ extension DashboardInteractor: LocationServiceDelegate {
             guard let self else { return }
             switch result {
             case .success(let weatherInfo):
-                // Save the user's location to Core Data
-                locationDataManager.saveLocation(
-                    location,
-                    name: weatherInfo.name ?? "",
-                    degree: weatherInfo.main?.temp ?? 0.0
-                )
+                // Convert WeatherResponse to WeatherResponseCD
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                    fatalError("AppDelegate not found")
+                }
+                let managedContext = appDelegate.persistentContainer.viewContext
+
+                let weatherInfoCD = UserLocation(context: managedContext)
+                weatherInfoCD.latitude = weatherInfo.coord?.lat ?? 0.0
+                weatherInfoCD.longitude = weatherInfo.coord?.lon ?? 0.0
+                weatherInfoCD.name = weatherInfo.name ?? ""
+                let temperature:String? = "\(weatherInfo.main?.temp ?? 0.0)"
+                weatherInfoCD.degree = temperature
+                // Assuming datetime is a Date property in your Core Data model
+                weatherInfoCD.date = Date() // Set datetime to current date
+                // Save the converted WeatherResponseCD object
+                locationDataManager.save(weatherInfoCD)
                 self.output?.fetchWeatherOutput(result: weatherInfo)
             case .failure(let error):
                 // Handle error

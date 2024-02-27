@@ -8,21 +8,25 @@
 import CoreData
 import CoreLocation
 
+typealias UserLocationEntity = String
+let userLocationEntity: UserLocationEntity = "UserLocation"
+
 /// Protocol defining methods for managing location data.
 protocol LocationDataManager {
     /// Saves a CLLocation object representing a location into persistent storage.
     ///
     /// - Parameter location: The CLLocation object to be saved.
-    func saveLocation(_ location: CLLocation, name: String, degree: Double)
+    func save(_ weather: UserLocation)
     
     /// Fetches the last saved location from persistent storage.
     ///
     /// - Returns: The last saved CLLocation object, if available; otherwise, nil.
-    func fetchLastLocation() -> (location: CLLocation, name: String, degree: Double)?
+    func fetchLastLocation() -> UserLocationResult?
 }
 
 /// A concrete implementation of LocationDataManager using Core Data to persist location data.
 class CoreLocationDataManager: LocationDataManager {
+    
     /// The persistent container used for managing the Core Data stack.
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "WeatherApp")
@@ -34,18 +38,18 @@ class CoreLocationDataManager: LocationDataManager {
         return container
     }()
     
-    func saveLocation(_ location: CLLocation, name: String, degree: Double) {
+    func save(_ weather: UserLocation) {
         let managedContext = persistentContainer.viewContext
-        guard let entityDescription = NSEntityDescription.entity(forEntityName: "Location", in: managedContext) else {
+        guard let entityDescription = NSEntityDescription.entity(forEntityName: userLocationEntity, in: managedContext) else {
             fatalError("Could not find entity description")
         }
         
         let locationObject = NSManagedObject(entity: entityDescription, insertInto: managedContext)
-        locationObject.setValue(name, forKey: "name")
-        locationObject.setValue(location.coordinate.latitude, forKey: "latitude")
-        locationObject.setValue(location.coordinate.longitude, forKey: "longitude")
-        locationObject.setValue(degree, forKey: "degree")
-        
+        locationObject.setValue(weather.name, forKey: "name")
+        locationObject.setValue(weather.latitude, forKey: "latitude")
+        locationObject.setValue(weather.longitude, forKey: "longitude")
+        locationObject.setValue(weather.degree, forKey: "degree")
+        locationObject.setValue(Date(), forKey: "date")
         #if DEBUG
         // Assuming you have an instance of NSManagedObject named locationObject
         if let jsonString = locationObject.prettyJSONString() {
@@ -61,25 +65,21 @@ class CoreLocationDataManager: LocationDataManager {
         }
     }
     
-    func fetchLastLocation() -> StorageLocationInfo? {
+    func fetchLastLocation() -> UserLocationResult? {
+        // Fetch user location from Core Data
         let managedContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: userLocationEntity)
         fetchRequest.fetchLimit = 1
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
-        
         do {
-            let result = try managedContext.fetch(fetchRequest)
-            if let locationObject = result.first as? NSManagedObject,
-               let name = locationObject.value(forKey: "name") as? String,
-               let latitude = locationObject.value(forKey: "latitude") as? CLLocationDegrees,
-               let longitude = locationObject.value(forKey: "longitude") as? CLLocationDegrees,
-               let degree = locationObject.value(forKey: "degree") as? Double {
-                let location = CLLocation(latitude: latitude, longitude: longitude)
-                return (location, name, degree)
+            if let userLocations = try managedContext.fetch(fetchRequest) as? [UserLocationResult],
+                let userLocation = userLocations.first {
+                return userLocation
             }
         } catch let error as NSError {
             DDLogError("⛔️ Could not fetch. \(error), \(error.userInfo)")
         }
+        
         return nil
     }
+
 }

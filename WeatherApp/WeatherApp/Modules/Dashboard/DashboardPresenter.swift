@@ -68,8 +68,7 @@ final class DashboardPresenter: DashboardPresenterProtocol {
 
 // Extension for additional protocol conformance
 extension DashboardPresenter: DashboardInteractorOutputProtocol {
-    
-    func fetchWeatherOutput(result: Networking.WeatherResponse) {
+    func fetchWeatherOutput(result: WeatherResponse) {
         view?.displayWeatherInfo(result)
     }
     
