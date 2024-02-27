@@ -62,10 +62,42 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "setTitle(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C6CCB3B4-7F62-4341-87C3-856A4154113C - 54f618474d9768ac"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.setTitle(Swift.String) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "404">
+               </Location>
+               <Location
+                  uuid = "C6CCB3B4-7F62-4341-87C3-856A4154113C - 54f618474d976b85"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.setTitle(Swift.String) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "324">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -78,10 +110,42 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "showLoading()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "17DB9583-1331-4042-BDD2-5CCAF36A2255 - 203b82c050a7ff12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.showLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  uuid = "17DB9583-1331-4042-BDD2-5CCAF36A2255 - 203b82c050a7fe0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.showLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -94,10 +158,42 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "hideLoading()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "75A448EE-7C79-4CFC-B716-D51AC468BCFA - b13f853302f07397"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.hideLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "216">
+               </Location>
+               <Location
+                  uuid = "75A448EE-7C79-4CFC-B716-D51AC468BCFA - b13f853302f0737e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.hideLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -110,8 +206,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "displayWeatherInfo(_:)"
             landmarkType = "7">
             <Locations>
@@ -175,6 +271,21 @@
                   endingLineNumber = "35"
                   offsetFromSymbolStart = "36">
                </Location>
+               <Location
+                  uuid = "6DFE5BAB-55E8-43C3-A903-6DC90758AB0B - 6c374b5e21e319c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.displayWeatherInfo(Networking.WeatherResponse) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "42"
+                  endingLineNumber = "42"
+                  offsetFromSymbolStart = "268">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -188,8 +299,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
             <Locations>
@@ -251,8 +362,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "presentWeatherInfo(_:)"
             landmarkType = "7">
             <Locations>
@@ -316,6 +427,21 @@
                   endingLineNumber = "66"
                   offsetFromSymbolStart = "56">
                </Location>
+               <Location
+                  uuid = "F7855C41-133F-4A10-8EF7-6EC19A45C316 - 558df9b3974b6bdb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardPresenter.presentWeatherInfo(Networking.WeatherResponse) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "56">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -377,8 +503,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "fetchWeatherForUserLocation()"
             landmarkType = "7">
             <Locations>
@@ -440,8 +566,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "fetchWeatherOutput(result:)"
             landmarkType = "7">
             <Locations>
@@ -505,6 +631,21 @@
                   endingLineNumber = "62"
                   offsetFromSymbolStart = "148">
                </Location>
+               <Location
+                  uuid = "D77C0D43-F9A9-495D-BAE3-9F3BEDE653CA - a6717f8a1dd8bd8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardPresenter.fetchWeatherOutput(result: Swift.Result&lt;Networking.WeatherResponse, __C.NSError&gt;) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "80"
+                  endingLineNumber = "80"
+                  offsetFromSymbolStart = "148">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -518,8 +659,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "fetchWeatherForUserLocation()"
             landmarkType = "7">
             <Locations>
@@ -581,8 +722,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "fetchCurrentWeather()"
             landmarkType = "7">
             <Locations>
@@ -631,6 +772,21 @@
                   endingLineNumber = "65"
                   offsetFromSymbolStart = "140">
                </Location>
+               <Location
+                  uuid = "6F82C7AE-75A0-4E32-A68F-591F38A92777 - 7ea8c42435418968"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardInteractor.fetchCurrentWeather() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "140">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -644,8 +800,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "didFetchUserLocation(_:)"
             landmarkType = "7">
             <Locations>
@@ -752,8 +908,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "didFetchUserLocation(_:)"
             landmarkType = "7">
             <Locations>
@@ -800,8 +956,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "didFailToFetchUserLocation(withError:)"
             landmarkType = "7">
             <Locations>
@@ -833,6 +989,21 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "86"
                   endingLineNumber = "86"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "C490E846-EAE9-4B60-8592-CFD5CEBC6797 - c59b11260e5e2cd1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardInteractor.didFailToFetchUserLocation(withError: Swift.Error) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
                   offsetFromSymbolStart = "180">
                </Location>
             </Locations>
@@ -1053,10 +1224,10 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "DashboardInteractor"
-            landmarkType = "21">
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "fetchCurrentWeather()"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "7F9736E8-8CE7-4C16-BD86-1621527DF078 - 7ea8c42435418b77"
@@ -1088,6 +1259,21 @@
                   endingLineNumber = "64"
                   offsetFromSymbolStart = "48">
                </Location>
+               <Location
+                  uuid = "7F9736E8-8CE7-4C16-BD86-1621527DF078 - 7ea8c42435418949"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardInteractor.fetchCurrentWeather() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "48">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1101,24 +1287,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A8EB2ED1-4E4E-480F-A0B9-DA00CB2DA851"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1133,8 +1303,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "presentWeatherInfo(_:)"
             landmarkType = "7">
             <Locations>
@@ -1183,6 +1353,21 @@
                   endingLineNumber = "67"
                   offsetFromSymbolStart = "212">
                </Location>
+               <Location
+                  uuid = "0741003D-715F-477E-ACA6-1EB9260A8363 - 558df9b3974b6bfa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardPresenter.presentWeatherInfo(Networking.WeatherResponse) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "212">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1196,8 +1381,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "presentWeatherInfo(_:)"
             landmarkType = "7">
             <Locations>
@@ -1246,6 +1431,21 @@
                   endingLineNumber = "65"
                   offsetFromSymbolStart = "44">
                </Location>
+               <Location
+                  uuid = "517E7D1D-03AE-4CA6-95A4-792B69787D59 - 558df9b3974b6bb8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardPresenter.presentWeatherInfo(Networking.WeatherResponse) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "44">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1259,8 +1459,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "fetchWeatherOutput(result:)"
             landmarkType = "7">
             <Locations>
@@ -1309,6 +1509,21 @@
                   endingLineNumber = "61"
                   offsetFromSymbolStart = "56">
                </Location>
+               <Location
+                  uuid = "BEB6A809-3279-44EE-881A-5E97ABA2336C - a6717f8a1dd8bde8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardPresenter.fetchWeatherOutput(result: Swift.Result&lt;Networking.WeatherResponse, __C.NSError&gt;) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "56">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1322,8 +1537,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "fetchWeatherOutput(result:)"
             landmarkType = "7">
             <Locations>
@@ -1370,6 +1585,21 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "63"
                   endingLineNumber = "63"
+                  offsetFromSymbolStart = "224">
+               </Location>
+               <Location
+                  uuid = "16B78B91-5FD0-4A7C-8BFF-A90DF0F9A430 - a6717f8a1dd8bdaa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardPresenter.fetchWeatherOutput(result: Swift.Result&lt;Networking.WeatherResponse, __C.NSError&gt;) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
                   offsetFromSymbolStart = "224">
                </Location>
             </Locations>
@@ -1577,8 +1807,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "displayWeatherInfo(_:)"
             landmarkType = "7">
             <Locations>
@@ -1627,6 +1857,21 @@
                   endingLineNumber = "33"
                   offsetFromSymbolStart = "24">
                </Location>
+               <Location
+                  uuid = "AFC8C4A6-C489-4AF3-9BF4-7FF08311E9A9 - 6c374b5e21e3152"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.displayWeatherInfo(Networking.WeatherResponse) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "72">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -1640,10 +1885,42 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "setTitle(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C33F5449-AA61-4E42-9871-7C381D4D8478 - 54f618474d9768ee"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.setTitle(Swift.String) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "C33F5449-AA61-4E42-9871-7C381D4D8478 - 54f618474d976bc7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.setTitle(Swift.String) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "100">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1656,10 +1933,42 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "setTitle(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2D0D7977-E53B-43AD-A047-9FC2BCDED9C8 - 54f618474d976862"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.setTitle(Swift.String) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "43"
+                  endingLineNumber = "43"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "2D0D7977-E53B-43AD-A047-9FC2BCDED9C8 - 54f618474d976b7b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.setTitle(Swift.String) -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "528">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1672,10 +1981,42 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "showLoading()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F14AD5E5-5281-4ED4-8B67-CE2D5BA2E2A5 - 203b82c050a7ff33"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.showLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "F14AD5E5-5281-4ED4-8B67-CE2D5BA2E2A5 - 203b82c050a7fe28"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.showLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "55"
+                  endingLineNumber = "55"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1688,10 +2029,42 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "showLoading()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F995D1B-FDD1-4113-9831-B8FFDB922C05 - b13f853302f07255"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.hideLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "9F995D1B-FDD1-4113-9831-B8FFDB922C05 - 203b82c050a7feea"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.showLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "216">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1704,10 +2077,42 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "hideLoading()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CB3E78E5-67AC-4FF3-B6A9-1869C4B6E03D - b13f853302f07276"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.hideLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "CB3E78E5-67AC-4FF3-B6A9-1869C4B6E03D - b13f853302f0735d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardViewController.hideLoading() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1720,8 +2125,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "hideLoading()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1736,8 +2141,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
             landmarkName = "init(weatherApi:output:presenter:locationDataManager:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1752,8 +2157,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "init(weatherApi:output:presenter:locationDataManager:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1762,6 +2167,22 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "030E6180-5386-425B-B079-87CA911D7482"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "DashboardInteractor"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6769AF84-CD14-4C8E-A498-ACACE595E9F6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -1777,22 +2198,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6769AF84-CD14-4C8E-A498-ACACE595E9F6"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "DashboardInteractor"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "5197C730-DFAE-41F3-912D-71271BA69455"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1800,8 +2205,8 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "init(weatherApi:output:presenter:locationDataManager:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1816,9 +2221,9 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "init(weatherApi:output:presenter:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "init(weatherApi:output:presenter:locationDataManager:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1953,54 +2358,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7179F9AE-327C-41D2-A59A-B5FDD645A589"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "didFetchUserLocation(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7179F9AE-327C-41D2-A59A-B5FDD645A589 - f770f42788259b48"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Networking.WeatherResponse, __C.NSError&gt;) -&gt; () in WeatherApp.DashboardInteractor.didFetchUserLocation(__C.CLLocation) -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "470">
-               </Location>
-               <Location
-                  uuid = "7179F9AE-327C-41D2-A59A-B5FDD645A589 - f770f42788259b48"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Networking.WeatherResponse, __C.NSError&gt;) -&gt; () in WeatherApp.DashboardInteractor.didFetchUserLocation(__C.CLLocation) -&gt; ()"
-                  moduleName = "WeatherApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardInteractor.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "364">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "B0C5DB41-EBCD-4624-9569-30CA40909B50"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -2008,10 +2365,362 @@
             filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "fetchWeatherOutput(result:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91398256-CA68-4056-9955-538E68CEDDE0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "displayLastSavedLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "91398256-CA68-4056-9955-538E68CEDDE0 - 244de0efcdd351a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardPresenter.displayLastSavedLocation() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "91398256-CA68-4056-9955-538E68CEDDE0 - 244de0efcdd351a8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.DashboardPresenter.displayLastSavedLocation() -&gt; ()"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "392">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76F36A82-E006-4EEB-A6DB-D171DDCE5B3C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Modules/Dashboard/DashboardPresenter.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "displayLastSavedLocation()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B6B93FCC-F828-43A1-A81D-C2046398F187"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Storage/CoreLocationDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "fetchLastLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B6B93FCC-F828-43A1-A81D-C2046398F187 - 3071af9f64cc9858"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "68"
+                  endingLineNumber = "68"
+                  offsetFromSymbolStart = "360">
+               </Location>
+               <Location
+                  uuid = "B6B93FCC-F828-43A1-A81D-C2046398F187 - 3071af9f64cc981e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "3052">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "89DD76C6-A4AA-4ACB-95AC-093D62B3C4FA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Storage/CoreLocationDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "fetchLastLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "89DD76C6-A4AA-4ACB-95AC-093D62B3C4FA - 3071af9f64cca743"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "1652">
+               </Location>
+               <Location
+                  uuid = "89DD76C6-A4AA-4ACB-95AC-093D62B3C4FA - 3071af9f64cca743"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "1492">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CE23FF09-3579-4532-9D1A-254EC94D53D2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Storage/CoreLocationDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "fetchLastLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CE23FF09-3579-4532-9D1A-254EC94D53D2 - 3071af9f64cca701"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "2428">
+               </Location>
+               <Location
+                  uuid = "CE23FF09-3579-4532-9D1A-254EC94D53D2 - 3071af9f64cca701"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "77"
+                  endingLineNumber = "77"
+                  offsetFromSymbolStart = "2268">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "76CA5E82-7D5F-45CE-943A-E5B39E43039B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Storage/CoreLocationDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "fetchLastLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "76CA5E82-7D5F-45CE-943A-E5B39E43039B - 3071af9f64cca685"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "3076">
+               </Location>
+               <Location
+                  uuid = "76CA5E82-7D5F-45CE-943A-E5B39E43039B - 3071af9f64cca685"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "2916">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "29AD9CEE-BFF2-4184-AAA1-1EF2A8DF1A3D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Storage/CoreLocationDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "fetchLastLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "29AD9CEE-BFF2-4184-AAA1-1EF2A8DF1A3D - 3071af9f64cca7dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "564">
+               </Location>
+               <Location
+                  uuid = "29AD9CEE-BFF2-4184-AAA1-1EF2A8DF1A3D - 3071af9f64cca7dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "404">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61959957-28F1-4323-9067-EA7F61DC5A9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherApp/Storage/CoreLocationDataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "fetchLastLocation()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "61959957-28F1-4323-9067-EA7F61DC5A9B - 3071af9f64cca7bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "61959957-28F1-4323-9067-EA7F61DC5A9B - 3071af9f64cca7bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WeatherApp.CoreLocationDataManager.fetchLastLocation() -&gt; Swift.Optional&lt;(location: __C.CLLocation, name: Swift.String, degree: Swift.Double)&gt;"
+                  moduleName = "WeatherApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ademozsayin/Desktop/WeatherApp-iOS/WeatherApp/WeatherApp/Storage/CoreLocationDataManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "692">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

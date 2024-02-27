@@ -9,10 +9,12 @@ import Foundation
 import UIKit
 import Components
 import Networking
+import CoreLocation
 
 protocol DashboardViewControllerProtocol: AnyObject {
     func setTitle(_ title: String)
     func displayWeatherInfo(_ weatherInfo: WeatherResponse)
+    func showLastUpdatedWeather(info: StorageLocationInfo)
 }
 
 final class DashboardViewController: BaseViewController {
@@ -30,6 +32,11 @@ final class DashboardViewController: BaseViewController {
 }
 
 extension DashboardViewController: DashboardViewControllerProtocol {
+    func showLastUpdatedWeather(info: StorageLocationInfo) {
+        locationLabel.text = info.name
+        DDLogInfo("Showing Last updated location \(info.location),  name: \(info.name)")
+    }
+    
     func displayWeatherInfo(_ weatherInfo: WeatherResponse) {
         // Update UI with weather information
         locationLabel.text = weatherInfo.name ?? "Unknown"

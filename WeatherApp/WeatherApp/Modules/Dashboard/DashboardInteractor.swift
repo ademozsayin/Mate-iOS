@@ -10,11 +10,14 @@ import Networking
 import LocationService
 import CoreLocation
 
+public typealias StorageLocationInfo = (location: CLLocation, name: String, degree: Double)
 /// Protocol defining the interactions handled by the DashboardInteractor.
 protocol DashboardInteractorProtocol: AnyObject {
     /// Fetches the current weather data.
     func fetchCurrentWeather()
     func fetchWeatherForUserLocation()
+    /// Fetches the last saved user location.
+    func fetchLastSavedLocation() -> (location: CLLocation, name: String, degree: Double)?
     
 }
 
@@ -24,6 +27,7 @@ protocol DashboardInteractorOutputProtocol: AnyObject {
     ///
     /// - Parameter result: The retrieved weather data.
     func fetchWeatherOutput(result: WeatherResponse)
+    
 }
 
 /// Class responsible for handling business logic related to the dashboard.
@@ -54,6 +58,11 @@ final class DashboardInteractor {
         self.presenter = presenter
         self.locationDataManager = locationDataManager
     }
+    
+    // Retrieve the last saved user location from Core Data
+    func fetchLastSavedLocation() -> StorageLocationInfo? {
+        return locationDataManager.fetchLastLocation()
+    }
 }
 
 // Extension for additional protocol conformance
@@ -73,13 +82,16 @@ extension DashboardInteractor: DashboardInteractorProtocol {
 
 extension DashboardInteractor: LocationServiceDelegate {
     func didFetchUserLocation(_ location: CLLocation) {
-        // Save the user's location to Core Data
-        locationDataManager.saveLocation(location)
         WeatherAPI().getCurrentWeather(request: CLLocation.asWeatherRequest(location)) {[weak self]  result in
             guard let self else { return }
             switch result {
             case .success(let weatherInfo):
-                print(weatherInfo)
+                // Save the user's location to Core Data
+                locationDataManager.saveLocation(
+                    location,
+                    name: weatherInfo.name ?? "",
+                    degree: weatherInfo.main?.temp ?? 0.0
+                )
                 self.output?.fetchWeatherOutput(result: weatherInfo)
             case .failure(let error):
                 // Handle error
@@ -92,5 +104,4 @@ extension DashboardInteractor: LocationServiceDelegate {
         // Handle location fetch error
         DDLogError("Failed to fetch location: \(error)")
     }
-    
 }

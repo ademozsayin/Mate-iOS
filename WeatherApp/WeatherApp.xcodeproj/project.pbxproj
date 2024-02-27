@@ -19,6 +19,7 @@
 		0D8045DF2B8D3EED004F6E39 /* LocationService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8045DD2B8D3EED004F6E39 /* LocationService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D8045E32B8D41B1004F6E39 /* WeatherRequest+CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8045E22B8D41B1004F6E39 /* WeatherRequest+CLLocation.swift */; };
 		0D8045E62B8DED4C004F6E39 /* CoreLocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8045E52B8DED4C004F6E39 /* CoreLocationDataManager.swift */; };
+		0D8045E82B8DF3CA004F6E39 /* Extension+NSManagedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8045E72B8DF3CA004F6E39 /* Extension+NSManagedObject.swift */; };
 		0D8E43B72B8CCC290057100C /* InteractorInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E43B12B8CCC280057100C /* InteractorInterface.swift */; };
 		0D8E43B82B8CCC290057100C /* FormatterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E43B22B8CCC280057100C /* FormatterInterface.swift */; };
 		0D8E43B92B8CCC290057100C /* BaseWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E43B32B8CCC280057100C /* BaseWireframe.swift */; };
@@ -99,6 +100,7 @@
 		0D8045DD2B8D3EED004F6E39 /* LocationService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LocationService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8045E22B8D41B1004F6E39 /* WeatherRequest+CLLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WeatherRequest+CLLocation.swift"; sourceTree = "<group>"; };
 		0D8045E52B8DED4C004F6E39 /* CoreLocationDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreLocationDataManager.swift; sourceTree = "<group>"; };
+		0D8045E72B8DF3CA004F6E39 /* Extension+NSManagedObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+NSManagedObject.swift"; sourceTree = "<group>"; };
 		0D8E43AC2B8CCBB00057100C /* Splash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Splash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E43B12B8CCC280057100C /* InteractorInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractorInterface.swift; sourceTree = "<group>"; };
 		0D8E43B22B8CCC280057100C /* FormatterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterInterface.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				0D8045E52B8DED4C004F6E39 /* CoreLocationDataManager.swift */,
+				0D8045E72B8DF3CA004F6E39 /* Extension+NSManagedObject.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -593,6 +596,7 @@
 				0D8045E62B8DED4C004F6E39 /* CoreLocationDataManager.swift in Sources */,
 				0D8045E32B8D41B1004F6E39 /* WeatherRequest+CLLocation.swift in Sources */,
 				0D8E441E2B8CD0310057100C /* SplashInteractor.swift in Sources */,
+				0D8045E82B8DF3CA004F6E39 /* Extension+NSManagedObject.swift in Sources */,
 				0D8E441C2B8CD0310057100C /* SplashPresenter.swift in Sources */,
 				0D8E45A12B8D132B0057100C /* DashboardInteractor.swift in Sources */,
 				0D8E43B92B8CCC290057100C /* BaseWireframe.swift in Sources */,

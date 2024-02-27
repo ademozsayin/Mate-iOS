@@ -7,6 +7,7 @@
 
 import Foundation
 import Networking
+import CoreLocation
 
 /// Protocol defining the interactions handled by the DashboardPresenter.
 protocol DashboardPresenterProtocol: AnyObject {
@@ -16,6 +17,8 @@ protocol DashboardPresenterProtocol: AnyObject {
     ///
     /// - Parameter weatherInfo: The weather information to present.
     func presentWeatherInfo(_ weatherInfo: WeatherResponse)
+    
+    func displayLastSavedLocation()
 }
 
 /// Class responsible for presenting data to the dashboard view.
@@ -43,14 +46,29 @@ final class DashboardPresenter: DashboardPresenterProtocol {
         self.interactor = interactor
     }
     
+    // Display last saved location
+    func displayLastSavedLocation() {
+        if let lastLocation = interactor?.fetchLastSavedLocation() {
+            // Display last saved location in your UI
+            // For example:
+            print("Last saved location: \(lastLocation)")
+            // Update UI with last saved location
+            // Example: view?.updateLocationLabel(lastLocation)
+            view?.showLastUpdatedWeather(info: lastLocation)
+        }
+    }
+        
     /// Called when the view is loaded and ready.
     func viewDidLoad() {
+        // Display last saved location when view loads
+        displayLastSavedLocation()
         interactor?.fetchWeatherForUserLocation()
     }
 }
 
 // Extension for additional protocol conformance
 extension DashboardPresenter: DashboardInteractorOutputProtocol {
+    
     func fetchWeatherOutput(result: Networking.WeatherResponse) {
         view?.displayWeatherInfo(result)
     }

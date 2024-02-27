@@ -25,7 +25,7 @@ protocol LocationDataManager {
 class CoreLocationDataManager: LocationDataManager {
     /// The persistent container used for managing the Core Data stack.
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "YourDataModelName")
+        let container = NSPersistentContainer(name: "WeatherApp")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -46,18 +46,26 @@ class CoreLocationDataManager: LocationDataManager {
         locationObject.setValue(location.coordinate.longitude, forKey: "longitude")
         locationObject.setValue(degree, forKey: "degree")
         
+        #if DEBUG
+        // Assuming you have an instance of NSManagedObject named locationObject
+        if let jsonString = locationObject.prettyJSONString() {
+            DDLogInfo(jsonString)
+        }
+        #endif
+        
         do {
             try managedContext.save()
+            DDLogInfo("🟢 Saved to storage")
         } catch let error as NSError {
             fatalError("Could not save. \(error), \(error.userInfo)")
         }
     }
     
-    func fetchLastLocation() -> (location: CLLocation, name: String, degree: Double)? {
+    func fetchLastLocation() -> StorageLocationInfo? {
         let managedContext = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
         fetchRequest.fetchLimit = 1
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
         
         do {
             let result = try managedContext.fetch(fetchRequest)
@@ -70,7 +78,7 @@ class CoreLocationDataManager: LocationDataManager {
                 return (location, name, degree)
             }
         } catch let error as NSError {
-            print("Could not fetch. \(error), \(error.userInfo)")
+            DDLogError("⛔️ Could not fetch. \(error), \(error.userInfo)")
         }
         return nil
     }
