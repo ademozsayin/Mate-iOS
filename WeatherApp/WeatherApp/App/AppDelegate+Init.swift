@@ -13,39 +13,50 @@ import Wormholy
 
 // MARK: - Initialization Methods
 extension AppDelegate {
-
+    
     /// Sets up CocoaLumberjack logging.
     ///
     final func setupCocoaLumberjack() {
         let fileLogger = DDFileLogger()
         fileLogger.rollingFrequency = TimeInterval(60*60*24)  // 24 hours
         fileLogger.logFileManager.maximumNumberOfLogFiles = 7
-
+        
         guard let logger = fileLogger as? DDFileLogger else {
             return
         }
         DDLog.add(DDOSLogger.sharedInstance)
         DDLog.add(logger)
         DDLogVerbose("👀 setupCocoaLumberjack...")
-
+        
     }
-
+    
     /// Sets up the current Log Level.
     ///
     final func setupLogLevel(_ level: DDLogLevel) {
         CocoaLumberjack.dynamicLogLevel = level
         DDLogVerbose("👀 setupLogLevel to \(level)")
-
+        
     }
     
     /// Set up Wormholy only in Debug build configuration
     ///
     func setupWormholy() {
-        #if DEBUG
+#if DEBUG
         /// We want to activate it programmatically, not using the shake.
         Wormholy.shakeEnabled = false
         DDLogVerbose("👀 setupWormholy  ")
-        #endif
+#endif
     }
+    
+    func getSQLitePath() -> String? {
+#if DEBUG
+        // Get the URL for the app's "Documents" directory
+        if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let databaseURL = documentsDirectory.appendingPathComponent("WeatherApp.sqlite")
+            return databaseURL.path
+        }
+        return nil
+#endif
 
+    }
 }

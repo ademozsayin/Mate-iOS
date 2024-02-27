@@ -45,24 +45,20 @@ final class DashboardViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureNavigationBar()
-        view.backgroundColor = .systemBackground
+        configureBackgroundView()
         presenter?.viewDidLoad()
     }
     
     // MARK: - Private Methods
     
-    private func configureNavigationBar() {
-        guard let navBar = navigationController?.navigationBar else { return }
-        navBar.barStyle = .black
-        navBar.tintColor = .orange
-        navBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+    private func configureBackgroundView() {
+        view.backgroundColor = .systemBackground
     }
     
     private func updateUserLocationLabel() {
-        guard let userLocation = userLocationResult else { return }
-        locationLabel.text = userLocation.name
-        dateLabel.text = userLocation.date?.relativelyFormattedUpdateString
+        guard let  userLocationResult else { return }
+        locationLabel.text = userLocationResult.name
+        dateLabel.text = userLocationResult.date?.relativelyFormattedUpdateString
     }
 }
 

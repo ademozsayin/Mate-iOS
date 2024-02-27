@@ -70,6 +70,8 @@ class CoreLocationDataManager: LocationDataManager {
         let managedContext = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: userLocationEntity)
         fetchRequest.fetchLimit = 1
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)] 
+           
         do {
             if let userLocations = try managedContext.fetch(fetchRequest) as? [UserLocationResult],
                 let userLocation = userLocations.first {
