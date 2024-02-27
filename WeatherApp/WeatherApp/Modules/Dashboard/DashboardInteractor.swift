@@ -35,6 +35,9 @@ final class DashboardInteractor {
     
     weak var presenter: DashboardPresenterProtocol?
 
+    var locationDataManager: LocationDataManager
+
+
     /// Initializes the interactor with required dependencies.
     ///
     /// - Parameters:
@@ -43,11 +46,13 @@ final class DashboardInteractor {
     init(
         weatherApi: WeatherProtocol = WeatherAPI(),
         output: DashboardInteractorOutputProtocol? = nil,
-        presenter: DashboardPresenterProtocol? = nil
+        presenter: DashboardPresenterProtocol? = nil,
+        locationDataManager: LocationDataManager = CoreLocationDataManager()
     ) {
         self.weatherApi = weatherApi
         self.output = output
         self.presenter = presenter
+        self.locationDataManager = locationDataManager
     }
 }
 
@@ -68,11 +73,13 @@ extension DashboardInteractor: DashboardInteractorProtocol {
 
 extension DashboardInteractor: LocationServiceDelegate {
     func didFetchUserLocation(_ location: CLLocation) {
-        WeatherAPI().getCurrentWeather(request: CLLocation.asWeatherRequest(location)) { result in
+        // Save the user's location to Core Data
+        locationDataManager.saveLocation(location)
+        WeatherAPI().getCurrentWeather(request: CLLocation.asWeatherRequest(location)) {[weak self]  result in
+            guard let self else { return }
             switch result {
             case .success(let weatherInfo):
                 print(weatherInfo)
-//                self.presenter?.presentWeatherInfo(weatherInfo)
                 self.output?.fetchWeatherOutput(result: weatherInfo)
             case .failure(let error):
                 // Handle error

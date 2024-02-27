@@ -13,12 +13,12 @@ protocol LocationDataManager {
     /// Saves a CLLocation object representing a location into persistent storage.
     ///
     /// - Parameter location: The CLLocation object to be saved.
-    func saveLocation(_ location: CLLocation)
+    func saveLocation(_ location: CLLocation, name: String, degree: Double)
     
     /// Fetches the last saved location from persistent storage.
     ///
     /// - Returns: The last saved CLLocation object, if available; otherwise, nil.
-    func fetchLastLocation() -> CLLocation?
+    func fetchLastLocation() -> (location: CLLocation, name: String, degree: Double)?
 }
 
 /// A concrete implementation of LocationDataManager using Core Data to persist location data.
@@ -34,15 +34,17 @@ class CoreLocationDataManager: LocationDataManager {
         return container
     }()
     
-    func saveLocation(_ location: CLLocation) {
+    func saveLocation(_ location: CLLocation, name: String, degree: Double) {
         let managedContext = persistentContainer.viewContext
         guard let entityDescription = NSEntityDescription.entity(forEntityName: "Location", in: managedContext) else {
             fatalError("Could not find entity description")
         }
         
         let locationObject = NSManagedObject(entity: entityDescription, insertInto: managedContext)
+        locationObject.setValue(name, forKey: "name")
         locationObject.setValue(location.coordinate.latitude, forKey: "latitude")
         locationObject.setValue(location.coordinate.longitude, forKey: "longitude")
+        locationObject.setValue(degree, forKey: "degree")
         
         do {
             try managedContext.save()
@@ -51,7 +53,7 @@ class CoreLocationDataManager: LocationDataManager {
         }
     }
     
-    func fetchLastLocation() -> CLLocation? {
+    func fetchLastLocation() -> (location: CLLocation, name: String, degree: Double)? {
         let managedContext = persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Location")
         fetchRequest.fetchLimit = 1
@@ -60,9 +62,12 @@ class CoreLocationDataManager: LocationDataManager {
         do {
             let result = try managedContext.fetch(fetchRequest)
             if let locationObject = result.first as? NSManagedObject,
+               let name = locationObject.value(forKey: "name") as? String,
                let latitude = locationObject.value(forKey: "latitude") as? CLLocationDegrees,
-               let longitude = locationObject.value(forKey: "longitude") as? CLLocationDegrees {
-                return CLLocation(latitude: latitude, longitude: longitude)
+               let longitude = locationObject.value(forKey: "longitude") as? CLLocationDegrees,
+               let degree = locationObject.value(forKey: "degree") as? Double {
+                let location = CLLocation(latitude: latitude, longitude: longitude)
+                return (location, name, degree)
             }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
