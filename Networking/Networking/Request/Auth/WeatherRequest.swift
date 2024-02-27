@@ -10,11 +10,12 @@ import Alamofire
 
 public struct WeatherRequest: Decodable {
     
-    public let latitude:String
-    public let longitude:String
+    public let latitude:Double
+    public let longitude:Double
     
-    public init(latitude: String, longitude: String) {
+    public init(latitude: Double, longitude: Double) {
         self.latitude = latitude
         self.longitude = longitude
     }
 }
+

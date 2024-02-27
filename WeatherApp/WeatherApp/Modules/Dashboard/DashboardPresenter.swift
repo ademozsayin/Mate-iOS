@@ -12,6 +12,10 @@ import Networking
 protocol DashboardPresenterProtocol: AnyObject {
     /// Called when the view is loaded and ready.
     func viewDidLoad()
+    /// Presents weather information.
+    ///
+    /// - Parameter weatherInfo: The weather information to present.
+    func presentWeatherInfo(_ weatherInfo: WeatherResponse)
 }
 
 /// Class responsible for presenting data to the dashboard view.
@@ -41,16 +45,24 @@ final class DashboardPresenter: DashboardPresenterProtocol {
     
     /// Called when the view is loaded and ready.
     func viewDidLoad() {
-        view?.setTitle("Weather")
+        interactor?.fetchWeatherForUserLocation()
     }
 }
 
 // Extension for additional protocol conformance
 extension DashboardPresenter: DashboardInteractorOutputProtocol {
+    func fetchWeatherOutput(result: Networking.WeatherResponse) {
+        view?.displayWeatherInfo(result)
+    }
+    
     /// Outputs the result of weather data retrieval.
     ///
     /// - Parameter result: The retrieved weather data.
     func fetchWeatherOutput(result: Networking.CurrentWeather) {
         DDLogInfo(#function)
+    }
+    
+    func presentWeatherInfo(_ weatherInfo: WeatherResponse) {
+        view?.displayWeatherInfo(weatherInfo)
     }
 }

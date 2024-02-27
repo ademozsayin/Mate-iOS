@@ -8,9 +8,11 @@
 import Foundation
 import UIKit
 import Components
+import Networking
 
 protocol DashboardViewControllerProtocol: AnyObject {
     func setTitle(_ title: String)
+    func displayWeatherInfo(_ weatherInfo: WeatherResponse)
 }
 
 final class DashboardViewController: BaseViewController {
@@ -23,10 +25,16 @@ final class DashboardViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        presenter?.viewDidLoad()
     }
 }
 
 extension DashboardViewController: DashboardViewControllerProtocol {
+    func displayWeatherInfo(_ weatherInfo: WeatherResponse) {
+        // Update UI with weather information
+        locationLabel.text = weatherInfo.name ?? "Unknown"
+    }
+    
     func setTitle(_ title: String) {
         self.title = title
         let nav = self.navigationController?.navigationBar

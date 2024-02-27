@@ -9,28 +9,28 @@ import Foundation
 
 // MARK: - WeatherResponse
 public struct WeatherResponse: Codable {
-    let coord: Coord?
-    let weather: [Weather]?
-    let main: Main?
-    let wind: Wind?
-    let name: String?
-    let cod: Int?
+    public let coord: Coord?
+    public let weather: [Weather]?
+    public let main: Main?
+    public let wind: Wind?
+    public let name: String?
+    public let cod: Int?
 }
 
 // MARK: - Clouds
 public struct Clouds: Codable {
-    let all: Int
+    public let all: Int
 }
 
 // MARK: - Coord
 public struct Coord: Codable {
-    let lon, lat: Double
+    public let lon, lat: Double
 }
 
 // MARK: - Main
 public struct Main: Codable {
-    let temp, feelsLike, tempMin, tempMax: Double?
-    let pressure, humidity, seaLevel, grndLevel: Double?
+    public let temp, feelsLike, tempMin, tempMax: Double?
+    public let pressure, humidity, seaLevel, grndLevel: Double?
 
     enum CodingKeys: String, CodingKey {
         case temp
@@ -45,7 +45,7 @@ public struct Main: Codable {
 
 // MARK: - Rain
 public struct Rain: Codable {
-    let the1H: Double
+    public let the1H: Double
 
     enum CodingKeys: String, CodingKey {
         case the1H = "1h"
@@ -54,20 +54,20 @@ public struct Rain: Codable {
 
 // MARK: - Sys
 public struct Sys: Codable {
-    let type, id: Int
-    let country: String
-    let sunrise, sunset: Int
+    public let type, id: Int
+    public let country: String
+    public let sunrise, sunset: Int
 }
 
 // MARK: - Weather
 public struct Weather: Codable {
-    let id: Int
-    let main, description, icon: String
+    public let id: Int
+    public let main, description, icon: String
 }
 
 // MARK: - Wind
 public struct Wind: Codable {
-    let speed: Double?
-    let deg: Int?
-    let gust: Double?
+    public let speed: Double?
+    public let deg: Int?
+    public let gust: Double?
 }

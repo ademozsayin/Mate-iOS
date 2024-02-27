@@ -25,6 +25,9 @@ final class DashboardRouter {
     /// Weak reference to the dashboard view controller.
     weak var viewController: DashboardViewController?
     
+//    init(viewController: DashboardViewController) {
+//        self.viewController = viewController
+//    }
     /// Creates and configures the dashboard module.
     ///
     /// - Returns: The configured instance of DashboardViewController.

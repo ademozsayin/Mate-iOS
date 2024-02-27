@@ -9,7 +9,7 @@
 import CoreLocation
 
 /// Delegate protocol for handling location service events.
-protocol LocationServiceDelegate: AnyObject {
+public protocol LocationServiceDelegate: AnyObject {
     /// Called when user location is successfully fetched.
     ///
     /// - Parameter location: The user's location.
@@ -22,15 +22,15 @@ protocol LocationServiceDelegate: AnyObject {
 }
 
 /// Service class responsible for handling location-related operations.
-class LocationService: NSObject, CLLocationManagerDelegate {
+final public class LocationService: NSObject, CLLocationManagerDelegate {
     /// Shared instance of LocationService.
-    static let shared = LocationService()
+   public static let shared = LocationService()
     
     /// Core Location manager for managing location-related tasks.
     private let locationManager = CLLocationManager()
     
     /// Delegate for handling location service events.
-    weak var delegate: LocationServiceDelegate?
+    public weak var delegate: LocationServiceDelegate?
     
     /// Private initializer to enforce singleton pattern.
     private override init() {
@@ -39,19 +39,42 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     /// Requests user's location.
-    func requestLocation() {
+    final public func requestLocation() {
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
     }
     
     // MARK: - CLLocationManagerDelegate
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         delegate?.didFetchUserLocation(location)
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         delegate?.didFailToFetchUserLocation(withError: error)
     }
+    
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            switch status {
+            case .notDetermined:
+                // Location permission not yet determined
+                // You can request permission here if needed
+                locationManager.requestWhenInUseAuthorization()
+            case .restricted:
+                // Location services are restricted on this device
+                // Handle accordingly
+                print("Location services are restricted.")
+            case .denied:
+                // Location services are denied by the user
+                // Prompt the user to enable location services
+                print("Location services are denied. Please enable them in Settings.")
+            case .authorizedWhenInUse, .authorizedAlways:
+                // Location services are authorized
+                // You can start requesting location updates here
+                requestLocation()
+            @unknown default:
+                fatalError("Unknown authorization status")
+            }
+        }
 }
