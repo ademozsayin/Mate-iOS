@@ -28,6 +28,7 @@ final class DashboardViewController: BaseViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     
@@ -52,7 +53,8 @@ final class DashboardViewController: BaseViewController {
     // MARK: - Private Methods
     
     private func configureBackgroundView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .opaqueSeparator
+        scrollView.roundCorners([.topLeft, .topRight], radius: 24)
     }
     
     private func updateUserLocationLabel() {
