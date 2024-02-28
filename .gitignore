@@ -96,6 +96,7 @@ iOSInjectionProject/
 *.xcuserstate
 *.xcworkspace/xcuserdata/
 *.xcscheme
+xcuserdata/
 
 # Swift Package Manager
 /.build
@@ -110,3 +111,6 @@ DerivedData/
 Podfile.lock
 Manifest.lock
 */Pods
+
+
+

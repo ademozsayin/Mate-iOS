@@ -10,7 +10,6 @@ import UIKit
 import Components
 import Networking
 import CoreLocation
-import SnapKit
 
 /// Protocol defining the interactions handled by the DashboardViewController.
 protocol DashboardViewControllerProtocol: AnyObject {
