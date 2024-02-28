@@ -7,8 +7,16 @@
 
 import Foundation
 
+/**
+ Extension providing functionality related to Date objects.
+ */
 extension Date {
     
+    /**
+     Formats the date in a weather-related format (e.g., "Saturday - Feb 10").
+     
+     - Returns: A string representing the formatted date.
+     */
     func asWeatherDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "EEEE - MMM d"

@@ -8,13 +8,27 @@
 import UIKit
 import Combine
 
-// swiftlint: disable nesting
+/**
+ Extension providing Combine publishers for UIControl and UIBarButtonItem events.
+ */
 extension UIControl {
+    
+    /**
+     Subscription for UIControl events.
+     */
     public class InteractionSubscription<S: Subscriber>: Subscription where S.Input == Void {
         private let subscriber: S?
         private let control: UIControl
         private let event: UIControl.Event
 
+        /**
+         Initializes the subscription with the provided parameters.
+         
+         - Parameters:
+            - subscriber: The subscriber to receive events.
+            - control: The control to observe for events.
+            - event: The event to observe.
+         */
         public init(
             subscriber: S,
             control: UIControl,
@@ -36,6 +50,9 @@ extension UIControl {
         public func cancel() {}
     }
 
+    /**
+     Publisher for UIControl events.
+     */
     public struct InteractionPublisher: Publisher {
         public typealias Output = Void
         public typealias Failure = Never
@@ -43,6 +60,13 @@ extension UIControl {
         private let control: UIControl
         private let event: UIControl.Event
 
+        /**
+         Initializes the publisher with the provided parameters.
+         
+         - Parameters:
+            - control: The control to observe for events.
+            - event: The event to observe.
+         */
         public init(control: UIControl, event: UIControl.Event) {
             self.control = control
             self.event = event
@@ -59,18 +83,39 @@ extension UIControl {
         }
     }
 
+    /**
+     Creates a publisher for the specified UIControl event.
+     
+     - Parameter event: The UIControl event to observe.
+     - Returns: A publisher for the specified event.
+     */
     public func publisher(for event: UIControl.Event) -> UIControl.InteractionPublisher {
         return InteractionPublisher(control: self, event: event)
     }
 }
 
 
+/**
+ Extension providing Combine publishers for UIBarButtonItem events.
+ */
 extension UIBarButtonItem {
+    
+    /**
+     Subscription for UIBarButtonItem events.
+     */
     final public class InteractionSubscription<S: Subscriber>: Subscription where S.Input == Void {
         private let subscriber: S?
         private var barButton: UIBarButtonItem
         private let event: UIControl.Event
 
+        /**
+         Initializes the subscription with the provided parameters.
+         
+         - Parameters:
+            - title: The title for the UIBarButtonItem.
+            - subscriber: The subscriber to receive events.
+            - event: The event to observe.
+         */
         init(
             title: String,
             subscriber: S,
@@ -98,6 +143,9 @@ extension UIBarButtonItem {
         public func cancel() {}
     }
 
+    /**
+     Publisher for UIBarButtonItem events.
+     */
     public struct InteractionPublisher: Publisher {
         public typealias Output = Void
         public typealias Failure = Never
@@ -105,6 +153,13 @@ extension UIBarButtonItem {
         private let event: UIControl.Event
         private let title: String
 
+        /**
+         Initializes the publisher with the provided parameters.
+         
+         - Parameters:
+            - event: The event to observe.
+            - title: The title for the UIBarButtonItem.
+         */
         public init(event: UIControl.Event, title: String) {
             self.event = event
             self.title = title
@@ -120,8 +175,13 @@ extension UIBarButtonItem {
         }
     }
 
+    /**
+     Creates a publisher for the specified UIBarButtonItem event.
+     
+     - Parameter event: The UIControl event to observe.
+     - Returns: A publisher for the specified event.
+     */
     public func publisher(for event: UIControl.Event) -> UIBarButtonItem.InteractionPublisher {
         InteractionPublisher(event: event, title: self.title ?? String())
     }
 }
-// swiftlint: enable nesting

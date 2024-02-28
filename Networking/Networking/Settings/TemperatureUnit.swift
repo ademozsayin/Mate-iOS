@@ -7,11 +7,22 @@
 
 import Foundation
 
+/**
+ Enum representing temperature units, Celsius and Fahrenheit.
+ */
 public enum TemperatureUnit: String {
+    
+    /// Celsius temperature unit.
     case celsius = "C"
+    
+    /// Fahrenheit temperature unit.
     case fahrenheit = "F"
     
-    // Convenience method to get the current temperature unit from UserDefaults
+    /**
+     Returns the current temperature unit saved in UserDefaults.
+     
+     - Returns: The current temperature unit.
+     */
     public static var currentUnit: TemperatureUnit {
         if let savedUnit = UserDefaults.standard.string(forKey: "TemperatureUnit"),
            let unit = TemperatureUnit(rawValue: savedUnit) {
@@ -22,7 +33,9 @@ public enum TemperatureUnit: String {
         }
     }
     
-    // Convenience method to save the selected temperature unit to UserDefaults
+    /**
+     Saves the selected temperature unit to UserDefaults.
+     */
     public func save() {
         UserDefaults.standard.set(rawValue, forKey: "TemperatureUnit")
     }
