@@ -10,6 +10,8 @@
 		0D74149D2B8F4B95001114FB /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D74149C2B8F4B95001114FB /* NibOwnerLoadable.swift */; };
 		0D7414A92B8F59B7001114FB /* WeatherHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7414A82B8F58FF001114FB /* WeatherHeaderView.xib */; };
 		0D7414AA2B8F5A64001114FB /* WeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */; };
+		0D7414AC2B8F6369001114FB /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7414AB2B8F6369001114FB /* Networking.framework */; };
+		0D7414AD2B8F6369001114FB /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7414AB2B8F6369001114FB /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D8E45B72B8D16010057100C /* Components.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45B62B8D16010057100C /* Components.docc */; };
 		0D8E45BD2B8D16010057100C /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E45B22B8D16010057100C /* Components.framework */; };
 		0D8E45C22B8D16010057100C /* ComponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45C12B8D16010057100C /* ComponentsTests.swift */; };
@@ -30,10 +32,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0D7414AE2B8F6369001114FB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0D7414AD2B8F6369001114FB /* Networking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0D74149C2B8F4B95001114FB /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibOwnerLoadable.swift; sourceTree = "<group>"; };
 		0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHeaderView.swift; sourceTree = "<group>"; };
 		0D7414A82B8F58FF001114FB /* WeatherHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherHeaderView.xib; sourceTree = "<group>"; };
+		0D7414AB2B8F6369001114FB /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E45B22B8D16010057100C /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E45B52B8D16010057100C /* Components.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
 		0D8E45B62B8D16010057100C /* Components.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Components.docc; sourceTree = "<group>"; };
@@ -54,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7414AC2B8F6369001114FB /* Networking.framework in Frameworks */,
 				BF921E41146924C990CEC867 /* libPods-Components.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +169,7 @@
 		9404624BADAAAE8092816CF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0D7414AB2B8F6369001114FB /* Networking.framework */,
 				76913FEDC42878DA6B1668F1 /* libPods-Components.a */,
 				3C35D6C98A06223059BA12F5 /* libPods-ComponentsTests.a */,
 			);
@@ -181,6 +200,7 @@
 				0D8E45AF2B8D16010057100C /* Frameworks */,
 				0D8E45B02B8D16010057100C /* Resources */,
 				B9DFB434E3CFD1516EB852D2 /* [CP] Copy Pods Resources */,
+				0D7414AE2B8F6369001114FB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
