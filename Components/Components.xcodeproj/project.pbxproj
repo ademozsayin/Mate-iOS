@@ -12,6 +12,11 @@
 		0D7414AA2B8F5A64001114FB /* WeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */; };
 		0D7414AC2B8F6369001114FB /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7414AB2B8F6369001114FB /* Networking.framework */; };
 		0D7414AD2B8F6369001114FB /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D7414AB2B8F6369001114FB /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0D7414B02B8F64AA001114FB /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414AF2B8F64AA001114FB /* Double+Extensions.swift */; };
+		0D7414B22B8FE443001114FB /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414B12B8FE443001114FB /* Date+Extensions.swift */; };
+		0D7414B42B8FEB0A001114FB /* UIImage+DownloadIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414B32B8FEB0A001114FB /* UIImage+DownloadIcon.swift */; };
+		0D7414B82B8FF17A001114FB /* Combine+UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414B72B8FF17A001114FB /* Combine+UIControl.swift */; };
+		0D7414BE2B8FF4CA001114FB /* Main+TemperatureString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414BD2B8FF4CA001114FB /* Main+TemperatureString.swift */; };
 		0D8E45B72B8D16010057100C /* Components.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45B62B8D16010057100C /* Components.docc */; };
 		0D8E45BD2B8D16010057100C /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E45B22B8D16010057100C /* Components.framework */; };
 		0D8E45C22B8D16010057100C /* ComponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45C12B8D16010057100C /* ComponentsTests.swift */; };
@@ -51,6 +56,11 @@
 		0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHeaderView.swift; sourceTree = "<group>"; };
 		0D7414A82B8F58FF001114FB /* WeatherHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherHeaderView.xib; sourceTree = "<group>"; };
 		0D7414AB2B8F6369001114FB /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D7414AF2B8F64AA001114FB /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		0D7414B12B8FE443001114FB /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		0D7414B32B8FEB0A001114FB /* UIImage+DownloadIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+DownloadIcon.swift"; sourceTree = "<group>"; };
+		0D7414B72B8FF17A001114FB /* Combine+UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+UIControl.swift"; sourceTree = "<group>"; };
+		0D7414BD2B8FF4CA001114FB /* Main+TemperatureString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+TemperatureString.swift"; sourceTree = "<group>"; };
 		0D8E45B22B8D16010057100C /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E45B52B8D16010057100C /* Components.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
 		0D8E45B62B8D16010057100C /* Components.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Components.docc; sourceTree = "<group>"; };
@@ -92,6 +102,11 @@
 			isa = PBXGroup;
 			children = (
 				0D74149C2B8F4B95001114FB /* NibOwnerLoadable.swift */,
+				0D7414AF2B8F64AA001114FB /* Double+Extensions.swift */,
+				0D7414B12B8FE443001114FB /* Date+Extensions.swift */,
+				0D7414B32B8FEB0A001114FB /* UIImage+DownloadIcon.swift */,
+				0D7414B72B8FF17A001114FB /* Combine+UIControl.swift */,
+				0D7414BD2B8FF4CA001114FB /* Main+TemperatureString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -372,7 +387,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7414B82B8FF17A001114FB /* Combine+UIControl.swift in Sources */,
+				0D7414B02B8F64AA001114FB /* Double+Extensions.swift in Sources */,
 				0D7414AA2B8F5A64001114FB /* WeatherHeaderView.swift in Sources */,
+				0D7414B42B8FEB0A001114FB /* UIImage+DownloadIcon.swift in Sources */,
+				0D7414B22B8FE443001114FB /* Date+Extensions.swift in Sources */,
+				0D7414BE2B8FF4CA001114FB /* Main+TemperatureString.swift in Sources */,
 				0D8E45D02B8D16B60057100C /* LoadingShowable.swift in Sources */,
 				0D74149D2B8F4B95001114FB /* NibOwnerLoadable.swift in Sources */,
 				0D8E45B72B8D16010057100C /* Components.docc in Sources */,

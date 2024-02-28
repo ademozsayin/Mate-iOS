@@ -11,7 +11,9 @@
             <connections>
                 <outlet property="dateLabel" destination="MvH-mz-OUV" id="Fyf-Jc-Huz"/>
                 <outlet property="locationLabel" destination="8pA-in-Nsa" id="1uj-5C-4bo"/>
+                <outlet property="minMaxLabel" destination="QHz-39-bai" id="RyS-XR-FJ3"/>
                 <outlet property="temperatureLabel" destination="msN-zN-QtS" id="dVF-vV-nFu"/>
+                <outlet property="weatherDetailLabel" destination="XFw-3k-Vhp" id="HK3-js-wBh"/>
                 <outlet property="weatherIcon" destination="gA2-kh-7OE" id="Poa-rq-u5N"/>
                 <outlet property="weatherStatusLabel" destination="JPF-8e-8EV" id="JmM-OS-fFb"/>
             </connections>
@@ -55,7 +57,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msN-zN-QtS">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="32°" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="msN-zN-QtS">
                     <rect key="frame" x="24" y="104" width="345" height="172"/>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="144"/>
                     <nil key="textColor"/>

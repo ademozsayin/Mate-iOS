@@ -72,15 +72,6 @@ public extension DateFormatter {
             return formatter
         }()
 
-        /// Date formatter used for creating the properly-formatted date string for **week** granularity. Typically
-        /// used when setting the `latestDateToInclude` on `OrderStatsRemote`.
-        ///
-        public static let statsWeekFormatter: DateFormatter = {
-            let formatter = DateFormatter()
-            formatter.locale = Locale(identifier: "en_US_POSIX")
-            formatter.dateFormat = "yyyy'-W'ww"
-            return formatter
-        }()
 
         /// Date formatter used for creating the properly-formatted date string for **month** granularity. Typically
         /// used when setting the `latestDateToInclude` on `OrderStatsRemote`.

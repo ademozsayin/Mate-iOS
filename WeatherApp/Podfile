@@ -86,6 +86,7 @@ end
 target 'Components' do
   project '../Components/Components.xcodeproj'
   hud
+  alamofire
 end
 
 # Unit Tests

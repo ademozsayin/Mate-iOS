@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D7414BC2B8FF3DA001114FB /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414BB2B8FF3DA001114FB /* TemperatureUnit.swift */; };
 		0D8E44412B8CD9700057100C /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E44362B8CD9700057100C /* Networking.framework */; };
 		0D8E44462B8CD9700057100C /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E44452B8CD9700057100C /* NetworkingTests.swift */; };
 		0D8E45752B8CE87F0057100C /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45612B8CE87F0057100C /* TargetType.swift */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		0048B76615A670C237606F5A /* libPods-Networking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Networking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D7414BB2B8FF3DA001114FB /* TemperatureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUnit.swift; sourceTree = "<group>"; };
 		0D8E44362B8CD9700057100C /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E44402B8CD9700057100C /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E44452B8CD9700057100C /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		0D8E457E2B8CEB3D0057100C /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				0D7414BB2B8FF3DA001114FB /* TemperatureUnit.swift */,
 				0D8E457F2B8CEB470057100C /* Settings.swift */,
 			);
 			path = Settings;
@@ -408,6 +411,7 @@
 				0D8E45822B8CF5B50057100C /* WeatherResponse.swift in Sources */,
 				0D8E45782B8CE87F0057100C /* ArrayEncoding.swift in Sources */,
 				0D8E45802B8CEB470057100C /* Settings.swift in Sources */,
+				0D7414BC2B8FF3DA001114FB /* TemperatureUnit.swift in Sources */,
 				0D8E45842B8CFB2E0057100C /* Extension+Data.swift in Sources */,
 				0D8E457A2B8CE87F0057100C /* WeatherNetworking.swift in Sources */,
 				0D8E45772B8CE87F0057100C /* BaseAPI.swift in Sources */,
