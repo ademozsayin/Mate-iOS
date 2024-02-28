@@ -70,7 +70,21 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ArB-cy-mPu">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="684"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scP-I8-lhd" customClass="WeatherHeaderView" customModule="Components">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="200" id="a0U-Ep-bvU"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="scP-I8-lhd" firstAttribute="top" secondItem="ArB-cy-mPu" secondAttribute="top" id="Atm-Hb-M63"/>
+                                <constraint firstItem="scP-I8-lhd" firstAttribute="leading" secondItem="ArB-cy-mPu" secondAttribute="leading" id="NOz-6M-Uki"/>
+                                <constraint firstAttribute="trailing" secondItem="scP-I8-lhd" secondAttribute="trailing" id="ZxP-mz-li3"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,7 +123,10 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

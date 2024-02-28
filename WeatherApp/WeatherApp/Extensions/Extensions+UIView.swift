@@ -5,7 +5,8 @@
 //  Created by Adem Özsayın on 28.02.2024.
 //
 
-import UIKit.UIView
+import Foundation
+import UIKit
 
 extension UIView {
     // available from iOS 11.0

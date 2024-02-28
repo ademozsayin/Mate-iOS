@@ -10,12 +10,7 @@ import UIKit
 import Components
 import Networking
 import CoreLocation
-
-import Foundation
-import UIKit
-import Components
-import Networking
-import CoreLocation
+import SnapKit
 
 /// Protocol defining the interactions handled by the DashboardViewController.
 protocol DashboardViewControllerProtocol: AnyObject {
@@ -31,7 +26,6 @@ final class DashboardViewController: BaseViewController {
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    
     // MARK: - Properties
     
     private var userLocationResult: UserLocationResult? {
@@ -41,7 +35,7 @@ final class DashboardViewController: BaseViewController {
     }
     
     var presenter: DashboardPresenter?
-    
+
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -56,7 +50,7 @@ final class DashboardViewController: BaseViewController {
         view.backgroundColor = .opaqueSeparator
         scrollView.roundCorners([.topLeft, .topRight], radius: 24)
     }
-    
+
     private func updateUserLocationLabel() {
         guard let  userLocationResult else { return }
         locationLabel.text = userLocationResult.name

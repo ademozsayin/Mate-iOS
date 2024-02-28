@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D74149D2B8F4B95001114FB /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D74149C2B8F4B95001114FB /* NibOwnerLoadable.swift */; };
+		0D7414A92B8F59B7001114FB /* WeatherHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7414A82B8F58FF001114FB /* WeatherHeaderView.xib */; };
+		0D7414AA2B8F5A64001114FB /* WeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */; };
 		0D8E45B72B8D16010057100C /* Components.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45B62B8D16010057100C /* Components.docc */; };
 		0D8E45BD2B8D16010057100C /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E45B22B8D16010057100C /* Components.framework */; };
 		0D8E45C22B8D16010057100C /* ComponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45C12B8D16010057100C /* ComponentsTests.swift */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D74149C2B8F4B95001114FB /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibOwnerLoadable.swift; sourceTree = "<group>"; };
+		0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHeaderView.swift; sourceTree = "<group>"; };
+		0D7414A82B8F58FF001114FB /* WeatherHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherHeaderView.xib; sourceTree = "<group>"; };
 		0D8E45B22B8D16010057100C /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E45B52B8D16010057100C /* Components.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Components.h; sourceTree = "<group>"; };
 		0D8E45B62B8D16010057100C /* Components.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Components.docc; sourceTree = "<group>"; };
@@ -64,6 +70,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D23196B2B8E97A800F969DD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0D74149C2B8F4B95001114FB /* NibOwnerLoadable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0D7414A62B8F58FF001114FB /* WeatherHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */,
+				0D7414A82B8F58FF001114FB /* WeatherHeaderView.xib */,
+			);
+			path = WeatherHeaderView;
+			sourceTree = "<group>";
+		};
 		0D8E45A82B8D16010057100C = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +110,8 @@
 		0D8E45B42B8D16010057100C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0D7414A62B8F58FF001114FB /* WeatherHeaderView */,
+				0D23196B2B8E97A800F969DD /* Extensions */,
 				0D8E45CC2B8D16200057100C /* LoadingView */,
 				0D8E45B52B8D16010057100C /* Components.h */,
 				0D8E45B62B8D16010057100C /* Components.docc */,
@@ -228,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7414A92B8F59B7001114FB /* WeatherHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +352,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7414AA2B8F5A64001114FB /* WeatherHeaderView.swift in Sources */,
 				0D8E45D02B8D16B60057100C /* LoadingShowable.swift in Sources */,
+				0D74149D2B8F4B95001114FB /* NibOwnerLoadable.swift in Sources */,
 				0D8E45B72B8D16010057100C /* Components.docc in Sources */,
 				0D8E45CE2B8D16260057100C /* LoadingView.swift in Sources */,
 			);
