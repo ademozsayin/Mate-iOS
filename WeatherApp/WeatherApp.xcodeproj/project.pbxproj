@@ -395,10 +395,9 @@
 		0D9D1B122B912F8200316D94 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				0D9D1B222B9140CC00316D94 /* View */,
 				0D9D1B1D2B91339A00316D94 /* Presenter */,
 				0D9D1B1B2B9130D600316D94 /* Router */,
-				0D9D1B152B912FE800316D94 /* SearchResultsController.swift */,
-				0D9D1B162B912FE800316D94 /* SearchResultsController.xib */,
 				0D9D1B1C2B9130E900316D94 /* Interactor */,
 			);
 			path = Search;
@@ -426,6 +425,15 @@
 				0D9D1B1E2B9133A300316D94 /* SearchResultsPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0D9D1B222B9140CC00316D94 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D9D1B152B912FE800316D94 /* SearchResultsController.swift */,
+				0D9D1B162B912FE800316D94 /* SearchResultsController.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4E17B79CE6D18A17527B4AE0 /* Pods */ = {

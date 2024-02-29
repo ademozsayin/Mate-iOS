@@ -7,18 +7,28 @@
 
 import Foundation
 
+/// Protocol defining the routing actions for the SearchResultsViewController.
 protocol SearchResultsRouterProtocol: AnyObject {
+    /// Navigates to the specified route.
+    ///
+    /// - Parameter route: The route to navigate to.
     func navigate(_ route: SearchRoutes)
 }
 
+/// Enum defining the possible routes for navigation from the search results view.
 enum SearchRoutes {
     case detail
 }
 
-final class SearchResultsRouter{
+/// Class responsible for routing from the search results view.
+final class SearchResultsRouter {
+    /// Weak reference to the search results view controller.
     weak var viewController: SearchResultsController?
     
-    static func createModule() -> SearchResultsController{
+    /// Creates and configures the search results module.
+    ///
+    /// - Returns: The configured search results view controller.
+    static func createModule() -> SearchResultsController {
         let view = SearchResultsController()
         let interactor = SearchResultsInteractor()
         let router = SearchResultsRouter()
@@ -30,7 +40,11 @@ final class SearchResultsRouter{
     }
 }
 
-extension SearchResultsRouter: SearchResultsRouterProtocol{
+extension SearchResultsRouter: SearchResultsRouterProtocol {
+    /// Navigates to the specified route.
+    ///
+    /// - Parameter route: The route to navigate to.
     func navigate(_ route: SearchRoutes) {
+        // Implement navigation logic here based on the specified route
     }
 }

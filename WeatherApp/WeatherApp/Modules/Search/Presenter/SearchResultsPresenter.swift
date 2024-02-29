@@ -8,16 +8,39 @@
 import Foundation
 import Networking
 
+/// Protocol defining the interactions handled by the SearchResultsViewController.
 protocol SearchResultsPresenterProtocol: AnyObject {
-   func viewDidLoad()
+    /// Called when the view is loaded and ready.
+    func viewDidLoad()
+    /// Updates the search results based on the provided query.
+    ///
+    /// - Parameter query: The search query entered by the user.
+    func updateResults(query: String)
+    /// The number of city results.
+    var numberOfCityResult: Int { get }
+    /// The searched city result.
+    var searchedCity: CityResult? { get }
 }
 
-final class SearchResultsPresenter: SearchResultsPresenterProtocol{
+/// Class responsible for presenting the search results view.
+final class SearchResultsPresenter: SearchResultsPresenterProtocol {
     
+    /// Reference to the search results view.
     unowned var view: SearchResultsControllerProtocol?
+    /// Reference to the router handling navigation.
     let router: SearchResultsRouterProtocol!
+    /// Reference to the interactor handling data retrieval.
     let interactor: SearchResultsInteractorProtocol!
     
+    /// The searched city result.
+    var searchedCity: CityResult?
+    
+    /// Initializes the presenter with required dependencies.
+    ///
+    /// - Parameters:
+    ///   - view: The search results view.
+    ///   - router: The router for navigation.
+    ///   - interactor: The interactor for data retrieval.
     init(
         view: SearchResultsControllerProtocol,
         router: SearchResultsRouterProtocol,
@@ -28,60 +51,48 @@ final class SearchResultsPresenter: SearchResultsPresenterProtocol{
         self.interactor = interactor
     }
     
-    private var searchedMovies:[String] = []
-    
-    var numberOfMovies: Int {
-        searchedMovies.count
+    /// The number of city results.
+    var numberOfCityResult: Int {
+        guard searchedCity != nil else { return 0 }
+        return 1
     }
-//    
-//    func searchedMovie(index: Int) -> Movie? {
-//        guard searchedMovies.count > index else {
-//            return nil
-//        }
-//        return searchedMovies[index]
-//    }
-//    
-//    func didSelectRowAt(index: Int) {
-//        guard let movie = searchedMovie(index: index) else {return}
-//        router.navigate(.detail(movie: movie))
-//    }
-//    
-//    func updateResults(query: String) {
-//        if query.count > 1 {
-//            interactor.fetchMovies(query: query)
-//        }else {
-//            searchedMovies.removeAll()
-//            view?.reloadData()
-//        }
-//        
-//    }
-    
-    func removeMovies() {
-        self.searchedMovies.removeAll()
+ 
+    /// Updates the search results based on the provided query.
+    ///
+    /// - Parameter query: The search query entered by the user.
+    func updateResults(query: String) {
+        if query.count > 1 {
+            interactor.fetchWeather(query: query)
+        } else {
+            searchedCity = nil
+            view?.reloadData()
+        }
     }
     
+    /// Removes the searched city.
+    func removeQuerys() {
+        self.searchedCity = nil
+    }
+    
+    /// Called when the view is loaded and ready.
     func viewDidLoad() {
         view?.setView()
     }
-    
 }
 
-extension SearchResultsPresenter: SearchResultsInteractorOutputProtocol{
+/// Extension to handle search results interactor output.
+extension SearchResultsPresenter: SearchResultsInteractorOutputProtocol {
+    
+    /// Handles the fetched city result.
+    ///
+    /// - Parameter result: The result of fetching the city.
     func fetchCityOutput(result: Networking.SearchResult) {
-        
+        switch result {
+        case .success(let city):
+            self.searchedCity = city
+            view?.reloadData()
+        case .failure(let error):
+            print(error.localizedDescription)
+        }
     }
-    
-//    func fetchMovieOutput(result: MovieListResult) {
-//        
-//        switch result{
-//        case .success(let moviesResult):
-//            self.searchedMovies = moviesResult.results ?? []
-//            view?.reloadData()
-//            
-//        case .failure(let error):
-//            print(error)
-//        }
-//        
-//    }
-    
 }

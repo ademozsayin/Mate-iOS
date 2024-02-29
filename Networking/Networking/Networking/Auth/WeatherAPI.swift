@@ -12,7 +12,7 @@ import Alamofire
 // MARK: - Typealias
 public typealias CurrentWeather = Result<WeatherResponse, NSError>
 public typealias HourlyForecast = Result<Forecast, NSError>
-public typealias SearchResult = Result<String, NSError>
+public typealias SearchResult = Result<CityResult, NSError>
 
 // MARK: - WeatherProtocol
 /// Protocol defining the interface for weather-related operations.
@@ -60,7 +60,7 @@ public class WeatherAPI: BaseAPI<WeatherNetworking>, WeatherProtocol {
     }
     
     public func getWeatherBy(cityName: String, completionHandler: @escaping (SearchResult) -> Void) {
-        self.fetchData(target: .getWeatherBy(query: cityName), responseClass: String.self) { result in
+        self.fetchData(target: .getWeatherBy(query: cityName), responseClass: CityResult.self) { result in
             completionHandler(result)
         }
     }

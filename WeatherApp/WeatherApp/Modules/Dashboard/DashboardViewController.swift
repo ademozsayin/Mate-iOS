@@ -13,15 +13,41 @@ import CoreLocation
 import Combine
 
 // MARK: - DashboardViewControllerProtocol
+/// Protocol defining the interactions handled by the DashboardViewController.
 protocol DashboardViewControllerProtocol: AnyObject {
+    /// Displays the weather information on the dashboard.
+    ///
+    /// - Parameter weatherInfo: The weather information to display.
     func displayWeatherInfo(_ weatherInfo: WeatherResponse)
+    
+    /// Shows the last updated weather information.
+    ///
+    /// - Parameter info: The last updated weather information.
     func showLastUpdatedWeather(info: UserLocationResult?)
+    
+    /// Shows a loading indicator.
     func showLoading()
+    
+    /// Hides the loading indicator.
     func hideLoading()
+    
+    /// Shows an error related to location access.
+    ///
+    /// - Parameter error: The error related to location access.
     func showLocationError(error: Error)
+    
+    /// Configures the collection view for displaying weather forecast.
     func configureCollectionView()
+    
+    /// Reloads data in the collection view.
     func reloadData()
+    
+    /// Shows an alert with the given message.
+    ///
+    /// - Parameter message: The message to display in the alert.
     func showAlert(message:String)
+    
+    /// Sets up the search bar functionality.
     func setSearchBar()
 }
 
@@ -224,6 +250,7 @@ extension DashboardViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension DashboardViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
