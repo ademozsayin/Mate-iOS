@@ -18,6 +18,7 @@
                 <outlet property="locationLabel" destination="kgy-u1-NSM" id="iVT-IF-9aQ"/>
                 <outlet property="navbarView" destination="wZW-eu-wJt" id="ZQH-Jz-7m9"/>
                 <outlet property="scrollView" destination="4B7-LP-eAc" id="Ab4-tO-TKe"/>
+                <outlet property="searchButton" destination="WOZ-ON-ytC" id="Fxy-49-K4R"/>
                 <outlet property="temperatureButton" destination="2qV-dD-ysN" id="mwH-b1-9Mv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="Fns-rA-Hqh"/>
                 <outlet property="weatherHeaderView" destination="scP-I8-lhd" id="W1k-KL-iR3"/>
@@ -50,7 +51,7 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="semibold"/>
                             </buttonConfiguration>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOZ-ON-ytC" userLabel="Add">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOZ-ON-ytC" userLabel="SearchButton">
                             <rect key="frame" x="324.33333333333331" y="91" width="49.666666666666686" height="35"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>

@@ -8,16 +8,34 @@
 import Foundation
 import Networking
 
+/// Protocol defining the interactions handled by the SearchResultsInteractor.
 protocol SearchResultsInteractorProtocol: AnyObject {
+    /// Fetches weather information for a given query.
+    ///
+    /// - Parameter query: The search query.
     func fetchWeather(query: String)
 }
 
-protocol SearchResultsInteractorOutputProtocol: AnyObject{}
+/// Protocol defining the output interactions handled by the SearchResultsInteractor.
+protocol SearchResultsInteractorOutputProtocol: AnyObject {
+    /// Outputs the result of fetching city information.
+    ///
+    /// - Parameter result: The search result.
+    func fetchCityOutput(result: SearchResult)
+}
 
-final class SearchResultsInteractor{
+/// Class responsible for fetching weather information for search results.
+final class SearchResultsInteractor {
+    /// The output delegate for handling fetched results.
     var output: SearchResultsInteractorOutputProtocol?
+    /// The service responsible for fetching weather data.
     var service: WeatherProtocol
     
+    /// Initializes the interactor with required dependencies.
+    ///
+    /// - Parameters:
+    ///   - service: The weather service.
+    ///   - output: The output delegate.
     init(
         service: WeatherProtocol = WeatherAPI(),
         output: SearchResultsInteractorOutputProtocol? = nil
@@ -27,11 +45,14 @@ final class SearchResultsInteractor{
     }
 }
 
-extension SearchResultsInteractor: SearchResultsInteractorProtocol{
-    
-    func fetchWeather(query: String) {
-        // TODO: - Fetch
+extension SearchResultsInteractor: SearchResultsInteractorProtocol {
+    /// Fetches weather information for a given query.
+    ///
+    /// - Parameter query: The search query.
+    final func fetchWeather(query: String) {
+        service.getWeatherBy(cityName: query) {  [weak self] result in
+            guard let self else { return }
+            self.output?.fetchCityOutput(result: result)
+        }
     }
 }
-
-

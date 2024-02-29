@@ -35,6 +35,8 @@ protocol DashboardPresenterProtocol: AnyObject {
     var numberOfDays: Int {get}
     
     func didFailedWith(message: String)
+    
+    func didSearchTapped()
 }
 
 // MARK: - DashboardPresenter
@@ -74,6 +76,10 @@ final class DashboardPresenter {
 
 // MARK: - DashboardPresenterProtocol
 extension DashboardPresenter: DashboardPresenterProtocol {
+    final func didSearchTapped() {
+        router?.navigate(.search)
+    }
+    
     var numberOfDays: Int {
         return dailyWeatherList.count
     }

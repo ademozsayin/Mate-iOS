@@ -37,6 +37,7 @@ final class DashboardViewController: BaseViewController {
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var navbarView: UIView!
+    @IBOutlet private weak var searchButton: UIButton!
     
     // MARK: - Data
     private var cancellables = Set<AnyCancellable>()
@@ -55,12 +56,21 @@ final class DashboardViewController: BaseViewController {
         configureBackgroundView()
         configureCollectionView()
         setupButtonTapHandling()
+        setSearchBar()
         presenter?.viewDidLoad()
     }
 }
 
 // MARK: - DashboardViewControllerProtocol Conformance
 extension DashboardViewController: DashboardViewControllerProtocol {
+    func setSearchBar() {
+        searchButton.publisher(for: .touchUpInside)
+            .sink { [weak self] _ in
+                self?.presenter?.didSearchTapped()
+            }
+            .store(in: &cancellables)
+    }
+    
     func showAlert(message: String) {
         showAlert(title: "Error", message: message)
     }

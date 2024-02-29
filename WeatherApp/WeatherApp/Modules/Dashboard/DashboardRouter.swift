@@ -57,11 +57,8 @@ extension DashboardRouter: DashboardRouterProtocol {
         // Currently, it's empty as no navigation logic is provided.
         switch route {
         case .search:
-            let detailVC = DetailRouter.createModule()
-            detailVC.movie = movie
+            let detailVC = SearchResultsRouter.createModule()
             viewController?.navigationController?.pushViewController(detailVC, animated: true)
-        default:
-            return
         }
     }
 }

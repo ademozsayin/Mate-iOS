@@ -11,8 +11,8 @@ import Alamofire
 
 // MARK: - Typealias
 public typealias CurrentWeather = Result<WeatherResponse, NSError>
-//public typealias DailyWeather = Result<DailyWeatherResponse, NSError>
 public typealias HourlyForecast = Result<Forecast, NSError>
+public typealias SearchResult = Result<String, NSError>
 
 // MARK: - WeatherProtocol
 /// Protocol defining the interface for weather-related operations.
@@ -26,6 +26,9 @@ public protocol WeatherProtocol {
     func getCurrentWeather(request: WeatherRequest, completionHandler: @escaping (CurrentWeather) -> Void)
     
     func getDailyWeather(request: WeatherRequest, completionHandler: @escaping (HourlyForecast) -> Void)
+    
+    func getWeatherBy(cityName: String, completionHandler: @escaping (SearchResult) -> Void)
+
 }
 
 // MARK: - WeatherAPI
@@ -56,4 +59,9 @@ public class WeatherAPI: BaseAPI<WeatherNetworking>, WeatherProtocol {
         }
     }
     
+    public func getWeatherBy(cityName: String, completionHandler: @escaping (SearchResult) -> Void) {
+        self.fetchData(target: .getWeatherBy(query: cityName), responseClass: String.self) { result in
+            completionHandler(result)
+        }
+    }
 }
