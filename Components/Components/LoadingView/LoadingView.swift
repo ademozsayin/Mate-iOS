@@ -25,13 +25,13 @@ final public class LoadingView {
     /// The activity indicator view.
     private var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
 
-    static let shared = LoadingView()
+    public static let shared = LoadingView()
     
     /// The blur view used as a background for the activity indicator.
     private var blurView: UIVisualEffectView = UIVisualEffectView()
 
     /// Private initializer to prevent external instantiation.
-    private init(){
+    public init(){
         configure()
     }
 }

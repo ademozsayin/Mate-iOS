@@ -40,48 +40,70 @@ class CoreLocationDataManager: LocationDataManager {
     
     func save(_ weather: UserLocation) {
         let managedContext = persistentContainer.viewContext
-        guard let entityDescription = NSEntityDescription.entity(forEntityName: userLocationEntity, in: managedContext) else {
-            fatalError("Could not find entity description")
-        }
         
-        let locationObject = NSManagedObject(entity: entityDescription, insertInto: managedContext)
-        locationObject.setValue(weather.name, forKey: "name")
-        locationObject.setValue(weather.latitude, forKey: "latitude")
-        locationObject.setValue(weather.longitude, forKey: "longitude")
-        locationObject.setValue(weather.degree, forKey: "degree")
-        locationObject.setValue(Date(), forKey: "date")
-        #if DEBUG
-        // Assuming you have an instance of NSManagedObject named locationObject
-        if let jsonString = locationObject.prettyJSONString() {
-            DDLogInfo(jsonString)
-        }
-        #endif
+        // Fetch request to check if the location already exists
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: userLocationEntity)
+        fetchRequest.predicate = NSPredicate(format: "name == %@", weather.name ?? "Unknown")
         
         do {
-            try managedContext.save()
-            DDLogInfo("🟢 Saved to storage")
-        } catch let error as NSError {
-            fatalError("Could not save. \(error), \(error.userInfo)")
-        }
-    }
-    
-    func fetchLastLocation() -> UserLocationResult? {
-        // Fetch user location from Core Data
-        let managedContext = persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: userLocationEntity)
-        fetchRequest.fetchLimit = 1
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)] 
-           
-        do {
-            if let userLocations = try managedContext.fetch(fetchRequest) as? [UserLocationResult],
-                let userLocation = userLocations.first {
-                return userLocation
+            let results = try managedContext.fetch(fetchRequest)
+            if let existingLocation = results.first as? NSManagedObject {
+                // Update existing location
+                existingLocation.setValue(weather.latitude, forKey: "latitude")
+                existingLocation.setValue(weather.longitude, forKey: "longitude")
+                existingLocation.setValue(weather.degree, forKey: "degree")
+                existingLocation.setValue(Date(), forKey: "date")
+                
+                try managedContext.save()
+                DDLogInfo("🟢 Location updated")
+                
+            #if DEBUG
+            // Assuming you have an instance of NSManagedObject named locationObject
+                if let jsonString = existingLocation.prettyJSONString() {
+                    DDLogInfo(jsonString)
+                }
+            #endif
+                
+            } else {
+                // Create new location object
+                guard let entityDescription = NSEntityDescription.entity(forEntityName: userLocationEntity, in: managedContext) else {
+                    fatalError("Could not find entity description")
+                }
+                let locationObject = NSManagedObject(entity: entityDescription, insertInto: managedContext)
+                locationObject.setValue(weather.name, forKey: "name")
+                locationObject.setValue(weather.latitude, forKey: "latitude")
+                locationObject.setValue(weather.longitude, forKey: "longitude")
+                locationObject.setValue(weather.degree, forKey: "degree")
+                locationObject.setValue(Date(), forKey: "date")
+                                
+                #if DEBUG
+                    if let jsonString = locationObject.prettyJSONString() {
+                        DDLogInfo(jsonString)
+                    }
+                #endif
+                
+                try managedContext.save()
+                DDLogInfo("🟢 Location saved")
             }
         } catch let error as NSError {
-            DDLogError("⛔️ Could not fetch. \(error), \(error.userInfo)")
+            fatalError("Could not fetch. \(error), \(error.userInfo)")
         }
-        
-        return nil
     }
 
+    
+    func fetchLastLocation() -> UserLocation? {
+        let managedContext = persistentContainer.viewContext
+        
+        // Create fetch request to fetch locations ordered by date in descending order
+        let fetchRequest: NSFetchRequest<UserLocation> = UserLocation.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        fetchRequest.fetchLimit = 1 // Fetch only the first result
+        
+        do {
+            let locations = try managedContext.fetch(fetchRequest)
+            return locations.first // Return the first (most recent) location
+        } catch let error as NSError {
+            fatalError("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
 }

@@ -16,6 +16,8 @@ import Combine
 protocol DashboardViewControllerProtocol: AnyObject {
     func displayWeatherInfo(_ weatherInfo: WeatherResponse)
     func showLastUpdatedWeather(info: UserLocationResult?)
+    func showLoading()
+    func hideLoading()
 }
 
 /// Class responsible for presenting the dashboard view.
@@ -61,7 +63,6 @@ final class DashboardViewController: BaseViewController {
         guard let  userLocationResult else { return }
         locationLabel.text = userLocationResult.name
         dateLabel.text = userLocationResult.date?.relativelyFormattedUpdateString
-        
     }
 }
 
@@ -76,9 +77,9 @@ extension DashboardViewController: DashboardViewControllerProtocol {
         self.weatherInfo = weatherInfo
         locationLabel.text = weatherInfo.name
         dateLabel.text = "Updating"
-        weatherHeaderView.configureWith(weatherInfo)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.updateUserLocationLabel()
+        updateUserLocationLabel()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.weatherHeaderView.configureWith(weatherInfo)
         }
     }
 }
@@ -87,11 +88,13 @@ extension DashboardViewController: DashboardViewControllerProtocol {
 
 extension DashboardViewController: LoadingShowable {
     func showLoading() {
-        // Show loading indicator
+        print("show loading")
+        LoadingView.shared.startLoading()
     }
     
     func hideLoading() {
         // Hide loading indicator
+        LoadingView.shared.hideLoading()
     }
 }
 

@@ -89,6 +89,7 @@ extension DashboardInteractor: LocationServiceDelegate {
             switch result {
             case .success(let weatherInfo):
                 // Convert WeatherResponse to WeatherResponseCD
+                
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                     fatalError("AppDelegate not found")
                 }
@@ -104,7 +105,9 @@ extension DashboardInteractor: LocationServiceDelegate {
                 weatherInfoCD.date = Date() // Set datetime to current date
                 // Save the converted WeatherResponseCD object
                 locationDataManager.save(weatherInfoCD)
+                
                 self.output?.fetchWeatherOutput(result: weatherInfo)
+                
             case .failure(let error):
                 // Handle error
                 print("Error fetching weather: \(error)")

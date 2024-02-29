@@ -18,11 +18,12 @@ protocol DashboardPresenterProtocol: AnyObject {
     /// - Parameter weatherInfo: The weather information to present.
     func presentWeatherInfo(_ weatherInfo: WeatherResponse)
     
-    func displayLastSavedLocation()
+    func displayLastSavedLocation(completion: @escaping (UserLocation?) -> Void)
 }
 
 /// Class responsible for presenting data to the dashboard view.
 final class DashboardPresenter: DashboardPresenterProtocol {
+    
     /// Reference to the dashboard view.
     unowned var view: DashboardViewControllerProtocol?
     /// Reference to the router handling navigation.
@@ -47,22 +48,40 @@ final class DashboardPresenter: DashboardPresenterProtocol {
     }
     
     // Display last saved location
-    func displayLastSavedLocation() {
-        if let lastLocation = interactor?.fetchLastSavedLocation() {
-            // Display last saved location in your UI
-            // For example:
-            print("Last saved location: \(lastLocation)")
-            // Update UI with last saved location
-            // Example: view?.updateLocationLabel(lastLocation)
-            view?.showLastUpdatedWeather(info: lastLocation)
+    func displayLastSavedLocation(completion: @escaping (UserLocation?) -> Void) {
+        DispatchQueue.global().async { [weak self] in
+            guard let self else { return }
+            if let lastLocation = self.interactor?.fetchLastSavedLocation() {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
+                    // Display last saved location in your UI
+                    // For example:
+                    print("Last saved location: \(lastLocation)")
+                    // Update UI with last saved location
+                    // Example: view?.updateLocationLabel(lastLocation)
+                    self.view?.showLastUpdatedWeather(info: lastLocation)
+                    
+                    // Call completion handler with the fetched location
+                    completion(lastLocation)
+                }
+            } else {
+                // Call completion handler with nil if no location is found
+                DispatchQueue.main.async {
+                    completion(nil)
+                }
+            }
         }
     }
+
         
     /// Called when the view is loaded and ready.
     func viewDidLoad() {
+        view?.showLoading()
         // Display last saved location when view loads
-        displayLastSavedLocation()
-        interactor?.fetchWeatherForUserLocation()
+        displayLastSavedLocation { [weak self] location in
+            guard let self else { return }
+            self.interactor?.fetchWeatherForUserLocation()
+        }
     }
 }
 
@@ -70,6 +89,7 @@ final class DashboardPresenter: DashboardPresenterProtocol {
 extension DashboardPresenter: DashboardInteractorOutputProtocol {
     func fetchWeatherOutput(result: WeatherResponse) {
         view?.displayWeatherInfo(result)
+        view?.hideLoading()
     }
     
     /// Outputs the result of weather data retrieval.
