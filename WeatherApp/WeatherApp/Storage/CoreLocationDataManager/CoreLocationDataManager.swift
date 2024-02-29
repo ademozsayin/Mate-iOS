@@ -38,7 +38,7 @@ class CoreLocationDataManager: LocationDataManager {
         return container
     }()
     
-    func save(_ weather: UserLocation) {
+    final func save(_ weather: UserLocation) {
         let managedContext = persistentContainer.viewContext
         
         // Fetch request to check if the location already exists
@@ -91,7 +91,7 @@ class CoreLocationDataManager: LocationDataManager {
     }
 
     
-    func fetchLastLocation() -> UserLocation? {
+    final func fetchLastLocation() -> UserLocation? {
         let managedContext = persistentContainer.viewContext
         
         // Create fetch request to fetch locations ordered by date in descending order

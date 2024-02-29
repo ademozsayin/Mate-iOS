@@ -8,6 +8,7 @@
 import Foundation
 
 /// Protocol defining navigation actions for the DashboardRouter.
+// MARK: - DashboardRouterProtocol
 protocol DashboardRouterProtocol: AnyObject {
     /// Navigate to a specific route within the dashboard.
     ///
@@ -20,14 +21,11 @@ enum DashboardRoutes {
     // Define your routes here if needed.
 }
 
-/// Class responsible for handling navigation within the dashboard module.
+// MARK: - DashboardRouter
 final class DashboardRouter {
     /// Weak reference to the dashboard view controller.
     weak var viewController: DashboardViewController?
-    
-//    init(viewController: DashboardViewController) {
-//        self.viewController = viewController
-//    }
+
     /// Creates and configures the dashboard module.
     ///
     /// - Returns: The configured instance of DashboardViewController.
@@ -47,12 +45,12 @@ final class DashboardRouter {
     }
 }
 
-// Extend DashboardRouter to conform to DashboardRouterProtocol
+// MARK: - DashboardRouterProtocol
 extension DashboardRouter: DashboardRouterProtocol {
     /// Navigate to a specific route within the dashboard.
     ///
     /// - Parameter route: The destination route to navigate to.
-    func navigate(_ route: DashboardRoutes) {
+    final func navigate(_ route: DashboardRoutes) {
         // Implementation of navigation logic can be added here.
         // Currently, it's empty as no navigation logic is provided.
     }

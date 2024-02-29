@@ -12,26 +12,24 @@ import Networking
 import CoreLocation
 import Combine
 
-/// Protocol defining the interactions handled by the DashboardViewController.
+// MARK: - DashboardViewControllerProtocol
 protocol DashboardViewControllerProtocol: AnyObject {
     func displayWeatherInfo(_ weatherInfo: WeatherResponse)
     func showLastUpdatedWeather(info: UserLocationResult?)
     func showLoading()
     func hideLoading()
+    func showLocationError(error: Error)
 }
 
 /// Class responsible for presenting the dashboard view.
 final class DashboardViewController: BaseViewController {
     
     // MARK: - Outlets
-    
     @IBOutlet private weak var weatherHeaderView: WeatherHeaderView!
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var temperatureButton: UIButton!
-    // MARK: - Properties
-    
     
     // MARK: - Data
     private var cancellables = Set<AnyCancellable>()
@@ -42,7 +40,7 @@ final class DashboardViewController: BaseViewController {
     }
     private var weatherInfo: WeatherResponse?
     var presenter: DashboardPresenter?
-
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -51,25 +49,34 @@ final class DashboardViewController: BaseViewController {
         setupButtonTapHandling()
         presenter?.viewDidLoad()
     }
-    
-    // MARK: - Private Methods
-    
-    private func configureBackgroundView() {
-        view.backgroundColor = .opaqueSeparator
-        scrollView.roundCorners([.topLeft, .topRight], radius: 24)
-    }
-
-    private func updateUserLocationLabel() {
-        guard let  userLocationResult else { return }
-        locationLabel.text = userLocationResult.name
-        dateLabel.text = userLocationResult.date?.relativelyFormattedUpdateString
-    }
 }
 
 // MARK: - DashboardViewControllerProtocol Conformance
-
 extension DashboardViewController: DashboardViewControllerProtocol {
-   final func showLastUpdatedWeather(info: UserLocationResult?) {
+    func showLocationError(error: Error) {
+        let alertController = UIAlertController(title: "Location Access Required", message: "Please enable location access in settings.", preferredStyle: .alert)
+        
+        let settingsAction = UIAlertAction(title: "Settings", style: .default) { 
+            _ in
+            // Open app settings
+            self.redirectToLocationSettings()
+        }
+        alertController.addAction(settingsAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func redirectToLocationSettings() {
+       guard let appSettings = URL(string: UIApplication.openSettingsURLString) else { return }
+       if UIApplication.shared.canOpenURL(appSettings) {
+           UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+       }
+   }
+    
+    final func showLastUpdatedWeather(info: UserLocationResult?) {
         userLocationResult = info
     }
     
@@ -85,7 +92,6 @@ extension DashboardViewController: DashboardViewControllerProtocol {
 }
 
 // MARK: - LoadingShowable Conformance
-
 extension DashboardViewController: LoadingShowable {
     func showLoading() {
         print("show loading")
@@ -98,7 +104,20 @@ extension DashboardViewController: LoadingShowable {
     }
 }
 
+// MARK: - Configuration
 private extension DashboardViewController {
+    // MARK: - Private Methods
+    final func configureBackgroundView() {
+        view.backgroundColor = .opaqueSeparator
+        scrollView.roundCorners([.topLeft, .topRight], radius: 24)
+    }
+    
+    final func updateUserLocationLabel() {
+        guard let  userLocationResult else { return }
+        locationLabel.text = userLocationResult.name
+        dateLabel.text = userLocationResult.date?.relativelyFormattedUpdateString
+    }
+    
     final func setupButtonTapHandling() {
         temperatureButton.publisher(for: .touchUpInside)
             .sink { [weak self] _ in

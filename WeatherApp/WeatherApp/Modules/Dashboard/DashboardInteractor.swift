@@ -13,7 +13,8 @@ import CoreData
 import UIKit
 
 public typealias UserLocationResult = UserLocation
-/// Protocol defining the interactions handled by the DashboardInteractor.
+
+// MARK: - DashboardInteractorProtocol
 protocol DashboardInteractorProtocol: AnyObject {
     /// Fetches the current weather data.
     func fetchCurrentWeather()
@@ -23,6 +24,7 @@ protocol DashboardInteractorProtocol: AnyObject {
     
 }
 
+// MARK: - DashboardInteractorOutputProtocol
 /// Protocol defining the output interactions of the DashboardInteractor.
 protocol DashboardInteractorOutputProtocol: AnyObject {
     /// Outputs the result of weather data retrieval.
@@ -30,9 +32,13 @@ protocol DashboardInteractorOutputProtocol: AnyObject {
     /// - Parameter result: The retrieved weather data.
     func fetchWeatherOutput(result: WeatherResponse)
     
+    func didFailToFetchUserLocation(withError error: Error) 
+    
 }
 
 /// Class responsible for handling business logic related to the dashboard.
+ 
+// MARK: - DashboardInteractor
 final class DashboardInteractor {
     /// Reference to the output delegate.
     var output: DashboardInteractorOutputProtocol?
@@ -62,12 +68,12 @@ final class DashboardInteractor {
     }
     
     // Retrieve the last saved user location from Core Data
-    func fetchLastSavedLocation() -> UserLocationResult? {
+    final func fetchLastSavedLocation() -> UserLocationResult? {
         return locationDataManager.fetchLastLocation()
     }
 }
 
-// Extension for additional protocol conformance
+// MARK: - DashboardInteractorProtocol
 extension DashboardInteractor: DashboardInteractorProtocol {
     func fetchWeatherForUserLocation() {
         // Use location service to get user location
@@ -82,14 +88,14 @@ extension DashboardInteractor: DashboardInteractorProtocol {
     }
 }
 
+// MARK: - LocationServiceDelegate
 extension DashboardInteractor: LocationServiceDelegate {
-    func didFetchUserLocation(_ location: CLLocation) {
+    final func didFetchUserLocation(_ location: CLLocation) {
         WeatherAPI().getCurrentWeather(request: CLLocation.asWeatherRequest(location)) {[weak self]  result in
             guard let self else { return }
             switch result {
             case .success(let weatherInfo):
                 // Convert WeatherResponse to WeatherResponseCD
-                
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                     fatalError("AppDelegate not found")
                 }
@@ -115,8 +121,9 @@ extension DashboardInteractor: LocationServiceDelegate {
         }
     }
     
-    func didFailToFetchUserLocation(withError error: Error) {
+    final func didFailToFetchUserLocation(withError error: Error) {
         // Handle location fetch error
         DDLogError("Failed to fetch location: \(error)")
+        output?.didFailToFetchUserLocation(withError: error)
     }
 }

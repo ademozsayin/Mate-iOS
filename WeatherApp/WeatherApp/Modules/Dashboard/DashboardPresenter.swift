@@ -9,7 +9,7 @@ import Foundation
 import Networking
 import CoreLocation
 
-/// Protocol defining the interactions handled by the DashboardPresenter.
+// MARK: - DashboardPresenterProtocol
 protocol DashboardPresenterProtocol: AnyObject {
     /// Called when the view is loaded and ready.
     func viewDidLoad()
@@ -19,9 +19,11 @@ protocol DashboardPresenterProtocol: AnyObject {
     func presentWeatherInfo(_ weatherInfo: WeatherResponse)
     
     func displayLastSavedLocation(completion: @escaping (UserLocation?) -> Void)
+    
+    func didFailToFetchUserLocation(withError error: Error)
 }
 
-/// Class responsible for presenting data to the dashboard view.
+// MARK: - DashboardPresenter
 final class DashboardPresenter: DashboardPresenterProtocol {
     
     /// Reference to the dashboard view.
@@ -48,7 +50,7 @@ final class DashboardPresenter: DashboardPresenterProtocol {
     }
     
     // Display last saved location
-    func displayLastSavedLocation(completion: @escaping (UserLocation?) -> Void) {
+    final func displayLastSavedLocation(completion: @escaping (UserLocation?) -> Void) {
         DispatchQueue.global().async { [weak self] in
             guard let self else { return }
             if let lastLocation = self.interactor?.fetchLastSavedLocation() {
@@ -75,7 +77,7 @@ final class DashboardPresenter: DashboardPresenterProtocol {
 
         
     /// Called when the view is loaded and ready.
-    func viewDidLoad() {
+    final func viewDidLoad() {
         view?.showLoading()
         // Display last saved location when view loads
         displayLastSavedLocation { [weak self] location in
@@ -85,9 +87,9 @@ final class DashboardPresenter: DashboardPresenterProtocol {
     }
 }
 
-// Extension for additional protocol conformance
+// MARK: - DashboardInteractorOutputProtocol
 extension DashboardPresenter: DashboardInteractorOutputProtocol {
-    func fetchWeatherOutput(result: WeatherResponse) {
+    final func fetchWeatherOutput(result: WeatherResponse) {
         view?.displayWeatherInfo(result)
         view?.hideLoading()
     }
@@ -95,11 +97,17 @@ extension DashboardPresenter: DashboardInteractorOutputProtocol {
     /// Outputs the result of weather data retrieval.
     ///
     /// - Parameter result: The retrieved weather data.
-    func fetchWeatherOutput(result: Networking.CurrentWeather) {
+    final func fetchWeatherOutput(result: Networking.CurrentWeather) {
         DDLogInfo(#function)
     }
     
-    func presentWeatherInfo(_ weatherInfo: WeatherResponse) {
+    final func presentWeatherInfo(_ weatherInfo: WeatherResponse) {
         view?.displayWeatherInfo(weatherInfo)
+    }
+    
+    func didFailToFetchUserLocation(withError error: Error) {
+        print(error)
+        view?.hideLoading()
+        view?.showLocationError(error: error)
     }
 }
