@@ -20,6 +20,14 @@ protocol SearchResultsPresenterProtocol: AnyObject {
     var numberOfCityResult: Int { get }
     /// The searched city result.
     var searchedCity: CityResult? { get }
+    
+    // Store the last time fetchWeather was called
+    var lastFetchTime: Date? { get set }
+       
+    // Threshold duration in seconds
+    var fetchThreshold: TimeInterval { get }
+    
+    func removeQuerys()
 }
 
 /// Class responsible for presenting the search results view.
@@ -34,6 +42,9 @@ final class SearchResultsPresenter: SearchResultsPresenterProtocol {
     
     /// The searched city result.
     var searchedCity: CityResult?
+    
+    var lastFetchTime: Date?
+    let fetchThreshold: TimeInterval = 0.3
     
     /// Initializes the presenter with required dependencies.
     ///
@@ -61,6 +72,19 @@ final class SearchResultsPresenter: SearchResultsPresenterProtocol {
     ///
     /// - Parameter query: The search query entered by the user.
     final func updateResults(query: String) {
+        let currentTime = Date()
+        
+        /// Check if enough time has elapsed since the last fetch
+        if let lastFetchTime = lastFetchTime,
+           currentTime.timeIntervalSince(lastFetchTime) < fetchThreshold {
+            /// Skip making the request if it's too soon
+            return
+        }
+        
+        /// Update the last fetch time
+        lastFetchTime = currentTime
+        
+        /// Proceed with fetching weather data
         if query.count > 1 {
             interactor.fetchWeather(query: query)
         } else {
@@ -92,7 +116,10 @@ extension SearchResultsPresenter: SearchResultsInteractorOutputProtocol {
             self.searchedCity = city
             view?.reloadData()
         case .failure(let error):
-            print(error.localizedDescription)
+            print(error.message ?? error.localizedDescription)
+            view?.serverMessage(message: error.message ?? error.localizedDescription)
+            view?.reloadData()
+
         }
     }
 }

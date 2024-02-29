@@ -11,6 +11,8 @@ import UIKit
 protocol SearchResultsControllerProtocol: AnyObject {
     func reloadData()
     func setView()
+    func serverMessage(message:String)
+    var message:String? { get set }
 }
 
 // MARK: - SearchResultsController
@@ -22,6 +24,8 @@ final class SearchResultsController: UIViewController {
     var searchController: UISearchController?
     
     var presenter: SearchResultsPresenterProtocol?
+    
+    var message: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +56,10 @@ extension SearchResultsController: SearchResultsControllerProtocol {
         searchController.searchBar.placeholder = Localization.searchPlaceHolder
         return searchController
     }
+    
+    func serverMessage(message: String) {
+        self.message = message
+    }
 }
 
 // MARK: - UISearchResultsUpdating - UISearchBarDelegate
@@ -62,11 +70,23 @@ extension SearchResultsController: UISearchResultsUpdating, UISearchBarDelegate,
         }
         presenter?.updateResults(query: searchtext)
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        presenter?.removeQuerys()
+        tableView.reloadData()
+    }
 }
 
 // MARK: - UITableViewDelegate - UITableViewDataSource
 extension SearchResultsController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if presenter?.numberOfCityResult == 0 {
+            self.tableView.setEmptyMessage(self.message ?? "No data")
+        } else {
+            self.tableView.restore()
+        }
         return presenter?.numberOfCityResult ?? 0
     }
     

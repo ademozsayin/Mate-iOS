@@ -89,7 +89,7 @@ extension DashboardInteractor: DashboardInteractorProtocol {
             case .failure(let error):
                 print(error.localizedDescription)
                 print("Error fetching weather: \(error)")
-                self.output?.didFailedWith(message: error.domain)
+                self.output?.didFailedWith(message: error.message ?? "")
             }
         }
     }

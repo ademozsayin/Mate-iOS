@@ -30,7 +30,7 @@ public class BaseAPI<T:TargetType> {
     public func fetchData<M: Decodable>(target: T,
                                         responseClass: M.Type,
                                         //                                        interceptor: RequestInterceptor? = nil,
-                                        completionHandler:@escaping (Result<M, NSError>)-> Void) {
+                                        completionHandler:@escaping (Result<M, WeatherError>)-> Void) {
         
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
         let headers = Alamofire.HTTPHeaders(target.headers ?? [:])
@@ -58,7 +58,6 @@ public class BaseAPI<T:TargetType> {
                   let responseData = response.data else {
                 return
             }
-            
    
             do {
                 let decoder = JSONDecoder()
@@ -77,7 +76,7 @@ public class BaseAPI<T:TargetType> {
                 
                 let message = "Key '\(key)' not found:"  + context.debugDescription
                 
-                completionHandler(.failure(NSError(domain: message, code: statusCode, userInfo: ["error":"No data"])))
+                completionHandler(.failure(WeatherError(code: "\(statusCode)", message: message)))
 #else
                 completionHandler(.failure(NSError(domain: "Something went wrong", code: statusCode, userInfo: ["error":"No data"])))
 #endif
@@ -89,39 +88,28 @@ public class BaseAPI<T:TargetType> {
                 print("codingPath:", context.codingPath)
                 
                 let message = "Value '\(value)' not found:" + context.debugDescription
-                completionHandler(.failure(NSError(domain: message, code: statusCode, userInfo: ["error":"No data"])))
+                completionHandler(.failure(WeatherError(code: "\(statusCode)", message: message)))
 #else
                 completionHandler(.failure(NSError(domain: "Something went wrong ", code: statusCode, userInfo: ["error":"No data"])))
 #endif
             } catch let DecodingError.typeMismatch(type, context)  {
-                
-#if DEBUG
-                print("Type '\(type)' mismatch:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-                
-                
-                
+
                 do {
                     let decoder = JSONDecoder()
                     let responseObj = try decoder.decode(WeatherError.self, from: responseData) //Decode JSON Response Data
-                    completionHandler(.failure(NSError(domain: responseObj.message ?? "", code: statusCode, userInfo: ["error":responseObj.message ?? ""])))
+                    completionHandler(.failure(WeatherError(code: "\(statusCode)", message: responseObj.message ?? "")))
                 } catch  {
-                    completionHandler(.failure(NSError(domain: "message", code: statusCode, userInfo: ["error":"No data"])))
+                    completionHandler(.failure(WeatherError(code: "\(statusCode)", message: "message")))
                 }
-                
-                
-                let message = "Type '\(type)' mismatch:" +  context.debugDescription
-                completionHandler(.failure(NSError(domain: message, code: statusCode, userInfo: ["error":"No data"])))
-#else
-                completionHandler(.failure(NSError(domain: "Something went wrong ", code: statusCode, userInfo: ["error":"No data"])))
-#endif
-                
+
             } catch {
                 print("error: ", error)
 #if DEBUG
-                completionHandler(.failure(NSError(domain: error.localizedDescription, code: statusCode, userInfo: ["error":"No data"])))
+                completionHandler(.failure(WeatherError(code: "\(statusCode)", message: error.localizedDescription)))
+
 #endif
-                completionHandler(.failure(NSError(domain: "Something went wrong ", code: statusCode, userInfo: ["error":"No data"])))
+                completionHandler(.failure(WeatherError(code: "\(statusCode)", message: error.localizedDescription)))
+
             }
         }
     }

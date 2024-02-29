@@ -10,9 +10,9 @@ import Alamofire
 
 
 // MARK: - Typealias
-public typealias CurrentWeather = Result<WeatherResponse, NSError>
-public typealias HourlyForecast = Result<Forecast, NSError>
-public typealias SearchResult = Result<CityResult, NSError>
+public typealias CurrentWeather = Result<WeatherResponse, WeatherError>
+public typealias HourlyForecast = Result<Forecast, WeatherError>
+public typealias SearchResult = Result<CityResult, WeatherError>
 
 // MARK: - WeatherProtocol
 /// Protocol defining the interface for weather-related operations.
