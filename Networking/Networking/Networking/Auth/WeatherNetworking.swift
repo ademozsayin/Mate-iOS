@@ -14,6 +14,7 @@ public enum WeatherNetworking {
     
     /// Retrieves current weather information.
     case getCurrentWeather(request: WeatherRequest)
+    case getDailyWeather(request: WeatherRequest)
 }
 
 extension WeatherNetworking: TargetType {
@@ -28,13 +29,16 @@ extension WeatherNetworking: TargetType {
         switch self {
         case .getCurrentWeather(let request):
             return "\(version)/weather?lat=\(request.latitude)&lon=\(request.longitude)&\(appIdSuffix)"
+        case .getDailyWeather(let request):
+            return "\(version)/forecast/daily?lat=\(request.latitude)&lon=\(request.longitude)&cnt=7&\(appIdSuffix)"
         }
     }
     
     /// The HTTP method for the weather networking request.
     public var method: HTTPMethod {
         switch self {
-        case .getCurrentWeather:
+        case .getCurrentWeather,
+                .getDailyWeather:
             return .get
         }
     }
@@ -42,7 +46,8 @@ extension WeatherNetworking: TargetType {
     /// The task for the weather networking request.
     public var task: HTTPTask {
         switch self {
-        case .getCurrentWeather:
+        case .getCurrentWeather,
+                .getDailyWeather:
             return .requestPlain
         }
     }
