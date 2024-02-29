@@ -30,7 +30,7 @@ extension WeatherNetworking: TargetType {
         case .getCurrentWeather(let request):
             return "\(version)/weather?lat=\(request.latitude)&lon=\(request.longitude)&\(appIdSuffix)"
         case .getDailyWeather(let request):
-            return "\(version)forecast/daily?lat=\(request.latitude)&lon=\(request.longitude)&cnt=7&appid=561323c264e40c7e57303cc4cd9b176a"
+            return "\(version)forecast/?lat=\(request.latitude)&lon=\(request.longitude)&\(appIdSuffix)"
         }
     }
     
