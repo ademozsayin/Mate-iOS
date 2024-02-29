@@ -54,45 +54,21 @@ public class BaseAPI<T:TargetType> {
             NetworkLogger.log(request:request)
             NetworkLogger.log(response: response.response, data: response.data, error: response.error)
             //
-            guard let statusCode = response.response?.statusCode else {
-                
-#if DEBUG
-                completionHandler(.failure(NSError(domain: response.error?.localizedDescription ?? "", code: 1001, userInfo: [ "error" : "Status Code Error" ])))
-                
-                
-#else
-                completionHandler(.failure(NSError(domain: "Something went wrong", code: 1001, userInfo: ["error":"No data"])))
-                
-#endif
+            guard let statusCode = response.response?.statusCode,
+                  let responseData = response.data else {
                 return
             }
             
-            guard let responseData = response.data else {
-#if DEBUG
-                completionHandler(.failure(NSError(domain: "No data from response", code: statusCode, userInfo: ["error":"No data"])))
-                
-#else
-                completionHandler(.failure(NSError(domain: "Something went wrong", code: statusCode, userInfo: ["error":"No data"])))
-                
-#endif
-                
-                return
-            }
+   
             do {
                 let decoder = JSONDecoder()
                 let responseObj = try decoder.decode(M.self, from: responseData) //Decode JSON Response Data
                 completionHandler(.success(responseObj))
             } catch let DecodingError.dataCorrupted(context) {
                 
-#if DEBUG
                 print(context)
-                completionHandler(.failure(NSError(domain: context.debugDescription, code: statusCode, userInfo: ["error":"No data"])))
-#else
-                completionHandler(.failure(NSError(domain: "Something went wrong", code: statusCode, userInfo: ["error":"No data"])))
-#endif
                 
             } catch let DecodingError.keyNotFound(key, context) {
-                
                 
                 
 #if DEBUG
@@ -122,6 +98,17 @@ public class BaseAPI<T:TargetType> {
 #if DEBUG
                 print("Type '\(type)' mismatch:", context.debugDescription)
                 print("codingPath:", context.codingPath)
+                
+                
+                
+                do {
+                    let decoder = JSONDecoder()
+                    let responseObj = try decoder.decode(WeatherError.self, from: responseData) //Decode JSON Response Data
+                    completionHandler(.failure(NSError(domain: responseObj.message ?? "", code: statusCode, userInfo: ["error":responseObj.message ?? ""])))
+                } catch  {
+                    completionHandler(.failure(NSError(domain: "message", code: statusCode, userInfo: ["error":"No data"])))
+                }
+                
                 
                 let message = "Type '\(type)' mismatch:" +  context.debugDescription
                 completionHandler(.failure(NSError(domain: message, code: statusCode, userInfo: ["error":"No data"])))

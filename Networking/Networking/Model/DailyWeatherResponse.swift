@@ -10,34 +10,34 @@ import Foundation
 
 // MARK: - DailyWeatherResponse
 public struct DailyWeatherResponse: Codable {
-    let city: City?
-    let cod: String?
-    let message: Double?
-    let cnt: Int?
-    let list: [List]?
+    public let city: City?
+    public let cod: String?
+    public let message: Double?
+    public let cnt: Int?
+    public let list: [List]?
 }
 
 // MARK: - City
 public struct City: Codable {
-    let id: Int?
-    let name: String?
-    let coord: Coord?
-    let country: String?
-    let population, timezone: Int?
+    public let id: Int?
+    public let name: String?
+    public let coord: Coord?
+    public let country: String?
+    public let population, timezone: Int?
 }
 
 // MARK: - List
 public struct List: Codable {
-    let dt, sunrise, sunset: Int?
-    let temp: Temp?
-    let feelsLike: FeelsLike?
-    let pressure, humidity: Int?
-    let weather: [Weather]?
-    let speed: Double?
-    let deg: Int?
-    let gust: Double?
-    let clouds: Int?
-    let pop, rain: Double?
+    public let dt, sunrise, sunset: Int?
+    public let temp: Temp?
+    public let feelsLike: FeelsLike?
+    public let pressure, humidity: Int?
+    public let weather: [Weather]?
+    public let speed: Double?
+    public let deg: Int?
+    public let gust: Double?
+    public let clouds: Int?
+    public let pop, rain: Double?
 
     enum CodingKeys: String, CodingKey {
         case dt, sunrise, sunset, temp
@@ -48,11 +48,11 @@ public struct List: Codable {
 
 // MARK: - FeelsLike
 public struct FeelsLike: Codable {
-    let day, night, eve, morn: Double?
+    public let day, night, eve, morn: Double?
 }
 
 // MARK: - Temp
 public struct Temp: Codable {
-    let day, min, max, night: Double?
-    let eve, morn: Double?
+    public let day, min, max, night: Double?
+    public let eve, morn: Double?
 }

@@ -14,24 +14,18 @@ public typealias CurrentWeather = Result<WeatherResponse, NSError>
 public typealias DailyWeather = Result<DailyWeatherResponse, NSError>
 
 // MARK: - WeatherProtocol
-/// A protocol defining methods to retrieve weather information.
+/// Protocol defining the interface for weather-related operations.
 public protocol WeatherProtocol {
     
     /// Retrieves the current weather information.
     ///
     /// - Parameters:
     ///   - request: The weather request parameters.
-    ///   - completionHandler: A closure to be executed when the request finishes. It provides the current weather data.
+    ///   - completionHandler: A closure to be executed when the request finishes.
     func getCurrentWeather(request: WeatherRequest, completionHandler: @escaping (CurrentWeather) -> Void)
     
-    /// Retrieves daily weather information.
-    ///
-    /// - Parameters:
-    ///   - request: The weather request parameters.
-    ///   - completionHandler: A closure to be executed when the request finishes. It provides the daily weather data.
     func getDailyWeather(request: WeatherRequest, completionHandler: @escaping (DailyWeather) -> Void)
 }
-
 
 // MARK: - WeatherAPI
 public class WeatherAPI: BaseAPI<WeatherNetworking>, WeatherProtocol {
@@ -60,4 +54,5 @@ public class WeatherAPI: BaseAPI<WeatherNetworking>, WeatherProtocol {
             completionHandler(result)
         }
     }
+    
 }

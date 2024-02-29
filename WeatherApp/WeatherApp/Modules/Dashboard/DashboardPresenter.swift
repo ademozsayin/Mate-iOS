@@ -30,7 +30,11 @@ protocol DashboardPresenterProtocol: AnyObject {
     /// - Parameter error: The error encountered during user location fetching.
     func didFailToFetchUserLocation(withError error: Error)
     
-    func weatherDay(index: Int) -> String?
+    func weatherDay(index: Int) -> List?
+    
+    var numberOfDays: Int {get}
+    
+    func didFailedWith(message: String)
 }
 
 // MARK: - DashboardPresenter
@@ -47,7 +51,7 @@ final class DashboardPresenter {
     /// Reference to the interactor handling data retrieval.
     let interactor: DashboardInteractorProtocol?
     
-    private var days:[String] = []
+    private var dailyWeatherList:[List] = []
     
     // MARK: - Initialization
     
@@ -70,11 +74,15 @@ final class DashboardPresenter {
 
 // MARK: - DashboardPresenterProtocol
 extension DashboardPresenter: DashboardPresenterProtocol {
-    func weatherDay(index: Int) -> String? {
-        guard days.count > index else {
+    var numberOfDays: Int {
+        return dailyWeatherList.count
+    }
+    
+    func weatherDay(index: Int) -> List? {
+        guard dailyWeatherList.count > index else {
             return nil
         }
-        return days[index]
+        return dailyWeatherList[index]
     }
     
     /// Displays the last saved location asynchronously.
@@ -120,6 +128,12 @@ extension DashboardPresenter: DashboardPresenterProtocol {
 
 // MARK: - DashboardInteractorOutputProtocol
 extension DashboardPresenter: DashboardInteractorOutputProtocol {
+   
+    func fetchDailyOutput(result: [List]) {
+        self.dailyWeatherList = result
+        view?.reloadData()
+    }
+    
     final func fetchWeatherOutput(result: WeatherResponse) {
         view?.displayWeatherInfo(result)
         view?.hideLoading()
@@ -128,9 +142,13 @@ extension DashboardPresenter: DashboardInteractorOutputProtocol {
     /// Notifies the presenter when user location fetching fails.
     ///
     /// - Parameter error: The error encountered during user location fetching.
-    final func didFailToFetchUserLocation(withError error: Error) {
+    func didFailToFetchUserLocation(withError error: Error) {
         print(error)
         view?.hideLoading()
         view?.showLocationError(error: error)
+    }
+    
+    final func didFailedWith(message:String) {
+        view?.showAlert(message: message)
     }
 }

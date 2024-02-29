@@ -21,7 +21,7 @@ protocol DashboardInteractorProtocol: AnyObject {
     func fetchWeatherForUserLocation()
     /// Fetches the last saved user location.
     func fetchLastSavedLocation() -> UserLocationResult?
-    
+    func fetchDailyWeatherData(_ location: CLLocation)
 }
 
 // MARK: - DashboardInteractorOutputProtocol
@@ -34,6 +34,9 @@ protocol DashboardInteractorOutputProtocol: AnyObject {
     
     func didFailToFetchUserLocation(withError error: Error) 
     
+    func fetchDailyOutput(result: [List]) 
+    
+    func didFailedWith(message:String)
 }
 
 /// Class responsible for handling business logic related to the dashboard.
@@ -75,7 +78,23 @@ final class DashboardInteractor {
 
 // MARK: - DashboardInteractorProtocol
 extension DashboardInteractor: DashboardInteractorProtocol {
-    func fetchWeatherForUserLocation() {
+    func fetchDailyWeatherData(_ location: CLLocation) {
+        let request = CLLocation.asWeatherRequest(location)
+        
+        WeatherAPI().getDailyWeather(request: request) { [weak self]  result in
+            guard let self else { return }
+            switch result {
+            case .success(let weatherInfo):
+                self.output?.fetchDailyOutput(result: weatherInfo.list ?? [])
+            case .failure(let error):
+                print(error.localizedDescription)
+                print("Error fetching weather: \(error)")
+                self.output?.didFailedWith(message: error.domain)
+            }
+        }
+    }
+    
+    final func fetchWeatherForUserLocation() {
         // Use location service to get user location
         LocationService.shared.delegate = self
         LocationService.shared.requestLocation()
@@ -91,6 +110,11 @@ extension DashboardInteractor: DashboardInteractorProtocol {
 // MARK: - LocationServiceDelegate
 extension DashboardInteractor: LocationServiceDelegate {
     final func didFetchUserLocation(_ location: CLLocation) {
+        getCurrentWeather(location)
+        fetchDailyWeatherData(location)
+    }
+    
+    final func getCurrentWeather(_ location: CLLocation) {
         WeatherAPI().getCurrentWeather(request: CLLocation.asWeatherRequest(location)) {[weak self]  result in
             guard let self else { return }
             switch result {

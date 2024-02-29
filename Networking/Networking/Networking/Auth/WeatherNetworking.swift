@@ -30,7 +30,7 @@ extension WeatherNetworking: TargetType {
         case .getCurrentWeather(let request):
             return "\(version)/weather?lat=\(request.latitude)&lon=\(request.longitude)&\(appIdSuffix)"
         case .getDailyWeather(let request):
-            return "\(version)/forecast/daily?lat=\(request.latitude)&lon=\(request.longitude)&cnt=7&\(appIdSuffix)"
+            return "\(version)forecast/daily?lat=\(request.latitude)&lon=\(request.longitude)&cnt=7&appid=561323c264e40c7e57303cc4cd9b176a"
         }
     }
     
@@ -59,7 +59,7 @@ extension WeatherNetworking: TargetType {
     
     /// The version of the weather API.
     private var version:String {
-        return "/data/2.5/"
+        return "data/2.5/"
     }
     
     /// The API key suffix for the weather API.

@@ -20,6 +20,8 @@ protocol DashboardViewControllerProtocol: AnyObject {
     func hideLoading()
     func showLocationError(error: Error)
     func configureCollectionView()
+    func reloadData()
+    func showAlert(message:String)
 }
 
 /// Class responsible for presenting the dashboard view.
@@ -58,6 +60,10 @@ final class DashboardViewController: BaseViewController {
 
 // MARK: - DashboardViewControllerProtocol Conformance
 extension DashboardViewController: DashboardViewControllerProtocol {
+    func showAlert(message: String) {
+        showAlert(title: "Error", message: message)
+    }
+    
     func showLocationError(error: Error) {
         let alertController = UIAlertController(title: "Location Access Required", message: "Please enable location access in settings.", preferredStyle: .alert)
         
@@ -115,6 +121,10 @@ extension DashboardViewController: DashboardViewControllerProtocol {
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.register(cellType: WeatherDayCell.self)
+    }
+    
+    final func reloadData() {
+        collectionView.reloadData()
     }
 }
 
@@ -188,14 +198,14 @@ private extension DashboardViewController {
 // MARK: - UICollectionViewDataSource
 extension DashboardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return presenter?.numberOfDays ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
      
         let cell = collectionView.dequeCell(cellType: WeatherDayCell.self, indexPath: indexPath)
-        if let movie = presenter?.weatherDay(index: indexPath.row) {
-//            cell.configure(movie: movie)
+        if let list = presenter?.weatherDay(index: indexPath.row) {
+            cell.configureWith(list)
         }
         return cell
     }

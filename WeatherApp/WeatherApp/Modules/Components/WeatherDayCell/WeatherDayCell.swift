@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Networking
 
 // MARK: - WeatherDayCell
 final class WeatherDayCell: UICollectionViewCell {
@@ -19,10 +20,17 @@ final class WeatherDayCell: UICollectionViewCell {
     }
 }
 
+// MARK: - Configure
+extension WeatherDayCell {
+    final func configureWith(_ list: List) {
+        print(list.weather?.first?.main ?? "")
+    }
+}
+
+
 // MARK: - Setup
 private extension WeatherDayCell {
     final func setupView() {
-//        containerView.roundCorners(.allCorners, radius: 16)
         containerView.backgroundColor = UIColor.white.withAlphaComponent(0.1)
         containerView.layer.cornerRadius = 16
         containerView.layer.masksToBounds = false
