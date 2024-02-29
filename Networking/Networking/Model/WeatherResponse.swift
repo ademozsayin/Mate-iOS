@@ -33,13 +33,8 @@ public struct Main: Codable {
         case temp_min
         case temp_max
     }
-
 }
 
-// MARK: - Sys
-public struct Sys: Codable {
-    public let country: String
-}
 
 // MARK: - Weather
 public struct Weather: Codable {
@@ -81,6 +76,11 @@ public enum WeatherType: String, Codable {
     case thunderstorm = "thunderstorm"
     case snow = "snow"
     case mist = "mist"
+    case over = "overcast clouds"
+    case light = "light rain"
+    case moderate = "moderate rain"
+//    case lightSnow = "light snow"
+    case unknown
     
     // Define gradient colors for each weather type
     public var gradientColors: [UIColor] {
@@ -95,16 +95,27 @@ public enum WeatherType: String, Codable {
             return [UIColor.darkGray, UIColor.lightGray]
         case .showerRain:
             return [UIColor.gray, UIColor.blue]
-        case .rain:
+        case .rain, .light, .moderate:
             return [UIColor.darkGray, UIColor.gray]
         case .thunderstorm:
             return [UIColor.black, UIColor.darkGray]
         case .snow:
             return [UIColor.white, UIColor.lightGray]
-        case .mist:
+        case .mist, .over:
             return [UIColor.lightGray, UIColor.systemPink]
+        case .unknown:
+            return [UIColor.lightGray, UIColor.systemPink]
+
         }
     }
+    
+    // Custom initializer to handle unknown values
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.singleValueContainer()
+            let rawValue = try container.decode(String.self)
+            self = WeatherType(rawValue: rawValue) ?? .unknown
+        }
+
     
     // TODO: Make text colors according to type 
 }

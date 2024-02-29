@@ -120,6 +120,7 @@ extension DashboardViewController: DashboardViewControllerProtocol {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.register(cellType: WeatherDayCell.self)
     }
     
@@ -190,6 +191,7 @@ private extension DashboardViewController {
     }
     
     final func reloadView() {
+        reloadData()
         guard let weatherInfo else { return }
         displayWeatherInfo(weatherInfo)
     }

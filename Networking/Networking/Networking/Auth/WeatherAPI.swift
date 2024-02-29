@@ -11,7 +11,8 @@ import Alamofire
 
 // MARK: - Typealias
 public typealias CurrentWeather = Result<WeatherResponse, NSError>
-public typealias DailyWeather = Result<DailyWeatherResponse, NSError>
+//public typealias DailyWeather = Result<DailyWeatherResponse, NSError>
+public typealias HourlyForecast = Result<Forecast, NSError>
 
 // MARK: - WeatherProtocol
 /// Protocol defining the interface for weather-related operations.
@@ -24,7 +25,7 @@ public protocol WeatherProtocol {
     ///   - completionHandler: A closure to be executed when the request finishes.
     func getCurrentWeather(request: WeatherRequest, completionHandler: @escaping (CurrentWeather) -> Void)
     
-    func getDailyWeather(request: WeatherRequest, completionHandler: @escaping (DailyWeather) -> Void)
+    func getDailyWeather(request: WeatherRequest, completionHandler: @escaping (HourlyForecast) -> Void)
 }
 
 // MARK: - WeatherAPI
@@ -49,8 +50,8 @@ public class WeatherAPI: BaseAPI<WeatherNetworking>, WeatherProtocol {
     /// - Parameters:
     ///   - request: The weather request containing parameters for fetching daily weather data.
     ///   - completionHandler: A closure to be called once the data is fetched. It provides the fetched daily weather data.
-    public func getDailyWeather(request: WeatherRequest, completionHandler: @escaping (DailyWeather) -> Void) {
-        self.fetchData(target: .getDailyWeather(request: request), responseClass: DailyWeatherResponse.self) { result in
+    public func getDailyWeather(request: WeatherRequest, completionHandler: @escaping (HourlyForecast) -> Void) {
+        self.fetchData(target: .getDailyWeather(request: request), responseClass: Forecast.self) { result in
             completionHandler(result)
         }
     }

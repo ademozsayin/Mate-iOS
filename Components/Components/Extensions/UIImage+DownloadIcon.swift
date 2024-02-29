@@ -19,7 +19,7 @@ extension UIImage {
         - suffix: The suffix used to construct the image URL.
         - completion: A closure to be executed upon completion of the download, providing a result that contains either the downloaded image or an error.
      */
-    static func downloadImage(forSuffix suffix: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
+    public static func downloadImage(forSuffix suffix: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         // Construct the image URL with the given suffix
         let urlString = "https://openweathermap.org/img/w/\(suffix).png"
         guard let url = URL(string: urlString) else {
