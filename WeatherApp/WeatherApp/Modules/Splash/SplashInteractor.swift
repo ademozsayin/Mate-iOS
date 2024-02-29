@@ -34,7 +34,7 @@ final class SplashInteractor {
 }
 
 extension SplashInteractor: SplashInteractorProtocol {
-    func checkInternetConnection() {
+    final  func checkInternetConnection() {
         ConnectionManager.isUnreachable { [weak self] con in
             self?.output?.isUnreachable(status: true)
         }

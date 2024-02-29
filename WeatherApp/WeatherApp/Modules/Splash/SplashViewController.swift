@@ -28,14 +28,13 @@ final class SplashViewController: BaseViewController {
 // MARK: - SplashViewControllerProtocol
 extension SplashViewController: SplashViewControllerProtocol {
     
-    func noInternetConnection() {
+    final func noInternetConnection() {
         func noInternetConnection() {
             showAlert(title: "Error", message: "No Internet Connection, Please check your connection!")
         }
     }
     
     final func isReachable(status:Bool) {
-        print(status)
         status ? print("online") : noInternetConnection()
 
     }

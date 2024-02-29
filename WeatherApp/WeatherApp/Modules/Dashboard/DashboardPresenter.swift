@@ -100,13 +100,8 @@ extension DashboardPresenter: DashboardPresenterProtocol {
             if let lastLocation = self.interactor?.fetchLastSavedLocation() {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
-                    // Display last saved location in your UI
-                    // For example:
                     print("Last saved location: \(lastLocation)")
-                    // Update UI with last saved location
-                    // Example: view?.updateLocationLabel(lastLocation)
                     self.view?.showLastUpdatedWeather(info: lastLocation)
-                    
                     // Call completion handler with the fetched location
                     completion(lastLocation)
                 }

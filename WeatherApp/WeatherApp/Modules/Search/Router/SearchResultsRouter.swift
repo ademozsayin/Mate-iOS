@@ -44,7 +44,7 @@ extension SearchResultsRouter: SearchResultsRouterProtocol {
     /// Navigates to the specified route.
     ///
     /// - Parameter route: The route to navigate to.
-    func navigate(_ route: SearchRoutes) {
+    final func navigate(_ route: SearchRoutes) {
         // Implement navigation logic here based on the specified route
     }
 }

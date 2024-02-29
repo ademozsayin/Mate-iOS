@@ -75,14 +75,14 @@ final class SplashPresenter: SplashPresenterProtocol {
 
 // MARK: - SplashInteractorOutputProtocol
 extension SplashPresenter: SplashInteractorOutputProtocol {
-    func isReachable(status: Bool) {
+    final func isReachable(status: Bool) {
         view?.isReachable(status: status)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.router?.navigate(.homeScreen)
         }
     }
     
-    func isUnreachable(status: Bool) {
+    final func isUnreachable(status: Bool) {
         view?.isReachable(status: !status)
     }
 }

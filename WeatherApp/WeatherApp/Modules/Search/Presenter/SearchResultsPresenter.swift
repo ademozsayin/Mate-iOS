@@ -60,7 +60,7 @@ final class SearchResultsPresenter: SearchResultsPresenterProtocol {
     /// Updates the search results based on the provided query.
     ///
     /// - Parameter query: The search query entered by the user.
-    func updateResults(query: String) {
+    final func updateResults(query: String) {
         if query.count > 1 {
             interactor.fetchWeather(query: query)
         } else {
@@ -70,12 +70,12 @@ final class SearchResultsPresenter: SearchResultsPresenterProtocol {
     }
     
     /// Removes the searched city.
-    func removeQuerys() {
+    final func removeQuerys() {
         self.searchedCity = nil
     }
     
     /// Called when the view is loaded and ready.
-    func viewDidLoad() {
+    final func viewDidLoad() {
         view?.setView()
     }
 }

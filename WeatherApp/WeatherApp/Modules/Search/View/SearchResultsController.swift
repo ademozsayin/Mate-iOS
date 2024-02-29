@@ -7,13 +7,16 @@
 
 import UIKit
 
+// MARK: - SearchResultsControllerProtocol
 protocol SearchResultsControllerProtocol: AnyObject {
     func reloadData()
     func setView()
 }
 
+// MARK: - SearchResultsController
 final class SearchResultsController: UIViewController {
     
+    // MARK: - IBOUtlets
     @IBOutlet private weak var tableView: UITableView!
   
     var searchController: UISearchController?
@@ -28,8 +31,6 @@ final class SearchResultsController: UIViewController {
 
 // MARK: - SearchResultsControllerProtocol
 extension SearchResultsController: SearchResultsControllerProtocol {
-    
-    
     final func setView() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -38,7 +39,6 @@ extension SearchResultsController: SearchResultsControllerProtocol {
         // Set the search bar as the header view of the table view
         tableView.tableHeaderView = searchController?.searchBar
         definesPresentationContext = true
-        
     }
     
     final func reloadData() {
@@ -46,7 +46,7 @@ extension SearchResultsController: SearchResultsControllerProtocol {
     }
     
     // Builder method to create the search controller
-    private func createSearchController() -> UISearchController {
+    final func createSearchController() -> UISearchController {
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = Localization.searchPlaceHolder
@@ -55,9 +55,7 @@ extension SearchResultsController: SearchResultsControllerProtocol {
 }
 
 // MARK: - UISearchResultsUpdating - UISearchBarDelegate
-
 extension SearchResultsController: UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate {
-    
     func updateSearchResults(for searchController: UISearchController) {
         guard let searchtext = searchController.searchBar.text else {
              return
@@ -68,11 +66,9 @@ extension SearchResultsController: UISearchResultsUpdating, UISearchBarDelegate,
 
 // MARK: - UITableViewDelegate - UITableViewDataSource
 extension SearchResultsController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.numberOfCityResult ?? 0
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
