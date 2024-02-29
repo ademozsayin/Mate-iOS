@@ -19,7 +19,9 @@ protocol DashboardRouterProtocol: AnyObject {
 /// Enum defining different routes within the dashboard.
 enum DashboardRoutes {
     // Define your routes here if needed.
+    case search
 }
+
 
 // MARK: - DashboardRouter
 final class DashboardRouter {
@@ -53,5 +55,13 @@ extension DashboardRouter: DashboardRouterProtocol {
     final func navigate(_ route: DashboardRoutes) {
         // Implementation of navigation logic can be added here.
         // Currently, it's empty as no navigation logic is provided.
+        switch route {
+        case .search:
+            let detailVC = DetailRouter.createModule()
+            detailVC.movie = movie
+            viewController?.navigationController?.pushViewController(detailVC, animated: true)
+        default:
+            return
+        }
     }
 }

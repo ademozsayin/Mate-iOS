@@ -22,6 +22,7 @@ protocol DashboardViewControllerProtocol: AnyObject {
     func configureCollectionView()
     func reloadData()
     func showAlert(message:String)
+    func setSearchBar()
 }
 
 /// Class responsible for presenting the dashboard view.
