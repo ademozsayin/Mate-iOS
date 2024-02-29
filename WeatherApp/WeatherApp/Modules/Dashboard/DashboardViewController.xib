@@ -12,8 +12,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
+                <outlet property="containerView" destination="ArB-cy-mPu" id="stH-Vu-6qI"/>
                 <outlet property="dateLabel" destination="YNw-T1-k7o" id="P1w-Le-oUo"/>
                 <outlet property="locationLabel" destination="kgy-u1-NSM" id="iVT-IF-9aQ"/>
+                <outlet property="navbarView" destination="wZW-eu-wJt" id="ZQH-Jz-7m9"/>
                 <outlet property="scrollView" destination="4B7-LP-eAc" id="Ab4-tO-TKe"/>
                 <outlet property="temperatureButton" destination="2qV-dD-ysN" id="mwH-b1-9Mv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="Fns-rA-Hqh"/>

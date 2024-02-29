@@ -19,4 +19,27 @@ extension UIView {
         if corners.contains(.bottomRight) { cornerMask.insert(.layerMaxXMaxYCorner) }
         self.layer.maskedCorners = cornerMask
     }
+    
+//    func setGradientBackground(colors: [UIColor]) {
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = bounds
+//        gradientLayer.colors = colors.map { $0.cgColor }
+//        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+//        layer.insertSublayer(gradientLayer, at: 0)
+//    }
+    
+    
+}
+
+
+extension UIView {
+func applyGradient(colours: [UIColor]) -> Void {
+ let gradient: CAGradientLayer = CAGradientLayer()
+ gradient.frame = self.bounds
+ gradient.colors = colours.map { $0.cgColor }
+ gradient.startPoint = CGPoint(x : 0.0, y : 0.5)
+ gradient.endPoint = CGPoint(x :1.0, y: 0.5)
+ self.layer.insertSublayer(gradient, at: 0)
+ }
 }

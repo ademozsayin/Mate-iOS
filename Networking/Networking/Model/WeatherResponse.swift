@@ -44,7 +44,8 @@ public struct Sys: Codable {
 // MARK: - Weather
 public struct Weather: Codable {
     public let id: Int
-    public let main, description, icon: String?
+    public let main, icon: String?
+    public var description:WeatherType?
     
     public static func downloadImage(forIcon icon: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         // Construct the image URL with the given icon
@@ -68,4 +69,42 @@ public struct Weather: Codable {
             }
         }
     }
+}
+
+public enum WeatherType: String, Codable {
+    case clearSky = "clear sky"
+    case fewClouds = "few clouds"
+    case scatteredClouds = "scattered clouds"
+    case brokenClouds = "broken clouds"
+    case showerRain = "shower rain"
+    case rain = "rain"
+    case thunderstorm = "thunderstorm"
+    case snow = "snow"
+    case mist = "mist"
+    
+    // Define gradient colors for each weather type
+    public var gradientColors: [UIColor] {
+        switch self {
+        case .clearSky:
+            return [UIColor.blue, UIColor.cyan]
+        case .fewClouds:
+            return [UIColor.lightGray, UIColor.darkGray]
+        case .scatteredClouds:
+            return [UIColor.gray, UIColor.white]
+        case .brokenClouds:
+            return [UIColor.darkGray, UIColor.lightGray]
+        case .showerRain:
+            return [UIColor.gray, UIColor.blue]
+        case .rain:
+            return [UIColor.darkGray, UIColor.gray]
+        case .thunderstorm:
+            return [UIColor.black, UIColor.darkGray]
+        case .snow:
+            return [UIColor.white, UIColor.lightGray]
+        case .mist:
+            return [UIColor.lightGray, UIColor.systemPink]
+        }
+    }
+    
+    // TODO: Make text colors according to type 
 }

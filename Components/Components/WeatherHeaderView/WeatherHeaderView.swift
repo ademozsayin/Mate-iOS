@@ -47,7 +47,7 @@ public extension WeatherHeaderView {
         locationLabel.text = weather.name
         dateLabel.text = Date().asWeatherDate()
         weatherStatusLabel.text = weather.weather?.first?.main ?? "-"
-        weatherDetailLabel.text = weather.weather?.first?.description ?? "-"
+        weatherDetailLabel.text = weather.weather?.first?.description?.rawValue ?? "-"
         minMaxLabel.text = weather.main?.minMaxTemperatureString(unit: TemperatureUnit.currentUnit)
         configureTemperature(weather)
         configureIcon(weather.weather?.first?.icon)

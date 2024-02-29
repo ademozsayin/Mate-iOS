@@ -30,7 +30,9 @@ final class DashboardViewController: BaseViewController {
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var temperatureButton: UIButton!
+    @IBOutlet private weak var containerView: UIView!
     
+    @IBOutlet private weak var navbarView: UIView!
     // MARK: - Data
     private var cancellables = Set<AnyCancellable>()
     private var userLocationResult: UserLocationResult? {
@@ -82,12 +84,22 @@ extension DashboardViewController: DashboardViewControllerProtocol {
     
     final func displayWeatherInfo(_ weatherInfo: WeatherResponse) {
         self.weatherInfo = weatherInfo
+        if let colors = weatherInfo.weather?.first?.description?.gradientColors {
+            applyGradient(colors: colors)
+        }
         locationLabel.text = weatherInfo.name
         dateLabel.text = "Updating"
         updateUserLocationLabel()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.weatherHeaderView.configureWith(weatherInfo)
         }
+    }
+    
+    final func applyGradient(colors:  [UIColor] ) {
+        containerView.backgroundColor = .clear
+        weatherHeaderView.applyGradient(colours: colors)
+        navbarView.applyGradient(colours: colors)
+        scrollView.applyGradient(colours: colors)
     }
 }
 
@@ -109,7 +121,6 @@ private extension DashboardViewController {
     // MARK: - Private Methods
     final func configureBackgroundView() {
         view.backgroundColor = .opaqueSeparator
-        scrollView.roundCorners([.topLeft, .topRight], radius: 24)
     }
     
     final func updateUserLocationLabel() {
