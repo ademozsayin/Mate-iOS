@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DashboardViewController" customModule="WeatherApp" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="1XC-UC-vt4" id="OLe-Aj-qFa"/>
                 <outlet property="containerView" destination="ArB-cy-mPu" id="stH-Vu-6qI"/>
                 <outlet property="dateLabel" destination="YNw-T1-k7o" id="P1w-Le-oUo"/>
                 <outlet property="locationLabel" destination="kgy-u1-NSM" id="iVT-IF-9aQ"/>
@@ -69,10 +70,10 @@
                         <constraint firstAttribute="height" constant="160" id="zdQ-zK-v5Q" userLabel="height = 140"/>
                     </constraints>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4B7-LP-eAc">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4B7-LP-eAc">
                     <rect key="frame" x="0.0" y="160" width="390" height="684"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ArB-cy-mPu">
+                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ArB-cy-mPu" userLabel="ContainerView">
                             <rect key="frame" x="0.0" y="0.0" width="390" height="684"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scP-I8-lhd" customClass="WeatherHeaderView" customModule="Components">
@@ -82,40 +83,77 @@
                                         <constraint firstAttribute="height" constant="200" id="a0U-Ep-bvU"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NgC-Dd-cUT" userLabel="CollectionContainerView">
+                                    <rect key="frame" x="0.0" y="320" width="390" height="250"/>
+                                    <subviews>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="1XC-UC-vt4">
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="250"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hk5-RG-dws">
+                                                <size key="itemSize" width="128" height="128"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                        </collectionView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="1XC-UC-vt4" secondAttribute="bottom" id="Aco-SD-Wl5"/>
+                                        <constraint firstItem="1XC-UC-vt4" firstAttribute="leading" secondItem="NgC-Dd-cUT" secondAttribute="leading" id="AmZ-EW-fY4"/>
+                                        <constraint firstItem="1XC-UC-vt4" firstAttribute="top" secondItem="NgC-Dd-cUT" secondAttribute="top" id="GCZ-tT-okg"/>
+                                        <constraint firstAttribute="trailing" secondItem="1XC-UC-vt4" secondAttribute="trailing" id="SBJ-ch-fW5"/>
+                                        <constraint firstAttribute="height" constant="250" id="hPY-6t-G0l"/>
+                                    </constraints>
+                                </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="scP-I8-lhd" firstAttribute="top" secondItem="ArB-cy-mPu" secondAttribute="top" id="Atm-Hb-M63"/>
+                                <constraint firstItem="NgC-Dd-cUT" firstAttribute="leading" secondItem="ArB-cy-mPu" secondAttribute="leading" id="E7a-1H-yVJ"/>
                                 <constraint firstItem="scP-I8-lhd" firstAttribute="leading" secondItem="ArB-cy-mPu" secondAttribute="leading" id="NOz-6M-Uki"/>
+                                <constraint firstAttribute="trailing" secondItem="NgC-Dd-cUT" secondAttribute="trailing" id="Orw-21-ZM4"/>
                                 <constraint firstAttribute="trailing" secondItem="scP-I8-lhd" secondAttribute="trailing" id="ZxP-mz-li3"/>
+                                <constraint firstItem="NgC-Dd-cUT" firstAttribute="top" secondItem="scP-I8-lhd" secondAttribute="bottom" constant="120" id="iOw-j9-f1N"/>
+                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NgC-Dd-cUT" secondAttribute="bottom" priority="251" constant="16" id="qT1-cn-Ea3"/>
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="ArB-cy-mPu" secondAttribute="trailing" id="4iB-5e-HAx"/>
-                        <constraint firstItem="ArB-cy-mPu" firstAttribute="bottom" secondItem="SAN-Ii-xus" secondAttribute="bottom" id="PFX-0B-k2b"/>
-                        <constraint firstAttribute="bottom" secondItem="ArB-cy-mPu" secondAttribute="bottom" id="Xuj-aS-Vt8"/>
-                        <constraint firstItem="ArB-cy-mPu" firstAttribute="leading" secondItem="SAN-Ii-xus" secondAttribute="leading" id="YWG-K8-l5c"/>
-                        <constraint firstItem="ArB-cy-mPu" firstAttribute="trailing" secondItem="SAN-Ii-xus" secondAttribute="trailing" id="ZFc-xn-TPb"/>
-                        <constraint firstItem="ArB-cy-mPu" firstAttribute="top" secondItem="SAN-Ii-xus" secondAttribute="top" id="afd-qh-p92"/>
+                        <constraint firstItem="ArB-cy-mPu" firstAttribute="top" secondItem="4B7-LP-eAc" secondAttribute="top" id="3wS-Vh-yUc"/>
+                        <constraint firstAttribute="trailing" secondItem="ArB-cy-mPu" secondAttribute="trailing" id="EIM-Jk-g6s"/>
+                        <constraint firstAttribute="bottom" secondItem="ArB-cy-mPu" secondAttribute="bottom" id="IRl-i0-6LZ"/>
+                        <constraint firstItem="ArB-cy-mPu" firstAttribute="leading" secondItem="4B7-LP-eAc" secondAttribute="leading" id="akD-3z-JiK"/>
+                        <constraint firstItem="ArB-cy-mPu" firstAttribute="width" secondItem="4B7-LP-eAc" secondAttribute="width" id="u82-Lc-oQ6"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="PE4-Cl-n3K"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="SAN-Ii-xus"/>
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="4B7-LP-eAc" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" priority="249" constant="-70" id="IEv-4E-RQs"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="2I0-hD-s5W"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="top" secondItem="wZW-eu-wJt" secondAttribute="bottom" id="2jk-fL-OCk"/>
+                <constraint firstAttribute="bottom" secondItem="4B7-LP-eAc" secondAttribute="bottom" id="6zd-jq-VlZ"/>
+                <constraint firstAttribute="bottom" secondItem="4B7-LP-eAc" secondAttribute="bottom" id="8O8-7Y-HrX"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Hd7-jt-tXQ"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LBV-df-17i"/>
                 <constraint firstItem="wZW-eu-wJt" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PX1-im-Xoe"/>
                 <constraint firstItem="wZW-eu-wJt" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="SBe-7f-1gN"/>
                 <constraint firstItem="4B7-LP-eAc" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="UZr-UG-opx"/>
-                <constraint firstAttribute="bottom" secondItem="4B7-LP-eAc" secondAttribute="bottom" id="bJV-9m-g02"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="top" secondItem="wZW-eu-wJt" secondAttribute="bottom" id="Uzy-rl-96Q"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="top" secondItem="wZW-eu-wJt" secondAttribute="bottom" id="ehn-3c-vGo"/>
                 <constraint firstItem="4B7-LP-eAc" firstAttribute="top" secondItem="wZW-eu-wJt" secondAttribute="bottom" id="h3Y-vA-S1x"/>
-                <constraint firstItem="4B7-LP-eAc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="htT-wO-sb8"/>
                 <constraint firstItem="wZW-eu-wJt" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="jeP-5w-zdE"/>
-                <constraint firstItem="4B7-LP-eAc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="rnq-Dx-LB7"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kWw-KN-WNM"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kgh-M6-KKI"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="obq-yy-TSY"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vQD-cG-TUd"/>
+                <constraint firstAttribute="bottom" secondItem="4B7-LP-eAc" secondAttribute="bottom" id="wlW-6b-Aff"/>
+                <constraint firstItem="4B7-LP-eAc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="zl4-sM-eiC"/>
+                <constraint firstAttribute="bottom" secondItem="4B7-LP-eAc" secondAttribute="bottom" id="zzF-YB-IfP"/>
             </constraints>
             <point key="canvasLocation" x="130.76923076923077" y="55.45023696682464"/>
         </view>

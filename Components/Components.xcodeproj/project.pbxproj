@@ -23,6 +23,8 @@
 		0D8E45C32B8D16010057100C /* Components.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D8E45B52B8D16010057100C /* Components.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D8E45CE2B8D16260057100C /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45CD2B8D16260057100C /* LoadingView.swift */; };
 		0D8E45D02B8D16B60057100C /* LoadingShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45CF2B8D16B60057100C /* LoadingShowable.swift */; };
+		0D9D1B092B90D2F700316D94 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B082B90D2F700316D94 /* UICollectionView+Extension.swift */; };
+		0D9D1B0B2B90D36000316D94 /* UICollectionViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B0A2B90D36000316D94 /* UICollectionViewCell+Extension.swift */; };
 		526F44CCB9134C3C7121E2DD /* libPods-ComponentsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C35D6C98A06223059BA12F5 /* libPods-ComponentsTests.a */; };
 		BF921E41146924C990CEC867 /* libPods-Components.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 76913FEDC42878DA6B1668F1 /* libPods-Components.a */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		0D8E45C12B8D16010057100C /* ComponentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsTests.swift; sourceTree = "<group>"; };
 		0D8E45CD2B8D16260057100C /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		0D8E45CF2B8D16B60057100C /* LoadingShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShowable.swift; sourceTree = "<group>"; };
+		0D9D1B082B90D2F700316D94 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		0D9D1B0A2B90D36000316D94 /* UICollectionViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Extension.swift"; sourceTree = "<group>"; };
 		11EC5E2F129AD14547C9A495 /* Pods-Components.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Components.debug.xcconfig"; path = "Target Support Files/Pods-Components/Pods-Components.debug.xcconfig"; sourceTree = "<group>"; };
 		2597DE67DB9F4D3A1CA4FDF1 /* Pods-ComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-ComponentsTests/Pods-ComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		3C35D6C98A06223059BA12F5 /* libPods-ComponentsTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComponentsTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +111,8 @@
 				0D7414B32B8FEB0A001114FB /* UIImage+DownloadIcon.swift */,
 				0D7414B72B8FF17A001114FB /* Combine+UIControl.swift */,
 				0D7414BD2B8FF4CA001114FB /* Main+TemperatureString.swift */,
+				0D9D1B082B90D2F700316D94 /* UICollectionView+Extension.swift */,
+				0D9D1B0A2B90D36000316D94 /* UICollectionViewCell+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -395,7 +401,9 @@
 				0D7414BE2B8FF4CA001114FB /* Main+TemperatureString.swift in Sources */,
 				0D8E45D02B8D16B60057100C /* LoadingShowable.swift in Sources */,
 				0D74149D2B8F4B95001114FB /* NibOwnerLoadable.swift in Sources */,
+				0D9D1B0B2B90D36000316D94 /* UICollectionViewCell+Extension.swift in Sources */,
 				0D8E45B72B8D16010057100C /* Components.docc in Sources */,
+				0D9D1B092B90D2F700316D94 /* UICollectionView+Extension.swift in Sources */,
 				0D8E45CE2B8D16260057100C /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

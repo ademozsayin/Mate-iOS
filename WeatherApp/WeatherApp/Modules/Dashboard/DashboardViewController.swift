@@ -19,6 +19,7 @@ protocol DashboardViewControllerProtocol: AnyObject {
     func showLoading()
     func hideLoading()
     func showLocationError(error: Error)
+    func configureCollectionView()
 }
 
 /// Class responsible for presenting the dashboard view.
@@ -31,8 +32,9 @@ final class DashboardViewController: BaseViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var temperatureButton: UIButton!
     @IBOutlet private weak var containerView: UIView!
-    
+    @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var navbarView: UIView!
+    
     // MARK: - Data
     private var cancellables = Set<AnyCancellable>()
     private var userLocationResult: UserLocationResult? {
@@ -48,6 +50,7 @@ final class DashboardViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureBackgroundView()
+        configureCollectionView()
         setupButtonTapHandling()
         presenter?.viewDidLoad()
     }
@@ -96,10 +99,22 @@ extension DashboardViewController: DashboardViewControllerProtocol {
     }
     
     final func applyGradient(colors:  [UIColor] ) {
+        view.applyGradient(colours: colors)
         containerView.backgroundColor = .clear
         weatherHeaderView.applyGradient(colours: colors)
         navbarView.applyGradient(colours: colors)
         scrollView.applyGradient(colours: colors)
+    }
+    
+    final func configureCollectionView() {
+        let collectionFlowLayout = UICollectionViewFlowLayout()
+        collectionFlowLayout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = collectionFlowLayout
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .clear
+        collectionView.register(cellType: WeatherDayCell.self)
     }
 }
 
@@ -167,5 +182,31 @@ private extension DashboardViewController {
     final func reloadView() {
         guard let weatherInfo else { return }
         displayWeatherInfo(weatherInfo)
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension DashboardViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+     
+        let cell = collectionView.dequeCell(cellType: WeatherDayCell.self, indexPath: indexPath)
+        if let movie = presenter?.weatherDay(index: indexPath.row) {
+//            cell.configure(movie: movie)
+        }
+        return cell
+    }
+}
+
+extension DashboardViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(width: 80, height: 180)
     }
 }

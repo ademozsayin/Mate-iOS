@@ -29,6 +29,8 @@ protocol DashboardPresenterProtocol: AnyObject {
     ///
     /// - Parameter error: The error encountered during user location fetching.
     func didFailToFetchUserLocation(withError error: Error)
+    
+    func weatherDay(index: Int) -> String?
 }
 
 // MARK: - DashboardPresenter
@@ -44,6 +46,8 @@ final class DashboardPresenter {
     let router: DashboardRouterProtocol?
     /// Reference to the interactor handling data retrieval.
     let interactor: DashboardInteractorProtocol?
+    
+    private var days:[String] = []
     
     // MARK: - Initialization
     
@@ -66,6 +70,12 @@ final class DashboardPresenter {
 
 // MARK: - DashboardPresenterProtocol
 extension DashboardPresenter: DashboardPresenterProtocol {
+    func weatherDay(index: Int) -> String? {
+        guard days.count > index else {
+            return nil
+        }
+        return days[index]
+    }
     
     /// Displays the last saved location asynchronously.
     ///
