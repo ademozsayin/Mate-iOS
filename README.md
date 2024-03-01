@@ -50,6 +50,10 @@
 
 5. Open the project by double clicking on `WeatherApp.xcworkspace` file, or launching Xcode and choose File > Open and browse to `WeatherApp.xcworkspace`
 
+6. Change api key
+
+    <img src="docs/images/apicredentials-location.png" width="240">
+
 
 ## 📚 Documentation
 
