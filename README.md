@@ -1,6 +1,6 @@
 
 
-<h1 align="center"><img src="docs/images/download.png" width="300"><br>An Weather app case for iOS build for Ninova</h1>
+<h1 align="center"><img src="docs/images/download.png" width="300"><br>A Weather iOS App for Ninova</h1>
 
 <p align="center">A sample weather app for iOS.</p>
 
