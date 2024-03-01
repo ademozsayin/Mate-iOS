@@ -50,6 +50,7 @@
 
 5. Open the project by double clicking on `WeatherApp.xcworkspace` file, or launching Xcode and choose File > Open and browse to `WeatherApp.xcworkspace`
 
+
 ## 📚 Documentation
 
 - Architecture
