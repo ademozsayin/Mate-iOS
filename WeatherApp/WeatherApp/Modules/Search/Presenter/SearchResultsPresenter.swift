@@ -28,6 +28,9 @@ protocol SearchResultsPresenterProtocol: AnyObject {
     var fetchThreshold: TimeInterval { get }
     
     func removeQuerys()
+    
+    func didSelectRowAt(index: Int)
+
 }
 
 /// Class responsible for presenting the search results view.
@@ -102,6 +105,11 @@ final class SearchResultsPresenter: SearchResultsPresenterProtocol {
     final func viewDidLoad() {
         view?.setView()
     }
+    
+    func didSelectRowAt(index: Int) {
+        guard let searchedCity else {return}
+        router.navigate(.detail(city: searchedCity))
+    }
 }
 
 /// Extension to handle search results interactor output.
@@ -119,7 +127,6 @@ extension SearchResultsPresenter: SearchResultsInteractorOutputProtocol {
             print(error.message ?? error.localizedDescription)
             view?.serverMessage(message: error.message ?? error.localizedDescription)
             view?.reloadData()
-
         }
     }
 }

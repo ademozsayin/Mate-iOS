@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import Networking
 /// Protocol defining the routing actions for the SearchResultsViewController.
 protocol SearchResultsRouterProtocol: AnyObject {
     /// Navigates to the specified route.
@@ -17,7 +17,7 @@ protocol SearchResultsRouterProtocol: AnyObject {
 
 /// Enum defining the possible routes for navigation from the search results view.
 enum SearchRoutes {
-    case detail
+    case detail(city: CityResult)
 }
 
 /// Class responsible for routing from the search results view.
@@ -46,5 +46,10 @@ extension SearchResultsRouter: SearchResultsRouterProtocol {
     /// - Parameter route: The route to navigate to.
     final func navigate(_ route: SearchRoutes) {
         // Implement navigation logic here based on the specified route
+        switch route {
+        case .detail(let city):
+            let detailVC = WeatherDetailRouter.createModule(city: city)
+            viewController?.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }

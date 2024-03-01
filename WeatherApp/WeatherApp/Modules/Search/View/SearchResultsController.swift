@@ -99,8 +99,9 @@ extension SearchResultsController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: - navigate to detail
+        presenter?.didSelectRowAt(index: indexPath.row)
     }
+
 }
 
 // MARK: -Localization

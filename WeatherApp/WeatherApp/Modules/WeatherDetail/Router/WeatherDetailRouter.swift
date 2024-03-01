@@ -19,11 +19,11 @@ enum DetailRoutes {
 final class WeatherDetailRouter {
     weak var viewController: WeatherDetailViewController?
     
-    static func createModule() -> WeatherDetailViewController{
+    static func createModule(city: CityResult?) -> WeatherDetailViewController{
         let view = WeatherDetailViewController()
         let interactor = DetailInteractor()
         let router = WeatherDetailRouter()
-        let presenter = DetailPresenter(view: view, router: router, interactor: interactor)
+        let presenter = DetailPresenter(view: view, router: router, interactor: interactor, city: city)
         view.presenter = presenter
         interactor.output = presenter
         router.viewController = view
@@ -38,8 +38,7 @@ extension WeatherDetailRouter: WeatherDetailRouterProtocol {
         case .openURL(let url):
             print(url)
         case .city(city: let city):
-            let detailVC = WeatherDetailRouter.createModule()
-            detailVC.city = city
+            let detailVC = WeatherDetailRouter.createModule(city: city)
             viewController?.navigationController?.pushViewController(detailVC, animated: true)
         }
     }

@@ -27,11 +27,13 @@ public struct Main: Codable {
     public let temp: Double?
     public let temp_min:Double?
     public let temp_max:Double?
+    public let humidity:Double?
     
     enum CodingKeys: String, CodingKey {
         case temp
         case temp_min
         case temp_max
+        case humidity
     }
 }
 
