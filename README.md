@@ -4,6 +4,10 @@
 
 <p align="center">A sample weather app for iOS.</p>
 
+<p align="center">
+  <img src="docs/images/app-1.png" alt="Image 1" width="400" />
+  <img src="docs/images/app-2.png" alt="Image 2" width="400" />
+</p>
 
 <p align="center">
     <a href="#-build-instructions">Build Instructions</a> •
