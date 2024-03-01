@@ -2,7 +2,6 @@
 
 During development, using [`NSLocalizedString()`](https://developer.apple.com/documentation/foundation/nslocalizedstring) in the code should be enough. You shouldn't need to touch the `Localizable.strings` files manually.
 
-During the release process, `NSLocalizedString` statements are scanned and stored in the `Localizable.strings` file. The file is then uploaded to [GlotPress](https://translate.wordpress.com/projects/woocommerce/woocommerce-ios/) for translation. Before the release build is finalized, all the translations are grabbed from GlotPress and saved back to the `Localizable.strings` files.
 
 ## Always Add Comments
 

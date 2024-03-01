@@ -17,7 +17,7 @@
 
 1. Download Xcode
 
-    At the moment *WooCommerce for iOS* uses Swift 5.7 and requires Xcode 14 or newer. Previous versions of Xcode can be [downloaded from Apple](https://developer.apple.com/downloads/index.action).
+    At the moment *Weather for iOS* uses Swift 5.7 and requires Xcode 14 or newer. Previous versions of Xcode can be [downloaded from Apple](https://developer.apple.com/downloads/index.action).
 
 2. Install Ruby. We recommend using [rbenv](https://github.com/rbenv/rbenv) to install it. Please refer to the [`.ruby-version` file](.ruby-version) for the required Ruby version.
 
@@ -39,12 +39,12 @@
 
 
     ```bash
-    bundle install && bundle exec rake dependencies
+    pod install
     ```
 
     This command installs the required tools like [CocoaPods](https://cocoapods.org/). And then it installs the iOS project dependencies using CocoaPods.
 
-5. Open the project by double clicking on `WooCommerce.xcworkspace` file, or launching Xcode and choose File > Open and browse to `WooCommerce.xcworkspace`
+5. Open the project by double clicking on `WeatherApp.xcworkspace` file, or launching Xcode and choose File > Open and browse to `WeatherApp.xcworkspace`
 
 ## 📚 Documentation
 
