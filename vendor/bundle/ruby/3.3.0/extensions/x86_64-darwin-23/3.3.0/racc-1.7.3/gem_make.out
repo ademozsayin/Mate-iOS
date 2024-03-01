@@ -1,0 +1,18 @@
+current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+/usr/local/opt/ruby/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240301-54290-12u2xt sitelibdir\=./.gem.20240301-54290-12u2xt clean
+
+current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240301-54290-12u2xt sitelibdir\=./.gem.20240301-54290-12u2xt
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240301-54290-12u2xt sitelibdir\=./.gem.20240301-54290-12u2xt install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20240301-54290-12u2xt/racc
+
+current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240301-54290-12u2xt sitelibdir\=./.gem.20240301-54290-12u2xt clean
