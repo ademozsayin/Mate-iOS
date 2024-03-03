@@ -24,6 +24,9 @@
 		0D9D1B0F2B90EF6600316D94 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B0E2B90EF6600316D94 /* WeatherError.swift */; };
 		0D9D1B112B90F7CB00316D94 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B102B90F7CB00316D94 /* Forecast.swift */; };
 		0D9D1B212B913C8100316D94 /* CityResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B202B913C8100316D94 /* CityResult.swift */; };
+		0DECC6322B94D73000078FAE /* CodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 0DECC6312B94D73000078FAE /* CodeGen */; };
+		0DECC6342B94D99700078FAE /* Models+Copiable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DECC6332B94D99700078FAE /* Models+Copiable.generated.swift */; };
+		0DECC6362B94D9DB00078FAE /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DECC6352B94D9DB00078FAE /* City.swift */; };
 		2E795EB41DE5BE14E92BF986 /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD88289EFD67343DF507384 /* Pods_Networking.framework */; };
 		CDBA0292340C2FAE0F87F466 /* Pods_NetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47BFCBE60030581A36AD2234 /* Pods_NetworkingTests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +60,8 @@
 		0D9D1B0E2B90EF6600316D94 /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		0D9D1B102B90F7CB00316D94 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		0D9D1B202B913C8100316D94 /* CityResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityResult.swift; sourceTree = "<group>"; };
+		0DECC6332B94D99700078FAE /* Models+Copiable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Models+Copiable.generated.swift"; sourceTree = "<group>"; };
+		0DECC6352B94D9DB00078FAE /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		18057CBF5A1D66DD7BF13597 /* Pods-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.debug.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.debug.xcconfig"; sourceTree = "<group>"; };
 		1BD88289EFD67343DF507384 /* Pods_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47BFCBE60030581A36AD2234 /* Pods_NetworkingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DECC6322B94D73000078FAE /* CodeGen in Frameworks */,
 				2E795EB41DE5BE14E92BF986 /* Pods_Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -176,10 +182,12 @@
 		0D8E45712B8CE87F0057100C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0DECC6222B9371D900078FAE /* Copiable */,
 				0D8E45812B8CF5B50057100C /* WeatherResponse.swift */,
 				0D9D1B0E2B90EF6600316D94 /* WeatherError.swift */,
 				0D9D1B102B90F7CB00316D94 /* Forecast.swift */,
 				0D9D1B202B913C8100316D94 /* CityResult.swift */,
+				0DECC6352B94D9DB00078FAE /* City.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +215,14 @@
 				0D8E457F2B8CEB470057100C /* Settings.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		0DECC6222B9371D900078FAE /* Copiable */ = {
+			isa = PBXGroup;
+			children = (
+				0DECC6332B94D99700078FAE /* Models+Copiable.generated.swift */,
+			);
+			path = Copiable;
 			sourceTree = "<group>";
 		};
 		91C3E0F85686EB34B6298C40 /* Pods */ = {
@@ -249,6 +265,9 @@
 			dependencies = (
 			);
 			name = Networking;
+			packageProductDependencies = (
+				0DECC6312B94D73000078FAE /* CodeGen */,
+			);
 			productName = Networking;
 			productReference = 0D8E44362B8CD9700057100C /* Networking.framework */;
 			productType = "com.apple.product-type.framework";
@@ -401,9 +420,11 @@
 				0D9D1B212B913C8100316D94 /* CityResult.swift in Sources */,
 				0D9D1B112B90F7CB00316D94 /* Forecast.swift in Sources */,
 				0D8E457B2B8CE87F0057100C /* WeatherAPI.swift in Sources */,
+				0DECC6342B94D99700078FAE /* Models+Copiable.generated.swift in Sources */,
 				0D8E45822B8CF5B50057100C /* WeatherResponse.swift in Sources */,
 				0D8E45782B8CE87F0057100C /* ArrayEncoding.swift in Sources */,
 				0D8E45802B8CEB470057100C /* Settings.swift in Sources */,
+				0DECC6362B94D9DB00078FAE /* City.swift in Sources */,
 				0D7414BC2B8FF3DA001114FB /* TemperatureUnit.swift in Sources */,
 				0D8E45842B8CFB2E0057100C /* Extension+Data.swift in Sources */,
 				0D8E457A2B8CE87F0057100C /* WeatherNetworking.swift in Sources */,
@@ -693,6 +714,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DECC6312B94D73000078FAE /* CodeGen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CodeGen;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D8E442D2B8CD9700057100C /* Project object */;
 }

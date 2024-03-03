@@ -7,23 +7,37 @@
 
 import Foundation
 import UIKit.UIImage
+import CodeGen
 
 // MARK: - WeatherResponse
-public struct WeatherResponse: Codable {
+public struct WeatherResponse: Codable,  GeneratedCopiable, GeneratedFakeable  {
     public let coord: Coord?
     public let weather: [Weather]?
     public let main: Main?
     public let name: String?
     public let cod: Int?
+    
+    public init(coord: Coord?, weather: [Weather]?, main: Main?, name: String?, cod: Int?) {
+        self.coord = coord
+        self.weather = weather
+        self.main = main
+        self.name = name
+        self.cod = cod
+    }
 }
 
 // MARK: - Coord
-public struct Coord: Codable {
+public struct Coord: Codable,  GeneratedCopiable, GeneratedFakeable  {
     public let lon, lat: Double
+    
+    public init(lon: Double, lat: Double) {
+        self.lon = lon
+        self.lat = lat
+    }
 }
 
 // MARK: - Main
-public struct Main: Codable {
+public struct Main: Codable,  GeneratedCopiable, GeneratedFakeable  {
     public let temp: Double?
     public let temp_min:Double?
     public let temp_max:Double?
@@ -35,14 +49,28 @@ public struct Main: Codable {
         case temp_max
         case humidity
     }
+    
+    public init(temp: Double?, temp_min: Double?, temp_max: Double?, humidity: Double?) {
+        self.temp = temp
+        self.temp_min = temp_min
+        self.temp_max = temp_max
+        self.humidity = humidity
+    }
 }
 
 
 // MARK: - Weather
-public struct Weather: Codable {
+public struct Weather: Codable,  GeneratedCopiable, GeneratedFakeable  {
     public let id: Int
     public let main, icon: String?
     public var description:WeatherType?
+    
+    public init(id: Int, main: String?, icon: String?, description: WeatherType? = nil) {
+        self.id = id
+        self.main = main
+        self.icon = icon
+        self.description = description
+    }
     
     public static func downloadImage(forIcon icon: String, completion: @escaping (Result<UIImage, Error>) -> Void) {
         // Construct the image URL with the given icon
@@ -68,7 +96,7 @@ public struct Weather: Codable {
     }
 }
 
-public enum WeatherType: String, Codable {
+public enum WeatherType: String, Codable,  GeneratedCopiable, GeneratedFakeable  {
     case clearSky = "clear sky"
     case fewClouds = "few clouds"
     case scatteredClouds = "scattered clouds"
@@ -120,4 +148,6 @@ public enum WeatherType: String, Codable {
 
     
     // TODO: Make text colors according to type 
+    
+    
 }
