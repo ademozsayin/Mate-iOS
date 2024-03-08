@@ -4,6 +4,7 @@ require 'cocoapods-catalyst-support'
 
 # For security reasons, please always keep the wordpress-mobile source first and the CDN second.
 install! 'cocoapods', warn_for_multiple_pod_sources: false
+
 source 'https://cdn.cocoapods.org/'
 
 raise 'Please run CocoaPods via `bundle exec`' unless %w[BUNDLE_BIN_PATH BUNDLE_GEMFILE].any? { |k| ENV.key?(k) }
@@ -28,7 +29,8 @@ def keychain
 end
 
 def alamofire
-  pod 'Alamofire'
+  pod 'Alamofire', git: 'https://github.com/Alamofire/Alamofire.git', tag: '5.9.0'
+
 end
 
 def cocoa_lumberjack
