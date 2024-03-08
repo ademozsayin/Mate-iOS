@@ -16,6 +16,7 @@ public extension UICollectionViewCell {
     
     /// A nib object that represents the cell type.
     static var nib: UINib {
-        return UINib(nibName: identifier, bundle: nil)
+        let bundle = Bundle(for: self)
+        return UINib(nibName: identifier, bundle: bundle)
     }
 }
