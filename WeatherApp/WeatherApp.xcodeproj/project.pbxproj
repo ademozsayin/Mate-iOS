@@ -334,7 +334,6 @@
 			children = (
 				0DD0EE672B91575D00B2AFDC /* WeatherDetail */,
 				0D9D1B122B912F8200316D94 /* Search */,
-				0D9D1B022B90D16000316D94 /* Components */,
 				0D8E459F2B8D130A0057100C /* Dashboard */,
 				0D8E44152B8CD0310057100C /* Splash */,
 			);
@@ -383,13 +382,6 @@
 				0D8E45A62B8D15860057100C /* DashboardRouter.swift */,
 			);
 			path = Dashboard;
-			sourceTree = "<group>";
-		};
-		0D9D1B022B90D16000316D94 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		0D9D1B122B912F8200316D94 /* Search */ = {
