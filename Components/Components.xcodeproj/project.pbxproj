@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D5824642B9B5DB800024074 /* WeatherDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D5824622B9B5B0900024074 /* WeatherDayCell.xib */; };
+		0D5824652B9B5DBB00024074 /* WeatherDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824612B9B5B0900024074 /* WeatherDayCell.swift */; };
 		0D74149D2B8F4B95001114FB /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D74149C2B8F4B95001114FB /* NibOwnerLoadable.swift */; };
 		0D7414A92B8F59B7001114FB /* WeatherHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7414A82B8F58FF001114FB /* WeatherHeaderView.xib */; };
 		0D7414AA2B8F5A64001114FB /* WeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */; };
@@ -54,6 +56,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D5824612B9B5B0900024074 /* WeatherDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDayCell.swift; sourceTree = "<group>"; };
+		0D5824622B9B5B0900024074 /* WeatherDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherDayCell.xib; sourceTree = "<group>"; };
 		0D74149C2B8F4B95001114FB /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibOwnerLoadable.swift; sourceTree = "<group>"; };
 		0D7414A72B8F58FF001114FB /* WeatherHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHeaderView.swift; sourceTree = "<group>"; };
 		0D7414A82B8F58FF001114FB /* WeatherHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherHeaderView.xib; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0D5824632B9B5B0900024074 /* WeatherDayCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D5824612B9B5B0900024074 /* WeatherDayCell.swift */,
+				0D5824622B9B5B0900024074 /* WeatherDayCell.xib */,
+			);
+			path = WeatherDayCell;
+			sourceTree = "<group>";
+		};
 		0D7414A62B8F58FF001114FB /* WeatherHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +162,7 @@
 		0D8E45B42B8D16010057100C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0D5824632B9B5B0900024074 /* WeatherDayCell */,
 				0D7414A62B8F58FF001114FB /* WeatherHeaderView */,
 				0D23196B2B8E97A800F969DD /* Extensions */,
 				0D8E45CC2B8D16200057100C /* LoadingView */,
@@ -293,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D5824642B9B5DB800024074 /* WeatherDayCell.xib in Resources */,
 				0D7414A92B8F59B7001114FB /* WeatherHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D5824652B9B5DBB00024074 /* WeatherDayCell.swift in Sources */,
 				0D7414B82B8FF17A001114FB /* Combine+UIControl.swift in Sources */,
 				0D7414B02B8F64AA001114FB /* Double+Extensions.swift in Sources */,
 				0D7414AA2B8F5A64001114FB /* WeatherHeaderView.swift in Sources */,

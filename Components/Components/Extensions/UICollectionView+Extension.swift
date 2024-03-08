@@ -9,11 +9,11 @@ import Foundation
 import UIKit
 
 /// An extension to `UICollectionView` providing convenience methods for registering and dequeuing cells.
-extension UICollectionView {
+public extension UICollectionView {
     /// Registers a cell type for use in creating new collection view cells.
     ///
     /// - Parameter cellType: The type of cell to register.
-    public func register(cellType: UICollectionViewCell.Type) {
+    func register(cellType: UICollectionViewCell.Type) {
         register(cellType.nib, forCellWithReuseIdentifier: cellType.identifier)
     }
     
@@ -23,7 +23,7 @@ extension UICollectionView {
     ///   - cellType: The type of cell to dequeue.
     ///   - indexPath: The index path specifying the location of the cell.
     /// - Returns: A dequeued cell of the specified type.
-    public func dequeCell<T: UICollectionViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
+    func dequeCell<T: UICollectionViewCell>(cellType: T.Type, indexPath: IndexPath) -> T {
         guard let cell = dequeueReusableCell(withReuseIdentifier: cellType.identifier, for: indexPath) as? T else {
             fatalError("Failed to dequeue cell with identifier: \(cellType.identifier)")
         }

@@ -92,7 +92,7 @@ public class BaseAPI<T:TargetType> {
 #else
                 completionHandler(.failure(NSError(domain: "Something went wrong ", code: statusCode, userInfo: ["error":"No data"])))
 #endif
-            } catch let DecodingError.typeMismatch(type, context)  {
+            } catch let DecodingError.typeMismatch(_, _)  {
 
                 do {
                     let decoder = JSONDecoder()

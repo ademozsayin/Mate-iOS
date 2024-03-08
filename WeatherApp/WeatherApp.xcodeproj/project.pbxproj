@@ -52,8 +52,6 @@
 		0D8E45D22B8D18AF0057100C /* Components.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E45D12B8D18AF0057100C /* Components.framework */; };
 		0D8E45D32B8D18AF0057100C /* Components.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8E45D12B8D18AF0057100C /* Components.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D8E45D52B8D20C00057100C /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D8E45D42B8D20C00057100C /* DashboardViewController.xib */; };
-		0D9D1B052B90D18200316D94 /* WeatherDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B032B90D18200316D94 /* WeatherDayCell.swift */; };
-		0D9D1B062B90D18200316D94 /* WeatherDayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9D1B042B90D18200316D94 /* WeatherDayCell.xib */; };
 		0D9D1B142B912F9400316D94 /* SearchResultsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B132B912F9400316D94 /* SearchResultsRouter.swift */; };
 		0D9D1B172B912FE800316D94 /* SearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B152B912FE800316D94 /* SearchResultsController.swift */; };
 		0D9D1B182B912FE800316D94 /* SearchResultsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9D1B162B912FE800316D94 /* SearchResultsController.xib */; };
@@ -151,8 +149,6 @@
 		0D8E45A62B8D15860057100C /* DashboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardRouter.swift; sourceTree = "<group>"; };
 		0D8E45D12B8D18AF0057100C /* Components.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Components.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8E45D42B8D20C00057100C /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
-		0D9D1B032B90D18200316D94 /* WeatherDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDayCell.swift; sourceTree = "<group>"; };
-		0D9D1B042B90D18200316D94 /* WeatherDayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherDayCell.xib; sourceTree = "<group>"; };
 		0D9D1B132B912F9400316D94 /* SearchResultsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsRouter.swift; sourceTree = "<group>"; };
 		0D9D1B152B912FE800316D94 /* SearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsController.swift; sourceTree = "<group>"; };
 		0D9D1B162B912FE800316D94 /* SearchResultsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsController.xib; sourceTree = "<group>"; };
@@ -392,18 +388,8 @@
 		0D9D1B022B90D16000316D94 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				0D9D1B072B90D18600316D94 /* WeatherDayCell */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		0D9D1B072B90D18600316D94 /* WeatherDayCell */ = {
-			isa = PBXGroup;
-			children = (
-				0D9D1B032B90D18200316D94 /* WeatherDayCell.swift */,
-				0D9D1B042B90D18200316D94 /* WeatherDayCell.xib */,
-			);
-			path = WeatherDayCell;
 			sourceTree = "<group>";
 		};
 		0D9D1B122B912F8200316D94 /* Search */ = {
@@ -634,7 +620,6 @@
 				0D9D1B182B912FE800316D94 /* SearchResultsController.xib in Resources */,
 				0D2D26572B8C95FE008EB605 /* LaunchScreen.storyboard in Resources */,
 				0DD0EE6D2B9157EE00B2AFDC /* WeatherDetailViewController.xib in Resources */,
-				0D9D1B062B90D18200316D94 /* WeatherDayCell.xib in Resources */,
 				0D8E441F2B8CD0310057100C /* SplashViewController.xib in Resources */,
 				0D8E45D52B8D20C00057100C /* DashboardViewController.xib in Resources */,
 				0D2D26542B8C95FE008EB605 /* Assets.xcassets in Resources */,
@@ -804,7 +789,6 @@
 				0D23195F2B8E7B4500F969DD /* String+Helpers.swift in Sources */,
 				0D8E43BC2B8CCC290057100C /* PresenterInterface.swift in Sources */,
 				0D8E441B2B8CD0310057100C /* SplashViewController.swift in Sources */,
-				0D9D1B052B90D18200316D94 /* WeatherDayCell.swift in Sources */,
 				0D8E442B2B8CD8060057100C /* Logging.swift in Sources */,
 				0D8E45A72B8D15860057100C /* DashboardRouter.swift in Sources */,
 			);

@@ -7,10 +7,9 @@
 
 import UIKit
 import Networking
-import Components
 
 // MARK: - WeatherDayCell
-final class WeatherDayCell: UICollectionViewCell {
+final public class WeatherDayCell: UICollectionViewCell {
 
     // MARK: - IBOutlets
     @IBOutlet private weak var containerView: UIView!
@@ -18,16 +17,15 @@ final class WeatherDayCell: UICollectionViewCell {
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var temperature: UILabel!
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
     }
 }
 
 // MARK: - Configure
-extension WeatherDayCell {
+public extension WeatherDayCell {
     final func configureWith(_ list: List) {
-        print(list.weather?.first?.main ?? "")
         timeLabel.text = list.getTimeFromDtTxt()
         configureTemperature(list)
         configureIcon(list.weather?.first?.icon)

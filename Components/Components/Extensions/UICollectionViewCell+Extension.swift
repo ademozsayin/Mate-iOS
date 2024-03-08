@@ -5,17 +5,17 @@
 //  Created by Adem Özsayın on 29.02.2024.
 //
 
-import UIKit.UICollectionViewCell
+import UIKit
 
 /// An extension to `UICollectionViewCell` providing default implementations for identifier and nib properties.
-extension UICollectionViewCell {
+public extension UICollectionViewCell {
     /// A string identifying the cell type.
-    public static var identifier: String {
+    static var identifier: String {
         return String(describing: self)
     }
     
     /// A nib object that represents the cell type.
-    public static var nib: UINib {
+    static var nib: UINib {
         return UINib(nibName: identifier, bundle: nil)
     }
 }

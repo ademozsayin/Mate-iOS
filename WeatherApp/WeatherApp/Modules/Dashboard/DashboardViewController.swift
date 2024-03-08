@@ -7,10 +7,11 @@
 
 import Foundation
 import UIKit
-import Components
 import Networking
 import CoreLocation
 import Combine
+import Components
+
 
 // MARK: - DashboardViewControllerProtocol
 /// Protocol defining the interactions handled by the DashboardViewController.
