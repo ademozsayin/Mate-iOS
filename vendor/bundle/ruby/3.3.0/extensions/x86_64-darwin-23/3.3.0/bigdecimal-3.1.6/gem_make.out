@@ -32,17 +32,17 @@ checking for RB_WARN_CATEGORY_DEPRECATED in ruby.h... yes
 creating Makefile
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/bigdecimal-3.1.6/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20240306-12397-c9xjrg sitelibdir\=./.gem.20240306-12397-c9xjrg clean
+make DESTDIR\= sitearchdir\=./.gem.20240311-91959-bags1w sitelibdir\=./.gem.20240311-91959-bags1w clean
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/bigdecimal-3.1.6/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20240306-12397-c9xjrg sitelibdir\=./.gem.20240306-12397-c9xjrg
+make DESTDIR\= sitearchdir\=./.gem.20240311-91959-bags1w sitelibdir\=./.gem.20240311-91959-bags1w
 compiling bigdecimal.c
 compiling missing.c
 linking shared-object bigdecimal.bundle
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/bigdecimal-3.1.6/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20240306-12397-c9xjrg sitelibdir\=./.gem.20240306-12397-c9xjrg install
-/usr/bin/install -c -m 0755 bigdecimal.bundle ./.gem.20240306-12397-c9xjrg
+make DESTDIR\= sitearchdir\=./.gem.20240311-91959-bags1w sitelibdir\=./.gem.20240311-91959-bags1w install
+/usr/bin/install -c -m 0755 bigdecimal.bundle ./.gem.20240311-91959-bags1w
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/bigdecimal-3.1.6/ext/bigdecimal
-make DESTDIR\= sitearchdir\=./.gem.20240306-12397-c9xjrg sitelibdir\=./.gem.20240306-12397-c9xjrg clean
+make DESTDIR\= sitearchdir\=./.gem.20240311-91959-bags1w sitelibdir\=./.gem.20240311-91959-bags1w clean

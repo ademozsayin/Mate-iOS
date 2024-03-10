@@ -80,6 +80,33 @@ target 'WeatherApp' do
 
 end
 
+# Redux Layer:
+# ===============
+#
+def redux_pods
+  alamofire
+  cocoa_lumberjack
+  networking_pods
+
+end
+
+# Redux Target:
+# ================
+#
+target 'Redux' do
+  project '../Redux/Redux.xcodeproj'
+  redux_pods
+end
+
+# Unit Tests
+# ==========
+#
+target 'ReduxTests' do
+  project '../Redux/Redux.xcodeproj'
+  redux_pods
+end
+
+
 # Networking Target:
 # ==================
 #
