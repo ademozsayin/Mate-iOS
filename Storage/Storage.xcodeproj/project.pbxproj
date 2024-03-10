@@ -31,6 +31,9 @@
 		0DF33E472B9E5CA8003D7351 /* StorageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33E332B9E5CA7003D7351 /* StorageType.swift */; };
 		0DF33E482B9E5CA8003D7351 /* Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33E342B9E5CA7003D7351 /* Object.swift */; };
 		0DF33E492B9E5CA8003D7351 /* StorageManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33E352B9E5CA7003D7351 /* StorageManagerType.swift */; };
+		0DF33EC32B9E5F88003D7351 /* OnsaFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33EC22B9E5F88003D7351 /* OnsaFoundation.framework */; };
+		0DF33EC42B9E5F88003D7351 /* OnsaFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33EC22B9E5F88003D7351 /* OnsaFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0DF33EC72B9E5FAE003D7351 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33EC62B9E5FAE003D7351 /* CoreData.framework */; };
 		2CACE78E91CB941B053332FB /* Pods_Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29799179007516AC0428910A /* Pods_Storage.framework */; };
 		70589CD983E39552EF7EEF4C /* Pods_StorageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B466A7D46B2E0C8D511DA44 /* Pods_StorageTests.framework */; };
 /* End PBXBuildFile section */
@@ -44,6 +47,20 @@
 			remoteInfo = Storage;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0DF33EC52B9E5F89003D7351 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0DF33EC42B9E5F88003D7351 /* OnsaFoundation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00A384FC4783EB4D86FCDA4A /* Pods-Storage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storage.debug.xcconfig"; path = "Target Support Files/Pods-Storage/Pods-Storage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +89,9 @@
 		0DF33E332B9E5CA7003D7351 /* StorageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageType.swift; sourceTree = "<group>"; };
 		0DF33E342B9E5CA7003D7351 /* Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Object.swift; sourceTree = "<group>"; };
 		0DF33E352B9E5CA7003D7351 /* StorageManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManagerType.swift; sourceTree = "<group>"; };
+		0DF33EBE2B9E5F60003D7351 /* OnsaFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OnsaFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DF33EC22B9E5F88003D7351 /* OnsaFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = OnsaFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DF33EC62B9E5FAE003D7351 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 		1BCDFC1287BEBAF71110DA22 /* Pods-StorageTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageTests.release.xcconfig"; path = "Target Support Files/Pods-StorageTests/Pods-StorageTests.release.xcconfig"; sourceTree = "<group>"; };
 		29799179007516AC0428910A /* Pods_Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B466A7D46B2E0C8D511DA44 /* Pods_StorageTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF33EC32B9E5F88003D7351 /* OnsaFoundation.framework in Frameworks */,
+				0DF33EC72B9E5FAE003D7351 /* CoreData.framework in Frameworks */,
 				2CACE78E91CB941B053332FB /* Pods_Storage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,6 +226,9 @@
 		5E2495486A367D46F74DD285 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DF33EC62B9E5FAE003D7351 /* CoreData.framework */,
+				0DF33EC22B9E5F88003D7351 /* OnsaFoundation.framework */,
+				0DF33EBE2B9E5F60003D7351 /* OnsaFoundation.framework */,
 				29799179007516AC0428910A /* Pods_Storage.framework */,
 				6B466A7D46B2E0C8D511DA44 /* Pods_StorageTests.framework */,
 			);
@@ -233,6 +258,7 @@
 				0DF33E002B9E5C55003D7351 /* Sources */,
 				0DF33E012B9E5C55003D7351 /* Frameworks */,
 				0DF33E022B9E5C55003D7351 /* Resources */,
+				0DF33EC52B9E5F89003D7351 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -626,7 +652,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ACE314866CED8CF29B297CC5 /* Pods-StorageTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7PX72NXP7V;
@@ -645,7 +670,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1BCDFC1287BEBAF71110DA22 /* Pods-StorageTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7PX72NXP7V;

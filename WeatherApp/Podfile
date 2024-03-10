@@ -162,6 +162,28 @@ target 'StorageTests' do
   storage_pods
 end
 
+# OnsaFoundation Layer:
+# ===============
+#
+def onsafoundation_pods
+  cocoa_lumberjack
+end
+
+# Tools Target:
+# ================
+#
+target 'OnsaFoundation' do
+  project '../OnsaFoundation/OnsaFoundation.xcodeproj'
+  onsafoundation_pods
+end
+
+# Unit Tests
+# ==========
+#
+target 'OnsaFoundationTests' do
+  project '../OnsaFoundation/OnsaFoundation.xcodeproj'
+  onsafoundation_pods
+end
 
 # Static Frameworks:
 # ============

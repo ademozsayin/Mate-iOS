@@ -1,6 +1,6 @@
 import Foundation
 import CoreData
-
+import OnsaFoundation
 
 /// CoreDataManager: Manages the entire CoreData Stack. Conforms to the StorageManager API.
 ///
