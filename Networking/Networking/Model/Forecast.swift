@@ -6,29 +6,26 @@
 //
 
 import Foundation
-
+import CodeGen
 // MARK: - Forecast
-public struct Forecast: Codable {
+public struct Forecast: Codable,  GeneratedCopiable, GeneratedFakeable  {
     public let message: Int?
     public let cod: String?
     public let cnt: Int?
     public let list: [List]?
     public let city: City?
-}
-
-// MARK: - City
-public struct City: Codable {
-    public let sunset: Int?
-    public let country: String?
-    public let id: Int?
-    public let coord: Coord?
-    public let population, timezone, sunrise: Int?
-    public let name: String?
-
+    
+    public init(message: Int?, cod: String?, cnt: Int?, list: [List]?, city: City?) {
+        self.message = message
+        self.cod = cod
+        self.cnt = cnt
+        self.list = list
+        self.city = city
+    }
 }
 
 // MARK: - List
-public struct List: Codable {
+public struct List: Codable,  GeneratedCopiable, GeneratedFakeable  {
     public let dt: Int?
     public let dtTxt: String?
     public let main: Main?
@@ -36,6 +33,15 @@ public struct List: Codable {
     public let pop: Double?
    
     public let visibility: Int?
+    
+    public  init(dt: Int?, dtTxt: String?, main: Main?, weather: [Weather]?, pop: Double?, visibility: Int?) {
+        self.dt = dt
+        self.dtTxt = dtTxt
+        self.main = main
+        self.weather = weather
+        self.pop = pop
+        self.visibility = visibility
+    }
 
     enum CodingKeys: String, CodingKey {
         case dt
