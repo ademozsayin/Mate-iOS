@@ -138,13 +138,38 @@ target 'ComponentsTests' do
   project '../Components/Components.xcodeproj'
 end
 
+
+# Storage Layer:
+# ==============
+#
+def storage_pods
+  cocoa_lumberjack
+end
+
+# Storage Target:
+# ===============
+#
+target 'Storage' do
+  project '../Storage/Storage.xcodeproj'
+  storage_pods
+end
+
+# Unit Tests
+# ==========
+#
+target 'StorageTests' do
+  project '../Storage/Storage.xcodeproj'
+  storage_pods
+end
+
+
 # Static Frameworks:
 # ============
 #
 # Make all pods that are not shared across multiple targets into static frameworks by overriding the static_framework? function to return true
 # Linking the shared frameworks statically would lead to duplicate symbols
 # A future version of CocoaPods may make this easier to do. See https://github.com/CocoaPods/CocoaPods/issues/7428
-shared_targets = %w[Networking LocationService Components Redux]
+shared_targets = %w[Networking LocationService Components Redux Storage]
 # Statically linking Sentry results in a conflict with `NSDictionary.objectAtKeyPath`, but dynamically
 # linking it resolves this.
 dynamic_pods = ['Sentry']

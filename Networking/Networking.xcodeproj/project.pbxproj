@@ -24,6 +24,7 @@
 		0D9D1B0F2B90EF6600316D94 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B0E2B90EF6600316D94 /* WeatherError.swift */; };
 		0D9D1B112B90F7CB00316D94 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B102B90F7CB00316D94 /* Forecast.swift */; };
 		0D9D1B212B913C8100316D94 /* CityResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B202B913C8100316D94 /* CityResult.swift */; };
+		0DF33DF92B9E5BDD003D7351 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33DF82B9E5BDD003D7351 /* Network.swift */; };
 		2E795EB41DE5BE14E92BF986 /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD88289EFD67343DF507384 /* Pods_Networking.framework */; };
 		CDBA0292340C2FAE0F87F466 /* Pods_NetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47BFCBE60030581A36AD2234 /* Pods_NetworkingTests.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +58,7 @@
 		0D9D1B0E2B90EF6600316D94 /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		0D9D1B102B90F7CB00316D94 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		0D9D1B202B913C8100316D94 /* CityResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityResult.swift; sourceTree = "<group>"; };
+		0DF33DF82B9E5BDD003D7351 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		18057CBF5A1D66DD7BF13597 /* Pods-Networking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networking.debug.xcconfig"; path = "Target Support Files/Pods-Networking/Pods-Networking.debug.xcconfig"; sourceTree = "<group>"; };
 		1BD88289EFD67343DF507384 /* Pods_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		47BFCBE60030581A36AD2234 /* Pods_NetworkingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +128,7 @@
 		0D8E455F2B8CE87F0057100C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				0DF33DF72B9E5BD4003D7351 /* Network */,
 				0D8E457E2B8CEB3D0057100C /* Settings */,
 				0D8E45602B8CE87F0057100C /* Core */,
 				0D8E45662B8CE87F0057100C /* Networking */,
@@ -207,6 +210,14 @@
 				0D8E457F2B8CEB470057100C /* Settings.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		0DF33DF72B9E5BD4003D7351 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0DF33DF82B9E5BDD003D7351 /* Network.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		91C3E0F85686EB34B6298C40 /* Pods */ = {
@@ -398,6 +409,7 @@
 			files = (
 				0D8E45792B8CE87F0057100C /* NetworkLogger.swift in Sources */,
 				0D8E457C2B8CE87F0057100C /* KeyedDecodingContainer+Pickslam.swift in Sources */,
+				0DF33DF92B9E5BDD003D7351 /* Network.swift in Sources */,
 				0D9D1B212B913C8100316D94 /* CityResult.swift in Sources */,
 				0D9D1B112B90F7CB00316D94 /* Forecast.swift in Sources */,
 				0D8E457B2B8CE87F0057100C /* WeatherAPI.swift in Sources */,

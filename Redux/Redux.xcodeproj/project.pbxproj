@@ -20,6 +20,11 @@
 		0D5824AC2B9E55CB00024074 /* Array+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824A52B9E55CB00024074 /* Array+Helpers.swift */; };
 		0D5824AD2B9E55CB00024074 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824A62B9E55CB00024074 /* Queue.swift */; };
 		0D5824AF2B9E58E200024074 /* LogErrorAndExit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824AE2B9E58E200024074 /* LogErrorAndExit.swift */; };
+		0DF33DF62B9E5B78003D7351 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33DF52B9E5B78003D7351 /* Store.swift */; };
+		0DF33E4B2B9E5D83003D7351 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4A2B9E5D83003D7351 /* Networking.framework */; };
+		0DF33E4C2B9E5D83003D7351 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4A2B9E5D83003D7351 /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0DF33E4F2B9E5D88003D7351 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4E2B9E5D88003D7351 /* Storage.framework */; };
+		0DF33E502B9E5D88003D7351 /* Storage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4E2B9E5D88003D7351 /* Storage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		56EA11F6FA09C45A6C2A2757 /* Pods_Redux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A5DA94BF00663B25DA83D2 /* Pods_Redux.framework */; };
 		6B9FD230FB7913A2A513BB3E /* Pods_ReduxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76788032A2F9F246A8F3802C /* Pods_ReduxTests.framework */; };
 /* End PBXBuildFile section */
@@ -33,6 +38,21 @@
 			remoteInfo = Redux;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0DF33E4D2B9E5D83003D7351 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0DF33E502B9E5D88003D7351 /* Storage.framework in Embed Frameworks */,
+				0DF33E4C2B9E5D83003D7351 /* Networking.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0D5824792B9E552B00024074 /* Redux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Redux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +69,9 @@
 		0D5824A52B9E55CB00024074 /* Array+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Helpers.swift"; sourceTree = "<group>"; };
 		0D5824A62B9E55CB00024074 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		0D5824AE2B9E58E200024074 /* LogErrorAndExit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogErrorAndExit.swift; sourceTree = "<group>"; };
+		0DF33DF52B9E5B78003D7351 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		0DF33E4A2B9E5D83003D7351 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DF33E4E2B9E5D88003D7351 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A5DA94BF00663B25DA83D2 /* Pods_Redux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Redux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76788032A2F9F246A8F3802C /* Pods_ReduxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F25E2D6E83802523CD212C3 /* Pods-Redux.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redux.debug.xcconfig"; path = "Target Support Files/Pods-Redux/Pods-Redux.debug.xcconfig"; sourceTree = "<group>"; };
@@ -62,7 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF33E4B2B9E5D83003D7351 /* Networking.framework in Frameworks */,
 				56EA11F6FA09C45A6C2A2757 /* Pods_Redux.framework in Frameworks */,
+				0DF33E4F2B9E5D88003D7351 /* Storage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				0D58249D2B9E556C00024074 /* Dispatcher.swift */,
+				0DF33DF52B9E5B78003D7351 /* Store.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -143,6 +169,8 @@
 		BF9590FE1D5F5232E99B39D4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DF33E4E2B9E5D88003D7351 /* Storage.framework */,
+				0DF33E4A2B9E5D83003D7351 /* Networking.framework */,
 				49A5DA94BF00663B25DA83D2 /* Pods_Redux.framework */,
 				76788032A2F9F246A8F3802C /* Pods_ReduxTests.framework */,
 			);
@@ -184,6 +212,7 @@
 				0D5824752B9E552B00024074 /* Sources */,
 				0D5824762B9E552B00024074 /* Frameworks */,
 				0D5824772B9E552B00024074 /* Resources */,
+				0DF33E4D2B9E5D83003D7351 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -343,6 +372,7 @@
 				0D5824AC2B9E55CB00024074 /* Array+Helpers.swift in Sources */,
 				0D5824A92B9E55CB00024074 /* Assert.swift in Sources */,
 				0D5824AA2B9E55CB00024074 /* String+Extensions.swift in Sources */,
+				0DF33DF62B9E5B78003D7351 /* Store.swift in Sources */,
 				0D5824A82B9E55CB00024074 /* Logging.swift in Sources */,
 				0D5824AF2B9E58E200024074 /* LogErrorAndExit.swift in Sources */,
 				0D5824AD2B9E55CB00024074 /* Queue.swift in Sources */,
