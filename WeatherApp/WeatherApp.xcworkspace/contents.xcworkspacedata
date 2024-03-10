@@ -23,6 +23,9 @@
       location = "group:../OnsaFoundation/OnsaFoundation.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:../CodeGen">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

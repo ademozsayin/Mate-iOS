@@ -25,6 +25,7 @@
 		0D9D1B112B90F7CB00316D94 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B102B90F7CB00316D94 /* Forecast.swift */; };
 		0D9D1B212B913C8100316D94 /* CityResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B202B913C8100316D94 /* CityResult.swift */; };
 		0DF33DF92B9E5BDD003D7351 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33DF82B9E5BDD003D7351 /* Network.swift */; };
+		0DF33EC92B9E6165003D7351 /* CodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 0DF33EC82B9E6165003D7351 /* CodeGen */; };
 		2E795EB41DE5BE14E92BF986 /* Pods_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BD88289EFD67343DF507384 /* Pods_Networking.framework */; };
 		CDBA0292340C2FAE0F87F466 /* Pods_NetworkingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47BFCBE60030581A36AD2234 /* Pods_NetworkingTests.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DF33EC92B9E6165003D7351 /* CodeGen in Frameworks */,
 				2E795EB41DE5BE14E92BF986 /* Pods_Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +262,9 @@
 			dependencies = (
 			);
 			name = Networking;
+			packageProductDependencies = (
+				0DF33EC82B9E6165003D7351 /* CodeGen */,
+			);
 			productName = Networking;
 			productReference = 0D8E44362B8CD9700057100C /* Networking.framework */;
 			productType = "com.apple.product-type.framework";
@@ -705,6 +710,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DF33EC82B9E6165003D7351 /* CodeGen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CodeGen;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D8E442D2B8CD9700057100C /* Project object */;
 }

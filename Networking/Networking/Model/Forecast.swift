@@ -8,14 +8,14 @@
 import Foundation
 import CodeGen
 // MARK: - Forecast
-public struct Forecast: Codable,  GeneratedCopiable, GeneratedFakeable  {
+public struct Forecast: Decodable,  GeneratedCopiable, GeneratedFakeable  {
     public let message: Int?
     public let cod: String?
     public let cnt: Int?
     public let list: [List]?
-    public let city: City?
+    public let city: CityResult?
     
-    public init(message: Int?, cod: String?, cnt: Int?, list: [List]?, city: City?) {
+    public init(message: Int?, cod: String?, cnt: Int?, list: [List]?, city: CityResult?) {
         self.message = message
         self.cod = cod
         self.cnt = cnt
@@ -25,7 +25,7 @@ public struct Forecast: Codable,  GeneratedCopiable, GeneratedFakeable  {
 }
 
 // MARK: - List
-public struct List: Codable,  GeneratedCopiable, GeneratedFakeable  {
+public struct List: Decodable,  GeneratedCopiable, GeneratedFakeable  {
     public let dt: Int?
     public let dtTxt: String?
     public let main: Main?
