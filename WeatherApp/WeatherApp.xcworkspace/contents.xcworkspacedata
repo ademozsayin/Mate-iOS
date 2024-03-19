@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../FiableAuthentication/FiableAuthentication.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:WeatherApp.xcodeproj">
    </FileRef>
    <FileRef
@@ -33,5 +30,8 @@
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FiableShared">
    </FileRef>
 </Workspace>
