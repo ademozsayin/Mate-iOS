@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DC234732BA7ADC600414B13 /* GeneralAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234722BA7ADC600414B13 /* GeneralAppSettings.swift */; };
+		0DC234752BA7AECA00414B13 /* FeedbackSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234742BA7AECA00414B13 /* FeedbackSettings.swift */; };
+		0DC234882BA7B54500414B13 /* CodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC234872BA7B54500414B13 /* CodeGen */; };
+		0DC234C42BA8DD9000414B13 /* WeatherApp.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 0DC234C32BA8DD8800414B13 /* WeatherApp.xcdatamodeld */; };
 		0DF33E092B9E5C55003D7351 /* Storage.docc in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33E082B9E5C55003D7351 /* Storage.docc */; };
 		0DF33E0F2B9E5C55003D7351 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E042B9E5C55003D7351 /* Storage.framework */; };
 		0DF33E142B9E5C55003D7351 /* StorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33E132B9E5C55003D7351 /* StorageTests.swift */; };
@@ -64,6 +68,9 @@
 
 /* Begin PBXFileReference section */
 		00A384FC4783EB4D86FCDA4A /* Pods-Storage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Storage.debug.xcconfig"; path = "Target Support Files/Pods-Storage/Pods-Storage.debug.xcconfig"; sourceTree = "<group>"; };
+		0DC234722BA7ADC600414B13 /* GeneralAppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAppSettings.swift; sourceTree = "<group>"; };
+		0DC234742BA7AECA00414B13 /* FeedbackSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackSettings.swift; sourceTree = "<group>"; };
+		0DC234C22BA8DD8800414B13 /* WeatherApp.xcdatamodel */ = {isa = PBXFileReference; path = WeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		0DF33E042B9E5C55003D7351 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF33E072B9E5C55003D7351 /* Storage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Storage.h; sourceTree = "<group>"; };
 		0DF33E082B9E5C55003D7351 /* Storage.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Storage.docc; sourceTree = "<group>"; };
@@ -104,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC234882BA7B54500414B13 /* CodeGen in Frameworks */,
 				0DF33EC32B9E5F88003D7351 /* OnsaFoundation.framework in Frameworks */,
 				0DF33EC72B9E5FAE003D7351 /* CoreData.framework in Frameworks */,
 				2CACE78E91CB941B053332FB /* Pods_Storage.framework in Frameworks */,
@@ -122,6 +130,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DC234712BA7ADBF00414B13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0DC234722BA7ADC600414B13 /* GeneralAppSettings.swift */,
+				0DC234742BA7AECA00414B13 /* FeedbackSettings.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0DF33DFA2B9E5C55003D7351 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +162,8 @@
 		0DF33E062B9E5C55003D7351 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				0DC234C32BA8DD8800414B13 /* WeatherApp.xcdatamodeld */,
+				0DC234712BA7ADBF00414B13 /* Model */,
 				0DF33E1F2B9E5CA7003D7351 /* CoreData */,
 				0DF33E242B9E5CA7003D7351 /* Extensions */,
 				0DF33E1E2B9E5CA7003D7351 /* Logging.swift */,
@@ -265,6 +284,9 @@
 			dependencies = (
 			);
 			name = Storage;
+			packageProductDependencies = (
+				0DC234872BA7B54500414B13 /* CodeGen */,
+			);
 			productName = Storage;
 			productReference = 0DF33E042B9E5C55003D7351 /* Storage.framework */;
 			productType = "com.apple.product-type.framework";
@@ -331,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC234C42BA8DD9000414B13 /* WeatherApp.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +447,9 @@
 				0DF33E492B9E5CA8003D7351 /* StorageManagerType.swift in Sources */,
 				0DF33E422B9E5CA8003D7351 /* StorageType+Extensions.swift in Sources */,
 				0DF33E482B9E5CA8003D7351 /* Object.swift in Sources */,
+				0DC234752BA7AECA00414B13 /* FeedbackSettings.swift in Sources */,
 				0DF33E362B9E5CA7003D7351 /* Logging.swift in Sources */,
+				0DC234732BA7ADC600414B13 /* GeneralAppSettings.swift in Sources */,
 				0DF33E452B9E5CA8003D7351 /* FileStorage.swift in Sources */,
 				0DF33E3D2B9E5CA8003D7351 /* NSObject+Storage.swift in Sources */,
 				0DF33E382B9E5CA8003D7351 /* ManagedObjectModelsInventory.swift in Sources */,
@@ -493,7 +518,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -559,7 +584,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -715,6 +740,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DC234872BA7B54500414B13 /* CodeGen */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CodeGen;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0DC234C32BA8DD8800414B13 /* WeatherApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0DC234C22BA8DD8800414B13 /* WeatherApp.xcdatamodel */,
+			);
+			currentVersion = 0DC234C22BA8DD8800414B13 /* WeatherApp.xcdatamodel */;
+			path = WeatherApp.xcdatamodeld;
+			sourceTree = "<group>";
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0DF33DFB2B9E5C55003D7351 /* Project object */;
 }

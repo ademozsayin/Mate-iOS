@@ -38,7 +38,7 @@ extension WeatherNetworking: TargetType {
     }
     
     /// The HTTP method for the weather networking request.
-    public var method: HTTPMethod {
+    public var method: HTTPMethodOld {
         switch self {
         case .getCurrentWeather,
                 .getDailyWeather,

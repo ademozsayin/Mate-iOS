@@ -122,7 +122,7 @@ end
 
 desc 'Run all code generation tasks'
 task :generate do
-  %w[Networking].each do |prefix|
+  %w[Networking OnsaFoundation Storage].each do |prefix|
     puts "\n\nGenerating Copiable for #{prefix}..."
     puts '=' * 50
 
@@ -133,7 +133,7 @@ task :generate do
   puts "\n\nDONE. Generated Copiable for all projects."
   puts = '\n\n Adem'
 
-  %w[Networking].each do |prefix|
+  %w[Networking OnsaFoundation Storage].each do |prefix|
 
     puts "\n\nGenerating Fakes for #{prefix}..."
     puts '=' * 100

@@ -8,6 +8,7 @@
 import Foundation
 import Networking
 import Storage
+import OnsaFoundation
 
 // MARK: - Store: Holds the data associated to a specific domain of the application.
 //         Every store is subscribed to the global action dispatcher (although it can be initialized with a custom dispatcher), and should

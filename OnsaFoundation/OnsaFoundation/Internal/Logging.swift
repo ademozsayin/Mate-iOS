@@ -24,7 +24,7 @@ internal func resetDefaultDebugLevel() {
     defaultDebugLevel = CocoaLumberjack.dynamicLogLevel
 }
 
-internal func DDLogDebug(_ message: @autoclosure () -> String,
+internal func DDLogDebug(_  message: @autoclosure @escaping () -> DDLogMessageFormat,
                          level: DDLogLevel = defaultDebugLevel,
                          context: Int = 0,
                          file: StaticString = #file,
@@ -44,7 +44,7 @@ internal func DDLogDebug(_ message: @autoclosure () -> String,
                               ddlog: ddlog)
 }
 
-internal func DDLogInfo(_ message: @autoclosure () -> String,
+internal func DDLogInfo(_ message: @autoclosure @escaping () -> DDLogMessageFormat,
                         level: DDLogLevel = defaultDebugLevel,
                         context: Int = 0,
                         file: StaticString = #file,
@@ -64,7 +64,7 @@ internal func DDLogInfo(_ message: @autoclosure () -> String,
                               ddlog: ddlog)
 }
 
-internal func DDLogWarn(_ message: @autoclosure () -> String,
+internal func DDLogWarn(_  message: @autoclosure @escaping () -> DDLogMessageFormat,
                         level: DDLogLevel = defaultDebugLevel,
                         context: Int = 0,
                         file: StaticString = #file,
@@ -84,7 +84,7 @@ internal func DDLogWarn(_ message: @autoclosure () -> String,
                               ddlog: ddlog)
 }
 
-internal func DDLogVerbose(_ message: @autoclosure () -> String,
+internal func DDLogVerbose(_ message: @autoclosure @escaping () -> DDLogMessageFormat,
                            level: DDLogLevel = defaultDebugLevel,
                            context: Int = 0,
                            file: StaticString = #file,
@@ -104,7 +104,7 @@ internal func DDLogVerbose(_ message: @autoclosure () -> String,
                                  ddlog: ddlog)
 }
 
-internal func DDLogError(_ message: @autoclosure () -> String,
+internal func DDLogError(_ message: @autoclosure @escaping () -> DDLogMessageFormat,
                          level: DDLogLevel = defaultDebugLevel,
                          context: Int = 0,
                          file: StaticString = #file,

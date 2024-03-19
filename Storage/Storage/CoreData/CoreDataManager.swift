@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 import OnsaFoundation
-
+import UIKit
 /// CoreDataManager: Manages the entire CoreData Stack. Conforms to the StorageManager API.
 ///
 public final class CoreDataManager: StorageManagerType {

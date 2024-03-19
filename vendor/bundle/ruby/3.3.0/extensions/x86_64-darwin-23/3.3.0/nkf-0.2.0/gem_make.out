@@ -3,16 +3,16 @@ current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/
 creating Makefile
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
-make DESTDIR\= sitearchdir\=./.gem.20240311-91959-3de9q9 sitelibdir\=./.gem.20240311-91959-3de9q9 clean
+make DESTDIR\= sitearchdir\=./.gem.20240318-21709-w61z19 sitelibdir\=./.gem.20240318-21709-w61z19 clean
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
-make DESTDIR\= sitearchdir\=./.gem.20240311-91959-3de9q9 sitelibdir\=./.gem.20240311-91959-3de9q9
+make DESTDIR\= sitearchdir\=./.gem.20240318-21709-w61z19 sitelibdir\=./.gem.20240318-21709-w61z19
 compiling nkf.c
 linking shared-object nkf.bundle
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
-make DESTDIR\= sitearchdir\=./.gem.20240311-91959-3de9q9 sitelibdir\=./.gem.20240311-91959-3de9q9 install
-/usr/bin/install -c -m 0755 nkf.bundle ./.gem.20240311-91959-3de9q9
+make DESTDIR\= sitearchdir\=./.gem.20240318-21709-w61z19 sitelibdir\=./.gem.20240318-21709-w61z19 install
+/usr/bin/install -c -m 0755 nkf.bundle ./.gem.20240318-21709-w61z19
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/nkf-0.2.0/ext/nkf
-make DESTDIR\= sitearchdir\=./.gem.20240311-91959-3de9q9 sitelibdir\=./.gem.20240311-91959-3de9q9 clean
+make DESTDIR\= sitearchdir\=./.gem.20240318-21709-w61z19 sitelibdir\=./.gem.20240318-21709-w61z19 clean

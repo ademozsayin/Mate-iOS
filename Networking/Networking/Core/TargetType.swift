@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-public enum HTTPMethod: String {
+public enum HTTPMethodOld: String {
     case get = "GET"
     case post = "POST"
     case put = "PUT"
@@ -31,5 +31,5 @@ public protocol TargetType {
     var task: HTTPTask { get }
     var headers: [String: String]? { get }
     var path: String { get }
-    var method: HTTPMethod { get }
+    var method: HTTPMethodOld { get }
 }

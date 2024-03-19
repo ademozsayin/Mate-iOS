@@ -13,7 +13,6 @@
 		0D2319632B8E8F7300F969DD /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2319622B8E8F7300F969DD /* Extensions+UIView.swift */; };
 		0D2D26482B8C95FA008EB605 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2D26472B8C95FA008EB605 /* AppDelegate.swift */; };
 		0D2D264A2B8C95FA008EB605 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2D26492B8C95FA008EB605 /* SceneDelegate.swift */; };
-		0D2D26522B8C95FA008EB605 /* WeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D2D26502B8C95FA008EB605 /* WeatherApp.xcdatamodeld */; };
 		0D2D26542B8C95FE008EB605 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D2D26532B8C95FE008EB605 /* Assets.xcassets */; };
 		0D2D26572B8C95FE008EB605 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D2D26552B8C95FE008EB605 /* LaunchScreen.storyboard */; };
 		0D2D26622B8C95FE008EB605 /* WeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2D26612B8C95FE008EB605 /* WeatherAppTests.swift */; };
@@ -57,6 +56,38 @@
 		0D9D1B182B912FE800316D94 /* SearchResultsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D9D1B162B912FE800316D94 /* SearchResultsController.xib */; };
 		0D9D1B1A2B91300900316D94 /* SearchResultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B192B91300900316D94 /* SearchResultsInteractor.swift */; };
 		0D9D1B1F2B9133A300316D94 /* SearchResultsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B1E2B9133A300316D94 /* SearchResultsPresenter.swift */; };
+		0DC234022BA789F900414B13 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234012BA789F900414B13 /* AppCoordinator.swift */; };
+		0DC234042BA78AD600414B13 /* Redux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC234032BA78AD600414B13 /* Redux.framework */; };
+		0DC234052BA78AD600414B13 /* Redux.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC234032BA78AD600414B13 /* Redux.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0DC234072BA78B0C00414B13 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234062BA78B0C00414B13 /* ServiceLocator.swift */; };
+		0DC2340A2BA78C0900414B13 /* DefaultStoresManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234092BA78C0900414B13 /* DefaultStoresManager.swift */; };
+		0DC2340E2BA78DAC00414B13 /* AuthenticatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2340D2BA78DAC00414B13 /* AuthenticatedState.swift */; };
+		0DC234292BA791FD00414B13 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234282BA791FD00414B13 /* SessionManager.swift */; };
+		0DC2342B2BA7925E00414B13 /* UserDefaults+Fiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2342A2BA7925E00414B13 /* UserDefaults+Fiable.swift */; };
+		0DC2342D2BA7929000414B13 /* FiableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2342C2BA7929000414B13 /* FiableConstants.swift */; };
+		0DC2348C2BA7BAF200414B13 /* CrashLoggingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2348B2BA7BAF200414B13 /* CrashLoggingStack.swift */; };
+		0DC2348E2BA7BB4400414B13 /* WooCrashLoggingStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2348D2BA7BB4400414B13 /* WooCrashLoggingStack.swift */; };
+		0DC234952BA7C12500414B13 /* WCEventLoggingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234942BA7C12500414B13 /* WCEventLoggingDataSource.swift */; };
+		0DC234A12BA7C31300414B13 /* Experiments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC234A02BA7C31300414B13 /* Experiments.framework */; };
+		0DC234A22BA7C31300414B13 /* Experiments.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC234A02BA7C31300414B13 /* Experiments.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0DC234B32BA7C7BE00414B13 /* DeauthenticatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234B22BA7C7BE00414B13 /* DeauthenticatedState.swift */; };
+		0DC234B62BA7CA2200414B13 /* AutomatticEncryptedLogs in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC234B52BA7CA2200414B13 /* AutomatticEncryptedLogs */; };
+		0DC234B82BA7CA2200414B13 /* AutomatticTracks in Frameworks */ = {isa = PBXBuildFile; productRef = 0DC234B72BA7CA2200414B13 /* AutomatticTracks */; };
+		0DC234BB2BA8D8A000414B13 /* LoggedOutAppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234BA2BA8D8A000414B13 /* LoggedOutAppSettings.swift */; };
+		0DC234C82BA8DF8500414B13 /* LoginOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234C72BA8DF8500414B13 /* LoginOnboardingViewController.swift */; };
+		0DC234CA2BA8DFB200414B13 /* LoginProloguePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234C92BA8DFB200414B13 /* LoginProloguePageViewController.swift */; };
+		0DC234CC2BA8DFCA00414B13 /* LoginProloguePageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234CB2BA8DFCA00414B13 /* LoginProloguePageType.swift */; };
+		0DC234CF2BA8E00A00414B13 /* Extension+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234CE2BA8E00A00414B13 /* Extension+UIImage.swift */; };
+		0DC234D22BA8E09B00414B13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DC234D12BA8E09B00414B13 /* Images.xcassets */; };
+		0DC234D42BA8E10A00414B13 /* UIFont+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234D32BA8E10A00414B13 /* UIFont+Helpers.swift */; };
+		0DC234D62BA8E1A000414B13 /* UIStackView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234D52BA8E1A000414B13 /* UIStackView+Helpers.swift */; };
+		0DC234D82BA8E1CE00414B13 /* UIButton+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234D72BA8E1CE00414B13 /* UIButton+Helpers.swift */; };
+		0DC234DA2BA8E1F100414B13 /* UILabel+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234D92BA8E1F100414B13 /* UILabel+Helpers.swift */; };
+		0DC234DD2BA8E2A000414B13 /* StyleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234DC2BA8E2A000414B13 /* StyleManager.swift */; };
+		0DC234DF2BA8E2E300414B13 /* UIControl+BlockEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234DE2BA8E2E300414B13 /* UIControl+BlockEvents.swift */; };
+		0DC234E12BA8E9C700414B13 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234E02BA8E9C700414B13 /* Authentication.swift */; };
+		0DC234E32BA9140E00414B13 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234E22BA9140E00414B13 /* AuthenticationManager.swift */; };
+		0DC234E52BAA235C00414B13 /* LoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234E42BAA235C00414B13 /* LoginNavigationController.swift */; };
 		0DD0EE662B914D9700B2AFDC /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0EE652B914D9700B2AFDC /* Extension+UITableView.swift */; };
 		0DD0EE692B91577B00B2AFDC /* WeatherDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0EE682B91577B00B2AFDC /* WeatherDetailRouter.swift */; };
 		0DD0EE6C2B9157EE00B2AFDC /* WeatherDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0EE6A2B9157EE00B2AFDC /* WeatherDetailViewController.swift */; };
@@ -95,6 +126,8 @@
 				0D8045DF2B8D3EED004F6E39 /* LocationService.framework in Embed Frameworks */,
 				0D8E45D32B8D18AF0057100C /* Components.framework in Embed Frameworks */,
 				0D8E455B2B8CE7880057100C /* Networking.framework in Embed Frameworks */,
+				0DC234052BA78AD600414B13 /* Redux.framework in Embed Frameworks */,
+				0DC234A22BA7C31300414B13 /* Experiments.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -109,7 +142,6 @@
 		0D2D26442B8C95FA008EB605 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D2D26472B8C95FA008EB605 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0D2D26492B8C95FA008EB605 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0D2D26512B8C95FA008EB605 /* WeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		0D2D26532B8C95FE008EB605 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0D2D26562B8C95FE008EB605 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D2D26582B8C95FE008EB605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,6 +186,34 @@
 		0D9D1B162B912FE800316D94 /* SearchResultsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultsController.xib; sourceTree = "<group>"; };
 		0D9D1B192B91300900316D94 /* SearchResultsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsInteractor.swift; sourceTree = "<group>"; };
 		0D9D1B1E2B9133A300316D94 /* SearchResultsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsPresenter.swift; sourceTree = "<group>"; };
+		0DC234012BA789F900414B13 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		0DC234032BA78AD600414B13 /* Redux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Redux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DC234062BA78B0C00414B13 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		0DC234092BA78C0900414B13 /* DefaultStoresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStoresManager.swift; sourceTree = "<group>"; };
+		0DC2340D2BA78DAC00414B13 /* AuthenticatedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedState.swift; sourceTree = "<group>"; };
+		0DC234282BA791FD00414B13 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		0DC2342A2BA7925E00414B13 /* UserDefaults+Fiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Fiable.swift"; sourceTree = "<group>"; };
+		0DC2342C2BA7929000414B13 /* FiableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiableConstants.swift; sourceTree = "<group>"; };
+		0DC2348B2BA7BAF200414B13 /* CrashLoggingStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashLoggingStack.swift; sourceTree = "<group>"; };
+		0DC2348D2BA7BB4400414B13 /* WooCrashLoggingStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WooCrashLoggingStack.swift; sourceTree = "<group>"; };
+		0DC234942BA7C12500414B13 /* WCEventLoggingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WCEventLoggingDataSource.swift; sourceTree = "<group>"; };
+		0DC234A02BA7C31300414B13 /* Experiments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Experiments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DC234B22BA7C7BE00414B13 /* DeauthenticatedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticatedState.swift; sourceTree = "<group>"; };
+		0DC234BA2BA8D8A000414B13 /* LoggedOutAppSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedOutAppSettings.swift; sourceTree = "<group>"; };
+		0DC234C72BA8DF8500414B13 /* LoginOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOnboardingViewController.swift; sourceTree = "<group>"; };
+		0DC234C92BA8DFB200414B13 /* LoginProloguePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProloguePageViewController.swift; sourceTree = "<group>"; };
+		0DC234CB2BA8DFCA00414B13 /* LoginProloguePageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginProloguePageType.swift; sourceTree = "<group>"; };
+		0DC234CE2BA8E00A00414B13 /* Extension+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIImage.swift"; sourceTree = "<group>"; };
+		0DC234D12BA8E09B00414B13 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0DC234D32BA8E10A00414B13 /* UIFont+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Helpers.swift"; sourceTree = "<group>"; };
+		0DC234D52BA8E1A000414B13 /* UIStackView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Helpers.swift"; sourceTree = "<group>"; };
+		0DC234D72BA8E1CE00414B13 /* UIButton+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Helpers.swift"; sourceTree = "<group>"; };
+		0DC234D92BA8E1F100414B13 /* UILabel+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Helpers.swift"; sourceTree = "<group>"; };
+		0DC234DC2BA8E2A000414B13 /* StyleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleManager.swift; sourceTree = "<group>"; };
+		0DC234DE2BA8E2E300414B13 /* UIControl+BlockEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+BlockEvents.swift"; sourceTree = "<group>"; };
+		0DC234E02BA8E9C700414B13 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		0DC234E22BA9140E00414B13 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		0DC234E42BAA235C00414B13 /* LoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginNavigationController.swift; sourceTree = "<group>"; };
 		0DD0EE652B914D9700B2AFDC /* Extension+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableView.swift"; sourceTree = "<group>"; };
 		0DD0EE682B91577B00B2AFDC /* WeatherDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailRouter.swift; sourceTree = "<group>"; };
 		0DD0EE6A2B9157EE00B2AFDC /* WeatherDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailViewController.swift; sourceTree = "<group>"; };
@@ -179,7 +239,11 @@
 				0D8E455A2B8CE7880057100C /* Networking.framework in Frameworks */,
 				0D8E45D22B8D18AF0057100C /* Components.framework in Frameworks */,
 				7094A60B6F74F31C78006326 /* Pods_WeatherApp.framework in Frameworks */,
+				0DC234B82BA7CA2200414B13 /* AutomatticTracks in Frameworks */,
+				0DC234A12BA7C31300414B13 /* Experiments.framework in Frameworks */,
 				0D8045DE2B8D3EED004F6E39 /* LocationService.framework in Frameworks */,
+				0DC234B62BA7CA2200414B13 /* AutomatticEncryptedLogs in Frameworks */,
+				0DC234042BA78AD600414B13 /* Redux.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,12 +294,13 @@
 				0D2D267A2B8C967F008EB605 /* App */,
 				0D8E43B02B8CCC110057100C /* Common */,
 				0D8045E12B8D418F004F6E39 /* Extensions */,
+				0D2D26582B8C95FE008EB605 /* Info.plist */,
 				0D8E44142B8CD0110057100C /* Modules */,
+				0DC234082BA78C0200414B13 /* Redux */,
 				0D8E44232B8CD35D0057100C /* Resources */,
 				0D8045E42B8DEC8D004F6E39 /* Storage */,
+				0DC234272BA791F600414B13 /* System */,
 				0D8E44292B8CD7F60057100C /* Tools */,
-				0D2D26582B8C95FE008EB605 /* Info.plist */,
-				0D2D26502B8C95FA008EB605 /* WeatherApp.xcdatamodeld */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -263,6 +328,10 @@
 				0D2D26492B8C95FA008EB605 /* SceneDelegate.swift */,
 				0D2D26472B8C95FA008EB605 /* AppDelegate.swift */,
 				0D8E44272B8CD6700057100C /* AppDelegate+Init.swift */,
+				0DC234012BA789F900414B13 /* AppCoordinator.swift */,
+				0DC234062BA78B0C00414B13 /* ServiceLocator.swift */,
+				0DC234E02BA8E9C700414B13 /* Authentication.swift */,
+				0DC234E22BA9140E00414B13 /* AuthenticationManager.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -276,6 +345,13 @@
 				0D2319602B8E7B9D00F969DD /* DateFormatter+WeatherApp.swift */,
 				0D2319622B8E8F7300F969DD /* Extensions+UIView.swift */,
 				0DD0EE652B914D9700B2AFDC /* Extension+UITableView.swift */,
+				0DC2342A2BA7925E00414B13 /* UserDefaults+Fiable.swift */,
+				0DC234CE2BA8E00A00414B13 /* Extension+UIImage.swift */,
+				0DC234D32BA8E10A00414B13 /* UIFont+Helpers.swift */,
+				0DC234D52BA8E1A000414B13 /* UIStackView+Helpers.swift */,
+				0DC234D72BA8E1CE00414B13 /* UIButton+Helpers.swift */,
+				0DC234D92BA8E1F100414B13 /* UILabel+Helpers.swift */,
+				0DC234DE2BA8E2E300414B13 /* UIControl+BlockEvents.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -332,6 +408,7 @@
 		0D8E44142B8CD0110057100C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0DC234C52BA8DF6700414B13 /* Authentication */,
 				0DD0EE672B91575D00B2AFDC /* WeatherDetail */,
 				0D9D1B122B912F8200316D94 /* Search */,
 				0D8E459F2B8D130A0057100C /* Dashboard */,
@@ -355,6 +432,7 @@
 		0D8E44232B8CD35D0057100C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0DC234D12BA8E09B00414B13 /* Images.xcassets */,
 				0D8E44242B8CD5980057100C /* Main.storyboard */,
 				0D2D26532B8C95FE008EB605 /* Assets.xcassets */,
 				0D2D26552B8C95FE008EB605 /* LaunchScreen.storyboard */,
@@ -368,6 +446,7 @@
 				0D8E442A2B8CD8060057100C /* Logging.swift */,
 				0D8E45852B8D00CD0057100C /* ConnectionManager.swift */,
 				0D8E45872B8D017C0057100C /* Reachability.swift */,
+				0DC234942BA7C12500414B13 /* WCEventLoggingDataSource.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -426,6 +505,64 @@
 				0D9D1B162B912FE800316D94 /* SearchResultsController.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0DC234082BA78C0200414B13 /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+				0DC234092BA78C0900414B13 /* DefaultStoresManager.swift */,
+				0DC2340D2BA78DAC00414B13 /* AuthenticatedState.swift */,
+				0DC234B22BA7C7BE00414B13 /* DeauthenticatedState.swift */,
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		0DC234272BA791F600414B13 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				0DC234DB2BA8E29800414B13 /* Style */,
+				0DC234B92BA8D89400414B13 /* Authentication */,
+				0DC234282BA791FD00414B13 /* SessionManager.swift */,
+				0DC2342C2BA7929000414B13 /* FiableConstants.swift */,
+				0DC2348B2BA7BAF200414B13 /* CrashLoggingStack.swift */,
+				0DC2348D2BA7BB4400414B13 /* WooCrashLoggingStack.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		0DC234B92BA8D89400414B13 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0DC234BA2BA8D8A000414B13 /* LoggedOutAppSettings.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		0DC234C52BA8DF6700414B13 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0DC234C62BA8DF7300414B13 /* Prologue */,
+				0DC234E42BAA235C00414B13 /* LoginNavigationController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		0DC234C62BA8DF7300414B13 /* Prologue */ = {
+			isa = PBXGroup;
+			children = (
+				0DC234C72BA8DF8500414B13 /* LoginOnboardingViewController.swift */,
+				0DC234C92BA8DFB200414B13 /* LoginProloguePageViewController.swift */,
+				0DC234CB2BA8DFCA00414B13 /* LoginProloguePageType.swift */,
+			);
+			path = Prologue;
+			sourceTree = "<group>";
+		};
+		0DC234DB2BA8E29800414B13 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				0DC234DC2BA8E2A000414B13 /* StyleManager.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		0DD0EE672B91575D00B2AFDC /* WeatherDetail */ = {
@@ -488,6 +625,8 @@
 		5E002269266C8CBD25337E38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DC234A02BA7C31300414B13 /* Experiments.framework */,
+				0DC234032BA78AD600414B13 /* Redux.framework */,
 				0D8045DD2B8D3EED004F6E39 /* LocationService.framework */,
 				0D8E45D12B8D18AF0057100C /* Components.framework */,
 				0D8E45592B8CE7880057100C /* Networking.framework */,
@@ -518,6 +657,10 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				0DC234B52BA7CA2200414B13 /* AutomatticEncryptedLogs */,
+				0DC234B72BA7CA2200414B13 /* AutomatticTracks */,
+			);
 			productName = WeatherApp;
 			productReference = 0D2D26442B8C95FA008EB605 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -593,6 +736,9 @@
 				Base,
 			);
 			mainGroup = 0D2D263B2B8C95FA008EB605;
+			packageReferences = (
+				0DC234B42BA7CA2200414B13 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */,
+			);
 			productRefGroup = 0D2D26452B8C95FA008EB605 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -610,6 +756,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D9D1B182B912FE800316D94 /* SearchResultsController.xib in Resources */,
+				0DC234D22BA8E09B00414B13 /* Images.xcassets in Resources */,
 				0D2D26572B8C95FE008EB605 /* LaunchScreen.storyboard in Resources */,
 				0DD0EE6D2B9157EE00B2AFDC /* WeatherDetailViewController.xib in Resources */,
 				0D8E441F2B8CD0310057100C /* SplashViewController.xib in Resources */,
@@ -743,46 +890,70 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC234CA2BA8DFB200414B13 /* LoginProloguePageViewController.swift in Sources */,
+				0DC234CF2BA8E00A00414B13 /* Extension+UIImage.swift in Sources */,
 				0D8E43B72B8CCC290057100C /* InteractorInterface.swift in Sources */,
+				0DC2342D2BA7929000414B13 /* FiableConstants.swift in Sources */,
 				0D8E45A52B8D14DD0057100C /* DashboardViewController.swift in Sources */,
+				0DC234E12BA8E9C700414B13 /* Authentication.swift in Sources */,
 				0D2319632B8E8F7300F969DD /* Extensions+UIView.swift in Sources */,
+				0DC234DF2BA8E2E300414B13 /* UIControl+BlockEvents.swift in Sources */,
+				0DC234D62BA8E1A000414B13 /* UIStackView+Helpers.swift in Sources */,
 				0D23195D2B8E7B1400F969DD /* Date+WeatherApp.swift in Sources */,
+				0DC234C82BA8DF8500414B13 /* LoginOnboardingViewController.swift in Sources */,
 				0D9D1B1A2B91300900316D94 /* SearchResultsInteractor.swift in Sources */,
 				0D8E441D2B8CD0310057100C /* SplashRouter.swift in Sources */,
-				0D2D26522B8C95FA008EB605 /* WeatherApp.xcdatamodeld in Sources */,
+				0DC234072BA78B0C00414B13 /* ServiceLocator.swift in Sources */,
 				0D8E43BB2B8CCC290057100C /* ViewInterface.swift in Sources */,
 				0D2D26482B8C95FA008EB605 /* AppDelegate.swift in Sources */,
+				0DC234952BA7C12500414B13 /* WCEventLoggingDataSource.swift in Sources */,
 				0D8045EF2B8E4E58004F6E39 /* UserLocation+CoreDataClass.swift in Sources */,
 				0DD0EE692B91577B00B2AFDC /* WeatherDetailRouter.swift in Sources */,
+				0DC234DD2BA8E2A000414B13 /* StyleManager.swift in Sources */,
 				0D8E44222B8CD0F30057100C /* BaseViewController.swift in Sources */,
 				0D9D1B1F2B9133A300316D94 /* SearchResultsPresenter.swift in Sources */,
 				0D8045E62B8DED4C004F6E39 /* CoreLocationDataManager.swift in Sources */,
+				0DC2348C2BA7BAF200414B13 /* CrashLoggingStack.swift in Sources */,
 				0D8045E32B8D41B1004F6E39 /* WeatherRequest+CLLocation.swift in Sources */,
+				0DC234022BA789F900414B13 /* AppCoordinator.swift in Sources */,
 				0D8E441E2B8CD0310057100C /* SplashInteractor.swift in Sources */,
 				0D8045E82B8DF3CA004F6E39 /* Extension+NSManagedObject.swift in Sources */,
 				0D2319612B8E7B9D00F969DD /* DateFormatter+WeatherApp.swift in Sources */,
 				0D8E441C2B8CD0310057100C /* SplashPresenter.swift in Sources */,
+				0DC234E32BA9140E00414B13 /* AuthenticationManager.swift in Sources */,
+				0DC234D42BA8E10A00414B13 /* UIFont+Helpers.swift in Sources */,
+				0DC2340A2BA78C0900414B13 /* DefaultStoresManager.swift in Sources */,
 				0D8E45A12B8D132B0057100C /* DashboardInteractor.swift in Sources */,
 				0D8045F12B8E4E80004F6E39 /* UserLocation+CoreDataProperties.swift in Sources */,
 				0DD0EE772B91590100B2AFDC /* DetailPresenter.swift in Sources */,
+				0DC2348E2BA7BB4400414B13 /* WooCrashLoggingStack.swift in Sources */,
 				0D8E43B92B8CCC290057100C /* BaseWireframe.swift in Sources */,
 				0D8E45A32B8D145E0057100C /* DashboardPresenter.swift in Sources */,
+				0DC234E52BAA235C00414B13 /* LoginNavigationController.swift in Sources */,
+				0DC2340E2BA78DAC00414B13 /* AuthenticatedState.swift in Sources */,
 				0D8E43B82B8CCC290057100C /* FormatterInterface.swift in Sources */,
 				0D2D264A2B8C95FA008EB605 /* SceneDelegate.swift in Sources */,
+				0DC234CC2BA8DFCA00414B13 /* LoginProloguePageType.swift in Sources */,
 				0D9D1B142B912F9400316D94 /* SearchResultsRouter.swift in Sources */,
+				0DC234DA2BA8E1F100414B13 /* UILabel+Helpers.swift in Sources */,
 				0D8E44282B8CD6700057100C /* AppDelegate+Init.swift in Sources */,
 				0DD0EE6C2B9157EE00B2AFDC /* WeatherDetailViewController.swift in Sources */,
+				0DC2342B2BA7925E00414B13 /* UserDefaults+Fiable.swift in Sources */,
 				0D8E45862B8D00CD0057100C /* ConnectionManager.swift in Sources */,
 				0D8E43BA2B8CCC290057100C /* UIStoryboardExtension.swift in Sources */,
 				0D9D1B172B912FE800316D94 /* SearchResultsController.swift in Sources */,
 				0DD0EE712B91581D00B2AFDC /* DetailInteractor.swift in Sources */,
+				0DC234B32BA7C7BE00414B13 /* DeauthenticatedState.swift in Sources */,
 				0DD0EE662B914D9700B2AFDC /* Extension+UITableView.swift in Sources */,
+				0DC234292BA791FD00414B13 /* SessionManager.swift in Sources */,
 				0D8E45882B8D017C0057100C /* Reachability.swift in Sources */,
 				0D23195F2B8E7B4500F969DD /* String+Helpers.swift in Sources */,
 				0D8E43BC2B8CCC290057100C /* PresenterInterface.swift in Sources */,
 				0D8E441B2B8CD0310057100C /* SplashViewController.swift in Sources */,
+				0DC234BB2BA8D8A000414B13 /* LoggedOutAppSettings.swift in Sources */,
 				0D8E442B2B8CD8060057100C /* Logging.swift in Sources */,
 				0D8E45A72B8D15860057100C /* DashboardRouter.swift in Sources */,
+				0DC234D82BA8E1CE00414B13 /* UIButton+Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -890,7 +1061,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -947,7 +1118,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1144,18 +1315,29 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCVersionGroup section */
-		0D2D26502B8C95FA008EB605 /* WeatherApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0D2D26512B8C95FA008EB605 /* WeatherApp.xcdatamodel */,
-			);
-			currentVersion = 0D2D26512B8C95FA008EB605 /* WeatherApp.xcdatamodel */;
-			path = WeatherApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
+/* Begin XCRemoteSwiftPackageReference section */
+		0DC234B42BA7CA2200414B13 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Automattic/Automattic-Tracks-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
 		};
-/* End XCVersionGroup section */
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0DC234B52BA7CA2200414B13 /* AutomatticEncryptedLogs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DC234B42BA7CA2200414B13 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */;
+			productName = AutomatticEncryptedLogs;
+		};
+		0DC234B72BA7CA2200414B13 /* AutomatticTracks */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DC234B42BA7CA2200414B13 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */;
+			productName = AutomatticTracks;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0D2D263C2B8C95FA008EB605 /* Project object */;
 }

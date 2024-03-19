@@ -1,6 +1,6 @@
 import Foundation
 import CoreData
-import WooFoundation
+import OnsaFoundation
 
 /// NSManagedObjectContext Storage Conformance
 ///

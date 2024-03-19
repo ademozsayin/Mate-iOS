@@ -20,11 +20,15 @@
 		0D5824AC2B9E55CB00024074 /* Array+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824A52B9E55CB00024074 /* Array+Helpers.swift */; };
 		0D5824AD2B9E55CB00024074 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824A62B9E55CB00024074 /* Queue.swift */; };
 		0D5824AF2B9E58E200024074 /* LogErrorAndExit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824AE2B9E58E200024074 /* LogErrorAndExit.swift */; };
+		0DC234132BA78E2700414B13 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234122BA78E2700414B13 /* Model.swift */; };
 		0DF33DF62B9E5B78003D7351 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33DF52B9E5B78003D7351 /* Store.swift */; };
 		0DF33E4B2B9E5D83003D7351 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4A2B9E5D83003D7351 /* Networking.framework */; };
 		0DF33E4C2B9E5D83003D7351 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4A2B9E5D83003D7351 /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0DF33E4F2B9E5D88003D7351 /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4E2B9E5D88003D7351 /* Storage.framework */; };
 		0DF33E502B9E5D88003D7351 /* Storage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4E2B9E5D88003D7351 /* Storage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0DF33ECB2B9E635A003D7351 /* StoresManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33ECA2B9E635A003D7351 /* StoresManager.swift */; };
+		0DF33ECD2B9E63C8003D7351 /* SessionManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33ECC2B9E63C8003D7351 /* SessionManagerProtocol.swift */; };
+		0DF33ECF2B9E6418003D7351 /* DeauthenticatedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33ECE2B9E6418003D7351 /* DeauthenticatedStore.swift */; };
 		56EA11F6FA09C45A6C2A2757 /* Pods_Redux.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A5DA94BF00663B25DA83D2 /* Pods_Redux.framework */; };
 		6B9FD230FB7913A2A513BB3E /* Pods_ReduxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76788032A2F9F246A8F3802C /* Pods_ReduxTests.framework */; };
 /* End PBXBuildFile section */
@@ -69,9 +73,13 @@
 		0D5824A52B9E55CB00024074 /* Array+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Helpers.swift"; sourceTree = "<group>"; };
 		0D5824A62B9E55CB00024074 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		0D5824AE2B9E58E200024074 /* LogErrorAndExit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogErrorAndExit.swift; sourceTree = "<group>"; };
+		0DC234122BA78E2700414B13 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0DF33DF52B9E5B78003D7351 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		0DF33E4A2B9E5D83003D7351 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0DF33E4E2B9E5D88003D7351 /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DF33ECA2B9E635A003D7351 /* StoresManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresManager.swift; sourceTree = "<group>"; };
+		0DF33ECC2B9E63C8003D7351 /* SessionManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManagerProtocol.swift; sourceTree = "<group>"; };
+		0DF33ECE2B9E6418003D7351 /* DeauthenticatedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeauthenticatedStore.swift; sourceTree = "<group>"; };
 		49A5DA94BF00663B25DA83D2 /* Pods_Redux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Redux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76788032A2F9F246A8F3802C /* Pods_ReduxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F25E2D6E83802523CD212C3 /* Pods-Redux.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Redux.debug.xcconfig"; path = "Target Support Files/Pods-Redux/Pods-Redux.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +134,9 @@
 		0D58247B2B9E552B00024074 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				0DC234112BA78E1500414B13 /* Model */,
+				0DF33ED12B9F4BD7003D7351 /* Stores */,
+				0DF33ED02B9F4BA9003D7351 /* Actions */,
 				0D58249F2B9E55CB00024074 /* Internal */,
 				0D58249C2B9E554B00024074 /* Base */,
 				0D58247C2B9E552B00024074 /* Redux.h */,
@@ -147,6 +158,9 @@
 			children = (
 				0D58249D2B9E556C00024074 /* Dispatcher.swift */,
 				0DF33DF52B9E5B78003D7351 /* Store.swift */,
+				0DF33ECA2B9E635A003D7351 /* StoresManager.swift */,
+				0DF33ECC2B9E63C8003D7351 /* SessionManagerProtocol.swift */,
+				0DF33ECE2B9E6418003D7351 /* DeauthenticatedStore.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -164,6 +178,28 @@
 				0D5824AE2B9E58E200024074 /* LogErrorAndExit.swift */,
 			);
 			path = Internal;
+			sourceTree = "<group>";
+		};
+		0DC234112BA78E1500414B13 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0DC234122BA78E2700414B13 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0DF33ED02B9F4BA9003D7351 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		0DF33ED12B9F4BD7003D7351 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stores;
 			sourceTree = "<group>";
 		};
 		BF9590FE1D5F5232E99B39D4 /* Frameworks */ = {
@@ -366,15 +402,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC234132BA78E2700414B13 /* Model.swift in Sources */,
 				0D5824A72B9E55CB00024074 /* NSOrderedSet+Array.swift in Sources */,
+				0DF33ECB2B9E635A003D7351 /* StoresManager.swift in Sources */,
 				0D58249E2B9E556C00024074 /* Dispatcher.swift in Sources */,
 				0D58247E2B9E552B00024074 /* Redux.docc in Sources */,
 				0D5824AC2B9E55CB00024074 /* Array+Helpers.swift in Sources */,
 				0D5824A92B9E55CB00024074 /* Assert.swift in Sources */,
 				0D5824AA2B9E55CB00024074 /* String+Extensions.swift in Sources */,
 				0DF33DF62B9E5B78003D7351 /* Store.swift in Sources */,
+				0DF33ECF2B9E6418003D7351 /* DeauthenticatedStore.swift in Sources */,
 				0D5824A82B9E55CB00024074 /* Logging.swift in Sources */,
 				0D5824AF2B9E58E200024074 /* LogErrorAndExit.swift in Sources */,
+				0DF33ECD2B9E63C8003D7351 /* SessionManagerProtocol.swift in Sources */,
 				0D5824AD2B9E55CB00024074 /* Queue.swift in Sources */,
 				0D5824AB2B9E55CB00024074 /* Action+Internal.swift in Sources */,
 			);

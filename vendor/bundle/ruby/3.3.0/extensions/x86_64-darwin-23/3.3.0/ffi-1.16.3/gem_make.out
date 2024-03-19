@@ -13,10 +13,10 @@ creating extconf.h
 creating Makefile
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/ffi-1.16.3/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20240311-91959-nkylkw sitelibdir\=./.gem.20240311-91959-nkylkw clean
+make DESTDIR\= sitearchdir\=./.gem.20240318-21709-dtd2ie sitelibdir\=./.gem.20240318-21709-dtd2ie clean
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/ffi-1.16.3/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20240311-91959-nkylkw sitelibdir\=./.gem.20240311-91959-nkylkw
+make DESTDIR\= sitearchdir\=./.gem.20240318-21709-dtd2ie sitelibdir\=./.gem.20240318-21709-dtd2ie
 compiling AbstractMemory.c
 compiling ArrayType.c
 compiling Buffer.c
@@ -43,8 +43,8 @@ compiling ffi.c
 linking shared-object ffi_c.bundle
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/ffi-1.16.3/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20240311-91959-nkylkw sitelibdir\=./.gem.20240311-91959-nkylkw install
-/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20240311-91959-nkylkw
+make DESTDIR\= sitearchdir\=./.gem.20240318-21709-dtd2ie sitelibdir\=./.gem.20240318-21709-dtd2ie install
+/usr/bin/install -c -m 0755 ffi_c.bundle ./.gem.20240318-21709-dtd2ie
 
 current directory: /Users/ademozsayin/Desktop/WeatherApp-iOS/vendor/bundle/ruby/3.3.0/gems/ffi-1.16.3/ext/ffi_c
-make DESTDIR\= sitearchdir\=./.gem.20240311-91959-nkylkw sitelibdir\=./.gem.20240311-91959-nkylkw clean
+make DESTDIR\= sitearchdir\=./.gem.20240318-21709-dtd2ie sitelibdir\=./.gem.20240318-21709-dtd2ie clean

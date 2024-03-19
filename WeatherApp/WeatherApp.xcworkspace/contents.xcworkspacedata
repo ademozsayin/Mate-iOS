@@ -2,19 +2,25 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:../Storage/Storage.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../Redux/Redux.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:../LocationService/LocationService.xcodeproj">
+      location = "group:../FiableAuthentication/FiableAuthentication.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:WeatherApp.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:../Redux/Redux.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:../Networking/Networking.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../Experiments/Experiments.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../Storage/Storage.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../LocationService/LocationService.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:../Components/Components.xcodeproj">

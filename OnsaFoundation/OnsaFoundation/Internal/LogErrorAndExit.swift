@@ -7,7 +7,8 @@ import Foundation
 /// in Sentry. Using this method, Sentry will still only show “Fatal error” in the Issue message
 /// but the `message` can now be accessed through the Encrypted Logging Console.
 ///
+import CocoaLumberjack
 public func logErrorAndExit(_ message: String, file: StaticString = #file, line: UInt = #line) -> Never {
-    DDLogError(message)
+    DDLogError(message, level: .error, file: file, line: line)
     fatalError(message, file: file, line: line)
 }
