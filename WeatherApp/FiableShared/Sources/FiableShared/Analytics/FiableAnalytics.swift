@@ -7,32 +7,6 @@
 
 import Foundation
 
-// Constants
-let WPAnalyticsStatEditorPublishedPostPropertyCategory = "with_categories"
-let WPAnalyticsStatEditorPublishedPostPropertyPhoto = "with_photos"
-let WPAnalyticsStatEditorPublishedPostPropertyTag = "with_tags"
-let WPAnalyticsStatEditorPublishedPostPropertyVideo = "with_videos"
-
-// Protocol for Analytics Tracker
-protocol FiableAnalyticsTracker {
-    func beginTimer(for stat: FiableAnalyticsStat)
-    func endTimer(for stat: FiableAnalyticsStat, with properties: [String: Any])
-    func track(_ stat: FiableAnalyticsStat)
-    func track(_ stat: FiableAnalyticsStat, with properties: [String: Any])
-    func trackString(_ event: String)
-    func trackString(_ event: String, with properties: [String: Any])
-    func beginSession()
-    func endSession()
-    func refreshMetadata()
-    func clearQueuedEvents()
-}
-
-// Enum for Analytics Stat
-enum FiableAnalyticsStat {
-    case AnalyticsStatSignupButtonTapped
-    // Add more stats as needed
-}
-
 // Analytics Manager
 class FiableAnalytics {
     // Static trackers array

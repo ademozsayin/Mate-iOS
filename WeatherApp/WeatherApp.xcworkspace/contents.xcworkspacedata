@@ -34,4 +34,7 @@
    <FileRef
       location = "group:FiableShared">
    </FileRef>
+   <FileRef
+      location = "group:../FiableUI">
+   </FileRef>
 </Workspace>
