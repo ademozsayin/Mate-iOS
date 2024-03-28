@@ -86,7 +86,7 @@ class CoreLocationDataManager: LocationDataManager {
                 DDLogInfo("🟢 Location saved")
             }
         } catch let error as NSError {
-            fatalError("Could not fetch. \(error), \(error.userInfo)")
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
 
@@ -103,7 +103,9 @@ class CoreLocationDataManager: LocationDataManager {
             let locations = try managedContext.fetch(fetchRequest)
             return locations.first // Return the first (most recent) location
         } catch let error as NSError {
-            fatalError("Could not fetch. \(error), \(error.userInfo)")
+            
+            print("Could not fetch. \(error), \(error.userInfo)")
+            return nil
         }
     }
 }

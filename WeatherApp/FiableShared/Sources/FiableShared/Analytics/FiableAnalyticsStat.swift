@@ -9,7 +9,8 @@ import Foundation
 
 
 // Enum for Analytics Stat
-enum FiableAnalyticsStat {
+public enum FiableAnalyticsStat: Int {
     case AnalyticsStatSignupButtonTapped
+    case signedIn
     // Add more stats as needed
 }

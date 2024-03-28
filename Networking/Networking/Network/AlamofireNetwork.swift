@@ -79,9 +79,15 @@ public class AlamofireNetwork: Network {
     ///
     public func responseData(for request: URLRequestConvertible, completion: @escaping (Swift.Result<Data, Error>) -> Void) {
         let request = requestConverter.convert(request)
+        do {
+            NetworkLogger.log(request: try request.asURLRequest())
+        } catch {
+            print("Error creating URLRequest: \(error)")
+        }
         alamofireSession.request(request)
             .validateIfRestRequest(for: request)
             .responseData { response in
+                NetworkLogger.log(response: response.response, data: response.data, error: response.error)
                 if let error = response.networkingError {
                     completion(.failure(error))
                 } else {

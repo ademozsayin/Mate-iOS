@@ -1,10 +1,3 @@
-//
-//  LoginOnboardingViewController.swift
-//  WeatherApp
-//
-//  Created by Adem Özsayın on 18.03.2024.
-//
-
 import Experiments
 import SwiftUI
 import UIKit
@@ -24,15 +17,14 @@ final class LoginOnboardingViewController: UIViewController {
     private lazy var nextButton: UIButton = createNextButton()
     private lazy var imageView = UIImageView(image: .wooLogoPrologueImage)
 
-//    private let analytics: Analytics
+    private let analytics: Analytics
     private let featureFlagService: FeatureFlagService
     private let onDismiss: (DismissAction) -> Void
 
-    init(
-//        analytics: Analytics = ServiceLocator.analytics,
+    init(analytics: Analytics = ServiceLocator.analytics,
          featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService,
          onDismiss: @escaping (DismissAction) -> Void) {
-//        self.analytics = analytics
+        self.analytics = analytics
         self.featureFlagService = featureFlagService
         self.onDismiss = onDismiss
         super.init(nibName: nil, bundle: nil)
@@ -52,8 +44,7 @@ final class LoginOnboardingViewController: UIViewController {
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
-//        return UIDevice.isPad() ? .all : .portrait
+        return UIDevice.isPad() ? .all : .portrait
     }
 }
 
@@ -141,7 +132,7 @@ private extension LoginOnboardingViewController {
             guard self.pageViewController.goToNextPageIfPossible() else {
                 return self.onDismiss(.next)
             }
-//            self.analytics.track(event: .LoginOnboarding.loginOnboardingNextButtonTapped(isFinalPage: false))
+            self.analytics.track(event: .LoginOnboarding.loginOnboardingNextButtonTapped(isFinalPage: false))
         }
         return button
     }

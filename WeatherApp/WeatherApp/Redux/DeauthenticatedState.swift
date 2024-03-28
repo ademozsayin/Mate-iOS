@@ -29,7 +29,7 @@ class DeauthenticatedState: StoresManagerState {
 //                                 dotcomClientSecret: ApiCredentials.dotcomSecret,
 //                                 network: network,
 //                                 dispatcher: dispatcher),
-//            WordPressSiteStore(network: network, dispatcher: dispatcher)
+            GetStartedStore(network: network, dispatcher: dispatcher)
         ]
     }
 

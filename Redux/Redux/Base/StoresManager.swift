@@ -26,8 +26,8 @@ public protocol StoresManager {
 
     /// Switches the internal state to Authenticated.
 //    ///
-//    @discardableResult
-//    func authenticate(credentials: Credentials) -> StoresManager
+    @discardableResult
+    func authenticate(credentials: Credentials) -> StoresManager
 
     /// Switches the state to a Deauthenticated one.
     ///

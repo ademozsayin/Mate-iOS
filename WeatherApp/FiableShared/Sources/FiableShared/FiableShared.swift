@@ -1,2 +1,8 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
+//
+//  File.swift
+//  
+//
+//  Created by Adem Özsayın on 20.03.2024.
+//
+
+import Foundation

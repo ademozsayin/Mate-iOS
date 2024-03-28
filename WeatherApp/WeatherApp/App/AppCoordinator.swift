@@ -10,6 +10,7 @@ import UIKit
 import Combine
 import Redux
 import Storage
+import FiableAuthenticator
 
 class AppNavigator {
     weak var navigationController: UINavigationController?
@@ -21,7 +22,7 @@ class AppNavigator {
 
 
 final class AppCoordinator {
-
+    let tabBarController: MainTabBarController
     private let window: UIWindow
 
     private let stores: StoresManager
@@ -47,32 +48,32 @@ final class AppCoordinator {
      
     ) {
         self.window = window
+        self.tabBarController = {
+            let tabBarController = MainTabBarController()
+            return tabBarController
+        }()
         self.stores = stores
         self.loggedOutAppSettings = loggedOutAppSettings
         self.storageManager = storageManager
         self.authenticationManager = authenticationManager
 
-
         // Configures authenticator first in case `WordPressAuthenticator` is used in other `AppDelegate` launch events.
         configureAuthenticator()
-
-        start()
+        
     }
 
     func start() {
-  
         authStatesSubscription = stores.isLoggedInPublisher
-            .sink { isLoggedIn in
-                // Handle the isLoggedIn value here
-                switch isLoggedIn {
-                case true:
-                    print("asdasd")
-                case false:
-                    self.displayAuthenticatorWithOnboardingIfNeeded()
-                }
-                self.isLoggedIn = isLoggedIn
+        .sink { isLoggedIn in
+            // Handle the isLoggedIn value here
+            switch isLoggedIn {
+            case true:
+                print("asdasd")
+            case false:
+                self.displayAuthenticatorWithOnboardingIfNeeded()
             }
-        
+            self.isLoggedIn = isLoggedIn
+        }
     }
 }
 
@@ -89,13 +90,42 @@ private extension AppCoordinator {
             presentLoginOnboarding { [weak self] in
                 guard let  self else { return }
                 // Only displays the authenticator when dismissing onboarding to allow time for A/B test setup.
-//                self.configureAndDisplayAuthenticator()
+                self.configureAndDisplayAuthenticator()
                 print("xxx")
             }
         } else {
             print("aaa")
-//            configureAndDisplayAuthenticator()
+            configureAndDisplayAuthenticator()
         }
+    }
+    
+    /// Configures the WPAuthenticator and sets the authenticator UI as the window's root view.
+    func configureAndDisplayAuthenticator() {
+        configureAuthenticator()
+        displayAuthenticator()
+    }
+
+    /// Configures the WPAuthenticator for usage in both logged-in and logged-out states.
+    func configureAuthenticator() {
+        authenticationManager.initialize()
+        authenticationManager.setLoggedOutAppSettings(loggedOutAppSettings)
+        authenticationManager.displayAuthenticatorIfLoggedOut = { [weak self] in
+            guard let self, self.isLoggedIn == false else { return nil }
+            guard let loginNavigationController = self.window.rootViewController as? LoginNavigationController else {
+                return self.displayAuthenticator() as? LoginNavigationController
+            }
+            return loginNavigationController
+        }
+    }
+
+    @discardableResult
+    func displayAuthenticator() -> UIViewController {
+        let authenticationUI = authenticationManager.authenticationUI()
+        setWindowRootViewControllerAndAnimateIfNeeded(authenticationUI) { [weak self] _ in
+            guard let self = self else { return }
+            self.tabBarController.removeViewControllers()
+        }
+        return authenticationUI
     }
     
     
@@ -123,12 +153,6 @@ private extension AppCoordinator {
             self.loggedOutAppSettings.setHasFinishedOnboarding(true)
             self.window.rootViewController?.dismiss(animated: true)
 
-//            switch action {
-//            case .next:
-//                self.analytics.track(event: .LoginOnboarding.loginOnboardingNextButtonTapped(isFinalPage: true))
-//            case .skip:
-//                self.analytics.track(event: .LoginOnboarding.loginOnboardingSkipButtonTapped())
-//            }
         }
         onboardingViewController.modalPresentationStyle = .fullScreen
         onboardingViewController.modalTransitionStyle = .crossDissolve
@@ -137,29 +161,6 @@ private extension AppCoordinator {
 //        analytics.track(event: .LoginOnboarding.loginOnboardingShown())
     }
     
-    
-    /// Configures the WPAuthenticator for usage in both logged-in and logged-out states.
-    func configureAuthenticator() {
-        authenticationManager.initialize()
-        authenticationManager.setLoggedOutAppSettings(loggedOutAppSettings)
-
-        authenticationManager.displayAuthenticatorIfLoggedOut = { [weak self] in
-            guard let self = self else { return nil }
-
-            if self.isLoggedIn == false {
-                guard let loginNavigationController = self.window.rootViewController as? LoginNavigationController else {
-                    // Handle the case when the root view controller is not a LoginNavigationController
-                    return UINavigationController() // Return a default navigation controller
-                }
-                return loginNavigationController
-            } else {
-                // Handle the case when the user is already logged in
-                return UINavigationController() // Return a default navigation controller
-            }
-        }
-//        appleIDCredentialChecker.observeLoggedInStateForAppleIDObservations()
-    }
-
 }
 
 private extension AppCoordinator {
@@ -179,6 +180,7 @@ private extension AppCoordinator {
         }
     }
 }
+
 
 
 private extension AppCoordinator {

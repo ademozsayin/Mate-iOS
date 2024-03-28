@@ -1,5 +1,6 @@
 import Foundation
 
+@available(iOS 13.0, *)
 extension Date {
     /// Private Date Formatters
     ///
@@ -207,6 +208,7 @@ extension Date {
     }
 }
 
+@available(iOS 13.0, *)
 extension NSDate {
     @objc public static func dateWithISO8601String(_ string: String) -> NSDate? {
         return Date.DateFormatters.iso8601.date(from: string) as NSDate?
@@ -256,6 +258,7 @@ extension NSDate {
 
     /// Returns the date components object.
     ///
+  
     @objc public func dateAndTimeComponents() -> NSDateComponents {
         return (self as Date).dateAndTimeComponents() as NSDateComponents
     }

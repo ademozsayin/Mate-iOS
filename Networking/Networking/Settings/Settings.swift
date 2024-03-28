@@ -28,4 +28,16 @@ public struct Settings {
         return "\(key)"
     }
     
+    /// WordPress.com API Base URL
+    ///
+    public static var onsastradaApiBaseURL: String = {
+        if ProcessInfo.processInfo.arguments.contains("mocked-onsastrada-api") {
+            return "http://localhost:8055/"
+        } else if let onsaApiBaseURL = ProcessInfo.processInfo.environment["onsastrada-api-base-url"] {
+            return onsaApiBaseURL
+        }
+
+        return baseURL//"https://public-api.wordpress.com/"
+    }()
+    
 }

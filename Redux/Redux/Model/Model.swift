@@ -12,6 +12,7 @@ import Storage
 
 // MARK: - Exported ReadOnly Symbols
 public typealias Account = Networking.Account
+public typealias EmailCheck = Networking.EmailCheckData
 
 
 public typealias Credentials = Networking.Credentials

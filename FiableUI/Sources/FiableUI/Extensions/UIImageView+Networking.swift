@@ -21,7 +21,9 @@ public extension UIImageView {
                 return
             }
 
-            self?.image = image.resizedImage(with: .scaleAspectFit, bounds: pointSize, interpolationQuality: .high)
+//            self?.image = image.resizedImage(with: .scaleAspectFit, bounds: pointSize, interpolationQuality: .high)
+            
+            self?.image = image.resizableImage(withCapInsets: .zero)
         })
     }
 

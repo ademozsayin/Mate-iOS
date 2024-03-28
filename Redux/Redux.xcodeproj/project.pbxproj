@@ -20,6 +20,12 @@
 		0D5824AC2B9E55CB00024074 /* Array+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824A52B9E55CB00024074 /* Array+Helpers.swift */; };
 		0D5824AD2B9E55CB00024074 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824A62B9E55CB00024074 /* Queue.swift */; };
 		0D5824AF2B9E58E200024074 /* LogErrorAndExit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5824AE2B9E58E200024074 /* LogErrorAndExit.swift */; };
+		0D91DBD72BB28C7E00850E00 /* GetStartedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91DBD62BB28C7E00850E00 /* GetStartedStore.swift */; };
+		0D9856822BAD1463008F96E9 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9856812BAD1463008F96E9 /* ResultsController.swift */; };
+		0D9856842BAD1478008F96E9 /* ReadOnlyConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9856832BAD1478008F96E9 /* ReadOnlyConvertible.swift */; };
+		0D9856862BAD14A1008F96E9 /* FetchedResultsControllerDelegateWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9856852BAD14A1008F96E9 /* FetchedResultsControllerDelegateWrapper.swift */; };
+		0DA8EFFD2BB23E79001EF5BF /* AccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFFC2BB23E79001EF5BF /* AccountStore.swift */; };
+		0DA8F0002BB23ED1001EF5BF /* AccountAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFFF2BB23ED1001EF5BF /* AccountAction.swift */; };
 		0DC234132BA78E2700414B13 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234122BA78E2700414B13 /* Model.swift */; };
 		0DF33DF62B9E5B78003D7351 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DF33DF52B9E5B78003D7351 /* Store.swift */; };
 		0DF33E4B2B9E5D83003D7351 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DF33E4A2B9E5D83003D7351 /* Networking.framework */; };
@@ -73,6 +79,12 @@
 		0D5824A52B9E55CB00024074 /* Array+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Helpers.swift"; sourceTree = "<group>"; };
 		0D5824A62B9E55CB00024074 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		0D5824AE2B9E58E200024074 /* LogErrorAndExit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogErrorAndExit.swift; sourceTree = "<group>"; };
+		0D91DBD62BB28C7E00850E00 /* GetStartedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedStore.swift; sourceTree = "<group>"; };
+		0D9856812BAD1463008F96E9 /* ResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
+		0D9856832BAD1478008F96E9 /* ReadOnlyConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadOnlyConvertible.swift; sourceTree = "<group>"; };
+		0D9856852BAD14A1008F96E9 /* FetchedResultsControllerDelegateWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedResultsControllerDelegateWrapper.swift; sourceTree = "<group>"; };
+		0DA8EFFC2BB23E79001EF5BF /* AccountStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStore.swift; sourceTree = "<group>"; };
+		0DA8EFFF2BB23ED1001EF5BF /* AccountAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountAction.swift; sourceTree = "<group>"; };
 		0DC234122BA78E2700414B13 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		0DF33DF52B9E5B78003D7351 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		0DF33E4A2B9E5D83003D7351 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +146,7 @@
 		0D58247B2B9E552B00024074 /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				0D9856802BAD1455008F96E9 /* Tools */,
 				0DC234112BA78E1500414B13 /* Model */,
 				0DF33ED12B9F4BD7003D7351 /* Stores */,
 				0DF33ED02B9F4BA9003D7351 /* Actions */,
@@ -176,8 +189,42 @@
 				0D5824A52B9E55CB00024074 /* Array+Helpers.swift */,
 				0D5824A62B9E55CB00024074 /* Queue.swift */,
 				0D5824AE2B9E58E200024074 /* LogErrorAndExit.swift */,
+				0D9856852BAD14A1008F96E9 /* FetchedResultsControllerDelegateWrapper.swift */,
 			);
 			path = Internal;
+			sourceTree = "<group>";
+		};
+		0D91DBD52BB28C7000850E00 /* GetStarted */ = {
+			isa = PBXGroup;
+			children = (
+				0D91DBD62BB28C7E00850E00 /* GetStartedStore.swift */,
+			);
+			path = GetStarted;
+			sourceTree = "<group>";
+		};
+		0D9856802BAD1455008F96E9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0D9856812BAD1463008F96E9 /* ResultsController.swift */,
+				0D9856832BAD1478008F96E9 /* ReadOnlyConvertible.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		0DA8EFFB2BB23E63001EF5BF /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				0DA8EFFC2BB23E79001EF5BF /* AccountStore.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		0DA8EFFE2BB23EC3001EF5BF /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				0DA8EFFF2BB23ED1001EF5BF /* AccountAction.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		0DC234112BA78E1500414B13 /* Model */ = {
@@ -191,6 +238,7 @@
 		0DF33ED02B9F4BA9003D7351 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				0DA8EFFE2BB23EC3001EF5BF /* Account */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -198,6 +246,8 @@
 		0DF33ED12B9F4BD7003D7351 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				0D91DBD52BB28C7000850E00 /* GetStarted */,
+				0DA8EFFB2BB23E63001EF5BF /* Account */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -402,21 +452,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DA8EFFD2BB23E79001EF5BF /* AccountStore.swift in Sources */,
 				0DC234132BA78E2700414B13 /* Model.swift in Sources */,
 				0D5824A72B9E55CB00024074 /* NSOrderedSet+Array.swift in Sources */,
 				0DF33ECB2B9E635A003D7351 /* StoresManager.swift in Sources */,
 				0D58249E2B9E556C00024074 /* Dispatcher.swift in Sources */,
 				0D58247E2B9E552B00024074 /* Redux.docc in Sources */,
 				0D5824AC2B9E55CB00024074 /* Array+Helpers.swift in Sources */,
+				0D9856842BAD1478008F96E9 /* ReadOnlyConvertible.swift in Sources */,
 				0D5824A92B9E55CB00024074 /* Assert.swift in Sources */,
+				0DA8F0002BB23ED1001EF5BF /* AccountAction.swift in Sources */,
 				0D5824AA2B9E55CB00024074 /* String+Extensions.swift in Sources */,
+				0D9856822BAD1463008F96E9 /* ResultsController.swift in Sources */,
 				0DF33DF62B9E5B78003D7351 /* Store.swift in Sources */,
 				0DF33ECF2B9E6418003D7351 /* DeauthenticatedStore.swift in Sources */,
 				0D5824A82B9E55CB00024074 /* Logging.swift in Sources */,
 				0D5824AF2B9E58E200024074 /* LogErrorAndExit.swift in Sources */,
+				0D91DBD72BB28C7E00850E00 /* GetStartedStore.swift in Sources */,
 				0DF33ECD2B9E63C8003D7351 /* SessionManagerProtocol.swift in Sources */,
 				0D5824AD2B9E55CB00024074 /* Queue.swift in Sources */,
 				0D5824AB2B9E55CB00024074 /* Action+Internal.swift in Sources */,
+				0D9856862BAD14A1008F96E9 /* FetchedResultsControllerDelegateWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

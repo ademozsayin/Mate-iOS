@@ -26,15 +26,21 @@
       location = "group:../OnsaFoundation/OnsaFoundation.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../CodeGen">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:FiableShared">
+      location = "group:../CodeGen">
    </FileRef>
    <FileRef
       location = "group:../FiableUI">
+   </FileRef>
+   <FileRef
+      location = "group:FiableAuthenticator">
+   </FileRef>
+   <FileRef
+      location = "group:FiableKit">
+   </FileRef>
+   <FileRef
+      location = "group:FiableShared">
    </FileRef>
 </Workspace>

@@ -14,7 +14,8 @@ open class FancyAlertViewController: UIViewController {
     }
 
     private static func controller() -> FancyAlertViewController {
-        let bundle = Bundle.wordPressUIBundle
+//        let bundle = Bundle.fiableUIBundle
+        let bundle = Bundle.module
         return UIStoryboard(name: "FancyAlerts", bundle: bundle).instantiateInitialViewController() as! FancyAlertViewController
     }
 

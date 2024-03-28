@@ -21,9 +21,28 @@
 		0D8E45802B8CEB470057100C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E457F2B8CEB470057100C /* Settings.swift */; };
 		0D8E45822B8CF5B50057100C /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45812B8CF5B50057100C /* WeatherResponse.swift */; };
 		0D8E45842B8CFB2E0057100C /* Extension+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45832B8CFB2E0057100C /* Extension+Data.swift */; };
+		0D91DBD92BB2924400850E00 /* FiableValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91DBD82BB2924400850E00 /* FiableValidator.swift */; };
+		0D91DBDB2BB2927600850E00 /* FiableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91DBDA2BB2927600850E00 /* FiableError.swift */; };
+		0D91DBDD2BB4DC9500850E00 /* DirectusError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D91DBDC2BB4DC9500850E00 /* DirectusError.swift */; };
 		0D9D1B0F2B90EF6600316D94 /* WeatherError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B0E2B90EF6600316D94 /* WeatherError.swift */; };
 		0D9D1B112B90F7CB00316D94 /* Forecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B102B90F7CB00316D94 /* Forecast.swift */; };
 		0D9D1B212B913C8100316D94 /* CityResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9D1B202B913C8100316D94 /* CityResult.swift */; };
+		0DA8EFE42BB0E5DE001EF5BF /* AccountRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFE32BB0E5DE001EF5BF /* AccountRemote.swift */; };
+		0DA8EFE62BB0E64A001EF5BF /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFE52BB0E64A001EF5BF /* Remote.swift */; };
+		0DA8EFE82BB0E6A1001EF5BF /* DotcomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFE72BB0E6A1001EF5BF /* DotcomError.swift */; };
+		0DA8EFEA2BB0E87C001EF5BF /* URLRequestConvertible+Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFE92BB0E87C001EF5BF /* URLRequestConvertible+Path.swift */; };
+		0DA8EFEC2BB0E8A4001EF5BF /* DotcomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFEB2BB0E8A4001EF5BF /* DotcomRequest.swift */; };
+		0DA8EFEE2BB0E97F001EF5BF /* DotcomValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFED2BB0E97F001EF5BF /* DotcomValidator.swift */; };
+		0DA8EFF02BB0E9B1001EF5BF /* WordPressApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFEF2BB0E9B1001EF5BF /* WordPressApiError.swift */; };
+		0DA8EFF32BB23AA5001EF5BF /* EmailAvailabilityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFF22BB23AA5001EF5BF /* EmailAvailabilityMapper.swift */; };
+		0DA8EFFA2BB23D1E001EF5BF /* FiableRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EFF92BB23D1E001EF5BF /* FiableRequest.swift */; };
+		0DA8F0032BB242D1001EF5BF /* EmailCheckData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F0022BB242D1001EF5BF /* EmailCheckData.swift */; };
+		0DA8F0052BB2439D001EF5BF /* Mapper+DataEnvelope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F0042BB2439D001EF5BF /* Mapper+DataEnvelope.swift */; };
+		0DA8F00B2BB243E2001EF5BF /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F0072BB243E2001EF5BF /* AnyCodable.swift */; };
+		0DA8F00C2BB243E2001EF5BF /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F0082BB243E2001EF5BF /* AnyEncodable.swift */; };
+		0DA8F00D2BB243E2001EF5BF /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F0092BB243E2001EF5BF /* AnyDecodable.swift */; };
+		0DA8F00E2BB243E2001EF5BF /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F00A2BB243E2001EF5BF /* Loader.swift */; };
+		0DA8F0102BB2475B001EF5BF /* Dictionary+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F00F2BB2475B001EF5BF /* Dictionary+App.swift */; };
 		0DC2340C2BA78D2D00414B13 /* FiableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2340B2BA78D2D00414B13 /* FiableConstants.swift */; };
 		0DC234102BA78DEF00414B13 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2340F2BA78DEF00414B13 /* Credentials.swift */; };
 		0DC234152BA78E8200414B13 /* AlamofireNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234142BA78E8200414B13 /* AlamofireNetwork.swift */; };
@@ -88,9 +107,28 @@
 		0D8E457F2B8CEB470057100C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0D8E45812B8CF5B50057100C /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		0D8E45832B8CFB2E0057100C /* Extension+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Data.swift"; sourceTree = "<group>"; };
+		0D91DBD82BB2924400850E00 /* FiableValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiableValidator.swift; sourceTree = "<group>"; };
+		0D91DBDA2BB2927600850E00 /* FiableError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiableError.swift; sourceTree = "<group>"; };
+		0D91DBDC2BB4DC9500850E00 /* DirectusError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectusError.swift; sourceTree = "<group>"; };
 		0D9D1B0E2B90EF6600316D94 /* WeatherError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherError.swift; sourceTree = "<group>"; };
 		0D9D1B102B90F7CB00316D94 /* Forecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Forecast.swift; sourceTree = "<group>"; };
 		0D9D1B202B913C8100316D94 /* CityResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityResult.swift; sourceTree = "<group>"; };
+		0DA8EFE32BB0E5DE001EF5BF /* AccountRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRemote.swift; sourceTree = "<group>"; };
+		0DA8EFE52BB0E64A001EF5BF /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
+		0DA8EFE72BB0E6A1001EF5BF /* DotcomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotcomError.swift; sourceTree = "<group>"; };
+		0DA8EFE92BB0E87C001EF5BF /* URLRequestConvertible+Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequestConvertible+Path.swift"; sourceTree = "<group>"; };
+		0DA8EFEB2BB0E8A4001EF5BF /* DotcomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotcomRequest.swift; sourceTree = "<group>"; };
+		0DA8EFED2BB0E97F001EF5BF /* DotcomValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotcomValidator.swift; sourceTree = "<group>"; };
+		0DA8EFEF2BB0E9B1001EF5BF /* WordPressApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPressApiError.swift; sourceTree = "<group>"; };
+		0DA8EFF22BB23AA5001EF5BF /* EmailAvailabilityMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAvailabilityMapper.swift; sourceTree = "<group>"; };
+		0DA8EFF92BB23D1E001EF5BF /* FiableRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiableRequest.swift; sourceTree = "<group>"; };
+		0DA8F0022BB242D1001EF5BF /* EmailCheckData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailCheckData.swift; sourceTree = "<group>"; };
+		0DA8F0042BB2439D001EF5BF /* Mapper+DataEnvelope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Mapper+DataEnvelope.swift"; sourceTree = "<group>"; };
+		0DA8F0072BB243E2001EF5BF /* AnyCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCodable.swift; sourceTree = "<group>"; };
+		0DA8F0082BB243E2001EF5BF /* AnyEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyEncodable.swift; sourceTree = "<group>"; };
+		0DA8F0092BB243E2001EF5BF /* AnyDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
+		0DA8F00A2BB243E2001EF5BF /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		0DA8F00F2BB2475B001EF5BF /* Dictionary+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+App.swift"; sourceTree = "<group>"; };
 		0DC2340B2BA78D2D00414B13 /* FiableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiableConstants.swift; sourceTree = "<group>"; };
 		0DC2340F2BA78DEF00414B13 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		0DC234142BA78E8200414B13 /* AlamofireNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetwork.swift; sourceTree = "<group>"; };
@@ -194,6 +232,8 @@
 		0D8E455F2B8CE87F0057100C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				0DA8F0062BB243D5001EF5BF /* Tools */,
+				0DA8EFE22BB0E5CD001EF5BF /* Remote */,
 				0DC234622BA7A7FD00414B13 /* Validators */,
 				0DC2345D2BA7A6FE00414B13 /* CookieNonce */,
 				0DC234522BA7A58600414B13 /* Mapper */,
@@ -245,6 +285,9 @@
 				0D8E45832B8CFB2E0057100C /* Extension+Data.swift */,
 				0DC2344B2BA7A44300414B13 /* CodingUserInfoKey+Fiable.swift */,
 				0DC2346B2BA7A90000414B13 /* String+URL.swift */,
+				0DA8EFE92BB0E87C001EF5BF /* URLRequestConvertible+Path.swift */,
+				0DA8F0042BB2439D001EF5BF /* Mapper+DataEnvelope.swift */,
+				0DA8F00F2BB2475B001EF5BF /* Dictionary+App.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -252,12 +295,16 @@
 		0D8E45712B8CE87F0057100C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0DA8F0012BB242B2001EF5BF /* FiableApi */,
 				0DC2345A2BA7A63100414B13 /* ApplicationPassword */,
 				0D8E45812B8CF5B50057100C /* WeatherResponse.swift */,
 				0D9D1B0E2B90EF6600316D94 /* WeatherError.swift */,
 				0D9D1B102B90F7CB00316D94 /* Forecast.swift */,
 				0D9D1B202B913C8100316D94 /* CityResult.swift */,
 				0DC234892BA7B96100414B13 /* Account.swift */,
+				0DA8EFE72BB0E6A1001EF5BF /* DotcomError.swift */,
+				0D91DBDA2BB2927600850E00 /* FiableError.swift */,
+				0D91DBDC2BB4DC9500850E00 /* DirectusError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,6 +319,8 @@
 				0DC234602BA7A7EA00414B13 /* Request.swift */,
 				0DC234652BA7A87D00414B13 /* AuthenticatedDotcomRequest.swift */,
 				0DC234672BA7A8AF00414B13 /* UnauthenticatedRequest.swift */,
+				0DA8EFEB2BB0E8A4001EF5BF /* DotcomRequest.swift */,
+				0DA8EFF92BB23D1E001EF5BF /* FiableRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -295,6 +344,42 @@
 				0DC234452BA7A32900414B13 /* UserAgent.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		0DA8EFE22BB0E5CD001EF5BF /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				0DA8EFE32BB0E5DE001EF5BF /* AccountRemote.swift */,
+				0DA8EFE52BB0E64A001EF5BF /* Remote.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		0DA8EFF12BB23A96001EF5BF /* EmailAvailability */ = {
+			isa = PBXGroup;
+			children = (
+				0DA8EFF22BB23AA5001EF5BF /* EmailAvailabilityMapper.swift */,
+			);
+			path = EmailAvailability;
+			sourceTree = "<group>";
+		};
+		0DA8F0012BB242B2001EF5BF /* FiableApi */ = {
+			isa = PBXGroup;
+			children = (
+				0DA8F0022BB242D1001EF5BF /* EmailCheckData.swift */,
+			);
+			path = FiableApi;
+			sourceTree = "<group>";
+		};
+		0DA8F0062BB243D5001EF5BF /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0DA8F0072BB243E2001EF5BF /* AnyCodable.swift */,
+				0DA8F0092BB243E2001EF5BF /* AnyDecodable.swift */,
+				0DA8F0082BB243E2001EF5BF /* AnyEncodable.swift */,
+				0DA8F00A2BB243E2001EF5BF /* Loader.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 		0DC234162BA78E9E00414B13 /* ApplicationPassword */ = {
@@ -322,6 +407,7 @@
 		0DC234522BA7A58600414B13 /* Mapper */ = {
 			isa = PBXGroup;
 			children = (
+				0DA8EFF12BB23A96001EF5BF /* EmailAvailability */,
 				0DC234552BA7A5A400414B13 /* Mapper.swift */,
 				0DC234572BA7A5B500414B13 /* ApllicationPassword */,
 			);
@@ -359,6 +445,9 @@
 			children = (
 				0DC234632BA7A80600414B13 /* ResponseDataValidator.swift */,
 				0DC234692BA7A8C600414B13 /* PlaceholderDataValidator.swift */,
+				0DA8EFED2BB0E97F001EF5BF /* DotcomValidator.swift */,
+				0DA8EFEF2BB0E9B1001EF5BF /* WordPressApiError.swift */,
+				0D91DBD82BB2924400850E00 /* FiableValidator.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -566,6 +655,7 @@
 			files = (
 				0D8E45792B8CE87F0057100C /* NetworkLogger.swift in Sources */,
 				0DC234202BA78F7800414B13 /* RequestAuthenticator.swift in Sources */,
+				0DA8EFEE2BB0E97F001EF5BF /* DotcomValidator.swift in Sources */,
 				0DC2341E2BA78F3200414B13 /* RequestProcessor.swift in Sources */,
 				0D8E457C2B8CE87F0057100C /* KeyedDecodingContainer+Pickslam.swift in Sources */,
 				0DC234482BA7A37500414B13 /* ApplicationPasswordEncoder.swift in Sources */,
@@ -574,15 +664,24 @@
 				0DC2346C2BA7A90000414B13 /* String+URL.swift in Sources */,
 				0DC234222BA78FA400414B13 /* AuthenticatedRESTRequest.swift in Sources */,
 				0DF33DF92B9E5BDD003D7351 /* Network.swift in Sources */,
+				0D91DBDB2BB2927600850E00 /* FiableError.swift in Sources */,
+				0DA8EFF32BB23AA5001EF5BF /* EmailAvailabilityMapper.swift in Sources */,
+				0DA8EFFA2BB23D1E001EF5BF /* FiableRequest.swift in Sources */,
 				0DC234642BA7A80600414B13 /* ResponseDataValidator.swift in Sources */,
+				0DA8EFE62BB0E64A001EF5BF /* Remote.swift in Sources */,
 				0DC234592BA7A61A00414B13 /* ApplicationPasswordNameAndUUIDMapper.swift in Sources */,
+				0DA8EFE82BB0E6A1001EF5BF /* DotcomError.swift in Sources */,
+				0DA8F0102BB2475B001EF5BF /* Dictionary+App.swift in Sources */,
+				0DA8F00B2BB243E2001EF5BF /* AnyCodable.swift in Sources */,
 				0DC234662BA7A87D00414B13 /* AuthenticatedDotcomRequest.swift in Sources */,
 				0DC234422BA7953900414B13 /* Secret.swift in Sources */,
 				0DC234402BA7951600414B13 /* ApplicationPassword.swift in Sources */,
 				0D9D1B212B913C8100316D94 /* CityResult.swift in Sources */,
 				0DC234682BA7A8AF00414B13 /* UnauthenticatedRequest.swift in Sources */,
 				0DC234512BA7A53900414B13 /* WordPressOrgNetwork.swift in Sources */,
+				0DA8EFE42BB0E5DE001EF5BF /* AccountRemote.swift in Sources */,
 				0D9D1B112B90F7CB00316D94 /* Forecast.swift in Sources */,
+				0DA8F00E2BB243E2001EF5BF /* Loader.swift in Sources */,
 				0D8E457B2B8CE87F0057100C /* WeatherAPI.swift in Sources */,
 				0D8E45822B8CF5B50057100C /* WeatherResponse.swift in Sources */,
 				0D8E45782B8CE87F0057100C /* ArrayEncoding.swift in Sources */,
@@ -592,24 +691,33 @@
 				0DC234182BA78EA800414B13 /* RequestConverter.swift in Sources */,
 				0DC2341A2BA78EC300414B13 /* RESTRequest.swift in Sources */,
 				0DC234442BA7A2AA00414B13 /* FiableAPIVersion.swift in Sources */,
+				0DA8F0032BB242D1001EF5BF /* EmailCheckData.swift in Sources */,
+				0D91DBD92BB2924400850E00 /* FiableValidator.swift in Sources */,
+				0DA8F00D2BB243E2001EF5BF /* AnyDecodable.swift in Sources */,
+				0DA8F00C2BB243E2001EF5BF /* AnyEncodable.swift in Sources */,
 				0DC2340C2BA78D2D00414B13 /* FiableConstants.swift in Sources */,
 				0D7414BC2B8FF3DA001114FB /* TemperatureUnit.swift in Sources */,
 				0DC234612BA7A7EA00414B13 /* Request.swift in Sources */,
 				0D8E45842B8CFB2E0057100C /* Extension+Data.swift in Sources */,
 				0DC2344C2BA7A44300414B13 /* CodingUserInfoKey+Fiable.swift in Sources */,
 				0DC234542BA7A58D00414B13 /* ApplicationPasswordMapper.swift in Sources */,
+				0DA8F0052BB2439D001EF5BF /* Mapper+DataEnvelope.swift in Sources */,
 				0DC234102BA78DEF00414B13 /* Credentials.swift in Sources */,
 				0DC2345F2BA7A70700414B13 /* CookieNonceAuthenticator.swift in Sources */,
 				0D8E457A2B8CE87F0057100C /* WeatherNetworking.swift in Sources */,
 				0D8E45772B8CE87F0057100C /* BaseAPI.swift in Sources */,
 				0D8E457D2B8CE87F0057100C /* WeatherRequest.swift in Sources */,
+				0DA8EFEC2BB0E8A4001EF5BF /* DotcomRequest.swift in Sources */,
 				0DC2341C2BA78EF500414B13 /* RESTRequestConvertible.swift in Sources */,
 				0DC2346A2BA7A8C600414B13 /* PlaceholderDataValidator.swift in Sources */,
 				0DC2345C2BA7A63A00414B13 /* ApplicationPasswordNameAndUUID.swift in Sources */,
+				0DA8EFF02BB0E9B1001EF5BF /* WordPressApiError.swift in Sources */,
 				0DC2344A2BA7A38F00414B13 /* ApplicationPasswordStorage.swift in Sources */,
 				0DC234242BA78FE900414B13 /* NetworkError.swift in Sources */,
 				0DC2344F2BA7A4AF00414B13 /* Logging.swift in Sources */,
+				0DA8EFEA2BB0E87C001EF5BF /* URLRequestConvertible+Path.swift in Sources */,
 				0DC2343E2BA794F800414B13 /* ApplicationPasswordUseCase.swift in Sources */,
+				0D91DBDD2BB4DC9500850E00 /* DirectusError.swift in Sources */,
 				0D8E45752B8CE87F0057100C /* TargetType.swift in Sources */,
 				0D9D1B0F2B90EF6600316D94 /* WeatherError.swift in Sources */,
 			);

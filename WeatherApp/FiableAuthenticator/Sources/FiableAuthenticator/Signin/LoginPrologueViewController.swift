@@ -1,0 +1,725 @@
+import UIKit
+import FiableShared
+import FiableUI
+import FiableKit
+
+public class LoginPrologueViewController: LoginViewController {
+
+    @IBOutlet private weak var topContainerView: UIView!
+    @IBOutlet private weak var buttonBlurEffectView: UIVisualEffectView!
+    @IBOutlet private weak var buttonBackgroundView: UIView!
+    private var buttonViewController: NUXButtonViewController?
+    private var stackedButtonsViewController: NUXStackedButtonsViewController?
+    var showCancel = false
+
+    @IBOutlet private weak var buttonContainerView: UIView!
+    /// Blur effect on button container view
+    ///
+    private var blurEffect: UIBlurEffect.Style {
+        return .systemChromeMaterial
+    }
+
+    /// Constraints on the button view container.
+    /// Used to adjust the button width in unified views.
+    @IBOutlet private weak var buttonViewLeadingConstraint: NSLayoutConstraint?
+    @IBOutlet private weak var buttonViewTrailingConstraint: NSLayoutConstraint?
+    private var defaultButtonViewMargin: CGFloat = 0
+
+    // Called when login button is tapped
+    var onLoginButtonTapped: (() -> Void)?
+
+    private let configuration = FiableAuthenticator.shared.configuration
+    private let style = FiableAuthenticator.shared.style
+
+    private lazy var storedCredentialsAuthenticator = StoredCredentialsAuthenticator(onCancel: { [weak self] in
+        // Since the authenticator has its own flow
+        self?.tracker.resetState()
+    })
+
+    /// We can't rely on `isMovingToParent` to know if we need to track the `.prologue` step
+    /// because for the root view in an App, it's always `false`.  We're relying this variiable
+    /// instead, since the `.prologue` step only needs to be tracked once.
+    ///
+    private var prologueFlowTracked = false
+
+    /// Return`true` to use new `NUXStackedButtonsViewController` instead of `NUXButtonViewController` to create buttons
+    ///
+    private var useStackedButtonsViewController: Bool {
+        configuration.enableWPComLoginOnlyInPrologue || configuration.enableSiteCreation
+    }
+
+    // MARK: - Lifecycle Methods
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+
+        if let topContainerChildViewController = style.prologueTopContainerChildViewController() {
+            topContainerView.subviews.forEach { $0.removeFromSuperview() }
+            addChild(topContainerChildViewController)
+            topContainerView.addSubview(topContainerChildViewController.view)
+            topContainerChildViewController.didMove(toParent: self)
+
+            topContainerChildViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            topContainerView.pinSubviewToAllEdges(topContainerChildViewController.view)
+        }
+
+        createButtonViewController()
+
+        defaultButtonViewMargin = buttonViewLeadingConstraint?.constant ?? 0
+        if let backgroundImage = FiableAuthenticator.shared.unifiedStyle?.prologueBackgroundImage {
+            view.layer.contents = backgroundImage.cgImage
+        }
+    }
+
+    override func styleBackground() {
+        guard let unifiedBackgroundColor = FiableAuthenticator.shared.unifiedStyle?.viewControllerBackgroundColor else {
+            super.styleBackground()
+            return
+        }
+
+        view.backgroundColor = unifiedBackgroundColor
+    }
+
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        configureButtonVC()
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // We've found some instances where the iCloud Keychain login flow was being started
+        // when the device was idle and the app was logged out and in the background.  I couldn't
+        // find precise reproduction steps for this issue but my guess is that some background
+        // operation is triggering a call to this method while the app is in the background.
+        // The proposed solution is based off this StackOverflow reply:
+        //
+        // https://stackoverflow.com/questions/30584356/viewdidappear-is-called-when-app-is-started-due-to-significant-location-change
+        //
+        guard UIApplication.shared.applicationState != .background else {
+            return
+        }
+
+//        FiableAuthenticator.track(.loginPrologueViewed)
+
+        tracker.set(flow: .prologue)
+
+        if !prologueFlowTracked {
+            tracker.track(step: .prologue)
+            prologueFlowTracked = true
+        } else {
+            tracker.set(step: .prologue)
+        }
+
+        // Only enable auto fill if WPCom login is available
+        if configuration.enableSiteAddressLoginOnlyInPrologue == false {
+            showiCloudKeychainLoginFlow()
+        }
+    }
+
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return UIDevice.isPad() ? .all : .portrait
+    }
+
+    public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        setButtonViewMargins(forWidth: view.frame.width)
+    }
+
+    public override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        setButtonViewMargins(forWidth: size.width)
+    }
+
+    // MARK: - iCloud Keychain Login
+
+    /// Starts the iCloud Keychain login flow if the conditions are given.
+    ///
+    private func showiCloudKeychainLoginFlow() {
+        guard FiableAuthenticator.shared.configuration.enableUnifiedAuth,
+              let navigationController = navigationController else {
+                  return
+        }
+
+        storedCredentialsAuthenticator.showPicker(from: navigationController)
+    }
+
+    private func configureButtonVC() {
+        guard configuration.enableUnifiedAuth else {
+            buildPrologueButtons()
+            return
+        }
+
+        if useStackedButtonsViewController {
+            buildPrologueButtonsUsingStackedButtonsViewController()
+        } else {
+            buildUnifiedPrologueButtons()
+        }
+
+        if let buttonViewController = buttonViewController {
+            buttonViewController.shadowLayoutGuide = view.safeAreaLayoutGuide
+            buttonViewController.topButtonStyle = FiableAuthenticator.shared.style.prologuePrimaryButtonStyle
+            buttonViewController.bottomButtonStyle = FiableAuthenticator.shared.style.prologueSecondaryButtonStyle
+            buttonViewController.tertiaryButtonStyle = FiableAuthenticator.shared.style.prologueSecondaryButtonStyle
+        } else if let stackedButtonsViewController = stackedButtonsViewController {
+            stackedButtonsViewController.shadowLayoutGuide = view.safeAreaLayoutGuide
+        }
+    }
+
+    /// Displays the old UI prologue buttons.
+    ///
+    private func buildPrologueButtons() {
+        guard let buttonViewController = buttonViewController else {
+            return
+        }
+
+        let loginTitle = NSLocalizedString("Log In", comment: "Button title.  Tapping takes the user to the login form.")
+        let createTitle = NSLocalizedString("Sign up for WordPress.com", comment: "Button title. Tapping begins the process of creating a WordPress.com account.")
+
+        buttonViewController.setupTopButton(title: loginTitle, isPrimary: false, accessibilityIdentifier: "Prologue Log In Button") { [weak self] in
+            self?.onLoginButtonTapped?()
+            self?.loginTapped()
+        }
+
+        if configuration.enableSignUp {
+            buttonViewController.setupBottomButton(title: createTitle, isPrimary: true, accessibilityIdentifier: "Prologue Signup Button") { [weak self] in
+                self?.signupTapped()
+            }
+        }
+
+        if showCancel {
+            let cancelTitle = NSLocalizedString("Cancel", comment: "Button title. Tapping it cancels the login flow.")
+            buttonViewController.setupTertiaryButton(title: cancelTitle, isPrimary: false) { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
+
+        buttonViewController.backgroundColor = style.buttonViewBackgroundColor
+        buttonBlurEffectView.isHidden = true
+    }
+
+    /// Displays the Unified prologue buttons.
+    ///
+    private func buildUnifiedPrologueButtons() {
+        guard let buttonViewController = buttonViewController else {
+            return
+        }
+
+        let displayStrings = FiableAuthenticator.shared.displayStrings
+        let loginTitle = displayStrings.continueWithWPButtonTitle
+        let siteAddressTitle = displayStrings.enterYourSiteAddressButtonTitle
+
+        if configuration.continueWithSiteAddressFirst {
+            buildUnifiedPrologueButtonsWithSiteAddressFirst(buttonViewController, loginTitle: loginTitle, siteAddressTitle: siteAddressTitle)
+            return
+        }
+
+        buildDefaultUnifiedPrologueButtons(buttonViewController, loginTitle: loginTitle, siteAddressTitle: siteAddressTitle)
+    }
+
+    private func buildDefaultUnifiedPrologueButtons(_ buttonViewController: NUXButtonViewController, loginTitle: String, siteAddressTitle: String) {
+
+        setButtonViewMargins(forWidth: view.frame.width)
+
+        buttonViewController.setupTopButton(title: loginTitle, isPrimary: true, configureBodyFontForTitle: true, accessibilityIdentifier: "Prologue Continue Button", onTap: loginTapCallback())
+
+        if configuration.enableUnifiedAuth {
+            buttonViewController.setupBottomButton(title: siteAddressTitle, isPrimary: false, configureBodyFontForTitle: true, accessibilityIdentifier: "Prologue Self Hosted Button", onTap: siteAddressTapCallback())
+        }
+
+        showCancelIfNeccessary(buttonViewController)
+
+        setButtonViewControllerBackground()
+    }
+
+    private func buildUnifiedPrologueButtonsWithSiteAddressFirst(_ buttonViewController: NUXButtonViewController, loginTitle: String, siteAddressTitle: String) {
+        guard configuration.enableUnifiedAuth == true else {
+            return
+        }
+
+        setButtonViewMargins(forWidth: view.frame.width)
+
+        buttonViewController.setupTopButton(title: siteAddressTitle, isPrimary: true, accessibilityIdentifier: "Prologue Self Hosted Button", onTap: siteAddressTapCallback())
+
+        buttonViewController.setupBottomButton(title: loginTitle, isPrimary: false, accessibilityIdentifier: "Prologue Continue Button", onTap: loginTapCallback())
+
+        showCancelIfNeccessary(buttonViewController)
+
+        setButtonViewControllerBackground()
+    }
+
+    private func buildPrologueButtonsUsingStackedButtonsViewController() {
+        guard let stackedButtonsViewController = stackedButtonsViewController else {
+            return
+        }
+
+        let primaryButtonStyle = FiableAuthenticator.shared.style.prologuePrimaryButtonStyle
+        let secondaryButtonStyle = FiableAuthenticator.shared.style.prologueSecondaryButtonStyle
+
+        setButtonViewMargins(forWidth: view.frame.width)
+        let displayStrings = FiableAuthenticator.shared.displayStrings
+        let buttons: [StackedButton]
+
+        let continueWithWPButton = StackedButton(title: displayStrings.continueWithWPButtonTitle,
+                                                 isPrimary: true,
+                                                 configureBodyFontForTitle: true,
+                                                 accessibilityIdentifier: "Prologue Continue Button",
+                                                 style: primaryButtonStyle,
+                                                 onTap: loginTapCallback())
+        let enterYourSiteAddressButton: StackedButton = {
+            let isPrimary = configuration.enableSiteAddressLoginOnlyInPrologue && !configuration.enableSiteCreation
+            return StackedButton(title: displayStrings.enterYourSiteAddressButtonTitle,
+                                 isPrimary: isPrimary,
+                                 configureBodyFontForTitle: true,
+                                 accessibilityIdentifier: "Prologue Self Hosted Button",
+                                 style: secondaryButtonStyle,
+                                 onTap: siteAddressTapCallback())
+        }()
+        let createSiteButton: StackedButton = {
+            let isPrimary = configuration.enableSiteAddressLoginOnlyInPrologue
+            return StackedButton(title: displayStrings.siteCreationButtonTitle,
+                                 isPrimary: isPrimary,
+                                 configureBodyFontForTitle: true,
+                                 accessibilityIdentifier: "Prologue Create Site Button",
+                                 style: secondaryButtonStyle,
+                                 onTap: simplifiedLoginSiteCreationCallback())
+        }()
+
+        if configuration.enableWPComLoginOnlyInPrologue && configuration.enableSiteCreation {
+            buttons = [continueWithWPButton,
+                       createSiteButton]
+        } else if configuration.enableWPComLoginOnlyInPrologue {
+            buttons = [continueWithWPButton]
+        } else if configuration.enableSiteAddressLoginOnlyInPrologue && configuration.enableSiteCreation {
+            buttons = [createSiteButton, enterYourSiteAddressButton]
+        } else if configuration.enableSiteAddressLoginOnlyInPrologue {
+            buttons = [enterYourSiteAddressButton]
+        } else if configuration.enableSiteCreation {
+            let createSiteButtonForBottomStackView = StackedButton(using: createSiteButton,
+                                                                   stackView: .bottom)
+            buttons = [continueWithWPButton,
+                       enterYourSiteAddressButton,
+                       createSiteButtonForBottomStackView]
+        } else {
+            print("Failed to create `StackedButton`s in login prologue screen.")
+            buttons = []
+        }
+
+        let showDivider = configuration.enableWPComLoginOnlyInPrologue == false &&
+            configuration.enableSiteCreation == true &&
+            configuration.enableSiteAddressLoginOnlyInPrologue == false
+        stackedButtonsViewController.setUpButtons(using: buttons, showDivider: showDivider)
+        setButtonViewControllerBackground()
+    }
+
+    private func siteAddressTapCallback() -> NUXButtonViewController.CallBackType {
+        return { [weak self] in
+            print("siteAddressTapCallback")
+            self?.siteAddressTapped()
+        }
+    }
+
+    private func loginTapCallback() -> NUXButtonViewController.CallBackType {
+        return { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.tracker.track(click: .continueWithWordPressCom)
+            self.continueWithDotCom()
+        }
+    }
+
+    private func simplifiedLoginSiteCreationCallback() -> NUXButtonViewController.CallBackType {
+        { [weak self] in
+            guard let self = self, let navigationController = self.navigationController else { return }
+            // triggers the delegate to ask the host app to handle site creation
+            FiableAuthenticator.shared.delegate?.showSiteCreation(in: navigationController)
+        }
+    }
+
+    private func showCancelIfNeccessary(_ buttonViewController: NUXButtonViewController) {
+        if showCancel {
+            let cancelTitle = NSLocalizedString("Cancel", comment: "Button title. Tapping it cancels the login flow.")
+            buttonViewController.setupTertiaryButton(title: cancelTitle, isPrimary: false) { [weak self] in
+                self?.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+
+    private func setButtonViewControllerBackground() {
+        // Fallback to setting the button background color to clear so the blur effect blurs the Prologue background color.
+        let buttonsBackgroundColor = FiableAuthenticator.shared.unifiedStyle?.prologueButtonsBackgroundColor ?? .clear
+        buttonViewController?.backgroundColor = buttonsBackgroundColor
+        buttonBackgroundView?.backgroundColor = buttonsBackgroundColor
+        stackedButtonsViewController?.backgroundColor = buttonsBackgroundColor
+
+        /// If host apps provide a background color for the prologue buttons:
+        /// 1. Hide the blur effect
+        /// 2. Set the background color of the view controller to prologueViewBackgroundColor
+        let prologueViewBackgroundColor = FiableAuthenticator.shared.unifiedStyle?.prologueViewBackgroundColor ?? .clear
+
+        guard prologueViewBackgroundColor.cgColor == buttonsBackgroundColor.cgColor else {
+            buttonBlurEffectView.effect = UIBlurEffect(style: blurEffect)
+            return
+        }
+        // do not set background color if we've set a background image earlier
+        if FiableAuthenticator.shared.unifiedStyle?.prologueBackgroundImage == nil {
+            view.backgroundColor = prologueViewBackgroundColor
+        }
+        // if a blur effect for the buttons was passed, use it; otherwise hide the view.
+        guard let blurEffect = FiableAuthenticator.shared.unifiedStyle?.prologueButtonsBlurEffect else {
+            buttonBlurEffectView.isHidden = true
+            return
+        }
+        buttonBlurEffectView.effect = blurEffect
+    }
+
+    // MARK: - Actions
+
+    /// Old UI. "Log In" button action.
+    ///
+    private func loginTapped() {
+        tracker.set(source: .default)
+
+        guard let vc = LoginPrologueLoginMethodViewController.instantiate(from: .login) else {
+            print("Failed to navigate to LoginPrologueLoginMethodViewController from LoginPrologueViewController")
+            return
+        }
+
+        vc.transitioningDelegate = self
+
+        // Continue with WordPress.com button action
+        vc.emailTapped = { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.presentLoginEmailView()
+        }
+
+        // Continue with Google button action
+        vc.googleTapped = { [weak self] in
+            self?.googleTapped()
+        }
+
+        // Site address text link button action
+        vc.selfHostedTapped = { [weak self] in
+            self?.loginToSelfHostedSite()
+        }
+
+        // Sign In With Apple (SIWA) button action
+        vc.appleTapped = { [weak self] in
+            self?.appleTapped()
+        }
+
+        vc.modalPresentationStyle = .custom
+        navigationController?.present(vc, animated: true, completion: nil)
+    }
+
+    /// Old UI. "Sign up with WordPress.com" button action.
+    ///
+    private func signupTapped() {
+        tracker.set(source: .default)
+
+        // This stat is part of a funnel that provides critical information.
+        // Before making ANY modification to this stat please refer to: p4qSXL-35X-p2
+//        FiableAuthenticator.track(.signupButtonTapped)
+
+        guard let vc = LoginPrologueSignupMethodViewController.instantiate(from: .login) else {
+            print("Failed to navigate to LoginPrologueSignupMethodViewController")
+            return
+        }
+
+        vc.loginFields = self.loginFields
+        vc.dismissBlock = dismissBlock
+        vc.transitioningDelegate = self
+        vc.modalPresentationStyle = .custom
+
+        vc.emailTapped = { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            guard self.configuration.enableUnifiedAuth else {
+                self.presentSignUpEmailView()
+                return
+            }
+
+            self.presentUnifiedSignupView()
+        }
+
+        vc.googleTapped = { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            guard self.configuration.enableUnifiedAuth else {
+                self.presentGoogleSignupView()
+                return
+            }
+
+            self.presentUnifiedGoogleView()
+        }
+
+        vc.appleTapped = { [weak self] in
+            self?.appleTapped()
+        }
+
+        navigationController?.present(vc, animated: true, completion: nil)
+    }
+
+    private func appleTapped() {
+        AppleAuthenticator.sharedInstance.delegate = self
+        AppleAuthenticator.sharedInstance.showFrom(viewController: self)
+    }
+
+    private func googleTapped() {
+        guard configuration.enableUnifiedAuth else {
+            GoogleAuthenticator.sharedInstance.loginDelegate = self
+            GoogleAuthenticator.sharedInstance.showFrom(viewController: self, loginFields: loginFields, for: .login)
+            return
+        }
+
+        presentUnifiedGoogleView()
+    }
+
+    /// Unified "Continue with WordPress.com" prologue button action.
+    ///
+    private func continueWithDotCom() {
+        guard let vc = GetStartedViewController.instantiate(from: .getStarted) else {
+            print("Failed to navigate from LoginPrologueViewController to GetStartedViewController")
+            return
+        }
+        vc.source = .wpCom
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    /// Unified "Enter your existing site address" prologue button action.
+    ///
+    private func siteAddressTapped() {
+        tracker.track(click: .loginWithSiteAddress)
+
+        loginToSelfHostedSite()
+    }
+
+    private func presentSignUpEmailView() {
+        guard let toVC = SignupEmailViewController.instantiate(from: .signup) else {
+            print("Failed to navigate to SignupEmailViewController")
+            return
+        }
+
+        navigationController?.pushViewController(toVC, animated: true)
+    }
+
+    private func presentUnifiedSignupView() {
+        guard let toVC = UnifiedSignupViewController.instantiate(from: .unifiedSignup) else {
+            print("Failed to navigate to UnifiedSignupViewController")
+            return
+        }
+
+        navigationController?.pushViewController(toVC, animated: true)
+    }
+
+    private func presentLoginEmailView() {
+        guard let toVC = LoginEmailViewController.instantiate(from: .login) else {
+            print("Failed to navigate to LoginEmailVC from LoginPrologueVC")
+            return
+        }
+
+        navigationController?.pushViewController(toVC, animated: true)
+    }
+
+    // Shows the VC that handles both Google login & signup.
+    private func presentUnifiedGoogleView() {
+        guard let toVC = GoogleAuthViewController.instantiate(from: .googleAuth) else {
+            print("Failed to navigate to GoogleAuthViewController from LoginPrologueVC")
+            return
+        }
+
+        navigationController?.pushViewController(toVC, animated: true)
+    }
+
+    // Shows the VC that handles only Google signup.
+    private func presentGoogleSignupView() {
+        guard let toVC = SignupGoogleViewController.instantiate(from: .signup) else {
+            print("Failed to navigate to SignupGoogleViewController from LoginPrologueVC")
+            return
+        }
+
+        navigationController?.pushViewController(toVC, animated: true)
+    }
+
+    private func presentWPLogin() {
+        guard let vc = LoginWPComViewController.instantiate(from: .login) else {
+            print("Failed to navigate from LoginPrologueViewController to LoginWPComViewController")
+            return
+        }
+
+        vc.loginFields = self.loginFields
+        vc.dismissBlock = dismissBlock
+        vc.errorToPresent = errorToPresent
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func presentUnifiedPassword() {
+        guard let vc = PasswordViewController.instantiate(from: .password) else {
+            print("Failed to navigate from LoginPrologueViewController to PasswordViewController")
+            return
+        }
+
+        vc.loginFields = loginFields
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    private func createButtonViewController() {
+        if useStackedButtonsViewController {
+            let stackedButtonsViewController = NUXStackedButtonsViewController.instance()
+            self.stackedButtonsViewController = stackedButtonsViewController
+            stackedButtonsViewController.move(to: self, into: buttonContainerView)
+        } else {
+            let buttonViewController = NUXButtonViewController.instance()
+            self.buttonViewController = buttonViewController
+            buttonViewController.move(to: self, into: buttonContainerView)
+        }
+        view.bringSubviewToFront(buttonContainerView)
+    }
+}
+
+// MARK: - LoginFacadeDelegate
+
+extension LoginPrologueViewController {
+
+    // Used by SIWA when logging with with a passwordless, 2FA account.
+    //
+    func needsMultifactorCode(forUserID userID: Int, andNonceInfo nonceInfo: SocialLogin2FANonceInfo) {
+        configureViewLoading(false)
+//        socialNeedsMultifactorCode(forUserID: userID, andNonceInfo: nonceInfo)
+    }
+
+}
+
+// MARK: - AppleAuthenticatorDelegate
+
+extension LoginPrologueViewController: AppleAuthenticatorDelegate {
+
+    func showWPComLogin(loginFields: LoginFields) {
+        self.loginFields = loginFields
+
+        guard FiableAuthenticator.shared.configuration.enableUnifiedAuth else {
+            presentWPLogin()
+            return
+        }
+
+        presentUnifiedPassword()
+    }
+
+    func showApple2FA(loginFields: LoginFields) {
+        self.loginFields = loginFields
+        signInAppleAccount()
+    }
+
+    func authFailedWithError(message: String) {
+        displayErrorAlert(message, sourceTag: .loginApple)
+    }
+
+}
+
+// MARK: - GoogleAuthenticatorLoginDelegate
+
+extension LoginPrologueViewController: GoogleAuthenticatorLoginDelegate {
+
+    func googleFinishedLogin(credentials: AuthenticatorCredentials, loginFields: LoginFields) {
+        self.loginFields = loginFields
+        syncWPComAndPresentEpilogue(credentials: credentials)
+    }
+
+    func googleNeedsMultifactorCode(loginFields: LoginFields) {
+        self.loginFields = loginFields
+
+        guard let vc = Login2FAViewController.instantiate(from: .login) else {
+            print("Failed to navigate from LoginViewController to Login2FAViewController")
+            return
+        }
+
+        vc.loginFields = loginFields
+        vc.dismissBlock = dismissBlock
+        vc.errorToPresent = errorToPresent
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func googleExistingUserNeedsConnection(loginFields: LoginFields) {
+        self.loginFields = loginFields
+
+        guard let vc = LoginWPComViewController.instantiate(from: .login) else {
+            print("Failed to navigate from Google Login to LoginWPComViewController (password VC)")
+            return
+        }
+
+        vc.loginFields = loginFields
+        vc.dismissBlock = dismissBlock
+        vc.errorToPresent = errorToPresent
+
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
+    func googleLoginFailed(errorTitle: String, errorDescription: String, loginFields: LoginFields) {
+        self.loginFields = loginFields
+
+        let socialErrorVC = LoginSocialErrorViewController(title: errorTitle, description: errorDescription)
+        let socialErrorNav = LoginNavigationController(rootViewController: socialErrorVC)
+        socialErrorVC.delegate = self
+        socialErrorVC.loginFields = loginFields
+        socialErrorVC.modalPresentationStyle = .fullScreen
+        present(socialErrorNav, animated: true)
+    }
+
+}
+
+// MARK: - Button View Sizing
+
+private extension LoginPrologueViewController {
+
+    /// Resize the button view based on trait collection.
+    /// Used only in unified views.
+    ///
+    func setButtonViewMargins(forWidth viewWidth: CGFloat) {
+
+        guard configuration.enableUnifiedAuth else {
+            return
+        }
+
+        guard traitCollection.horizontalSizeClass == .regular &&
+            traitCollection.verticalSizeClass == .regular else {
+                buttonViewLeadingConstraint?.constant = defaultButtonViewMargin
+                buttonViewTrailingConstraint?.constant = defaultButtonViewMargin
+                return
+        }
+
+        let marginMultiplier = UIDevice.current.orientation.isLandscape ?
+            ButtonViewMarginMultipliers.ipadLandscape :
+            ButtonViewMarginMultipliers.ipadPortrait
+
+        let margin = viewWidth * marginMultiplier
+
+        buttonViewLeadingConstraint?.constant = margin
+        buttonViewTrailingConstraint?.constant = margin
+    }
+
+    private enum ButtonViewMarginMultipliers {
+        static let ipadPortrait: CGFloat = 0.1667
+        static let ipadLandscape: CGFloat = 0.25
+    }
+
+}

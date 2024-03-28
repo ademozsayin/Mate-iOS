@@ -13,7 +13,7 @@ import Networking
 //import class Networking.UserAgent
 //import class Networking.WordPressOrgNetwork
 import KeychainAccess
-import class WidgetKit.WidgetCenter
+import WidgetKit
 
 // MARK: - DefaultStoresManager
 //
@@ -104,7 +104,7 @@ class DefaultStoresManager: StoresManager {
     /// Indicates if we need a Default StoreID, or there's one already set.
     ///
     var needsDefaultStore: Bool {
-        return false//sessionManager.defaultStoreID == nil
+        return true//sessionManager.defaultStoreID == nil
     }
 
     var needsDefaultStorePublisher: AnyPublisher<Bool, Never> {
@@ -218,7 +218,7 @@ class DefaultStoresManager: StoresManager {
     ///
     func removeDefaultStore() {
         sessionManager.deleteApplicationPassword()
-//        ServiceLocator.analytics.refreshUserData()
+        ServiceLocator.analytics.refreshUserData()
 //        ZendeskProvider.shared.reset()
 //        ServiceLocator.pushNotesManager.unregisterForRemoteNotifications()
     }
@@ -245,12 +245,12 @@ class DefaultStoresManager: StoresManager {
 //        let resetAction = CardPresentPaymentAction.reset
 //        dispatch(resetAction)
 //
-//        state = DeauthenticatedState()
+        state = DeauthenticatedState()
 //
-//        sessionManager.reset()
-//        ServiceLocator.analytics.refreshUserData()
+        sessionManager.reset()
+        ServiceLocator.analytics.refreshUserData()
 //        ZendeskProvider.shared.reset()
-//        ServiceLocator.storageManager.reset()
+        ServiceLocator.storageManager.reset()
 //        ServiceLocator.productImageUploader.reset()
 //
 //        updateAndReloadWidgetInformation(with: nil)

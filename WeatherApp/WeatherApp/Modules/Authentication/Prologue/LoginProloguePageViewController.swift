@@ -1,10 +1,3 @@
-//
-//  LoginProloguePageViewController.swift
-//  WeatherApp
-//
-//  Created by Adem Özsayın on 18.03.2024.
-//
-
 import UIKit
 
 /// Displays the Login Prologue carousel, populated with `LoginProloguePageTypeViewController` pages.

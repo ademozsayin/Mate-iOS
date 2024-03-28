@@ -11,12 +11,29 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-  
+    /// AppDelegate's Instance
+    ///
+    static var shared: AppDelegate {
+        return UIApplication.shared.delegate as! AppDelegate
+    }
+
+    /// Main Window
+    ///
     var window: UIWindow?
-    var appCoordinator: AppCoordinator?
+
+    /// Coordinates app navigation based on authentication state.
+    ///
+    private var appCoordinator: AppCoordinator?
+
+    /// Tab Bar Controller
+    ///
+    var tabBarController: MainTabBarController? {
+        appCoordinator?.tabBarController
+    }
+
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-        
+        setupMainWindow()
         // Setup Components
         setupCocoaLumberjack()
 #if DEBUG
@@ -33,20 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window = UIWindow(frame: UIScreen.main.bounds)
-        appCoordinator = AppCoordinator(window: window!)
-        
+        appCoordinator?.start()
         return true
     }
-    
-    // MARK: UISceneSession Lifecycle
-    
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-    
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
+   
     
     // MARK: - Core Data stack
     
@@ -80,4 +87,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+}
+
+private extension AppDelegate {
+    func setupMainWindow() {
+        let window = UIWindow()
+        window.makeKeyAndVisible()
+        self.window = window
+
+        appCoordinator = AppCoordinator(window: window)
+    }
+
 }
