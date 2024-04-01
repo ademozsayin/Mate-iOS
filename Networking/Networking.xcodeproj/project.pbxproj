@@ -43,6 +43,9 @@
 		0DA8F00D2BB243E2001EF5BF /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F0092BB243E2001EF5BF /* AnyDecodable.swift */; };
 		0DA8F00E2BB243E2001EF5BF /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F00A2BB243E2001EF5BF /* Loader.swift */; };
 		0DA8F0102BB2475B001EF5BF /* Dictionary+App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8F00F2BB2475B001EF5BF /* Dictionary+App.swift */; };
+		0DBF5D4F2BBA7AE40059F1C8 /* OnsaApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF5D4E2BBA7AE40059F1C8 /* OnsaApiRequest.swift */; };
+		0DBF5D512BBA819F0059F1C8 /* OnsaApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF5D502BBA819F0059F1C8 /* OnsaApiError.swift */; };
+		0DBF5D532BBA81D30059F1C8 /* OnsaApiValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBF5D522BBA81D30059F1C8 /* OnsaApiValidator.swift */; };
 		0DC2340C2BA78D2D00414B13 /* FiableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2340B2BA78D2D00414B13 /* FiableConstants.swift */; };
 		0DC234102BA78DEF00414B13 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC2340F2BA78DEF00414B13 /* Credentials.swift */; };
 		0DC234152BA78E8200414B13 /* AlamofireNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC234142BA78E8200414B13 /* AlamofireNetwork.swift */; };
@@ -129,6 +132,9 @@
 		0DA8F0092BB243E2001EF5BF /* AnyDecodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
 		0DA8F00A2BB243E2001EF5BF /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		0DA8F00F2BB2475B001EF5BF /* Dictionary+App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+App.swift"; sourceTree = "<group>"; };
+		0DBF5D4E2BBA7AE40059F1C8 /* OnsaApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnsaApiRequest.swift; sourceTree = "<group>"; };
+		0DBF5D502BBA819F0059F1C8 /* OnsaApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnsaApiError.swift; sourceTree = "<group>"; };
+		0DBF5D522BBA81D30059F1C8 /* OnsaApiValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnsaApiValidator.swift; sourceTree = "<group>"; };
 		0DC2340B2BA78D2D00414B13 /* FiableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiableConstants.swift; sourceTree = "<group>"; };
 		0DC2340F2BA78DEF00414B13 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		0DC234142BA78E8200414B13 /* AlamofireNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetwork.swift; sourceTree = "<group>"; };
@@ -305,6 +311,7 @@
 				0DA8EFE72BB0E6A1001EF5BF /* DotcomError.swift */,
 				0D91DBDA2BB2927600850E00 /* FiableError.swift */,
 				0D91DBDC2BB4DC9500850E00 /* DirectusError.swift */,
+				0DBF5D502BBA819F0059F1C8 /* OnsaApiError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -321,6 +328,7 @@
 				0DC234672BA7A8AF00414B13 /* UnauthenticatedRequest.swift */,
 				0DA8EFEB2BB0E8A4001EF5BF /* DotcomRequest.swift */,
 				0DA8EFF92BB23D1E001EF5BF /* FiableRequest.swift */,
+				0DBF5D4E2BBA7AE40059F1C8 /* OnsaApiRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -448,6 +456,7 @@
 				0DA8EFED2BB0E97F001EF5BF /* DotcomValidator.swift */,
 				0DA8EFEF2BB0E9B1001EF5BF /* WordPressApiError.swift */,
 				0D91DBD82BB2924400850E00 /* FiableValidator.swift */,
+				0DBF5D522BBA81D30059F1C8 /* OnsaApiValidator.swift */,
 			);
 			path = Validators;
 			sourceTree = "<group>";
@@ -663,6 +672,7 @@
 				0DC234152BA78E8200414B13 /* AlamofireNetwork.swift in Sources */,
 				0DC2346C2BA7A90000414B13 /* String+URL.swift in Sources */,
 				0DC234222BA78FA400414B13 /* AuthenticatedRESTRequest.swift in Sources */,
+				0DBF5D532BBA81D30059F1C8 /* OnsaApiValidator.swift in Sources */,
 				0DF33DF92B9E5BDD003D7351 /* Network.swift in Sources */,
 				0D91DBDB2BB2927600850E00 /* FiableError.swift in Sources */,
 				0DA8EFF32BB23AA5001EF5BF /* EmailAvailabilityMapper.swift in Sources */,
@@ -676,6 +686,7 @@
 				0DC234662BA7A87D00414B13 /* AuthenticatedDotcomRequest.swift in Sources */,
 				0DC234422BA7953900414B13 /* Secret.swift in Sources */,
 				0DC234402BA7951600414B13 /* ApplicationPassword.swift in Sources */,
+				0DBF5D512BBA819F0059F1C8 /* OnsaApiError.swift in Sources */,
 				0D9D1B212B913C8100316D94 /* CityResult.swift in Sources */,
 				0DC234682BA7A8AF00414B13 /* UnauthenticatedRequest.swift in Sources */,
 				0DC234512BA7A53900414B13 /* WordPressOrgNetwork.swift in Sources */,
@@ -700,6 +711,7 @@
 				0DC234612BA7A7EA00414B13 /* Request.swift in Sources */,
 				0D8E45842B8CFB2E0057100C /* Extension+Data.swift in Sources */,
 				0DC2344C2BA7A44300414B13 /* CodingUserInfoKey+Fiable.swift in Sources */,
+				0DBF5D4F2BBA7AE40059F1C8 /* OnsaApiRequest.swift in Sources */,
 				0DC234542BA7A58D00414B13 /* ApplicationPasswordMapper.swift in Sources */,
 				0DA8F0052BB2439D001EF5BF /* Mapper+DataEnvelope.swift in Sources */,
 				0DC234102BA78DEF00414B13 /* Credentials.swift in Sources */,
