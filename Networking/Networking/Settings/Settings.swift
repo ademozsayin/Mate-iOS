@@ -40,4 +40,15 @@ public struct Settings {
         return baseURL//"https://public-api.wordpress.com/"
     }()
     
+    /// onsa API Base URL
+    /// Laravel 11 API
+    public static var onsaApiBaseURL: String = {
+        if ProcessInfo.processInfo.arguments.contains("mocked-onsa-api") {
+            return "http://localhost:8000/"
+        } else if let onsaApiBaseURL = ProcessInfo.processInfo.environment["onsa-api-url"] {
+            return onsaApiBaseURL
+        }
+
+        return baseURL//"https://public-api.wordpress.com/"
+    }()
 }

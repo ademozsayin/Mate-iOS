@@ -22,7 +22,7 @@ final class PasswordCoordinator {
         self.configuration = configuration
     }
 
-    func start()  {
+    func start() async {
         showPassword()
     }
 }

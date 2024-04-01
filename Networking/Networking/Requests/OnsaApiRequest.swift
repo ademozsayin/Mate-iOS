@@ -61,8 +61,8 @@ struct OnsaApiRequest: Request, RESTRequestConvertible {
     /// Returns a URLRequest instance reprensenting the current Jetpack Request.
     ///
     func asURLRequest() throws -> URLRequest {
-        let onsastradaCustomFiableUrl =  onsaApiPath + path
-        let fiableEndpoint = DotcomRequest(method: onsaMethod, path: onsastradaCustomFiableUrl)
+        let onsaURL =  onsaApiPath + path
+        let fiableEndpoint = DotcomRequest(method: onsaMethod, path: onsaURL)
         let fiableRequest = try fiableEndpoint.asURLRequest()
 
         return try onsaEncoder.encode(fiableRequest, with: parameters)
@@ -86,14 +86,14 @@ private extension OnsaApiRequest {
     /// Returns the WordPress.com Tunneling Request
     ///
     var onsaApiPath: String {
-        return "fiableapi/"
+        return "api/"
     }
 
     /// Returns the WordPress.com Parameters Encoder
 //    ///
     var onsaEncoder: ParameterEncoding {
-//        return dotcomMethod == .get ? URLEncoding.queryString : URLEncoding.httpBody
-        return onsaMethod == .get ? URLEncoding.default : JSONEncoding.default
+        return onsaMethod == .get ? URLEncoding.queryString : URLEncoding.httpBody
+        //return onsaMethod == .get ? URLEncoding.default : JSONEncoding.default
 //
 //        switch fiableMethod {
 //        case .post, .put:

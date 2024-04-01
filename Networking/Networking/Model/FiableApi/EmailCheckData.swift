@@ -10,16 +10,16 @@ import CodeGen
 
 public struct EmailCheckData {
     /// ID of the coupon
-    public let id: String
+    public let exists: Bool
 
     /// Total amount deducted from orders using the coupon
     public let email: String
 
     public init(
-        id: String,
+        exists: Bool,
         email: String
     ) {
-        self.id = id
+        self.exists = exists
         self.email = email
     }
 }
@@ -31,7 +31,7 @@ extension EmailCheckData: Decodable {
     /// The model is intended to be decoded with`JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase`
     /// so any specific `CodingKeys` provided here should be in camel case.
     enum CodingKeys: String, CodingKey {
-        case id = "id"
+        case exists
         case email
     }
 }

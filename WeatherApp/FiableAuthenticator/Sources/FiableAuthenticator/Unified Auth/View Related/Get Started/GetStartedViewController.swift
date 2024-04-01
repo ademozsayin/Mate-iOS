@@ -526,7 +526,7 @@ private extension GetStartedViewController {
             case .success(let success):
                 print("ssss")
             case .failure(let failure):
-                let msg = NSLocalizedString("This email address is not registered on onsastrada.com.",
+                let msg = NSLocalizedString("This email address is not registered on onsa.com.",
                                             comment: "An error message informing the user the email address they entered did not match a WordPress.com account.")
 
                 self.displayRemoteError(failure)

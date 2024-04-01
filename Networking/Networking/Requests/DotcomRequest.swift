@@ -97,7 +97,7 @@ struct DotcomRequest: Request, RESTRequestConvertible {
     /// Returns a URLRequest instance representing the current WordPress.com Request.
     ///
     func asURLRequest() throws -> URLRequest {
-        let dotcomURL = URL(string: Settings.onsastradaApiBaseURL + path)!
+        let dotcomURL = URL(string: Settings.onsaApiBaseURL + path)!
         let dotcomRequest = try URLRequest(url: dotcomURL, method: method, headers: .init(headers))
         return try encoding.encode(dotcomRequest, with: parameters)
     }

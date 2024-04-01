@@ -36,7 +36,7 @@ public class AccountRemote: Remote, AccountRemoteProtocol {
     public func checkIfEmailIsExist(for email: String, completion: @escaping (Result<EmailCheckData, Error>) -> Void) {
 
         let parameters = ["email": email]
-        let request = FiableRequest(
+        let request = OnsaApiRequest(
             method: .post,
             path: Constants.appEmailCheckPath,
             parameters: parameters
@@ -52,7 +52,7 @@ public class AccountRemote: Remote, AccountRemoteProtocol {
 //
 private extension AccountRemote {
     enum Constants {
-        static let appEmailCheckPath: String = "checkIfEmailExist/"
+        static let appEmailCheckPath: String = "user/check-email"
     }
 
     enum ParameterKey {
