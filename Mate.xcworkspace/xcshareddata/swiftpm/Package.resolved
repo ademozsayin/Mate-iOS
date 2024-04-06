@@ -1,0 +1,97 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "f455c2975872ccd2d9c81594c658af65716e9b9a",
+          "version": "5.9.1"
+        }
+      },
+      {
+        "package": "AutomatticTracksiOS",
+        "repositoryURL": "https://github.com/Automattic/Automattic-Tracks-iOS",
+        "state": {
+          "branch": null,
+          "revision": "bd981ad3a08c6af6113834eb62ee7466cb8aa71c",
+          "version": "3.4.0"
+        }
+      },
+      {
+        "package": "CocoaLumberjack",
+        "repositoryURL": "https://github.com/CocoaLumberjack/CocoaLumberjack.git",
+        "state": {
+          "branch": null,
+          "revision": "4b8714a7fb84d42393314ce897127b3939885ec3",
+          "version": "3.8.5"
+        }
+      },
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": "master",
+          "revision": "e0c7eebc5a4465a3c4680764f26b7a61f567cdaf",
+          "version": null
+        }
+      },
+      {
+        "package": "Kingfisher",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
+        "state": {
+          "branch": null,
+          "revision": "5b92f029fab2cce44386d28588098b5be0824ef5",
+          "version": "7.11.0"
+        }
+      },
+      {
+        "package": "Sentry",
+        "repositoryURL": "https://github.com/getsentry/sentry-cocoa",
+        "state": {
+          "branch": null,
+          "revision": "937dce13c2600cc42112c480d04f84899e08e9cc",
+          "version": "8.23.0"
+        }
+      },
+      {
+        "package": "SVProgressHUD",
+        "repositoryURL": "https://github.com/SVProgressHUD/SVProgressHUD.git",
+        "state": {
+          "branch": null,
+          "revision": "c33f7c775ba7feea6047a1fc3257f2e5863b44f7",
+          "version": "2.3.1"
+        }
+      },
+      {
+        "package": "swift-log",
+        "repositoryURL": "https://github.com/apple/swift-log",
+        "state": {
+          "branch": null,
+          "revision": "e97a6fcb1ab07462881ac165fdbb37f067e205d5",
+          "version": "1.5.4"
+        }
+      },
+      {
+        "package": "Sodium",
+        "repositoryURL": "https://github.com/jedisct1/swift-sodium",
+        "state": {
+          "branch": null,
+          "revision": "4f9164a0a2c9a6a7ff53a2833d54a5c79c957342",
+          "version": "0.9.1"
+        }
+      },
+      {
+        "package": "UIDeviceIdentifier",
+        "repositoryURL": "https://github.com/squarefrog/UIDeviceIdentifier",
+        "state": {
+          "branch": null,
+          "revision": "4699794b08bb79a4d77785edaba6ea739e298e4b",
+          "version": "2.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Mate/Mate.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Mate/../MateNetworking">
+   </FileRef>
+   <FileRef
+      location = "group:Mate/../CodeGen">
+   </FileRef>
+   <FileRef
+      location = "group:Mate/../FiableKit">
+   </FileRef>
+   <FileRef
+      location = "group:Mate/../FiableShared">
+   </FileRef>
+   <FileRef
+      location = "group:Mate/../FiableUI">
+   </FileRef>
+   <FileRef
+      location = "group:Mate/../MateComponents">
+   </FileRef>
+   <FileRef
+      location = "group:GridIcons">
+   </FileRef>
+</Workspace>

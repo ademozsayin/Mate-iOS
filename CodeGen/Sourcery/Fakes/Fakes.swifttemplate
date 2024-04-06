@@ -77,7 +77,7 @@ let specsToGenerate: [FakeableSpec] = matchingTypes.map { type in
 // Template
 // --------------------------------------------------------------------------------
 -%>
-import Networking
+import MateNetworking
 
 <% for spec in specsToGenerate { -%>
 extension <%= spec.name -%> {
