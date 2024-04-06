@@ -31,7 +31,7 @@
 3. Enter the project directory
 
     ```bash
-    cd WeatherApp
+    cd Mate
     ```
 
 5. Open the project by double clicking on `Mate.xcworkspace` file, or launching Xcode and choose File > Open and browse to `Mate.xcworkspace`
