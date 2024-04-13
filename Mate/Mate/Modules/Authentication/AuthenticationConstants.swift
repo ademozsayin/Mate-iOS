@@ -137,4 +137,8 @@ struct AuthenticationConstants {
     static let appLinkLoginFailureMessage = NSLocalizedString(
         "We couldn't process your app login request",
         comment: "A message displayed through a bottom notice letting the user know that the login from the app link failed")
+    
+    static let signupButtonTitle = NSLocalizedString(
+        "Create a New Account",
+        comment: "Create a new account button title")
 }

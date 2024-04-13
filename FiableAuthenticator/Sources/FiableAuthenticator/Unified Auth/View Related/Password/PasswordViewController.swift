@@ -325,22 +325,26 @@ private extension PasswordViewController {
         tracker.track(click: .requestMagicLink)
         loginFields.meta.emailMagicLinkSource = .login
 
-//        updateLoadingUI(isRequestingMagicLink: true)
-//        let result = await MagicLinkRequester().requestMagicLink(email: loginFields.username, jetpackLogin: loginFields.meta.jetpackLogin)
-//        switch result {
-//        case .success:
-//            didRequestAuthenticationLink()
-//        case .failure(let error):
-//            switch error {
-//            case MagicLinkRequester.MagicLinkRequestError.invalidEmail:
-//                print("Attempted to request authentication link, but the email address did not appear valid.")
-//                let alert = buildInvalidEmailAlert()
-//                present(alert, animated: true, completion: nil)
-//            default:
-//                tracker.track(failure: error.localizedDescription)
-//                displayError(error, sourceTag: sourceTag)
-//            }
-//        }
+        updateLoadingUI(isRequestingMagicLink: true)
+        
+        let result = await MagicLinkRequester().requestMagicLink(email: loginFields.username, flow: .login)
+        
+        switch result {
+        case .success(let success):
+            self.didRequestAuthenticationLink()
+        case .failure(let error):
+            print(error)
+            switch error {
+            case MagicLinkRequester.MagicLinkRequestError.invalidEmail:
+                print("Attempted to request authentication link, but the email address did not appear valid.")
+                let alert = buildInvalidEmailAlert()
+                present(alert, animated: true, completion: nil)
+            default:
+                tracker.track(failure: error.localizedDescription)
+                displayError(error, sourceTag: sourceTag)
+            }
+        }
+        
         updateLoadingUI(isRequestingMagicLink: false)
     }
 
@@ -361,6 +365,20 @@ private extension PasswordViewController {
             }
         }
     }
+    
+    /// When a magic link successfully sends, navigate the user to the next step.
+    ///
+    func didRequestAuthenticationLink() {
+        guard let vc = LoginMagicLinkViewController.instantiate(from: .unifiedLoginMagicLink) else {
+            print("Failed to navigate to LoginMagicLinkViewController")
+            return
+        }
+
+        vc.loginFields = self.loginFields
+        vc.loginFields.restrictToWPCom = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
 }
 
 // MARK: - Table Management

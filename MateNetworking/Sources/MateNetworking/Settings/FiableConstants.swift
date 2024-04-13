@@ -15,7 +15,7 @@ public enum FiableConstants {
 
     /// Keychain Access's Service Name
     ///
-    public static let keychainServiceName = "app.fiable.WeatherApp"
+    public static let keychainServiceName = "agency.fiable.mate"
 
     /// Slug of the free plan
     static let freePlanSlug = "free_plan"

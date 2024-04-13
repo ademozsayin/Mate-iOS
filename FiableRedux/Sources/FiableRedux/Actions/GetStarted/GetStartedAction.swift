@@ -19,6 +19,8 @@ public enum GetStartedAction: Action {
         email: String,
         password: String,
         onCompletion: (Result<OnsaTokenData, Error>) -> Void)
+    
+    case requestMagicLink(email:String, completion: (Result<String, Error>) -> Void)
 
 
 }

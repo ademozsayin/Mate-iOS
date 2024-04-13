@@ -45,7 +45,7 @@ public class LoginPrologueViewController: LoginViewController {
     /// Return`true` to use new `NUXStackedButtonsViewController` instead of `NUXButtonViewController` to create buttons
     ///
     private var useStackedButtonsViewController: Bool {
-        configuration.enableWPComLoginOnlyInPrologue || configuration.enableSiteCreation
+        configuration.enableWPComLoginOnlyInPrologue || configuration.enableSiteCreation || configuration.enableSignUp
     }
 
     // MARK: - Lifecycle Methods
@@ -260,14 +260,14 @@ public class LoginPrologueViewController: LoginViewController {
         guard let stackedButtonsViewController = stackedButtonsViewController else {
             return
         }
-
+        
         let primaryButtonStyle = FiableAuthenticator.shared.style.prologuePrimaryButtonStyle
         let secondaryButtonStyle = FiableAuthenticator.shared.style.prologueSecondaryButtonStyle
-
+        
         setButtonViewMargins(forWidth: view.frame.width)
         let displayStrings = FiableAuthenticator.shared.displayStrings
         let buttons: [StackedButton]
-
+        
         let continueWithWPButton = StackedButton(title: displayStrings.continueWithWPButtonTitle,
                                                  isPrimary: true,
                                                  configureBodyFontForTitle: true,
@@ -292,8 +292,23 @@ public class LoginPrologueViewController: LoginViewController {
                                  style: secondaryButtonStyle,
                                  onTap: simplifiedLoginSiteCreationCallback())
         }()
-
-        if configuration.enableWPComLoginOnlyInPrologue && configuration.enableSiteCreation {
+        
+        
+        let signupButton: StackedButton = {
+            let isPrimary = configuration.enableSiteAddressLoginOnlyInPrologue
+            return StackedButton(title: displayStrings.signUpTitle,
+                                 isPrimary: isPrimary,
+                                 configureBodyFontForTitle: true,
+                                 accessibilityIdentifier: "Prologue Create New Account Button",
+                                 style: secondaryButtonStyle,
+                                 onTap: signUpTapCallback())
+        }()
+        
+        
+        if configuration.enableSiteAddressLoginOnlyInPrologue && configuration.enableSignUp {
+            buttons = [signupButton,
+                       enterYourSiteAddressButton]
+        } else if configuration.enableWPComLoginOnlyInPrologue && configuration.enableSiteCreation {
             buttons = [continueWithWPButton,
                        createSiteButton]
         } else if configuration.enableWPComLoginOnlyInPrologue {
@@ -335,6 +350,17 @@ public class LoginPrologueViewController: LoginViewController {
 
             self.tracker.track(click: .continueWithWordPressCom)
             self.continueWithDotCom()
+        }
+    }
+    
+    private func signUpTapCallback() -> NUXButtonViewController.CallBackType {
+        return { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.tracker.track(click: .signupWithEmail)
+            self.signupTapped()
         }
     }
 
@@ -449,12 +475,13 @@ public class LoginPrologueViewController: LoginViewController {
                 return
             }
 
-            guard self.configuration.enableUnifiedAuth else {
-                self.presentSignUpEmailView()
-                return
-            }
-
-            self.presentUnifiedSignupView()
+            self.presentSignUpEmailView()
+//            guard self.configuration.enableUnifiedAuth else {
+//                self.presentSignUpEmailView()
+//                return
+//            }
+//
+//            self.presentUnifiedSignupView()
         }
 
         vc.googleTapped = { [weak self] in

@@ -13,6 +13,10 @@ class AViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .systemPink
+        
+        tabBarItem.title = "DAshboard"
+        tabBarItem.image = .location
+        tabBarItem.accessibilityIdentifier = "tab-bar-menu-item"
     }
     
 }

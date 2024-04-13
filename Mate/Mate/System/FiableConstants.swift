@@ -46,7 +46,7 @@ enum FiableConstants {
 
     /// Shared UsersDefaults Suite Name
     ///
-    static let sharedUserDefaultsSuiteName = "group.app.fiable.Mate"
+    static let sharedUserDefaultsSuiteName = "group.agency.fiable.mate"
 
     /// Push Notifications ApplicationID
     ///
@@ -104,7 +104,8 @@ extension FiableConstants {
 
         /// Terms of Service Website. Displayed by the Authenticator (when / if needed).
         ///
-        case termsOfService = "https://wordpress.com/tos/"
+        //TODO: Frontend terms page
+        case termsOfService = "https://fiable.agency"
 
         /// Cookie policy URL
         ///

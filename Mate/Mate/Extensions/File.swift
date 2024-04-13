@@ -14,16 +14,16 @@ extension FiableAuthenticator {
         let configuration = FiableAuthenticatorConfiguration(
             wpcomClientId: "ApiCredentials.dotcomAppId",
             wpcomSecret: "ApiCredentials.dotcomSecret",
-            wpcomScheme: dotcomAuthScheme,
+            wpcomScheme: "agency.fiable.agency",
             wpcomTermsOfServiceURL: URL(string: FiableConstants.URLs.termsOfService.rawValue)!,
-            wpcomAPIBaseURL: URL(string: Settings.onsastradaApiBaseURL)!,
+            wpcomAPIBaseURL: URL(string: Settings.onsaApiBaseURL)!,
             whatIsWPComURL: URL(string: FiableConstants.URLs.whatIsWPCom.rawValue)!,
             googleLoginClientId: "ApiCredentials.googleClientId",
             googleLoginServerClientId: "ApiCredentials.googleServerId",
             googleLoginScheme: "ApiCredentials.googleAuthScheme",
             userAgent: UserAgent.defaultUserAgent,
             showLoginOptions: true,
-            enableSignUp: false,
+            enableSignUp: true,
             enableSignInWithApple: true,
             enableSignupWithGoogle: false,
             enableUnifiedAuth: true,
@@ -100,7 +100,8 @@ extension FiableAuthenticator {
             whatIsWPComLinkTitle: AuthenticationConstants.whatIsWPComLinkTitle,
             siteCreationButtonTitle: AuthenticationConstants.createSiteButtonTitle,
             getStartedTitle: AuthenticationConstants.loginTitle,
-            emailAddressPlaceholder: emailAddressPlaceholder)
+            emailAddressPlaceholder: emailAddressPlaceholder,
+            createNewAccountButtonTitle: AuthenticationConstants.signupButtonTitle)
         
         let unifiedStyle = FiableAuthenticatorUnifiedStyle(
             borderColor: .divider,

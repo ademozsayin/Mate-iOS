@@ -19,12 +19,22 @@ public protocol AccountRemoteProtocol {
                   password: String,
                   completion: @escaping (Result<OnsaTokenData, Error>) -> Void)
     func loadAccount(completion: @escaping (Result<Account, Error>) -> Void) 
+    func requestAuthLink(email:String, completion: @escaping (Result<String, Error>) -> Void)
     
 }
 
 /// Account: Remote Endpoints
 ///
 public class AccountRemote: Remote, AccountRemoteProtocol {
+    public func requestAuthLink(email: String, completion: @escaping (Result<String, any Error>) -> Void) {
+        let request = OnsaApiRequest(
+            method: .post,
+            path: Path.magic_link
+        )
+        
+        let mapper = MagicLinkMapper()
+        enqueue(request, mapper: mapper, completion: completion)
+    }
            
     /// Loads the Account Details associated with the Credential's authToken.
     ///
@@ -89,6 +99,7 @@ private extension AccountRemote {
         static let closeAccount = "me/account/close"
         static let getToken = "auth/login"
         static let me = "auth/me"
+        static let magic_link = "generate-magic-link"
     }
 }
 

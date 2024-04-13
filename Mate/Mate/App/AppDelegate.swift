@@ -31,10 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appCoordinator?.tabBarController
     }
 
+    private var universalLinkRouter: UniversalLinkRouter?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         setupMainWindow()
         // Setup Components
+        setupComponentsAppearance()
         setupCocoaLumberjack()
 #if DEBUG
         setupLogLevel(.verbose)
@@ -49,7 +51,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        setupUniversalLinkRouter()
+        
         appCoordinator?.start()
+        return true
+    }
+    
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        guard let rootViewController = window?.rootViewController else {
+            fatalError()
+        }
+
+//        if ServiceLocator.stores.isAuthenticatedWithoutWPCom,
+//           let site = ServiceLocator.stores.sessionManager.defaultSite {
+//            let coordinator = JetpackSetupCoordinator(site: site, rootViewController: rootViewController)
+//            jetpackSetupCoordinator = coordinator
+//            return coordinator.handleAuthenticationUrl(url)
+//        }
+        return ServiceLocator.authenticationManager.handleAuthenticationUrl(url, options: options, rootViewController: rootViewController)
+    }
+    
+    func application(_ application: UIApplication,
+                     continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            handleWebActivity(userActivity)
+        }
+
+        SpotlightManager.handleUserActivity(userActivity)
+//        trackWidgetTappedIfNeeded(userActivity: userActivity)
+
         return true
     }
    
@@ -96,5 +129,26 @@ private extension AppDelegate {
 
         appCoordinator = AppCoordinator(window: window)
     }
+    
+    ///
+   
+    
+    func setupUniversalLinkRouter() {
+        guard let tabBarController = tabBarController else { return }
+        universalLinkRouter = UniversalLinkRouter.defaultUniversalLinkRouter(tabBarController: tabBarController)
+    }
 
+}
+
+
+// MARK: - Universal Links
+
+private extension AppDelegate {
+    func handleWebActivity(_ activity: NSUserActivity) {
+        guard let linkURL = activity.webpageURL else {
+            return
+        }
+
+        universalLinkRouter?.handle(url: linkURL)
+    }
 }

@@ -1,6 +1,6 @@
 import UIKit
 import FiableShared
-//import WordPressKit
+import FiableRedux
 
 class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
 
@@ -138,6 +138,33 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
 
     private func checkEmailAvailability(completion: @escaping (Bool) -> Void) {
 
+        authenticationDelegate.checkIfEmailExist(email: loginFields.emailAddress, onCompletion: { [weak self] result in
+            guard let self else { return }
+            self.configureViewLoading(false)
+            switch result {
+            case .success(let data):
+                if data.exists  {
+//                    defer {
+//                        FiableAuthenticator.track(.signupEmailToLogin)
+//                    }
+                    // If the user has already signed up redirect to the Login flow
+                    guard let vc = LoginEmailViewController.instantiate(from: .login) else {
+                        print("Failed to navigate to LoginEmailViewController from SignupEmailViewController")
+                        return
+                    }
+  
+                    vc.loginFields.restrictToWPCom = true
+                    vc.loginFields.username = self.loginFields.emailAddress
+    
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                completion(true)
+                
+            case .failure(let error):
+                self.displayError(message: ErrorMessage.availabilityCheckFail.description())
+                completion(false)
+            }
+        })
 //        let remote = AccountServiceRemoteREST(
 //            wordPressComRestApi: WordPressComRestApi(baseURL: FiableAuthenticator.shared.configuration.wpcomAPIBaseURL))
 //
@@ -190,18 +217,22 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
 
         configureSubmitButton(animating: true)
 
-//        let service = WordPressComAccountService()
-//        service.requestSignupLink(for: loginFields.username,
-//                                  success: { [weak self] in
-//                                    self?.didRequestSignupLink()
-//                                    self?.configureSubmitButton(animating: false)
-//
-//            }, failure: { [weak self] (_: Error) in
-//                print("Request for signup link email failed.")
+        MateAccountService().requestAuthenticationLink(for: loginFields.username, flow: .register) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .success(let message):
+                print(message)
+                self.didRequestSignupLink()
+                self.configureSubmitButton(animating: false)
+            case .failure(let error):
+                print(error.localizedDescription)
+                print("Request for signup link email failed.")
 //                FiableAuthenticator.track(.signupMagicLinkFailed)
-//                self?.displayError(message: ErrorMessage.magicLinkRequestFail.description())
-//                self?.configureSubmitButton(animating: false)
-//        })
+                self.displayError(message: ErrorMessage.magicLinkRequestFail.description())
+                self.configureSubmitButton(animating: false)
+            }
+        }
+        
     }
 
     private func didRequestSignupLink() {

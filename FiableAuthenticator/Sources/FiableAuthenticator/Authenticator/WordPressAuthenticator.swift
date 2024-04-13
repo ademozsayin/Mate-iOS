@@ -61,7 +61,9 @@ import FiableUI
 
     /// The host name that identifies magic link URLs
     ///
-    private static let magicLinkUrlHostname = "magic-login"
+//    private static let magicLinkUrlHostname = "magic-login"
+    private static let magicLinkUrlHostname = "login/magic"
+    private static let registerMagicLinkUrlHostname = "register/magic"
 
     // MARK: - Initialization
 
@@ -124,7 +126,16 @@ import FiableUI
     /// Indicates if the received URL is a WordPress.com Authentication Callback.
     ///
     @objc public func isWordPressAuthUrl(_ url: URL) -> Bool {
-        let expectedPrefix = configuration.wpcomScheme + "://" + Self.magicLinkUrlHostname
+//        let expectedPrefix = configuration.wpcomScheme + "://" + Self.magicLinkUrlHostname
+        let expectedPrefix = "onsamate://" + Self.magicLinkUrlHostname
+
+        return url.absoluteString.hasPrefix(expectedPrefix)
+    }
+    
+    @objc public func isMateRegisterUrl(_ url: URL) -> Bool {
+//        let expectedPrefix = configuration.wpcomScheme + "://" + Self.magicLinkUrlHostname
+        let expectedPrefix = "onsamate://" + Self.registerMagicLinkUrlHostname
+
         return url.absoluteString.hasPrefix(expectedPrefix)
     }
 
@@ -163,19 +174,13 @@ import FiableUI
     ///
     /// - Parameters:
     ///   - showCancel: Whether a cancel CTA is shown on the login prologue screen.
-    ///   - restrictToWPCom: Whether only WordPress.com login is enabled.
+    ///   - restrictToOnsaCom: Whether only fiable.agency login is enabled.
     ///   - onLoginButtonTapped: Called when the login button on the prologue screen is tapped.
     /// - Returns: The root view controller for the login flow.
     public class func loginUI(showCancel: Bool = false, restrictToWPCom: Bool = false, onLoginButtonTapped: (() -> Void)? = nil) -> UIViewController? {
         let storyboard = Storyboard.login.instance
 
-        // Debug prints
-//           print("Bundle resources: \(FiableAuthenticator.bundle.paths(forResourcesOfType: nil, inDirectory: nil))")
-//           print("Storyboard identifier: \(Storyboard.login.rawValue)")
-
-        
         guard let controller = storyboard.instantiateInitialViewController() else {
-            print("sssss asdasdasda")
             assertionFailure("Cannot instantiate initial login controller from Login.storyboard")
             return nil
         }
@@ -411,22 +416,23 @@ import FiableUI
         fromRootViewController rootViewController: UIViewController,
         automatedTesting: Bool = false) -> Bool {
 //
-//        guard let queryDictionary = url.query?.dictionaryFromQueryString() else {
-//            print("Magic link error: we couldn't retrieve the query dictionary from the sign-in URL.")
-//            return false
-//        }
-//
-//        guard let authToken = queryDictionary.string(forKey: "token") else {
-//            print("Magic link error: we couldn't retrieve the authentication token from the sign-in URL.")
-//            return false
-//        }
-//
+        guard let queryDictionary = url.query?.dictionaryFromQueryString() else {
+            print("Magic link error: we couldn't retrieve the query dictionary from the sign-in URL.")
+            return false
+        }
+////
+        guard let authToken = queryDictionary.string(forKey: "token") else {
+            print("Magic link error: we couldn't retrieve the authentication token from the sign-in URL.")
+            return false
+        }
+////
+            
 //        guard let flowRawValue = queryDictionary.string(forKey: "flow") else {
 //            print("Magic link error: we couldn't retrieve the flow from the sign-in URL.")
 //            return false
 //        }
-//
-//        let loginFields = LoginFields()
+////
+        let loginFields = LoginFields()
 //
 //        if url.isJetpackConnect {
 //            loginFields.meta.jetpackLogin = true
@@ -434,8 +440,9 @@ import FiableUI
 
         // We could just use the flow, but since `MagicLinkFlow` is an ObjC enum, it always
         // allows a `default` value.  By mapping the ObjC enum to a Swift enum we can avoid that afterwards.
-        let flow: NUXLinkAuthViewController.Flow
+            let flow: NUXLinkAuthViewController.Flow
 
+            flow = .login
 //        switch MagicLinkFlow(rawValue: flowRawValue) {
 //        case .signup:
 //            flow = .signup
@@ -450,16 +457,18 @@ import FiableUI
 //            return false
 //        }
 
-//        if !automatedTesting {
-//            let storyboard = Storyboard.emailMagicLink.instance
-//            guard let loginVC = storyboard.instantiateViewController(withIdentifier: "LinkAuthView") as? NUXLinkAuthViewController else {
-//                print("App opened with authentication link but couldn't create login screen.")
-//                return false
-//            }
-//            loginVC.loginFields = loginFields
+        if !automatedTesting {
+            let storyboard = Storyboard.emailMagicLink.instance
+            guard let loginVC = storyboard.instantiateViewController(
+                withIdentifier: "LinkAuthView"
+            ) as? NUXLinkAuthViewController else {
+                print("App opened with authentication link but couldn't create login screen.")
+                return false
+            }
+            loginVC.loginFields = loginFields
 //
-//            let navController = LoginNavigationController(rootViewController: loginVC)
-//            navController.modalPresentationStyle = .fullScreen
+            let navController = LoginNavigationController(rootViewController: loginVC)
+            navController.modalPresentationStyle = .fullScreen
 //
 //            // The way the magic link flow works some view controller might
 //            // still be presented when the app is resumed by tapping on the auth link.
@@ -471,18 +480,18 @@ import FiableUI
 //            // NUX vc then present the auth controller.
 //            // - If the rootViewController is presenting *any* other vc, present the
 //            // auth controller from the presented vc.
-//            let presenter = rootViewController.topmostPresentedViewController
-//            if presenter.isKind(of: NUXNavigationController.self) || presenter.isKind(of: LoginNavigationController.self),
-//                let parent = presenter.presentingViewController {
-//                parent.dismiss(animated: false, completion: {
-//                    parent.present(navController, animated: false, completion: nil)
-//                })
-//            } else {
-//                presenter.present(navController, animated: false, completion: nil)
-//            }
+            let presenter = rootViewController.topmostPresentedViewController
+            if presenter.isKind(of: NUXNavigationController.self) || presenter.isKind(of: LoginNavigationController.self),
+                let parent = presenter.presentingViewController {
+                parent.dismiss(animated: false, completion: {
+                    parent.present(navController, animated: false, completion: nil)
+                })
+            } else {
+                presenter.present(navController, animated: false, completion: nil)
+            }
 //
-//            loginVC.syncAndContinue(authToken: authToken, flow: flow, isJetpackConnect: url.isJetpackConnect)
-//        }
+            loginVC.syncAndContinue(authToken: authToken, flow: flow, isJetpackConnect: url.isJetpackConnect)
+        }
 
         return true
     }
@@ -576,5 +585,119 @@ public extension FiableAuthenticator {
             NotificationCenter.default.removeObserver(observer)
         }
         appleIDCredentialObserver = nil
+    }
+}
+
+extension String {
+    func dictionaryFromQueryString() -> [String: String]? {
+        if self.isEmpty {
+            return nil
+        }
+
+        var result = [String: String]()
+
+        let pairs = self.components(separatedBy: "&")
+        for pair in pairs {
+            let separator = pair.range(of: "=")
+            var key: String
+            var value: String
+
+            if let separator = separator {
+                key = String(pair[..<separator.lowerBound])
+                value = String(pair[separator.upperBound...]).removingPercentEncoding ?? ""
+            } else {
+                key = pair
+                value = ""
+            }
+
+            key = key.removingPercentEncoding ?? ""
+            result[key] = value
+        }
+
+        return result
+    }
+}
+
+import Foundation
+
+extension Dictionary {
+    func safeObject(forKey key: Key) -> Value? {
+        guard let value = self[key] else {
+            assertionFailure("nil key")
+            return nil
+        }
+        return value
+    }
+    
+    func string(forKey key: Key) -> String? {
+        guard let obj = safeObject(forKey: key) else { return nil }
+        return String(describing: obj)
+    }
+    
+    func number(forKey key: Key, using numberFormatter: NumberFormatter = Self.posixNumberFormatter()) -> NSNumber? {
+        guard let obj = safeObject(forKey: key) else { return nil }
+        return Self.number(with: obj, using: numberFormatter)
+    }
+    
+    static func posixNumberFormatter() -> NumberFormatter {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        return formatter
+    }
+    
+    static func number(with obj: Any, using numberFormatter: NumberFormatter) -> NSNumber? {
+        if let number = obj as? NSNumber {
+            return number
+        }
+        if let string = obj as? String {
+            return numberFormatter.number(from: string)
+        }
+        return nil
+    }
+    
+    func array(forKey key: Key) -> [Any]? {
+        guard let obj = safeObject(forKey: key) else { return nil }
+        return obj as? [Any]
+    }
+    
+    func dictionary(forKey key: Key) -> [Key: Value]? {
+        guard let obj = safeObject(forKey: key) else { return nil }
+        return obj as? [Key: Value]
+    }
+    
+    func objectForKeyPath(_ keyPath: String) -> Any? {
+        var object: Any? = self
+        let keyPaths = keyPath.components(separatedBy: ".")
+        for currentKeyPath in keyPaths {
+            guard let currentObject = object as? [Key: Value] else {
+                object = nil
+                break
+            }
+            object = currentObject[currentKeyPath as! Key]
+            if object == nil {
+                break
+            }
+        }
+        return object
+    }
+    
+    func string(forKeyPath keyPath: String) -> String? {
+        guard let obj = objectForKeyPath(keyPath) else { return nil }
+        return String(describing: obj)
+    }
+    
+    func number(forKeyPath keyPath: String, using numberFormatter: NumberFormatter = Self.posixNumberFormatter()) -> NSNumber? {
+        guard let obj = objectForKeyPath(keyPath) else { return nil }
+        return Self.number(with: obj, using: numberFormatter)
+    }
+    
+    func array(forKeyPath keyPath: String) -> [Any]? {
+        guard let obj = objectForKeyPath(keyPath) else { return nil }
+        return obj as? [Any]
+    }
+    
+    func dictionary(forKeyPath keyPath: String) -> [Key: Value]? {
+        guard let obj = objectForKeyPath(keyPath) else { return nil }
+        return obj as? [Key: Value]
     }
 }

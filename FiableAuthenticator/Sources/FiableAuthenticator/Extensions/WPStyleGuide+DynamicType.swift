@@ -15,7 +15,7 @@ import FiableShared
 extension WPStyleGuide {
     @objc static let defaultTableViewRowHeight: CGFloat = 44.0
 
-    @objc public static let maxFontSize: CGFloat = 20.0
+    @objc public static let maxFontSize: CGFloat = 16.0
 
     /// Configures a table to automatically resize its rows according to their content.
     ///

@@ -63,6 +63,7 @@ public struct FiableAuthenticatorDisplayStrings {
     public let twoFactorCodePlaceholder: String
     public let emailAddressPlaceholder: String
 
+    public let createNewAccountButtonTitle:String
     /// Designated initializer.
     ///
     public init(emailLoginInstructions: String = defaultStrings.emailLoginInstructions,
@@ -109,7 +110,8 @@ public struct FiableAuthenticatorDisplayStrings {
                 passwordPlaceholder: String = defaultStrings.passwordPlaceholder,
                 siteAddressPlaceholder: String = defaultStrings.siteAddressPlaceholder,
                 twoFactorCodePlaceholder: String = defaultStrings.twoFactorCodePlaceholder,
-                emailAddressPlaceholder: String = defaultStrings.emailAddressPlaceholder) {
+                emailAddressPlaceholder: String = defaultStrings.emailAddressPlaceholder,
+                createNewAccountButtonTitle:String = defaultStrings.createAccountButtonTitle) {
         self.emailLoginInstructions = emailLoginInstructions
         self.getStartedInstructions = getStartedInstructions
         self.jetpackLoginInstructions = jetpackLoginInstructions
@@ -155,6 +157,7 @@ public struct FiableAuthenticatorDisplayStrings {
         self.siteAddressPlaceholder = siteAddressPlaceholder
         self.twoFactorCodePlaceholder = twoFactorCodePlaceholder
         self.emailAddressPlaceholder = emailAddressPlaceholder
+        self.createNewAccountButtonTitle = createNewAccountButtonTitle
     }
 }
 
@@ -245,7 +248,10 @@ public extension FiableAuthenticatorDisplayStrings {
             twoFactorCodePlaceholder: NSLocalizedString("Authentication code",
                                                         comment: "Placeholder for the 2FA code textfield."),
             emailAddressPlaceholder: NSLocalizedString("Email address",
-                                                       comment: "Placeholder for the email address textfield.")
+                                                       comment: "Placeholder for the email address textfield."),
+            
+            createNewAccountButtonTitle: NSLocalizedString("Create Account",
+                                                           comment: "The button title text for creating a new account.")
         )
     }
 }

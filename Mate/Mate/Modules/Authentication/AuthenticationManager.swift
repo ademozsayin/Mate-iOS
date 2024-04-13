@@ -97,6 +97,14 @@ class AuthenticationManager: Authentication {
     /// Handles an Authentication URL Callback. Returns *true* on success.
     ///
     func handleAuthenticationUrl(_ url: URL, options: [UIApplication.OpenURLOptionsKey: Any], rootViewController: UIViewController) -> Bool {
+        if FiableAuthenticator.shared.isMateRegisterUrl(url) {
+            return FiableAuthenticator.shared.handleWordPressAuthUrl(
+                url,
+                rootViewController: rootViewController
+            )
+        }
+        
+        
         if FiableAuthenticator.shared.isWordPressAuthUrl(url) {
             return FiableAuthenticator.shared.handleWordPressAuthUrl(
                 url,
@@ -543,19 +551,19 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
         }
         appleUserID = nil
 
-//        ServiceLocator.stores.authenticate(credentials: .init(authToken: wpcom.authToken))
-//        let action = AccountAction.synchronizeAccount { result in
-//            switch result {
-//            case .success(let account):
-//                let credentials = Credentials.wpcom(username: account.username, authToken: wpcom.authToken, siteAddress: wpcom.siteURL)
-//                ServiceLocator.stores
-//                    .authenticate(credentials: credentials)
-//                    .synchronizeEntities(onCompletion: onCompletion)
-//            case .failure:
-//                ServiceLocator.stores.synchronizeEntities(onCompletion: onCompletion)
-//            }
-//        }
-//        ServiceLocator.stores.dispatch(action)
+        ServiceLocator.stores.authenticate(credentials: .init(authToken: wpcom.authToken))
+        let action = AccountAction.synchronizeAccount { result in
+            switch result {
+            case .success(let account):
+                let credentials = Credentials.wpcom(username: account.email, authToken: wpcom.authToken, siteAddress: wpcom.siteURL)
+                ServiceLocator.stores
+                    .authenticate(credentials: credentials)
+                    .synchronizeEntities(onCompletion: onCompletion)
+            case .failure:
+                ServiceLocator.stores.synchronizeEntities(onCompletion: onCompletion)
+            }
+        }
+        ServiceLocator.stores.dispatch(action)
     }
 
     /// Tracks a given Analytics Event.

@@ -843,6 +843,10 @@ extension UIImage {
     static var menuImage: UIImage {
         return UIImage.gridicon(.menu)
     }
+    
+    static var location: UIImage {
+        return UIImage.gridicon(.location)
+    }
 
     /// Lightning icon on offline banner
     ///

@@ -57,13 +57,13 @@ final class MapViewController: UIHostingController<MapView> {
 private extension MapViewController {
     func configureTabBarItem() {
         tabBarItem.title = Localization.tabTitle
-        tabBarItem.image = .hubMenu
+        tabBarItem.image = .location
         tabBarItem.accessibilityIdentifier = "tab-bar-menu-item"
     }
 }
 
 private extension MapViewController {
     enum Localization {
-        static let tabTitle = NSLocalizedString("Map", comment: "Title of the Menu tab")
+        static let tabTitle = "Aadasdas"//NSLocalizedString("Map", comment: "Title of the Menu tab")
     }
 }

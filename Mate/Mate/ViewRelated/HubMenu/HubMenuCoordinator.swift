@@ -15,7 +15,8 @@ import UIKit
 import protocol FiableRedux.StoresManager
 
 final class HubMenuCoordinator: Coordinator {
-   
+    
+    var hubMenuController: HubMenuViewController?
     let navigationController: UINavigationController
     private let storesManager: StoresManager
     private let willPresentReviewDetailsFromPushNotification: () async -> Void
@@ -59,4 +60,17 @@ final class HubMenuCoordinator: Coordinator {
 //                }
 //        }
     }
+}
+
+// MARK: - Deeplinks
+extension HubMenuCoordinator: DeepLinkNavigator {
+    func navigate(to destination: any DeepLinkDestinationProtocol) {
+        guard let hubMenuController = hubMenuController else {
+            return
+        }
+//        hubMenuController.navigate(to: destination)
+    }
+}
+
+final class HubMenuViewController: UIViewController {
 }

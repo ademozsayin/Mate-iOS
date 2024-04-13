@@ -88,6 +88,6 @@ extension AccountStore {
         ) ?? storage.insertNewObject(ofType: MateStorage.Account.self)
         
         storageAccount.update(with: readOnlyAccount)
-        storage.saveIfNeeded()
+                storage.saveIfNeeded()
     }
 }

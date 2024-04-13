@@ -40,6 +40,9 @@ public class GetStartedStore: DeauthenticatedStore {
             checkEmail(email: email, completion: onCompletion)
         case .getToken(let email, let password, let onCompletion):
             getTokenWith(email: email, password: password, onCompletion: onCompletion)
+            
+        case .requestMagicLink(email: let email, completion: let completion):
+            requestMagicLink(email: email, completion: completion)
         }
     }
 }
@@ -62,8 +65,7 @@ private extension GetStartedStore {
     func getTokenWith(email: String,
                       password: String,
                       onCompletion: @escaping (_ result: Result<OnsaTokenData, Error>) -> Void) {
-        remote.getToken(for: email, password: password) { [weak self] result in
-            guard let self else { return }
+        remote.getToken(for: email, password: password) { result in
             switch result {
             case .success(let token):
                 onCompletion(.success(token))
@@ -71,6 +73,10 @@ private extension GetStartedStore {
                 onCompletion(.failure(error))
             }
         }
+    }
+    
+    func requestMagicLink(email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        remote.requestAuthLink(email: email, completion: completion)
     }
 }
 

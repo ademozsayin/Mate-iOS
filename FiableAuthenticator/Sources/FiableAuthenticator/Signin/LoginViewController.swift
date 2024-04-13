@@ -52,7 +52,7 @@ open class LoginViewController: NUXViewController {
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-//        displayError(message: "asdasdasdasd")
+//        displayError(message: "")
         styleNavigationBar(forUnified: true)
         styleBackground()
         styleInstructions()

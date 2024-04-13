@@ -55,7 +55,7 @@ extension WooTab {
     
     // Note: currently only the Dashboard tab (My Store) view controller is set up in Main.storyboard.
     private static func visibleTabs() -> [WooTab] {
-        [.map, .hubMenu]
+        [.myStore, .map]
         //        [.myStore, .orders, .products, .hubMenu]
     }
 }
@@ -231,6 +231,7 @@ final class MainTabBarController: UITabBarController {
             navigationController.viewControllers = []
         }
         hubMenuTabCoordinator = nil
+        mapTabCoordinator = nil
     }
 }
 
@@ -391,7 +392,7 @@ private extension MainTabBarController {
         viewControllers = {
             var controllers = [UIViewController]()
             
-            let tabs: [WooTab] = [.map, .hubMenu]
+            let tabs: [WooTab] = [.myStore, .map]
             tabs.forEach { tab in
                 let tabIndex = tab.visibleIndex()
                 let tabViewController = rootTabViewController(tab: tab)
@@ -403,12 +404,14 @@ private extension MainTabBarController {
     
     func rootTabViewController(tab: WooTab) -> UIViewController {
         switch tab {
-        case .myStore:
-            return dashboardNavigationController
-        case .hubMenu:
-            return hubMenuNavigationController
         case .map:
             return mapNavigationController
+            
+        case .hubMenu:
+            return hubMenuNavigationController
+       
+        case .myStore:
+            return dashboardNavigationController
         }
     }
     
@@ -437,6 +440,7 @@ private extension MainTabBarController {
         dashboardNavigationController.viewControllers = [dashboardViewController]
 
                 
+//        ordersContainerController.wrappedController = createOrdersViewController()
 
         // Configure hub menu tab coordinator once per logged in session potentially with multiple sites.
         if mapTabCoordinator == nil {
@@ -449,13 +453,14 @@ private extension MainTabBarController {
         viewModel.loadHubMenuTabBadge()
 
         // Set map to be the default tab.
-        selectedIndex = WooTab.map.visibleIndex()
+        selectedIndex = WooTab.myStore.visibleIndex()
     }
     
     func createDashboardViewController() -> UIViewController {
-        return AViewController()//DashboardViewController()
+        return AViewController()
     }
     
+
     
     func createMapTabCoordinator() -> MapCoordinator {
         MapCoordinator(navigationController: hubMenuNavigationController,
@@ -478,3 +483,14 @@ private extension MainTabBarController {
     }
 }
 
+
+
+// MARK: - DeeplinkForwarder
+//
+extension MainTabBarController: DeepLinkNavigator {
+    func navigate(to destination: any DeepLinkDestinationProtocol) {
+        navigateTo(.hubMenu) { [weak self] in
+            self?.hubMenuTabCoordinator?.navigate(to: destination)
+        }
+    }
+}
