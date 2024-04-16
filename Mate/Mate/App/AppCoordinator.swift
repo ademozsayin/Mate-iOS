@@ -38,7 +38,7 @@ final class AppCoordinator {
 
     /// Checks on whether the Apple ID credential is valid when the app is logged in and becomes active.
     ///
-//    private lazy var appleIDCredentialChecker = AppleIDCredentialChecker()
+    private lazy var appleIDCredentialChecker = AppleIDCredentialChecker()
 
     init(window: UIWindow,
          stores: StoresManager = ServiceLocator.stores,
@@ -124,10 +124,10 @@ private extension AppCoordinator {
             }
             return loginNavigationController
         }
+        
+        appleIDCredentialChecker.observeLoggedInStateForAppleIDObservations()
     }
     
-    
-
     @discardableResult
     func displayAuthenticator() -> UIViewController {
         let authenticationUI = authenticationManager.authenticationUI()

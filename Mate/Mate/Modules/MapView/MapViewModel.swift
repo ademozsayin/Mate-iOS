@@ -52,15 +52,7 @@ class MapViewModel: NSObject, ObservableObject {
                 self?.objectWillChange.send()
             }
             .store(in: &cancellables)
-        
-        stores.site
-            .compactMap { site -> URL? in
-                guard let urlString = site?.url, let url = URL(string: urlString) else {
-                    return nil
-                }
-                return url
-            }
-            .assign(to: &$region)
+
     }
 }
 
