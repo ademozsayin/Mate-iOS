@@ -165,48 +165,6 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
                 completion(false)
             }
         })
-//        let remote = AccountServiceRemoteREST(
-//            wordPressComRestApi: WordPressComRestApi(baseURL: FiableAuthenticator.shared.configuration.wpcomAPIBaseURL))
-//
-//        remote.isEmailAvailable(loginFields.emailAddress, success: { [weak self] available in
-//            if !available {
-//                defer {
-//                    FiableAuthenticator.track(.signupEmailToLogin)
-//                }
-//                // If the user has already signed up redirect to the Login flow
-//                guard let vc = LoginEmailViewController.instantiate(from: .login) else {
-//                    print("Failed to navigate to LoginEmailViewController from SignupEmailViewController")
-//                    return
-//                }
-//
-//                guard let self = self else {
-//                    return
-//                }
-//
-//                vc.loginFields.restrictToWPCom = true
-//                vc.loginFields.username = self.loginFields.emailAddress
-//
-//                self.navigationController?.pushViewController(vc, animated: true)
-//            }
-//            completion(available)
-//        }, failure: { error in
-//            guard let error = error else {
-//                self.displayError(message: ErrorMessage.availabilityCheckFail.description())
-//                completion(false)
-//                return
-//            }
-//
-//            print("Error checking email availability: \(error.localizedDescription)")
-//
-//            switch error {
-//            case AccountServiceRemoteError.emailAddressInvalid:
-//                self.displayError(message: error.localizedDescription)
-//                completion(false)
-//            default:
-//                self.displayError(message: ErrorMessage.availabilityCheckFail.description())
-//                completion(false)
-//            }
-//        })
     }
 
     // MARK: - Send email

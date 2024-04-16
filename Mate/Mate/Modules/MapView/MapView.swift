@@ -9,13 +9,16 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @ObservedObject var viewModel: MapViewModel
+    @ObservedObject private var viewModel: MapViewModel
+    
+    init(viewModel: MapViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         Map(coordinateRegion: $viewModel.region,
             showsUserLocation: true,
             userTrackingMode: $viewModel.trackingMode)
-        .edgesIgnoringSafeArea(.all)
+            .edgesIgnoringSafeArea(.all)
     }
 }
-    

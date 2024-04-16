@@ -55,7 +55,7 @@ extension WooTab {
     
     // Note: currently only the Dashboard tab (My Store) view controller is set up in Main.storyboard.
     private static func visibleTabs() -> [WooTab] {
-        [.myStore, .map]
+        [.map, .hubMenu]
         //        [.myStore, .orders, .products, .hubMenu]
     }
 }
@@ -392,7 +392,7 @@ private extension MainTabBarController {
         viewControllers = {
             var controllers = [UIViewController]()
             
-            let tabs: [WooTab] = [.myStore, .map]
+            let tabs: [WooTab] = [.map, .hubMenu]
             tabs.forEach { tab in
                 let tabIndex = tab.visibleIndex()
                 let tabViewController = rootTabViewController(tab: tab)
@@ -432,41 +432,58 @@ private extension MainTabBarController {
 //        viewModel.configureOrdersStatusesListener(for: siteID)
 
         // Initialize each tab's root view controller
+
 //        let dashboardViewController = createDashboardViewController()
 //        dashboardNavigationController.viewControllers = [dashboardViewController]
-
-        
-        let dashboardViewController = createDashboardViewController()
-        dashboardNavigationController.viewControllers = [dashboardViewController]
 
                 
 //        ordersContainerController.wrappedController = createOrdersViewController()
 
         // Configure hub menu tab coordinator once per logged in session potentially with multiple sites.
+        if hubMenuTabCoordinator == nil {
+            let hubTabCoordinator = createHubMenuTabCoordinator()
+            self.hubMenuTabCoordinator = hubTabCoordinator
+            hubTabCoordinator.start()
+        }
+        
+        hubMenuTabCoordinator?.activate(siteID: 1)
+        
         if mapTabCoordinator == nil {
-            let mapCoordinator = createMapTabCoordinator()
-            self.mapTabCoordinator = mapCoordinator
-            mapCoordinator.start()
+            let mapTabCoordinator = createMapTabCoordinator()
+            self.mapTabCoordinator = mapTabCoordinator
+            mapTabCoordinator.start()
         }
         mapTabCoordinator?.activate()
 
         viewModel.loadHubMenuTabBadge()
 
         // Set map to be the default tab.
-        selectedIndex = WooTab.myStore.visibleIndex()
+        selectedIndex = WooTab.map.visibleIndex()
     }
     
-    func createDashboardViewController() -> UIViewController {
-        return AViewController()
-    }
+//    func createDashboardViewController() -> UIViewController {
+//        return AViewController()
+//    }
     
-
     
     func createMapTabCoordinator() -> MapCoordinator {
-        MapCoordinator(navigationController: hubMenuNavigationController,
+        MapCoordinator(navigationController: mapNavigationController,
                            willPresentReviewDetailsFromPushNotification: { [weak self] in
             await withCheckedContinuation { [weak self] continuation in
                 self?.navigateTo(.map) {
+                    continuation.resume(returning: ())
+                }
+            }
+        })
+    }
+    
+    
+    func createHubMenuTabCoordinator() -> HubMenuCoordinator {
+        HubMenuCoordinator(
+            navigationController: hubMenuNavigationController,
+            willPresentReviewDetailsFromPushNotification: { [weak self] in
+            await withCheckedContinuation { [weak self] continuation in
+                self?.navigateTo(.hubMenu) {
                     continuation.resume(returning: ())
                 }
             }

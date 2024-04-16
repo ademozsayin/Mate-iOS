@@ -242,7 +242,8 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
     @MainActor
     func handleSuccess(data: OnsaTokenData) async {
         await withCheckedContinuation { continuation in
-            stores.authenticate(credentials: .init(username: data.username, authToken: data.token))
+            //TODO: Later add username in token response
+            stores.authenticate(credentials: .init(username: data.username ?? "mate", authToken: data.token))
                 .synchronizeEntities(onCompletion: {
                     continuation.resume(returning: ())
                 })
@@ -254,6 +255,7 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
        print(error)
     }
     
+    @MainActor
     func checkIfEmailExist(email: String, onCompletion: @escaping (Result<MateNetworking.EmailCheckData, any Error>) -> Void) {
         stores.dispatch(GetStartedAction.checkEmail(email: email, onCompletion: onCompletion))
     }    

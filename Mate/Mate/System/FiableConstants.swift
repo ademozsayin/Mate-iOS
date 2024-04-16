@@ -22,7 +22,7 @@ enum FiableConstants {
 
     /// Keychain Access's Service Name
     ///
-    static let keychainServiceName = "app.fiable.Mate"
+    static let keychainServiceName = "agency.fiable.mate"
 
     /// Keychain Access's Key for Apple ID
     ///
@@ -109,11 +109,11 @@ extension FiableConstants {
 
         /// Cookie policy URL
         ///
-        case cookie = "https://automattic.com/cookies/"
+        case cookie = "https://fiable.agency/cookies/"
 
         /// Privacy policy URL
         ///
-        case privacy = "https://automattic.com/privacy/"
+        case privacy = "https://fiable.agency/privacy/"
 
         /// More Privacy Documentation URL.
         ///
@@ -125,7 +125,7 @@ extension FiableConstants {
 
         /// Privacy policy for California users URL
         ///
-        case californiaPrivacy = "https://automattic.com/privacy/#california-consumer-privacy-act-ccpa"
+        case californiaPrivacy = "https://fiable.agency/privacy/#california-consumer-privacy-act-ccpa"
 
         /// Help Center URL
         ///

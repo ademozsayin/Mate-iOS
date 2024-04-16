@@ -24,6 +24,6 @@ extension MateStorage.Account: ReadOnlyConvertible {
     /// Returns a ReadOnly version of the receiver.
     ///
     public func toReadOnly() -> FiableRedux.Account {
-        return Account(userID: id, name: username ?? "", email: email ?? "")
+        return Account(userID: id, name: username ?? "", email: email ?? "", gravatarUrl: "")
     }
 }

@@ -25,12 +25,14 @@ public struct Account: Decodable, Equatable, GeneratedFakeable {
     public let email: String
 
 
+    public let gravatarUrl:String?
     /// Designated Initializer.
     ///
-    public init(userID: Int64, name: String, email: String) {
+    public init(userID: Int64, name: String, email: String, gravatarUrl:String?) {
         self.userID = userID
         self.name = name
         self.email = email
+        self.gravatarUrl = gravatarUrl
     }
     
     public init(from decoder: Decoder) throws {
@@ -42,9 +44,9 @@ public struct Account: Decodable, Equatable, GeneratedFakeable {
 
         let name = try container.decode(String.self, forKey: .name)
         let email = try container.decode(String.self, forKey: .email)
-
+        let gravatarUrl = try container.decodeIfPresent(String.self, forKey: .gravatarUrl) ?? ""
         
-        self.init(userID: Int64(userID), name: name, email: email)
+        self.init(userID: Int64(userID), name: name, email: email, gravatarUrl: gravatarUrl)
     }
 }
 
@@ -57,6 +59,7 @@ private extension Account {
         case userID         = "id"
         case email          = "email"
         case name
+        case gravatarUrl
     }
     
 

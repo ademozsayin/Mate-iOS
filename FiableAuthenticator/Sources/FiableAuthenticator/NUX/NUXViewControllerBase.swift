@@ -83,12 +83,13 @@ extension NUXViewControllerBase where Self: UIViewController, Self: UIViewContro
 
     /// Displays a login error message in an attractive dialog
     ///
+    @MainActor
     public func displayErrorAlert(_ message: String, sourceTag: WordPressSupportSourceTag, onDismiss: (() -> ())? = nil) {
         let presentingController = navigationController ?? self
         let controller = FancyAlertViewController.alertForGenericErrorMessageWithHelpButton(message, loginFields: loginFields, sourceTag: sourceTag, onDismiss: onDismiss)
         controller.modalPresentationStyle = .custom
         controller.transitioningDelegate = self
-        presentingController.present(controller, animated: true, completion: nil)
+        presentingController.present(controller, animated: true, completion: nil)       
     }
 
     /// It is assumed that NUX view controllers are always presented modally.

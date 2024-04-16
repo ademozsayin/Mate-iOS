@@ -8,10 +8,6 @@
 import Combine
 import Foundation
 import UIKit
-
-//import enum Redux.ProductReviewAction
-//import enum Redux.NotificationAction
-//import struct Redux.ProductReviewFromNoteParcel
 import FiableRedux
 
 final class MapCoordinator: Coordinator {

@@ -9,9 +9,6 @@ import Combine
 import Foundation
 import FiableRedux
 import MateNetworking
-//import enum Networking.DotcomError
-//import class Networking.UserAgent
-//import class Networking.WordPressOrgNetwork
 import KeychainAccess
 import WidgetKit
 
@@ -135,7 +132,7 @@ class DefaultStoresManager: StoresManager {
         isLoggedIn = isAuthenticated
 
         fullyDeauthenticateIfNeeded()
-//        restoreSessionAccountIfPossible()
+        restoreSessionAccountIfPossible()
 //        restoreSessionSiteIfPossible()
     }
 
@@ -217,20 +214,20 @@ class DefaultStoresManager: StoresManager {
             return
         }
 //
-//        let action = AccountAction.synchronizeAccountSettings(userID: userID) { [weak self] result in
-//            switch result {
-//            case .success(let accountSettings):
-//                if let self = self, self.isAuthenticated {
-//                    // Save the user's preference
-//                    ServiceLocator.analytics.setUserHasOptedOut(accountSettings.tracksOptOut)
-//                }
-//                onCompletion(.success(()))
-//            case .failure(let error):
-//                onCompletion(.failure(error))
-//            }
-//        }
-//
-//        dispatch(action)
+        let action = AccountAction.synchronizeAccountSettings(userID: userID) { [weak self] result in
+            switch result {
+            case .success(let accountSettings):
+                if let self = self, self.isAuthenticated {
+                    // Save the user's preference
+                    ServiceLocator.analytics.setUserHasOptedOut(accountSettings.tracksOptOut)
+                }
+                onCompletion(.success(()))
+            case .failure(let error):
+                onCompletion(.failure(error))
+            }
+        }
+
+        dispatch(action)
     }
 
     /// Prepares for changing the selected store and remains Authenticated.
@@ -321,6 +318,34 @@ class DefaultStoresManager: StoresManager {
 //
 private extension DefaultStoresManager {
 
+    /// Loads the Default Account into the current Session, if possible.
+    ///
+    func restoreSessionAccountIfPossible() {
+        guard let accountID = sessionManager.defaultAccountID else {
+            return
+        }
+
+        restoreSessionAccount(with: accountID)
+    }
+    
+    ///
+    func restoreSessionAccount(with accountID: Int64) {
+        let action = AccountAction.synchronizeAccount() { [weak self] result in
+            guard let self else {
+                return
+            }
+            switch result {
+            case .success(let account):
+                self.replaceTempCredentialsIfNecessary(account: account)
+                self.sessionManager.defaultAccount = account
+            case .failure(let err):
+                print(err.localizedDescription)
+            }
+        }
+
+        dispatch(action)
+    }
+    
     /// Synchronizes the WordPress.com Account, associated with the current credentials.
 
     func synchronizeAccount(onCompletion: @escaping (Result<Void, Error>) -> Void) {
@@ -329,6 +354,7 @@ private extension DefaultStoresManager {
             case .success(let account):
                 if let self = self, self.isAuthenticated {
                     self.sessionManager.defaultAccount = account
+                    
                     ServiceLocator.analytics.refreshUserData()
                 }
                 onCompletion(.success(()))
@@ -339,6 +365,8 @@ private extension DefaultStoresManager {
 
         dispatch(action)
     }
+    
+    
 
     /// Synchronizes the WordPress.com Account Settings, associated with the current credentials.
     ///
@@ -363,6 +391,21 @@ private extension DefaultStoresManager {
 //
 //        dispatch(action)
 //    }
+    
+    /// Replaces the temporary UUID username in default credentials with the
+    /// actual username from the passed account.  This *shouldn't* be necessary
+    /// under normal conditions but is a safety net in case there is an error
+    /// preventing the temp username from being updated during login.
+    ///
+    func replaceTempCredentialsIfNecessary(account: Account) {
+        guard
+            let credentials = sessionManager.defaultCredentials,
+            case let .wpcom(_, authToken, siteAddress) = credentials, // Only WPCOM creds have placeholder `username`. WPOrg creds have user entered `username`
+            credentials.hasPlaceholderUsername() else {
+            return
+        }
+        authenticate(credentials: .wpcom(username: account.email, authToken: authToken, siteAddress: siteAddress))
+    }
 }
 
 

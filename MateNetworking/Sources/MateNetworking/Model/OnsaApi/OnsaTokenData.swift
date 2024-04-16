@@ -15,12 +15,12 @@ public struct OnsaTokenData {
     /// Total amount deducted from orders using the coupon
     public let expires_at: String
 
-    public let username: String
+    public let username: String?
     
     public init(
         token: String,
         expires_at: String,
-        username: String
+        username: String?
     ) {
         self.token = token
         self.expires_at = expires_at

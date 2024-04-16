@@ -8,16 +8,17 @@
 import SwiftUI
 import UIKit
 import FiableRedux
+import CoreLocation
 
-/// Displays a grid view of all available menu in the "Menu" tab (eg. View Store, Reviews, Coupons, etc...)
 final class MapViewController: UIHostingController<MapView> {
     private let viewModel: MapViewModel
 
     init(navigationController: UINavigationController?) {
-        self.viewModel = MapViewModel(navigationController: navigationController)
+        self.viewModel = MapViewModel(
+            navigationController: navigationController
+        )
         super.init(rootView: MapView(viewModel: viewModel))
         configureTabBarItem()
-        
     }
 
     required dynamic init?(coder aDecoder: NSCoder) {
@@ -52,8 +53,6 @@ final class MapViewController: UIHostingController<MapView> {
     }
 }
 
-
-
 private extension MapViewController {
     func configureTabBarItem() {
         tabBarItem.title = Localization.tabTitle
@@ -64,6 +63,6 @@ private extension MapViewController {
 
 private extension MapViewController {
     enum Localization {
-        static let tabTitle = "Aadasdas"//NSLocalizedString("Map", comment: "Title of the Menu tab")
+        static let tabTitle = "Dashboard"//NSLocalizedString("Map", comment: "Title of the Menu tab")
     }
 }

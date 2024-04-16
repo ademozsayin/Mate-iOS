@@ -82,7 +82,7 @@ private extension AppleAuthenticator {
                 return
         }
 
-        createWordPressComUser(
+        createOnsaUser(
             appleUserId: appleCredentials.user,
             email: appleCredentials.email ?? "",
             name: fullName(from: appleCredentials.fullName),
@@ -233,61 +233,46 @@ extension AppleAuthenticator {
         )
     }
 
-    func createWordPressComUser(appleUserId: String, email: String, name: String, token: String) {
+    func createOnsaUser(appleUserId: String, email: String, name: String, token: String) {
         tracker.set(flow: .signupWithApple)
         tracker.track(step: .start) {
-//            track(.createAccountInitiated)
+            //  track(.createAccountInitiated)
         }
-
+        
         SVProgressHUD.show(
             withStatus: NSLocalizedString(
                 "Continuing with Apple",
                 comment: "Shown while logging in with Apple and the app waits for the site creation process to complete."
             )
         )
-
+        
         updateLoginFields(email: email, fullName: name, token: token)
-
-        signupService.createWPComUserWithApple(
+        
+        signupService.createOnsaUserWithApple(
             token: token,
-            email: email,
-            fullName: name,
-            success: { [weak self] accountCreated, existingNonSocialAccount, existing2faAccount, wpcomUsername, wpcomToken in
-                SVProgressHUD.dismiss()
-
-                // Notify host app of successful Apple authentication
-                self?.authenticationDelegate.userAuthenticatedWithAppleUserID(appleUserId)
-
-                guard !existingNonSocialAccount else {
-                    self?.tracker.set(flow: .loginWithApple)
-
-                    if existing2faAccount {
-                        self?.show2FA()
-                        return
-                    }
-
-                    self?.updateLoginEmail(wpcomUsername)
-                    self?.logInInstead()
-                    return
-                }
-
-                let wpcom = WordPressComCredentials(authToken: wpcomToken, multifactor: false, siteURL: self?.loginFields.siteAddress ?? "")
+            devicename: "iOS"
+        ) { [weak self] payload in
+                guard let self else { return }
+                self.authenticationDelegate.userAuthenticatedWithAppleUserID(appleUserId)
+                
+                let wpcom = WordPressComCredentials(
+                    authToken:payload?.data?.token ?? "",
+                    multifactor: false,
+                    siteURL: self.loginFields.siteAddress
+                )
+               
                 let credentials = AuthenticatorCredentials(wpcom: wpcom)
-
-                if accountCreated {
-                    self?.authenticationDelegate.createdWordPressComAccount(username: wpcomUsername, authToken: wpcomToken)
-                    self?.signupSuccessful(with: credentials)
+                
+                if let accountCreated = payload?.data?.accountCreated, accountCreated {
+                    self.signupSuccessful(with: credentials)
                 } else {
-                    self?.authenticationDelegate.sync(credentials: credentials) {
-                        self?.loginSuccessful(with: credentials)
+                    self.authenticationDelegate.sync(credentials: credentials) {
+                        self.loginSuccessful(with: credentials)
                     }
                 }
-
-            },
-            failure: { [weak self] error in
+            } failure: { error in
                 SVProgressHUD.dismiss()
-                self?.signupFailed(with: error)
+                self.signupFailed(with: error)
             }
-        )
     }
 }

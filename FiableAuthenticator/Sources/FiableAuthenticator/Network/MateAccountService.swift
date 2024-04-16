@@ -89,6 +89,71 @@ public class MateAccountService {
             }
         }.resume()
     }
+    
+    func createOnsaUserWithApple(token: String, success: @escaping (SignInWithApplePayload) -> Void, failure: @escaping (Error) -> Void) {
+        // Prepare the request URL
+        guard let url = URL(string: "https://fiable.agency/api/auth/apple") else {
+            failure(NetworkError.invalidURL)
+            return
+        }
+        
+        // Prepare the request body
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let requestBody: [String: Any] = [
+            "device_name": "Your Device Name",
+        ]
+        // Add the token as a Bearer token in the header
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+
+        guard let requestBodyData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            failure(NetworkError.invalidRequestBody)
+            return
+        }
+        request.httpBody = requestBodyData
+        
+        // Set up the URLSession data task
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+           
+            NetworkLogger.log(request:request)
+            NetworkLogger.log(response: response as? HTTPURLResponse, data: data, error: error)
+
+            // Check for network errors
+            if let error = error {
+                failure(error)
+                return
+            }
+            
+            // Check for HTTP status code
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                
+                failure(NetworkError.invalidResponse)
+                return
+            }
+            
+            NetworkLogger.log(response: httpResponse, data: data, error: error)
+            
+            // Parse the response data
+            guard let responseData = data else {
+                failure(NetworkError.noData)
+                return
+            }
+            
+            // Decode the response JSON
+            do {
+                let decoder = JSONDecoder()
+                let signInWithApplePayload = try decoder.decode(SignInWithApplePayload.self, from: responseData)
+                success(signInWithApplePayload)
+            } catch {
+                failure(error)
+            }
+        }
+        
+        // Start the URLSession data task
+        task.resume()
+    }
+
 
     /// Returns the current FiableAuthenticatorConfiguration Instance.
     ///
@@ -104,4 +169,12 @@ extension MateAccountService {
     enum ServiceError: Error {
         case unknown
     }
+}
+
+// Define a custom error type for network errors
+enum NetworkError: Error {
+    case invalidURL
+    case invalidRequestBody
+    case invalidResponse
+    case noData
 }
