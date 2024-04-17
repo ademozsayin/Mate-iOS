@@ -187,14 +187,14 @@ final class HubMenuViewModel: ObservableObject {
     }
 
     private func observeSiteForUIUpdates() {
-        stores.site
-            .compactMap { site -> URL? in
-                guard let urlString = site?.url, let url = URL(string: urlString) else {
-                    return nil
-                }
-                return url
-            }
-            .assign(to: &$storeURL)
+//        stores.site
+//            .compactMap { site -> URL? in
+//                guard let urlString = site?.url, let url = URL(string: urlString) else {
+//                    return nil
+//                }
+//                return url
+//            }
+//            .assign(to: &$storeURL)
 //
 //        stores.site
 //            .compactMap { $0?.name }

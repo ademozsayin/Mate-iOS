@@ -50,10 +50,10 @@ enum FiableConstants {
 
     /// Push Notifications ApplicationID
     ///
-#if DEBUG
-    static let pushApplicationID = "com.automattic.woocommerce:dev"
+#if ALPHA
+    static let pushApplicationID = "agency.fiable.mate.dev"
 #else
-    static let pushApplicationID = "com.automattic.woocommerce"
+    static let pushApplicationID = "agency.fiable.mate"
 #endif
 
     /// Number of section events required before an app review prompt appears

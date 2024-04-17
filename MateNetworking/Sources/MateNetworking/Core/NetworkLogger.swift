@@ -69,7 +69,7 @@ public class NetworkLogger {
      
      - Parameter response: The incoming `AFDataResponse<Any>` to be logged.
      */
-    public static func log(response: AFDataResponse<Any>) {
+    public static func logAlamofire(response: AFDataResponse<Any>) {
 #if DEBUG
         print("\n - - - - - - - - - - RESPONSE INCOMING - - - - - - - - - - \n")
         defer { print("\n - - - - - - - - - -  END - - - - - - - - - - \n") }
@@ -81,6 +81,7 @@ public class NetworkLogger {
         }
         print(jsonResponse)
     }
+    
     
     /**
      Logs the incoming network response.

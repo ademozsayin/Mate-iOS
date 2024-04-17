@@ -7,7 +7,7 @@
 
 
 import Foundation
-//import struct Redux.Note
+import struct FiableRedux.Note
 
 /// Emitted by `PushNotificationsManager` when a remote notification is received while
 /// the app is active.
@@ -21,7 +21,7 @@ struct PushNotification {
     let siteID: Int
     /// The `type` value received from the Remote Notification's `userInfo`.
     ///
-//    let kind: Note.Kind
+    let kind: Note.Kind
     /// The `alert.title` value received from the Remote Notification's `userInfo`.
     ///
     let title: String

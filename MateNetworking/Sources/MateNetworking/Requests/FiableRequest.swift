@@ -67,13 +67,7 @@ struct FiableRequest: Request, RESTRequestConvertible {
         let fiableRequest = try fiableEndpoint.asURLRequest()
 
         return try fiableEncoder.encode(fiableRequest, with: parameters)
-        
-        
-//        let onsastradaCustomFiableUrl = URL(string: Settings.onsastradaApiBaseURL + fiableApiPath + path)!
-//        let onsastradaCustomFiableUrl = URL(string: Settings.onsastradaApiBaseURL + fiableApiPath + path)!
-//
-//        let fiableRequest = try URLRequest(url: onsastradaCustomFiableUrl, method: method, headers: .init())
-//        return try encoding.encode(fiableRequest, with: parameters)
+
     }
 
     func responseDataValidator() -> ResponseDataValidator {

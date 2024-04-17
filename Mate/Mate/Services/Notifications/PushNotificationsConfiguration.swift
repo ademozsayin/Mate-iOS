@@ -19,7 +19,7 @@ struct PushNotificationsConfiguration {
         return defaultsClosure()
     }
 
-    /// Reference to the StoresManager that should receive any Yosemite Actions.
+    /// Reference to the StoresManager that should receive any FiableRedux Actions.
     ///
     var storesManager: StoresManager {
         return storesManagerClosure()

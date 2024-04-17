@@ -29,12 +29,11 @@ public class MateAccountService {
     public func requestAuthenticationLink(for email: String, flow:Flow,  completion: @escaping (Result<String, Error>) -> Void) {
         
         var url:URL?
-        
         switch flow {
         case .login:
-            url = URL(string: "https://fiable.agency/api/generate-magic-link")
+            url = URL(string: "\(Settings.onsaApiBaseURL)api/generate-magic-link")
         case .register:
-            url = URL(string: "https://fiable.agency/api/generate-magic-link-for-signup")
+            url = URL(string: "\(Settings.onsaApiBaseURL)api/generate-magic-link-for-signup")
         }
         
         guard let url else {
@@ -92,7 +91,7 @@ public class MateAccountService {
     
     func createOnsaUserWithApple(token: String, success: @escaping (SignInWithApplePayload) -> Void, failure: @escaping (Error) -> Void) {
         // Prepare the request URL
-        guard let url = URL(string: "https://fiable.agency/api/auth/apple") else {
+        guard let url = URL(string: "\(Settings.onsaApiBaseURL)api/auth/apple") else {
             failure(NetworkError.invalidURL)
             return
         }

@@ -38,6 +38,12 @@
 	<array>
 		<string>Noticons.ttf</string>
 	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
 	<key>WEATHER_API_KEY</key>
 	<string>$(WEATHER_API_KEY)</string>
 </dict>

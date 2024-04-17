@@ -37,7 +37,7 @@ class AuthenticatedState: StoresManagerState {
         let network = AlamofireNetwork(credentials: credentials)
 
         var services: [ActionsProcessor] = [
-           
+            NotificationStore(dispatcher: dispatcher, storageManager: storageManager, network: network),
         ]
 
 

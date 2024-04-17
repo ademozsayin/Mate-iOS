@@ -87,16 +87,34 @@ public class Remote: NSObject {
     ///     - completion: Closure to be executed upon completion.
     ///
     func enqueue<M: Mapper>(_ request: Request, mapper: M, completion: @escaping (M.Output?, Error?) -> Void) {
-        network.responseData(for: request) { [weak self] (data, networkError) in
-            guard let self = self else {
+       
+        if let urlRequest = request.urlRequest {
+                NetworkLogger.log(request: urlRequest)
+        }
+           
+        network.responseData(for: request) { [weak self] ( data, networkError) in
+            guard let self else {
                 return
             }
-
+           
             guard let data = data else {
                 let error: Error? = networkError.map { self.mapNetworkError(error: $0, for: request) }
                 completion(nil, error)
                 return
             }
+            
+            do {
+                 let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
+                 let prettyPrintedData = try JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted)
+                 if let prettyPrintedString = String(data: prettyPrintedData, encoding: .utf8) {
+                     print("Response Data:")
+                     print(prettyPrintedString)
+                 } else {
+                     print("Failed to convert data to string")
+                 }
+             } catch {
+                 print("Failed to parse response data as JSON: \(error)")
+             }
 
             do {
                 let validator = request.responseDataValidator()

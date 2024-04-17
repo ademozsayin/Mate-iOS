@@ -362,6 +362,39 @@ extension MainTabBarController {
 //
 extension MainTabBarController {
 
+    
+    /// Syncs the notification given the ID, and handles the notification based on its notification kind.
+    ///
+    static func presentNotificationDetails(for noteID: Int64) {
+        let action = NotificationAction.synchronizeNotification(noteID: noteID) { note, error in
+            guard let note = note else {
+                return
+            }
+            let siteID = Int64(note.meta.identifier(forKey: .site) ?? Int.min)
+
+//            showStore(with: siteID, onCompletion: { _ in
+                presentNotificationDetails(for: note)
+//            })
+        }
+        ServiceLocator.stores.dispatch(action)
+    }
+
+    /// Presents the order details if the `note` is for an order push notification.
+    ///
+    private static func presentNotificationDetails(for note: Note) {
+        switch note.kind {
+        case .storeOrder:
+            switchToOrdersTab {
+//                ordersTabSplitViewWrapper()?.presentDetails(for: note)
+            }
+        default:
+            break
+        }
+
+        ServiceLocator.analytics.track(.notificationOpened, withProperties: [ "type": note.kind.rawValue,
+                                                                              "already_read": note.read ])
+    }
+
 
     /// Switches to the hub Menu & Navigates to the Privacy Settings Screen.
     ///

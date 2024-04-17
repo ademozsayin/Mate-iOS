@@ -171,6 +171,16 @@
 		0D9856E72BADFCCE008F96E9 /* PushNotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9856E62BADFCCE008F96E9 /* PushNotesManager.swift */; };
 		0D9856E92BADFCF1008F96E9 /* PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9856E82BADFCF1008F96E9 /* PushNotification.swift */; };
 		0D9856EB2BADFD5C008F96E9 /* Logs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9856EA2BADFD5C008F96E9 /* Logs.swift */; };
+		0D9E99BE2BCE9BE300276FF0 /* ProcessConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E99BD2BCE9BE300276FF0 /* ProcessConfiguration.swift */; };
+		0D9E99C82BCEA11F00276FF0 /* Dictionary+Mate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E99C72BCEA11F00276FF0 /* Dictionary+Mate.swift */; };
+		0D9E99CB2BCEA7F000276FF0 /* APNSDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E99CA2BCEA7F000276FF0 /* APNSDevice.swift */; };
+		0D9E99CD2BCEA83400276FF0 /* Bundle+Mate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E99CC2BCEA83400276FF0 /* Bundle+Mate.swift */; };
+		0D9E99CF2BCEB46F00276FF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D9E99CE2BCEB46F00276FF0 /* GoogleService-Info.plist */; };
+		0D9E99D82BCED04400276FF0 /* Data+Mate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9E99D72BCED04400276FF0 /* Data+Mate.swift */; };
+		0D9E99DB2BCED85700276FF0 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9E99DA2BCED85700276FF0 /* FirebaseAnalytics */; };
+		0D9E99DD2BCED85700276FF0 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9E99DC2BCED85700276FF0 /* FirebaseAnalyticsSwift */; };
+		0D9E99DF2BCED85700276FF0 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9E99DE2BCED85700276FF0 /* FirebaseCrashlytics */; };
+		0D9E99E12BCED85700276FF0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 0D9E99E02BCED85700276FF0 /* FirebaseMessaging */; };
 		0DA0C5842BC016C200D96B7F /* CodeGen in Frameworks */ = {isa = PBXBuildFile; productRef = 0DA0C5832BC016C200D96B7F /* CodeGen */; };
 		0DA0C58C2BC016C300D96B7F /* FiableKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0DA0C58B2BC016C300D96B7F /* FiableKit */; };
 		0DA0C5902BC016C300D96B7F /* FiableShared in Frameworks */ = {isa = PBXBuildFile; productRef = 0DA0C58F2BC016C300D96B7F /* FiableShared */; };
@@ -500,6 +510,12 @@
 		0D9856E62BADFCCE008F96E9 /* PushNotesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotesManager.swift; sourceTree = "<group>"; };
 		0D9856E82BADFCF1008F96E9 /* PushNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotification.swift; sourceTree = "<group>"; };
 		0D9856EA2BADFD5C008F96E9 /* Logs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logs.swift; sourceTree = "<group>"; };
+		0D9E99BD2BCE9BE300276FF0 /* ProcessConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessConfiguration.swift; sourceTree = "<group>"; };
+		0D9E99C72BCEA11F00276FF0 /* Dictionary+Mate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Mate.swift"; sourceTree = "<group>"; };
+		0D9E99CA2BCEA7F000276FF0 /* APNSDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNSDevice.swift; sourceTree = "<group>"; };
+		0D9E99CC2BCEA83400276FF0 /* Bundle+Mate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Mate.swift"; sourceTree = "<group>"; };
+		0D9E99CE2BCEB46F00276FF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0D9E99D72BCED04400276FF0 /* Data+Mate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Mate.swift"; sourceTree = "<group>"; };
 		0DA2D6FB2BC15ABE003734A6 /* FiableFoundation */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FiableFoundation; path = ../FiableFoundation; sourceTree = "<group>"; };
 		0DA8EEE12BAE3C83001EF5BF /* OnsaAnalyticsEvent+LoginOnboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnsaAnalyticsEvent+LoginOnboarding.swift"; sourceTree = "<group>"; };
 		0DA8EEE42BAE81DF001EF5BF /* FiableAuthenticator+Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FiableAuthenticator+Config.swift"; sourceTree = "<group>"; };
@@ -651,8 +667,10 @@
 				0D473F8F2BC00FF9002D2F72 /* KeychainAccess in Frameworks */,
 				0D30FB2B2BC074A7006AB81B /* FiableAuthenticator in Frameworks */,
 				0D30FB212BC071C7006AB81B /* CocoaLumberjackSwift in Frameworks */,
+				0D9E99E12BCED85700276FF0 /* FirebaseMessaging in Frameworks */,
 				0D30FB252BC07431006AB81B /* FiableRedux in Frameworks */,
 				0D30FB052BC06DC7006AB81B /* Alamofire in Frameworks */,
+				0D9E99DF2BCED85700276FF0 /* FirebaseCrashlytics in Frameworks */,
 				0DA0C58C2BC016C300D96B7F /* FiableKit in Frameworks */,
 				0DA0C5942BC016C300D96B7F /* MateComponents in Frameworks */,
 				0DA0C5962BC016C300D96B7F /* MateStorage in Frameworks */,
@@ -666,6 +684,8 @@
 				0D473F922BC01044002D2F72 /* SVProgressHUD in Frameworks */,
 				0DA2D6FE2BC15ACF003734A6 /* FiableFoundation in Frameworks */,
 				0D35DF5E2BC064C4003E6998 /* AutomatticTracks in Frameworks */,
+				0D9E99DD2BCED85700276FF0 /* FirebaseAnalyticsSwift in Frameworks */,
+				0D9E99DB2BCED85700276FF0 /* FirebaseAnalytics in Frameworks */,
 				0DA0C5902BC016C300D96B7F /* FiableShared in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -817,6 +837,9 @@
 				0DAA48032BCD512F00D16224 /* UIView+Helpers.swift */,
 				0DAA48052BCD528E00D16224 /* UITableView+Helpers.swift */,
 				0DAA48142BCD616300D16224 /* UIStoryBoard+Mate.swift */,
+				0D9E99C72BCEA11F00276FF0 /* Dictionary+Mate.swift */,
+				0D9E99CC2BCEA83400276FF0 /* Bundle+Mate.swift */,
+				0D9E99D72BCED04400276FF0 /* Data+Mate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -927,6 +950,7 @@
 		0D8D38622BBC374100B362DD /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				0D9E99C92BCEA7E500276FF0 /* Model */,
 				0DAF0AB82BBFEBCC004E9036 /* View Modifiers */,
 				0DAF0AB22BBFEAA2004E9036 /* LocalAnnouncements */,
 				0DAF0AAC2BBFE969004E9036 /* Environment Keys */,
@@ -977,6 +1001,7 @@
 		0D8E44232B8CD35D0057100C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D9E99CE2BCEB46F00276FF0 /* GoogleService-Info.plist */,
 				0DAA48092BCD601B00D16224 /* HTML */,
 				0D9856D02BADFA06008F96E9 /* InfoPlist.xcstrings */,
 				0DAF0AC22BC00009004E9036 /* Main.storyboard */,
@@ -1127,6 +1152,14 @@
 				0D9856EA2BADFD5C008F96E9 /* Logs.swift */,
 			);
 			path = ServiceLocator;
+			sourceTree = "<group>";
+		};
+		0D9E99C92BCEA7E500276FF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0D9E99CA2BCEA7F000276FF0 /* APNSDevice.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		0DA8EEE02BAE3C79001EF5BF /* Anaylitcs */ = {
@@ -1349,6 +1382,7 @@
 				0D98569D2BAD1899008F96E9 /* OnsaTabNavigationController.swift */,
 				0D98569F2BAD18FA008F96E9 /* TabContainerController.swift */,
 				0DCA8B622BC71CE00052BA12 /* OnsaSplitViewController.swift */,
+				0D9E99BD2BCE9BE300276FF0 /* ProcessConfiguration.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -1502,6 +1536,10 @@
 				0DA2D6F62BC14EA2003734A6 /* GridIcons */,
 				0DA2D6FD2BC15ACF003734A6 /* FiableFoundation */,
 				0DAA47E22BCD3FD300D16224 /* FiableAbout */,
+				0D9E99DA2BCED85700276FF0 /* FirebaseAnalytics */,
+				0D9E99DC2BCED85700276FF0 /* FirebaseAnalyticsSwift */,
+				0D9E99DE2BCED85700276FF0 /* FirebaseCrashlytics */,
+				0D9E99E02BCED85700276FF0 /* FirebaseMessaging */,
 			);
 			productName = Mate;
 			productReference = 0D2D26442B8C95FA008EB605 /* Mate.app */;
@@ -1585,6 +1623,7 @@
 				0D473F932BC01085002D2F72 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0D35DF5A2BC064C4003E6998 /* XCRemoteSwiftPackageReference "Automattic-Tracks-iOS" */,
 				0D30FB1D2BC071C7006AB81B /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
+				0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 0D2D26452B8C95FA008EB605 /* Products */;
 			projectDirPath = "";
@@ -1615,6 +1654,7 @@
 				0D30FB292BC0749B006AB81B /* FiableAuthenticator in Resources */,
 				0DAF0AC32BC00009004E9036 /* Main.storyboard in Resources */,
 				0DA8EFAE2BAF9D60001EF5BF /* RoleErrorViewController.xib in Resources */,
+				0D9E99CF2BCEB46F00276FF0 /* GoogleService-Info.plist in Resources */,
 				0DA2D6FC2BC15ABE003734A6 /* FiableFoundation in Resources */,
 				0DAA47F02BCD42CC00D16224 /* BasicTableViewCell.xib in Resources */,
 				0D9856D22BADFA06008F96E9 /* InfoPlist.xcstrings in Resources */,
@@ -1749,6 +1789,7 @@
 				0DAA47DE2BCD3DCA00D16224 /* CloseAccountCoordinator.swift in Sources */,
 				0DC234072BA78B0C00414B13 /* ServiceLocator.swift in Sources */,
 				0D8D38322BBC362700B362DD /* RefreshablePlainList.swift in Sources */,
+				0D9E99D82BCED04400276FF0 /* Data+Mate.swift in Sources */,
 				0DAA47FB2BCD45E600D16224 /* UITableViewCell+Helpers.swift in Sources */,
 				0D8D381F2BBC362700B362DD /* DisclosureIndicator.swift in Sources */,
 				0DAF0AA42BBFDAC3004E9036 /* View+Conditions.swift in Sources */,
@@ -1808,6 +1849,7 @@
 				0D84B5CE2BC96A5A00700F3F /* PaymentsRoute.swift in Sources */,
 				0DAA47EE2BCD42CC00D16224 /* HeadlineLabelTableViewCell.swift in Sources */,
 				0D8D38482BBC362700B362DD /* FooterNotice.swift in Sources */,
+				0D9E99BE2BCE9BE300276FF0 /* ProcessConfiguration.swift in Sources */,
 				0DAA47F12BCD42CC00D16224 /* BasicTableViewCell.swift in Sources */,
 				0D8D38332BBC362700B362DD /* LearnMoreRow.swift in Sources */,
 				0D9856C12BAD1B7F008F96E9 /* KeyboardFrameObserver.swift in Sources */,
@@ -1837,8 +1879,10 @@
 				0D9856EB2BADFD5C008F96E9 /* Logs.swift in Sources */,
 				0DAA46BA2BCC72CE00D16224 /* HubMenuCoordinator.swift in Sources */,
 				0D8D381E2BBC362700B362DD /* TopTabView.swift in Sources */,
+				0D9E99CB2BCEA7F000276FF0 /* APNSDevice.swift in Sources */,
 				0D9856D62BADFB1C008F96E9 /* Array+Helpers.swift in Sources */,
 				0DA8EFB72BAF9D60001EF5BF /* WrongAccountErrorViewModel.swift in Sources */,
+				0D9E99CD2BCEA83400276FF0 /* Bundle+Mate.swift in Sources */,
 				0D98567C2BAB9625008F96E9 /* MainTabbarController.swift in Sources */,
 				0D8D38212BBC362700B362DD /* EmptyState.swift in Sources */,
 				0D9856C52BAD1CE0008F96E9 /* OnsaAnalytics.swift in Sources */,
@@ -1846,6 +1890,7 @@
 				0DA8EFA32BAF9D5F001EF5BF /* ApplicationPasswordDisabledViewModel.swift in Sources */,
 				0D98569E2BAD1899008F96E9 /* OnsaTabNavigationController.swift in Sources */,
 				0DAF0AB02BBFE9FF004E9036 /* UnitInputFormatter.swift in Sources */,
+				0D9E99C82BCEA11F00276FF0 /* Dictionary+Mate.swift in Sources */,
 				0D9856B02BAD1AB4008F96E9 /* DefaultNoticePresenter.swift in Sources */,
 				0DC2348E2BA7BB4400414B13 /* WooCrashLoggingStack.swift in Sources */,
 				0D8D38372BBC362700B362DD /* DeltaTag.swift in Sources */,
@@ -2160,6 +2205,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Mate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide weather information even when the app is in the background.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide weather information even when the app is in the background.";
@@ -2198,6 +2244,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Mate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide weather information even when the app is in the background.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide weather information even when the app is in the background.";
@@ -2299,6 +2346,287 @@
 			};
 			name = Release;
 		};
+		0D9E99BF2BCE9D3900276FF0 /* Release-Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-Alpha";
+		};
+		0D9E99C02BCE9D3900276FF0 /* Release-Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://fiable.agency/public/";
+				CODE_SIGN_ENTITLEMENTS = Mate/MateRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7PX72NXP7V;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = "ALPHA=1";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Mate;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide weather information even when the app is in the background.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide weather information even when the app is in the background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide weather information.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.mate.alpha;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ALPHA;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WEATHER_API_KEY = ad3cd45ba5993cb4c759b95cc4205850;
+			};
+			name = "Release-Alpha";
+		};
+		0D9E99C12BCE9D3900276FF0 /* Release-Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7PX72NXP7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.MateTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mate";
+			};
+			name = "Release-Alpha";
+		};
+		0D9E99C22BCE9D3900276FF0 /* Release-Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7PX72NXP7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.MateUITest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Mate;
+			};
+			name = "Release-Alpha";
+		};
+		0D9E99C32BCE9DEC00276FF0 /* Debug-Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = "Debug-Alpha";
+		};
+		0D9E99C42BCE9DEC00276FF0 /* Debug-Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://fiable.agency/public/";
+				CODE_SIGN_ENTITLEMENTS = Mate/Mate.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7PX72NXP7V;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"ALPHA=1",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Mate;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide weather information even when the app is in the background.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide weather information even when the app is in the background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide weather information.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.mate.alpha;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ALPHA;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WEATHER_API_KEY = ad3cd45ba5993cb4c759b95cc4205850;
+			};
+			name = "Debug-Alpha";
+		};
+		0D9E99C52BCE9DEC00276FF0 /* Debug-Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7PX72NXP7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.MateTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mate.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mate";
+			};
+			name = "Debug-Alpha";
+		};
+		0D9E99C62BCE9DEC00276FF0 /* Debug-Alpha */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7PX72NXP7V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.MateUITest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Mate;
+			};
+			name = "Debug-Alpha";
+		};
 		0DCA8B642BC877180052BA12 /* Localhost */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2373,8 +2701,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7PX72NXP7V;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"LOCALHOST=1",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Mate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Mate;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide weather information even when the app is in the background.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide weather information even when the app is in the background.";
@@ -2392,6 +2726,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.mate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "LOCALHOST $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2444,8 +2779,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D2D266F2B8C95FE008EB605 /* Debug */,
+				0D9E99C32BCE9DEC00276FF0 /* Debug-Alpha */,
 				0DCA8B642BC877180052BA12 /* Localhost */,
 				0D2D26702B8C95FE008EB605 /* Release */,
+				0D9E99BF2BCE9D3900276FF0 /* Release-Alpha */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2454,8 +2791,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D2D26722B8C95FE008EB605 /* Debug */,
+				0D9E99C42BCE9DEC00276FF0 /* Debug-Alpha */,
 				0DCA8B652BC877180052BA12 /* Localhost */,
 				0D2D26732B8C95FE008EB605 /* Release */,
+				0D9E99C02BCE9D3900276FF0 /* Release-Alpha */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2464,8 +2803,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D2D26752B8C95FE008EB605 /* Debug */,
+				0D9E99C52BCE9DEC00276FF0 /* Debug-Alpha */,
 				0DCA8B662BC877180052BA12 /* Localhost */,
 				0D2D26762B8C95FE008EB605 /* Release */,
+				0D9E99C12BCE9D3900276FF0 /* Release-Alpha */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2474,8 +2815,10 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0D2D26782B8C95FE008EB605 /* Debug */,
+				0D9E99C62BCE9DEC00276FF0 /* Debug-Alpha */,
 				0DCA8B672BC877180052BA12 /* Localhost */,
 				0D2D26792B8C95FE008EB605 /* Release */,
+				0D9E99C22BCE9D3900276FF0 /* Release-Alpha */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -2531,6 +2874,14 @@
 				minimumVersion = 7.11.0;
 			};
 		};
+		0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.24.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2581,6 +2932,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0D473F932BC01085002D2F72 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		0D9E99DA2BCED85700276FF0 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0D9E99DC2BCED85700276FF0 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		0D9E99DE2BCED85700276FF0 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		0D9E99E02BCED85700276FF0 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
 		};
 		0DA0C5832BC016C200D96B7F /* CodeGen */ = {
 			isa = XCSwiftPackageProductDependency;

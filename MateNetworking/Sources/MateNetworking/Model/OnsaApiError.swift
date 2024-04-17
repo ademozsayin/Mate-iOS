@@ -9,7 +9,7 @@
 import Foundation
 import CodeGen
 
-/// WordPress.com Request Error
+/// Fiable.agency Request Error
 ///
 public enum OnsaApiError: Error, Decodable, Equatable, GeneratedFakeable {
 
@@ -104,18 +104,18 @@ extension OnsaApiError: CustomStringConvertible {
     public var description: String {
         switch self {
         case .empty:
-            return NSLocalizedString("Dotcom Response Empty", comment: "WordPress.com Error thrown when the response body is empty")
+            return NSLocalizedString("Api Response Empty", comment: "Fiable.agency Error thrown when the response body is empty")
         case .invalidToken:
-            return NSLocalizedString("Dotcom Token Invalid", comment: "WordPress.com Invalid Token")
+            return NSLocalizedString("Api Token Invalid", comment: "Fiable.agency Invalid Token")
         case .requestFailed:
-            return NSLocalizedString("Dotcom Request Failed", comment: "WordPress.com Request Failure")
+            return NSLocalizedString("Api Request Failed", comment: "Fiable.agency Request Failure")
         case .unauthorized:
-            return NSLocalizedString("Dotcom Missing Token", comment: "WordPress.com Missing Token")
+            return NSLocalizedString("Api Missing Token", comment: "Fiable.agency Missing Token")
         case .noRestRoute:
-            return NSLocalizedString("Dotcom Invalid REST Route", comment: "WordPress.com error thrown when the the request REST API url is invalid.")
+            return NSLocalizedString("Api Invalid REST Route", comment: "Fiable.agency error thrown when the the request REST API url is invalid.")
     
         case .resourceDoesNotExist:
-            return NSLocalizedString("Dotcom Resource does not exist", comment: "WordPress.com error thrown when a requested resource does not exist remotely.")
+            return NSLocalizedString("Api Resource does not exist", comment: "Fiable.agency error thrown when a requested resource does not exist remotely.")
 
         case .unknown(let code, let message):
             let theMessage = message ?? String()

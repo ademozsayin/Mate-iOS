@@ -35,7 +35,7 @@ extension UIApplication: ApplicationAdapter {
     /// Presents the Details for the specified Notification ID
     ///
     func presentNotificationDetails(for noteID: Int64) {
-//        MainTabBarController.presentNotificationDetails(for: noteID)
+        MainTabBarController.presentNotificationDetails(for: noteID)
     }
 
     /// Presents a given Message with an "In App" notification

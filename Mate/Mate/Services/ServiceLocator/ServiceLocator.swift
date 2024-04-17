@@ -28,6 +28,9 @@ final class ServiceLocator {
     ///
     private static var _storageManager = CoreDataManager(name: FiableConstants.databaseStackName, crashLogger: crashLogging)
 
+    /// Push Notifications Manager
+    ///
+    private static var _pushNotesManager: PushNotesManager = PushNotificationsManager()
     
     /// Crash Logging Stack
     ///
@@ -65,6 +68,12 @@ final class ServiceLocator {
     /// - Returns: An implementation of the StoresManager protocol. It defaults to DefaultStoresManager
     static var stores: StoresManager {
         return _stores
+    }
+    
+    /// Provides the access point to the PushNotesManager.
+    /// - Returns: An implementation of the PushNotesManager protocol. It defaults to PushNotificationsManager
+    static var pushNotesManager: PushNotesManager {
+        return _pushNotesManager
     }
     
     /// Provides the access point to the NoticePresenter.

@@ -12,7 +12,7 @@ public enum BuildConfiguration: String {
     case appStore
 
     public static var current: BuildConfiguration {
-        #if DEBUG
+        #if DEBUG 
         return testingOverride ?? .localDeveloper
         #elseif ALPHA
         return .alpha

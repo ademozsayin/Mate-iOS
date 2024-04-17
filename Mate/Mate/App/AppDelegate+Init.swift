@@ -38,15 +38,12 @@ extension AppDelegate {
 
     
     func getSQLitePath() -> String? {
-#if DEBUG
         // Get the URL for the app's "Documents" directory
         if let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
             let databaseURL = documentsDirectory.appendingPathComponent("Mate.sqlite")
             return databaseURL.path
         }
         return nil
-#endif
-
     }
     
     /// Sets up all of the component(s) Appearance.
