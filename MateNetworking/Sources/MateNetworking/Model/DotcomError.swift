@@ -90,7 +90,7 @@ public enum DotcomError: Error, Decodable, Equatable, GeneratedFakeable {
     /// Constants for Possible Error Identifiers
     ///
     private enum Constants {
-        static let unauthorized     = "unauthorized"
+        static let unauthorized     = "Unauthenticated"
         static let invalidBlog      = "invalid_blog"
         static let invalidToken     = "invalid_token"
         static let requestFailed    = "http_request_failed"

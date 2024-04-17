@@ -24,7 +24,7 @@ public struct Settings {
     /// Laravel 11 API
     public static var onsaApiBaseURL: String = {
         if ProcessInfo.processInfo.arguments.contains("localhost") {
-            return "http://localhost:8000/"
+            return "http://192.168.1.214:8000/"
         } else if let onsaApiBaseURL = ProcessInfo.processInfo.environment["development"] {
             return "https:/development.fiable.agency/"
         } else if let onsaApiBaseURL = ProcessInfo.processInfo.environment["staging"] {

@@ -213,7 +213,7 @@ extension PushNotificationsManager {
         if let _ = deviceToken, deviceToken != newFcmToken {
             DDLogInfo("📱 Device Token Changed! OLD: [\(String(describing: deviceToken))] NEW: [\(newFcmToken)]")
         } else {
-            DDLogInfo("📱 Device Token Received: [\(newFcmToken)]")
+            DDLogInfo("📱 Device Token Received: (FCM) [\(newFcmToken)]")
         }
 //
         deviceToken = newFcmToken
