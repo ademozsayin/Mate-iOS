@@ -14,23 +14,31 @@ public protocol EventRemoteProtocol {
     func loadEvents(_for type: EventRemote.EventTypeEndpointType,
                     latitude: Double?,
                     longitude: Double?,
+                    categoryId: Int?,
                     page: Int?,
                     completion: @escaping (Result<EventPayload, Error>) -> Void)
     
 }
 
-/// Notifications: Remote Endpoints
+/// Events: Remote Endpoints
 ///
 public final class EventRemote: Remote, EventRemoteProtocol {
     public func loadEvents(
         _for type: EventTypeEndpointType,
         latitude: Double?,
         longitude: Double?,
+        categoryId: Int?,
         page: Int?,
         completion: @escaping (Result<EventPayload, any Error>
     ) -> Void) {
         
-        let request = requestForEvents(type: type, latitude: latitude, longitude: longitude, page: page)
+        let request = requestForEvents(
+            type: type,
+            latitude: latitude,
+            longitude: longitude,
+            categoryId: categoryId,
+            page: page
+        )
         let mapper = EventPayloadMapper()
 
         enqueue(request, mapper: mapper, completion: completion)
@@ -42,7 +50,13 @@ public final class EventRemote: Remote, EventRemoteProtocol {
 //
 private extension EventRemote {
 
-    func requestForEvents(type: EventTypeEndpointType, latitude: Double?, longitude: Double?, page: Int?) -> OnsaApiRequest {
+    func requestForEvents(
+        type: EventTypeEndpointType,
+        latitude: Double?,
+        longitude: Double?,
+        categoryId:Int?,
+        page: Int?
+    ) -> OnsaApiRequest {
         var path = ""
         var parameters: [String:Any] = [:]
         
@@ -64,6 +78,10 @@ private extension EventRemote {
         
         if let page {
             parameters[ParameterKeys.page] = String(page)
+        }
+        
+        if let categoryId {
+            parameters[ParameterKeys.categoryId] = String(categoryId)
         }
         
         return OnsaApiRequest(method: .get, path: path, parameters: parameters)
@@ -90,5 +108,6 @@ private extension EventRemote {
         static let longitude = "longitude"
         static let latitude = "latitude"
         static let page = "page"
+        static let categoryId = "category_id"
     }
 }
