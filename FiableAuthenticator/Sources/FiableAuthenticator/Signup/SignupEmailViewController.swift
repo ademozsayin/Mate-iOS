@@ -69,7 +69,7 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
     }
 
     private func localizeControls() {
-        instructionLabel?.text = NSLocalizedString("To create your new WordPress.com account, please enter your email address.", comment: "Text instructing the user to enter their email address.")
+        instructionLabel?.text = NSLocalizedString("To create your new Mate account, please enter your email address.", comment: "Text instructing the user to enter their email address.")
 
         emailField.placeholder = NSLocalizedString("Email address", comment: "Placeholder for a textfield. The user may enter their email address.")
         emailField.accessibilityIdentifier = "Signup Email Address"
@@ -120,13 +120,15 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
             return
         }
 
-        checkEmailAvailability { available in
+        checkEmailAvailability { [weak self] available in
+            guard let self else { return }
             if available {
-                self.loginFields.username = self.loginFields.emailAddress
-                self.loginFields.meta.emailMagicLinkSource = .signup
-                self.requestAuthenticationLink()
+                DispatchQueue.main.async {
+                    self.loginFields.username = self.loginFields.emailAddress
+                    self.loginFields.meta.emailMagicLinkSource = .signup
+                    self.requestAuthenticationLink()
+                }
             }
-            self.configureSubmitButton(animating: false)
         }
     }
 
@@ -135,18 +137,14 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
     }
 
     // MARK: - Email Availability
-
+    @MainActor
     private func checkEmailAvailability(completion: @escaping (Bool) -> Void) {
-
         authenticationDelegate.checkIfEmailExist(email: loginFields.emailAddress, onCompletion: { [weak self] result in
             guard let self else { return }
             self.configureViewLoading(false)
             switch result {
             case .success(let data):
                 if data.exists  {
-//                    defer {
-//                        FiableAuthenticator.track(.signupEmailToLogin)
-//                    }
                     // If the user has already signed up redirect to the Login flow
                     guard let vc = LoginEmailViewController.instantiate(from: .login) else {
                         print("Failed to navigate to LoginEmailViewController from SignupEmailViewController")
@@ -167,6 +165,7 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
         })
     }
 
+    
     // MARK: - Send email
 
     /// Makes the call to request a magic signup link be emailed to the user.
@@ -180,8 +179,10 @@ class SignupEmailViewController: LoginViewController, NUXKeyboardResponder {
             switch result {
             case .success(let message):
                 print(message)
-                self.didRequestSignupLink()
-                self.configureSubmitButton(animating: false)
+                DispatchQueue.main.async {
+                    self.didRequestSignupLink()
+                    self.configureSubmitButton(animating: false)
+                }
             case .failure(let error):
                 print(error.localizedDescription)
                 print("Request for signup link email failed.")

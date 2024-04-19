@@ -290,42 +290,19 @@ private extension Remote {
     ///
     func handleResponseError(error: Error, for request: Request) {
         
-        if let fiableError = error as? FiableError {
-            switch fiableError {
-            case .empty:
-                print("empty")
-            case .unauthorized:
-                print("empty")
-            case .invalidToken:
-                print("empty")
-            case .requestFailed:
-                print("empty")
-            case .noRestRoute:
-                print("empty")
-            case .unknown(let code, let message):
-                print(code)
-                print(message)
-            case .noStatsPermission:
-                print("empty")
-            case .resourceDoesNotExist:
-                print("empty")
-            }
-        } else {
-            guard let dotcomError = error as? DotcomError else {
-                return
-            }
-
-            switch dotcomError {
-    //        case .requestFailed where request is JetpackRequest:
-    //            publishJetpackTimeoutNotification(error: dotcomError)
-            case .invalidToken:
-                publishInvalidTokenNotification(error: dotcomError)
+        if let onsaApierror = error as? OnsaApiError {
+            switch onsaApierror {
+            case .unauthorized where request is OnsaApiRequest:
+                publishInvalidTokenNotification(error: onsaApierror)
+            case .invalidToken where request is OnsaApiRequest:
+                publishInvalidTokenNotification(error: onsaApierror)
             default:
                 break
             }
+            
+        } else {
+            DDLogInfo("Unkown error type")
         }
-        
-       
     }
 
     /// Handles decoding errors when parsing the response data fails.
@@ -378,6 +355,12 @@ private extension Remote {
     /// Publishes an `Invalid Token` Notification.
     ///
     private func publishInvalidTokenNotification(error: DotcomError) {
+        NotificationCenter.default.post(name: .RemoteDidReceiveInvalidTokenError, object: error, userInfo: nil)
+    }
+    
+    /// Publishes an `Invalid Token` Notification.
+    ///
+    private func publishInvalidTokenNotification(error: OnsaApiError) {
         NotificationCenter.default.post(name: .RemoteDidReceiveInvalidTokenError, object: error, userInfo: nil)
     }
 

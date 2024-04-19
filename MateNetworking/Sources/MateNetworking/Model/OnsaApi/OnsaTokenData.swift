@@ -30,7 +30,7 @@ public struct OnsaTokenData {
 
 // MARK: - Decodable Conformance
 //
-extension OnsaTokenData: Decodable {
+extension OnsaTokenData: Codable {
     /// Defines all of the CouponReport CodingKeys
     /// The model is intended to be decoded with`JSONDecoder.KeyDecodingStrategy.convertFromSnakeCase`
     /// so any specific `CodingKeys` provided here should be in camel case.

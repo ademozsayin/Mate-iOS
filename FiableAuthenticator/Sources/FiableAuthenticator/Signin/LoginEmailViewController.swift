@@ -375,36 +375,7 @@ open class LoginEmailViewController: LoginViewController, NUXKeyboardResponder {
         }
 
         configureViewLoading(true)
-        let service = WordPressComAccountService()
-//        service.isPasswordlessAccount(username: loginFields.username,
-//                                      success: { [weak self] passwordless in
-//                                        self?.configureViewLoading(false)
-//                                        self?.loginFields.meta.passwordless = passwordless
-//                                        self?.requestLink()
-//            },
-//                                      failure: { [weak self] error in
-//                                        FiableAuthenticator.track(.loginFailed, error: error)
-//                                        print(error.localizedDescription)
-//                                        guard let strongSelf = self else {
-//                                            return
-//                                        }
-//                                        strongSelf.configureViewLoading(false)
-//
-//                                        let userInfo = (error as NSError).userInfo
-//                                        let errorCode = userInfo[WordPressComRestApi.ErrorKeyErrorCode] as? String
-//                                        if errorCode == "unknown_user" {
-//                                            let msg = NSLocalizedString("This email address is not registered on WordPress.com.",
-//                                                                        comment: "An error message informing the user the email address they entered did not match a WordPress.com account.")
-//                                            strongSelf.displayError(message: msg)
-//                                        } else if errorCode == "email_login_not_allowed" {
-//                                                // If we get this error, we know we have a WordPress.com user but their
-//                                                // email address is flagged as suspicious.  They need to login via their
-//                                                // username instead.
-//                                                strongSelf.showSelfHostedUsernamePasswordAndError(error)
-//                                        } else {
-//                                            strongSelf.displayError(error, sourceTag: strongSelf.sourceTag)
-//                                        }
-//        })
+        requestLink()
     }
 
     /// When password autofill has entered a password on this screen, attempt to login immediately

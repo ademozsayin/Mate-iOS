@@ -70,3 +70,9 @@ private extension UIViewController {
         static let close = NSLocalizedString("Close", comment: "Accessibility label for the close button")
     }
 }
+
+extension UIViewController {
+    func logCurrentVC() {
+        print("Current View Controller: \(type(of: self))")
+    }
+}

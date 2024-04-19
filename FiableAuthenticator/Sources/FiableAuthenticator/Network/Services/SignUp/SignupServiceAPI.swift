@@ -6,7 +6,6 @@
 //
 
 import Foundation
-//SocialUserCreating
 
 // MARK: - Protocols
 public protocol SignupAPIProtocol {

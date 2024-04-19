@@ -14,7 +14,7 @@ final class LoginOnboardingViewController: UIViewController {
                                                                           showsSubtitle: true)
     private lazy var buttonStackView: UIStackView = .init()
     private lazy var nextButton: UIButton = createNextButton()
-    private lazy var imageView = UIImageView(image: .transparentLogo)
+    private lazy var imageView = UIImageView(image: .onsamateLogo)
 
     private let analytics: Analytics
     private let featureFlagService: FeatureFlagService
@@ -81,8 +81,8 @@ private extension LoginOnboardingViewController {
         view.addSubview(imageView)
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            imageView.widthAnchor.constraint(equalToConstant: 96),
-            imageView.heightAnchor.constraint(equalToConstant: 96),
+            imageView.widthAnchor.constraint(equalToConstant: 164),
+            imageView.heightAnchor.constraint(equalToConstant: 42),
             imageView.topAnchor.constraint(equalTo: view.safeTopAnchor, constant: 28)
         ])
     }

@@ -184,47 +184,30 @@ class PasswordViewController: LoginViewController {
 
             return
         }
-
+      
         configureViewLoading(true)
-        
-        authenticationDelegate.checkIfEmailExist(email: loginFields.username, onCompletion: {[weak self] result in
-            guard let self else { return }
-            self.configureViewLoading(false)
-            switch result {
-            case .success(let data):
-                guard data.exists else {
-                    let msg = NSLocalizedString("This email address is not registered.",
-                                                comment: "An error message informing the user the email address they entered did not match on our server onsa api.")
-
-                    authenticationDelegate.presentAppEmailExistError(error: msg, in: self)
-                    return
-                }
-                
-                Task {
-                    await self.handleWith(self.loginFields)
-                }
-              
-                
-            case .failure(let failure):
-                self.displayRemoteError(failure)
-            }
-        })
-        
+        Task {
+            await self.handleWith(self.loginFields)
+        }
+      
 
     }
     
     func handleWith(_ loginFields: LoginFields) async {
         await authenticationDelegate.loginWith(
             email: loginFields.username,
-            password: loginFields.password) { [weak self] res in
-                guard let self else { return }
-                switch res {
-                case .success(let data):
-                    print(data)
-                case .failure(let failure):
-                    print(failure)
-                }
+            password: loginFields.password
+        ) { [weak self ]res in
+            guard let self else { return }
+            switch res {
+            case .success(let data):
+                print(data)
+            case .failure(let failure):
+                print(failure)
+                self.displayError(message: "asdasdas")
             }
+        }
+        configureViewLoading(false)
     }
 }
 

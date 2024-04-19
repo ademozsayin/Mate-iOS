@@ -17,7 +17,9 @@ final class MapViewController: UIHostingController<MapView> {
         self.viewModel = MapViewModel(
             navigationController: navigationController
         )
-        super.init(rootView: MapView(viewModel: viewModel))
+//        super.init(rootView: MapView(viewModel: viewModel))
+        super.init(rootView: MapView())
+
         configureTabBarItem()
     }
 
@@ -36,7 +38,7 @@ final class MapViewController: UIHostingController<MapView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // We want to hide navigation bar *only* on HubMenu screen. But on iOS 16, the `navigationBarHidden(true)`
+        // We want to hide navigation bar *only* on MapView screen. But on iOS 16, the `navigationBarHidden(true)`
         // modifier on `HubMenu` view hides the navigation bar for the whole navigation stack.
         // Here we manually hide or show navigation bar when entering or leaving the HubMenu screen.
         if #available(iOS 16.0, *) {

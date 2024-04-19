@@ -10,3 +10,9 @@ extension UIViewController {
         return storyboard.instantiateViewController(ofClass: self, creator: creator)
     }
 }
+
+extension UIViewController {
+    func logCurrentVC() {
+        print("📣 Fiable Authenticator: \(type(of: self))")
+    }
+}

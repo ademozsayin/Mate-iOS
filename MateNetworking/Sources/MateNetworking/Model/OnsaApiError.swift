@@ -35,7 +35,7 @@ public enum OnsaApiError: Error, Decodable, Equatable, GeneratedFakeable {
 
     /// Unknown: Represents an unmapped remote error. Capisce?
     ///
-    case unknown(code: String, message: String?)
+    case unknown(error: String?, message: String?)
 
     /// The requested resourced does not exist remotely
     case resourceDoesNotExist
@@ -44,17 +44,19 @@ public enum OnsaApiError: Error, Decodable, Equatable, GeneratedFakeable {
     ///
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let error = try container.decode(String.self, forKey: .error)
-        let message = try container.decodeIfPresent(String.self, forKey: .message)
+        let error = try container.decodeIfPresent(String.self, forKey: .error)
+        let message = try container.decode(String.self, forKey: .message) 
 
-        switch error {
+        switch message {
         case Constants.invalidToken:
             self = .invalidToken
+       
         case Constants.requestFailed:
             self = .requestFailed
         
         case Constants.unauthorized:
             self = .unauthorized
+       
         case Constants.noRestRoute:
             self = .noRestRoute
        
@@ -62,7 +64,7 @@ public enum OnsaApiError: Error, Decodable, Equatable, GeneratedFakeable {
             self = .resourceDoesNotExist
 
         default:
-            self = .unknown(code: error, message: message)
+            self = .unknown(error: error, message: message)
         }
     }
 
@@ -70,7 +72,7 @@ public enum OnsaApiError: Error, Decodable, Equatable, GeneratedFakeable {
     /// Constants for Possible Error Identifiers
     ///
     private enum Constants {
-        static let unauthorized     = "unauthorized"
+        static let unauthorized     = "Unauthenticated."
         static let invalidBlog      = "invalid_blog"
         static let invalidToken     = "invalid_token"
         static let requestFailed    = "http_request_failed"
@@ -110,20 +112,20 @@ extension OnsaApiError: CustomStringConvertible {
         case .requestFailed:
             return NSLocalizedString("Api Request Failed", comment: "Fiable.agency Request Failure")
         case .unauthorized:
-            return NSLocalizedString("Api Missing Token", comment: "Fiable.agency Missing Token")
+            return NSLocalizedString("Api Unauthorized request", comment: "Fiable.agency Missing Token")
         case .noRestRoute:
             return NSLocalizedString("Api Invalid REST Route", comment: "Fiable.agency error thrown when the the request REST API url is invalid.")
     
         case .resourceDoesNotExist:
             return NSLocalizedString("Api Resource does not exist", comment: "Fiable.agency error thrown when a requested resource does not exist remotely.")
 
-        case .unknown(let code, let message):
+        case .unknown(let error, let message):
             let theMessage = message ?? String()
             let messageFormat = NSLocalizedString(
-                "Onsa Api Error Error: [%1$@] %2$@",
+                "Onsa Api Error: [%1$@] %2$@",
                 comment: "Laravel 11 Api (unmapped!) error. Parameters: %1$@ - code, %2$@ - message"
             )
-            return String.localizedStringWithFormat(messageFormat, code, theMessage)
+            return String.localizedStringWithFormat(messageFormat, error ?? "Error", theMessage)
         }
     }
 }

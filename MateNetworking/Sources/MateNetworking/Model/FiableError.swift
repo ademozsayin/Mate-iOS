@@ -51,8 +51,8 @@ public enum FiableError: Error, Decodable, Equatable, GeneratedFakeable {
     ///
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let error = try container.decode(String.self, forKey: .error)
-        let message = try container.decodeIfPresent(String.self, forKey: .message)
+        let error = try container.decodeIfPresent(String.self, forKey: .error) ?? ""
+        let message = try container.decodeIfPresent(String.self, forKey: .message) ?? ""
 
         switch error {
         case Constants.invalidToken:
@@ -76,7 +76,7 @@ public enum FiableError: Error, Decodable, Equatable, GeneratedFakeable {
     /// Constants for Possible Error Identifiers
     ///
     private enum Constants {
-        static let unauthorized     = "unauthorized"
+        static let unauthorized     = "Unauthenticated"
         static let invalidToken     = "invalid_token"
         static let requestFailed    = "http_request_failed"
         static let noRestRoute      = "rest_no_route"

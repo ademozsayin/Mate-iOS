@@ -182,7 +182,7 @@ public class LoginPrologueViewController: LoginViewController {
         }
 
         let loginTitle = NSLocalizedString("Log In", comment: "Button title.  Tapping takes the user to the login form.")
-        let createTitle = NSLocalizedString("Sign up for WordPress.com", comment: "Button title. Tapping begins the process of creating a WordPress.com account.")
+        let createTitle = NSLocalizedString("Sign up for WordPress.com", comment: "Button title. Tapping begins the process of creating a fiable.agency account.")
 
         buttonViewController.setupTopButton(title: loginTitle, isPrimary: false, accessibilityIdentifier: "Prologue Log In Button") { [weak self] in
             self?.onLoginButtonTapped?()
@@ -433,9 +433,9 @@ public class LoginPrologueViewController: LoginViewController {
         }
 
         // Continue with Google button action
-        vc.googleTapped = { [weak self] in
-            self?.googleTapped()
-        }
+//        vc.googleTapped = { [weak self] in
+//            self?.googleTapped()
+//        }
 
         // Site address text link button action
         vc.selfHostedTapped = { [weak self] in
@@ -484,18 +484,18 @@ public class LoginPrologueViewController: LoginViewController {
 //            self.presentUnifiedSignupView()
         }
 
-        vc.googleTapped = { [weak self] in
-            guard let self = self else {
-                return
-            }
-
-            guard self.configuration.enableUnifiedAuth else {
-                self.presentGoogleSignupView()
-                return
-            }
-
-            self.presentUnifiedGoogleView()
-        }
+//        vc.googleTapped = { [weak self] in
+//            guard let self = self else {
+//                return
+//            }
+//
+//            guard self.configuration.enableUnifiedAuth else {
+//                self.presentGoogleSignupView()
+//                return
+//            }
+//
+//            self.presentUnifiedGoogleView()
+//        }
 
         vc.appleTapped = { [weak self] in
             self?.appleTapped()

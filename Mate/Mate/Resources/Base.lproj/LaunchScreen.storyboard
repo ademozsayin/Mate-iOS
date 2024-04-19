@@ -17,28 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="transparent-logo" translatesAutoresizingMaskIntoConstraints="NO" id="TaU-4S-mJl">
-                                <rect key="frame" x="98.333333333333329" y="327.66666666666669" width="196.33333333333337" height="196.66666666666669"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onsamate-logo" translatesAutoresizingMaskIntoConstraints="NO" id="x2N-cK-dav">
+                                <rect key="frame" x="32.333333333333343" y="384" width="328.33333333333326" height="84.333333333333314"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="TaU-4S-mJl" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.5" id="3bY-AG-D0Y"/>
-                            <constraint firstItem="TaU-4S-mJl" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="U3Z-5N-At4"/>
-                            <constraint firstItem="TaU-4S-mJl" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.5" id="ful-Be-DXl"/>
-                            <constraint firstItem="TaU-4S-mJl" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="lLm-k7-0Pm"/>
+                            <constraint firstItem="x2N-cK-dav" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.835454" id="0Bg-7U-bZM"/>
+                            <constraint firstItem="x2N-cK-dav" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="RvQ-k6-XR1"/>
+                            <constraint firstItem="x2N-cK-dav" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ecX-Mq-51f"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
         </scene>
     </scenes>
     <resources>
-        <image name="transparent-logo" width="432" height="440"/>
+        <image name="onsamate-logo" width="328.33334350585938" height="84.333335876464844"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

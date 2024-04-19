@@ -2,7 +2,7 @@ import UIKit
 import FiableShared
 import FiableKit
 
-/// Provides a form and functionality for signing a user in to WordPress.com
+/// Provides a form and functionality for signing a user in to Fiable.agency mate app
 ///
 class LoginWPComViewController: LoginViewController, NUXKeyboardResponder {
     @IBOutlet weak var passwordField: WPWalkthroughTextField?
@@ -128,6 +128,8 @@ class LoginWPComViewController: LoginViewController, NUXKeyboardResponder {
         guard let forgotPasswordButton = forgotPasswordButton else {
             return
         }
+        // TODO: - Unhide after web page ready and redirect to there
+        forgotPasswordButton.isHidden = true
         WPStyleGuide.configureTextButton(forgotPasswordButton)
     }
 

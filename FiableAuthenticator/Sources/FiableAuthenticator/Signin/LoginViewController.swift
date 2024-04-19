@@ -51,7 +51,9 @@ open class LoginViewController: NUXViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-
+        #if DEBUG
+        logCurrentVC()
+        #endif
 //        displayError(message: "")
         styleNavigationBar(forUnified: true)
         styleBackground()
@@ -101,6 +103,7 @@ open class LoginViewController: NUXViewController {
     /// - Parameter moveVoiceOverFocus: If `true`, moves the VoiceOver focus to the `errorLabel`.
     ///     You will want to set this to `true` if the error was caused after pressing a button
     ///     (e.g. Next button).
+    @MainActor
     func displayError(message: String, moveVoiceOverFocus: Bool = false) {
         guard message.count > 0 else {
             errorLabel?.isHidden = false
@@ -109,8 +112,11 @@ open class LoginViewController: NUXViewController {
 
         tracker.track(failure: message)
 
-        errorLabel?.isHidden = false
-        errorLabel?.text = message
+        DispatchQueue.main.async {
+            self.errorLabel?.isHidden = false
+            self.errorLabel?.text = message
+        }
+       
         errorToPresent = nil
 
         if moveVoiceOverFocus, let errorLabel = errorLabel {
@@ -168,11 +174,31 @@ open class LoginViewController: NUXViewController {
         }
 
         configureViewLoading(true)
-
-//        loginFacade.signIn(with: loginFields)
+        
+        let service = LoginServiceAPI()
+        service.login(
+            email: loginFields.username,
+            password: loginFields.password
+        ) { [weak self] result in
+            guard let self else { return }
+            self.configureViewLoading(false)
+            switch result {
+            case .success(let tokenResponse):
+                guard let authToken = tokenResponse.data?.token else {
+                    let message = LocalizedText.loginError
+                    displayError(message: tokenResponse.message ?? message)
+                    return
+                }
+                self.finishedLogin(withAuthToken: authToken, requiredMultifactorCode: false)
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.displayRemoteError(error)
+            }
+        }
     }
+    
 
-    // MARK: SigninWPComSyncHandler methods
+    // MARK: Signin Fiable.agecny Mate Api SyncHandler methods
     dynamic open func finishedLogin(withAuthToken authToken: String, requiredMultifactorCode: Bool) {
         let wpcom = WordPressComCredentials(
             authToken: authToken,

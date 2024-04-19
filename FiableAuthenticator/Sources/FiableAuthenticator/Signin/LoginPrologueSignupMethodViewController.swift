@@ -56,9 +56,10 @@ class LoginPrologueSignupMethodViewController: NUXViewController {
             self?.emailTapped?()
         }
 
-        buttonViewController.setupButtomButtonFor(socialService: .google) { [weak self] in
-            self?.handleGoogleButtonTapped()
-        }
+        // TODO: Integrate after backend
+//        buttonViewController.setupButtomButtonFor(socialService: .google) { [weak self] in
+//            self?.handleGoogleButtonTapped()
+//        }
 
         let termsButton = WPStyleGuide.termsButton()
         termsButton.on(.touchUpInside) { [weak self] _ in

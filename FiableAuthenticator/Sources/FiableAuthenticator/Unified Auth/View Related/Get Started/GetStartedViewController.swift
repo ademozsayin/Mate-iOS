@@ -111,7 +111,7 @@ class GetStartedViewController: LoginViewController, NUXKeyboardResponder {
         return button
     }()
 
-    // "What is WordPress.com?" button
+    // "What is Mapte.com?" button
     private lazy var whatisWPCOMButton: UIButton = {
         let button = UIButton()
         button.setTitle(FiableAuthenticator.shared.displayStrings.whatIsWPComLinkTitle, for: .normal)
@@ -324,7 +324,7 @@ private extension GetStartedViewController {
         goToSiteCredentialsScreen()
     }
 
-    // MARK: - What is WordPress.com Button Action
+    // MARK: - What is Mate Button Action
 
     @IBAction func whatIsWPComButtonTapped(_ sender: UIButton) {
         tracker.track(click: .whatIsWPCom)
@@ -789,9 +789,10 @@ private extension GetStartedViewController {
             }
         }
 
-        buttonViewController.setupButtomButtonFor(socialService: .google) { [weak self] in
-            self?.googleTapped()
-        }
+        // TODO: Integration after backend
+//        buttonViewController.setupButtomButtonFor(socialService: .google) { [weak self] in
+//            self?.googleTapped()
+//        }
 
         let termsButton = WPStyleGuide.signupTermsButton()
         buttonViewController.stackView?.addArrangedSubview(termsButton)

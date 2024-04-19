@@ -1,32 +1,32 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "WooLogoLight-1.pdf"
+      "filename" : "Screenshot_2024-04-18_at_15.43.22-removebg-preview@1x.png",
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "filename" : "WooLogoLight.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "light"
         }
-      ]
+      ],
+      "filename" : "Screenshot_2024-04-18_at_15.43.22-removebg-preview@2x.png",
+      "idiom" : "universal"
     },
     {
-      "idiom" : "universal",
-      "filename" : "WooLogoDark.pdf",
       "appearances" : [
         {
           "appearance" : "luminosity",
           "value" : "dark"
         }
-      ]
+      ],
+      "filename" : "Screenshot_2024-04-18_at_15.43.22-removebg-preview@3x.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }

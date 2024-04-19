@@ -100,7 +100,7 @@ extension FiableConstants {
         ///
         /// Displayed by the Authenticator in the Continue with WordPress.com flow.
         ///
-        case whatIsWPCom = "https://woo.com/document/what-is-a-wordpress-com-account/"
+        case whatIsWPCom = "https://fiable.agency/what-is-a-mate-account/"
 
         /// Terms of Service Website. Displayed by the Authenticator (when / if needed).
         ///

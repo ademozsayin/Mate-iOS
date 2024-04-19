@@ -541,9 +541,9 @@ import FiableUI
     /// - Parameter loginFields: A LoginFields instance.
     ///
     public class func openForgotPasswordURL(_ loginFields: LoginFields) {
-        let baseURL = loginFields.meta.userIsDotCom ? "https://wordpress.com" : FiableAuthenticator.baseSiteURL(string: loginFields.siteAddress)
-        let forgotPasswordURL = URL(string: baseURL + "/wp-login.php?action=lostpassword&redirect_to=wordpress%3A%2F%2F")!
-        UIApplication.shared.open(forgotPasswordURL)
+//        let baseURL = loginFields.meta.userIsDotCom ? "https://wordpress.com" : FiableAuthenticator.baseSiteURL(string: loginFields.siteAddress)
+//        let forgotPasswordURL = URL(string: baseURL + "/wp-login.php?action=lostpassword&redirect_to=wordpress%3A%2F%2F")!
+//        UIApplication.shared.open(forgotPasswordURL)
     }
 
     /// Returns the FiableAuthenticator Bundle
@@ -552,16 +552,6 @@ import FiableUI
     ///
     public class var bundle: Bundle {
         return Bundle.module
-//        let defaultBundle = Bundle(for: FiableAuthenticator.self)
-//        // If installed with CocoaPods, resources will be in FiableAuthenticator.bundle
-//        if let bundleURL = defaultBundle.resourceURL,
-//           let resourceBundle = Bundle(url: bundleURL.appendingPathComponent("FiableAuthenticator.bundle")) {
-//            return resourceBundle
-//        } else {
-//            // Print a warning message or handle the absence of the resource bundle
-//            print("Warning: FiableAuthenticator.bundle not found. Using default bundle for resources.")
-//            return defaultBundle
-//        }
     }
 }
 

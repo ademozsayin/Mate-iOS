@@ -128,7 +128,7 @@ class LoginLinkRequestViewController: LoginViewController {
     }
 
     // MARK: - Actions
-
+    @MainActor
     @IBAction func handleUsePasswordTapped(_ sender: UIButton) {
         guard let vc = LoginWPComViewController.instantiate(from: .login) else {
             print("Failed to navigate from LoginLinkRequestViewController to LoginWPComViewController")

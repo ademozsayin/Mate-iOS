@@ -229,7 +229,6 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
             }
 
             await handleSuccess(data: data)
-//            onCompletion(result)
 
         } catch let error as OnsaApiError {
          
@@ -252,7 +251,10 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
     
     @MainActor
     func handleFailure(error: OnsaApiError) async {
-       print(error)
+        guard let viewController = UIApplication.shared.delegate?.window??.topmostPresentedViewController else {
+            return
+        }
+        handleSiteCredentialLoginFailure(error: error, for: "", in: viewController)
     }
     
     @MainActor
@@ -900,12 +902,27 @@ private extension AuthenticationManager {
             self.analytics.track(.applicationPasswordAuthorizationButtonTapped)
         } : nil
 
-        let alertController = FancyAlertViewController.makeSiteCredentialLoginErrorAlert(
-            message: (error as NSError).localizedDescription,
-            defaultAction: defaultAction
-        )
+       
+        if let onsaApiError  = error as? OnsaApiError {
+            switch onsaApiError {
+            case .unknown(let error, let message):
+                let alertController = FancyAlertViewController.makeSiteCredentialLoginErrorAlert(
+                    message: (message ?? error) ?? "Error occured",
+                    defaultAction: defaultAction
+                )
+                viewController.present(alertController, animated: true)
+            default:
+                break
+            }
 
-        viewController.present(alertController, animated: true)
+        } else {
+            let alertController = FancyAlertViewController.makeSiteCredentialLoginErrorAlert(
+                message: (error as NSError).localizedDescription,
+                defaultAction: defaultAction
+            )
+
+            viewController.present(alertController, animated: true)
+        }
     }
     
     /// Presents app password site login using a web view.
@@ -952,6 +969,11 @@ private extension AuthenticationManager {
         case unknown
 
         static func make(with error: Error) -> AuthenticationError {
+            
+            if let error = error as? OnsaApiError {
+                
+            }
+            
             if let error = error as? SignInError {
                 switch error {
                 case .invalidWPComEmail(let source):

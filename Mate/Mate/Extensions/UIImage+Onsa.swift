@@ -9,7 +9,7 @@ extension UIImage {
     /// Woo logo that is displayed on the login prologue.
     ///
     static var wooLogoPrologueImage: UIImage {
-        UIImage(named: "prologue-logo")!
+        UIImage(named: "transparent-logo")!
     }
     
     static var elephantme: UIImage {
@@ -1514,7 +1514,7 @@ extension UIImage {
 private extension UIImage {
 
     enum Metrics {
-        static let defaultWooLogoSize = CGSize(width: 30, height: 18)
+        static let defaultWooLogoSize = CGSize(width: 195.5, height: 79.75)
     }
 
     enum Configurations {

@@ -177,11 +177,11 @@ class DefaultStoresManager: StoresManager {
     /// De-authenticates upon receiving `RemoteDidReceiveInvalidTokenError` notification
     ///
     func listenToWPCOMInvalidWPCOMTokenNotification() {
-//        invalidWPCOMTokenNotificationObserver = notificationCenter.addObserver(forName: .RemoteDidReceiveInvalidTokenError,
-//                                                                               object: nil,
-//                                                                               queue: .main) { [weak self] note in
-//            _ = self?.deauthenticate()
-//        }
+        invalidWPCOMTokenNotificationObserver = notificationCenter.addObserver(forName: .RemoteDidReceiveInvalidTokenError,
+                                                                               object: nil,
+                                                                               queue: .main) { [weak self] note in
+            _ = self?.deauthenticate()
+        }
     }
 
     /// Synchronizes all of the Session's Entities.
@@ -236,7 +236,7 @@ class DefaultStoresManager: StoresManager {
         sessionManager.deleteApplicationPassword()
         ServiceLocator.analytics.refreshUserData()
 //        ZendeskProvider.shared.reset()
-//        ServiceLocator.pushNotesManager.unregisterForRemoteNotifications()
+        ServiceLocator.pushNotesManager.unregisterForRemoteNotifications()
     }
 
     /// Fully deauthenticates the user, if needed.
@@ -292,7 +292,7 @@ class DefaultStoresManager: StoresManager {
         defaults[.hasDismissedWriteWithAITooltip] = nil
         defaults[.numberOfTimesWriteWithAITooltipIsShown] = nil
 //        restoreSessionSiteIfPossible()
-//        ServiceLocator.pushNotesManager.reloadBadgeCount()
+        ServiceLocator.pushNotesManager.reloadBadgeCount()
 
 //        NotificationCenter.default.post(name: .StoresManagerDidUpdateDefaultSite, object: nil)
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import enum MateNetworking.OnsaApiError
 
 public enum NetworkResponse:String {
     case success
@@ -30,7 +31,7 @@ public class BaseAPI<T:TargetType> {
 
     public func fetchData<M: Decodable>(target: T,
                                         responseClass: M.Type,
-                                        completionHandler:@escaping (Result<BaseResponse<M>, NSError>)-> Void) {
+                                        completionHandler:@escaping (Result<BaseResponse<M>, NSError>) -> Void) {
 
                 
         let method = Alamofire.HTTPMethod(rawValue: target.method.rawValue)
@@ -75,71 +76,40 @@ public class BaseAPI<T:TargetType> {
             guard let responseData = response.data else {
 #if DEBUG
                 completionHandler(.failure(NSError(domain: "No data from response", code: statusCode, userInfo: ["error":"No data"])))
-                
 #else
                 completionHandler(.failure(NSError(domain: "Something went wrong", code: statusCode, userInfo: ["error":"No data"])))
-                
 #endif
-                
                 return
             }
+            
             do {
                 let decoder = JSONDecoder()
-                let responseObj = try decoder.decode(BaseResponse<M>.self, from: responseData) //Decode JSON Response Data
+                let responseObj = try decoder.decode(BaseResponse<M>.self, from: responseData)
                 completionHandler(.success(responseObj))
-            } catch let DecodingError.dataCorrupted(context) {
                 
-#if DEBUG
-                print(context)
-                completionHandler(.failure(NSError(domain: context.debugDescription, code: statusCode, userInfo: ["error":"No data"])))
-#else
-                completionHandler(.failure(NSError(domain: "Something went wrong", code: statusCode, userInfo: ["error":"No data"])))
-#endif
-                
-            } catch let DecodingError.keyNotFound(key, context) {
-                
-                
-                
-#if DEBUG
-                print("Key '\(key)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-                
-                let message = "Key '\(key)' not found:"  + context.debugDescription
-                
-                completionHandler(.failure(NSError(domain: message, code: statusCode, userInfo: ["error":"No data"])))
-#else
-                completionHandler(.failure(NSError(domain: "Something went wrong", code: statusCode, userInfo: ["error":"No data"])))
-#endif
-            } catch let DecodingError.valueNotFound(value, context) {
-                
-                
-#if DEBUG
-                print("Value '\(value)' not found:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-                
-                let message = "Value '\(value)' not found:" + context.debugDescription
-                completionHandler(.failure(NSError(domain: message, code: statusCode, userInfo: ["error":"No data"])))
-#else
-                completionHandler(.failure(NSError(domain: "Something went wrong ", code: statusCode, userInfo: ["error":"No data"])))
-#endif
-            } catch let DecodingError.typeMismatch(type, context)  {
-                
-#if DEBUG
-                print("Type '\(type)' mismatch:", context.debugDescription)
-                print("codingPath:", context.codingPath)
-                
-                let message = "Type '\(type)' mismatch:" +  context.debugDescription
-                completionHandler(.failure(NSError(domain: message, code: statusCode, userInfo: ["error":"No data"])))
-#else
-                completionHandler(.failure(NSError(domain: "Something went wrong ", code: statusCode, userInfo: ["error":"No data"])))
-#endif
-                
+            } catch let error as DecodingError {
+                do {
+                    let decoder = JSONDecoder()
+                    let responseObj = try decoder.decode(OnsaApiError.self, from: responseData) //Decode JSON Response Data
+                    if let onsaError = error as? OnsaApiError {
+                        switch onsaError {
+                        case .unknown(let error, let message):
+                            completionHandler(.failure(
+                                NSError(
+                                    domain: request.description,
+                                    code: statusCode,
+                                    userInfo: ["error": error as Any, "message": message as Any ]
+                                )))
+                        default:
+                            completionHandler(.failure(NSError(domain: error.localizedDescription, code: statusCode, userInfo: ["error":"No data"])))
+                        }
+                    }
+                } catch {
+                    completionHandler(.failure(NSError(domain: error.localizedDescription, code: statusCode, userInfo: ["error":"No data"])))
+                }
             } catch {
-                print("error: ", error)
-#if DEBUG
-                completionHandler(.failure(NSError(domain: error.localizedDescription, code: statusCode, userInfo: ["error":"No data"])))
-#endif
-                completionHandler(.failure(NSError(domain: "Something went wrong ", code: statusCode, userInfo: ["error":"No data"])))
+                // Handle other types of errors
+                completionHandler(.failure(NSError(domain: error.localizedDescription, code: statusCode, userInfo: ["error": "UnknownError"])))
             }
         }
     }

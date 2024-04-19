@@ -10,6 +10,7 @@
 import Foundation
 import Alamofire
 import MateNetworking
+
 public enum SignupNetworking {
     case signupWithapple(devicename: String, token:String)
 }

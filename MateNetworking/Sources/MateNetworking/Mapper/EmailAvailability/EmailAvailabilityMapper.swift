@@ -10,7 +10,7 @@ import Foundation
 
 struct EmailAvailabilityMapper: Mapper {
 
-    /// (Attempts) to convert a dictionary into `[CouponReport]`.
+    /// (Attempts) to convert a dictionary into `[EmailCheckData]`.
     ///
     func map(response: Data) throws -> EmailCheckData {
         let decoder = JSONDecoder()
@@ -24,7 +24,9 @@ struct EmailAvailabilityMapper: Mapper {
 
 private struct EmailCheckDataEnvelope: Decodable {
     let data: EmailCheckData
+    let success: Bool?
     private enum CodingKeys: String, CodingKey {
         case data = "data"
+        case success
     }
 }
