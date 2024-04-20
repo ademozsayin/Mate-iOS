@@ -38,10 +38,10 @@ final class MapCoordinator: Coordinator {
     deinit { }
     
     func start() {
-        // No-op: please call `activate(siteID:)` instead when the menu tab is configured.
+        // No-op: please call `activate(accountID:)` instead when the menu tab is configured.
     }
     
-    /// Replaces `start()` because the menu tab's navigation stack could be updated multiple times when site ID changes.
+    /// Replaces `start()` because the menu tab's navigation stack could be updated multiple times when account ID changes.
     func activate() {
         mapViewController = MapViewController(navigationController: navigationController)
         if let mapViewController = mapViewController {

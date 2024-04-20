@@ -67,7 +67,6 @@ private extension EventRemote {
             if let latitude {
                 parameters[ParameterKeys.latitude] = String(latitude)
             }
-            
             if let longitude {
                 parameters[ParameterKeys.longitude] = String(longitude)
             }

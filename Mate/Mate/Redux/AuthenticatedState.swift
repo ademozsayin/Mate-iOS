@@ -36,8 +36,10 @@ class AuthenticatedState: StoresManagerState {
         let storageManager = ServiceLocator.storageManager
         let network = AlamofireNetwork(credentials: credentials)
 
+        
         var services: [ActionsProcessor] = [
             NotificationStore(dispatcher: dispatcher, storageManager: storageManager, network: network),
+            EventStore(dispatcher: dispatcher, storageManager: storageManager, network: network)
         ]
 
 

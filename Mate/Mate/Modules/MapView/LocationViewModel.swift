@@ -8,10 +8,17 @@
 import CoreLocation
 import MapKit
 import SwiftUI
+import Observation
 
 @Observable
 class LocationViewModel: NSObject, CLLocationManagerDelegate {
-    var userLocation: CLLocationCoordinate2D?
+    
+    var userLocation: CLLocationCoordinate2D? {
+        didSet {
+            print("user location: \(userLocation)")
+        }
+    }
+    
     var authorizationStatus: CLAuthorizationStatus?
 
     var cameraPosition = MapCameraPosition.region(MKCoordinateRegion(

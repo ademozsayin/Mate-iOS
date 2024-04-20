@@ -9,67 +9,90 @@ import Foundation
 import UIKit
 import SwiftUI
 import Combine
+import MateNetworking
 import FiableRedux
 import MateStorage
-import MapKit
 import CoreLocation
+import MapKit
 
 @Observable class MapViewModel {
     
     private(set) unowned var navigationController: UINavigationController?
     private let stores: StoresManager
-    private(set) var state: State = .loading
+    private var locationViewModel: LocationViewModel
     
-    var events: [String] = []
+    private(set) var state: State = .loading {
+        didSet {
+            print("state: \(state)")
+        }
+    }
+    
+    var events: [MateEvent] = [] {
+        didSet {
+            print("event getted count: \(events.count)")
+        }
+    }
     var onReload: (() -> Void)?
     
+    private var cancellables = Set<AnyCancellable>()
+
     init(
         navigationController: UINavigationController? = nil,
-        stores: StoresManager = ServiceLocator.stores
+        stores: StoresManager = ServiceLocator.stores,
+        locationViewModel: LocationViewModel
     ) {
         self.navigationController = navigationController
         self.stores = stores
+        self.locationViewModel = locationViewModel
+        
+        print(locationViewModel.userLocation)
     }
     
+    
     @MainActor
-    func fetchEvents(isReload: Bool) async {
+    func fetchEvents(location: CLLocationCoordinate2D?, isReload: Bool) async {
         if isReload {
             onReload?()
         }
         state = .loading
         do {
-            events = try await loadSuggestedEvents()
-           
+            events = try await loadSuggestedEvents(latitude: location?.latitude, longitude: location?.longitude)
             state = .content(events: events)
-            
         } catch {
-            DDLogError("⛔️ Error loading suggested themes: \(error)")
+            DDLogError("⛔️ Error loading suggested events: \(error)")
             state = .error
         }
     }
 
     @MainActor
-    func loadSuggestedEvents() async throws -> [String] {
+    func loadSuggestedEvents(latitude: Double?, longitude: Double?) async throws -> [MateEvent] {
         try await withCheckedThrowingContinuation { continuation in
-//            stores.dispatch(WordPressThemeAction.loadSuggestedThemes { result in
-//                switch result {
-//                case .success(let themes):
-//                    continuation.resume(returning: themes)
-//                case .failure(let error):
-//                    continuation.resume(throwing: error)
-//                }
-//            })
+            stores.dispatch(EventAction.loadEvents(
+                type: .all, 
+                latitude: latitude,
+                longitude: longitude,
+                categoryId: nil,
+                page: nil,
+                completion: { result in
+                    switch result {
+                    case .success(let data):
+                        continuation.resume(returning: data.data ?? [])
+                    case .failure(let error):
+                        continuation.resume(throwing: error)
+                    }
+                }))
         }
     }
 }
 
 extension MapViewModel {
-    enum State: Equatable {
+    enum State {
         case loading
         case error
-        case content(events: [String])
+        case content(events: [MateEvent])
     }
 }
+
 
 //class MapViewModel: NSObject, ObservableObject {
 //    

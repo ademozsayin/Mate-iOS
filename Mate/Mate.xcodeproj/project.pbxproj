@@ -45,6 +45,7 @@
 		0D84B5D22BC96A5A00700F3F /* UniversalLinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B5CA2BC96A5A00700F3F /* UniversalLinkRouter.swift */; };
 		0D84B5D92BC9769300700F3F /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B5D82BC9769300700F3F /* URLOpener.swift */; };
 		0D84B5DB2BC9773100700F3F /* SpotlightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D84B5DA2BC9773100700F3F /* SpotlightManager.swift */; };
+		0D8798EC2BD3169000BC5443 /* Event+Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8798EB2BD3169000BC5443 /* Event+Coordinate.swift */; };
 		0D8D37CF2BBC35A800B362DD /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D37CE2BBC35A800B362DD /* WebView.swift */; };
 		0D8D38192BBC362700B362DD /* ValidationErrorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D37D02BBC362000B362DD /* ValidationErrorRow.swift */; };
 		0D8D381A2BBC362700B362DD /* LearnMoreAttributedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8D37D12BBC362000B362DD /* LearnMoreAttributedText.swift */; };
@@ -362,6 +363,7 @@
 		0D84B5CA2BC96A5A00700F3F /* UniversalLinkRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniversalLinkRouter.swift; sourceTree = "<group>"; };
 		0D84B5D82BC9769300700F3F /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
 		0D84B5DA2BC9773100700F3F /* SpotlightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotlightManager.swift; sourceTree = "<group>"; };
+		0D8798EB2BD3169000BC5443 /* Event+Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+Coordinate.swift"; sourceTree = "<group>"; };
 		0D8D37CE2BBC35A800B362DD /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		0D8D37D02BBC362000B362DD /* ValidationErrorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationErrorRow.swift; sourceTree = "<group>"; };
 		0D8D37D12BBC362000B362DD /* LearnMoreAttributedText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LearnMoreAttributedText.swift; sourceTree = "<group>"; };
@@ -774,6 +776,7 @@
 				0D9E99C72BCEA11F00276FF0 /* Dictionary+Mate.swift */,
 				0D9E99CC2BCEA83400276FF0 /* Bundle+Mate.swift */,
 				0D9E99D72BCED04400276FF0 /* Data+Mate.swift */,
+				0D8798EB2BD3169000BC5443 /* Event+Coordinate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1571,6 +1574,7 @@
 				0D8D382A2BBC362700B362DD /* ActivityIndicator.swift in Sources */,
 				0DC2342D2BA7929000414B13 /* FiableConstants.swift in Sources */,
 				0D8D384B2BBC362700B362DD /* BottomButtonView.swift in Sources */,
+				0D8798EC2BD3169000BC5443 /* Event+Coordinate.swift in Sources */,
 				0DC234E12BA8E9C700414B13 /* Authentication.swift in Sources */,
 				0D2319632B8E8F7300F969DD /* Extensions+UIView.swift in Sources */,
 				0D9856C22BAD1B7F008F96E9 /* KeyboardScrollable.swift in Sources */,

@@ -8,22 +8,27 @@
 
 import SwiftUI
 import MapKit
+import Observation
 
 struct MapView: View {
 
     @State private var locationViewModel = LocationViewModel()
-    @State var eventsViewModel = EventsViewModel()
-
+    @State var viewModel: MapViewModel
+    
+    init(viewModel: MapViewModel) {
+        self.viewModel = viewModel
+    }
+    
     var body: some View {
 
         Map(position: $locationViewModel.cameraPosition) {
             UserAnnotation()
-            ForEach(eventsViewModel.events, id:\.self) { event in
-                Marker(location.name, coordinate: location.coordinate)
-                    .tint(.orange)
+            ForEach(viewModel.events, id: \.id) { event in
+                if let coordinate = event.coordinate {
+                    Marker(event.name ?? "Mate Event", coordinate: coordinate)
+                }
             }
         }
-
         .ignoresSafeArea() // Optional: expand map to edges
         .overlay(alignment: .bottom) { // Overlay for permission handling
             if locationViewModel.authorizationStatus == .notDetermined {
@@ -39,6 +44,20 @@ struct MapView: View {
                 locationViewModel.requestLocationPermission()
             }
         }
+        .onChange(of: locationViewModel.userLocation) {
+            if let location = locationViewModel.userLocation  {
+                Task {
+                    await viewModel.fetchEvents(location: location, isReload: false)
+                }
+            }
+        }
+//        .environment(locationViewModel)
+    }
+}
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }
 
