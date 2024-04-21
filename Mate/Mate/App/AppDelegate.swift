@@ -40,9 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         print(BuildConfiguration.current)
-        setupMainWindow()
-        // Setup Components
-        setupComponentsAppearance()
+       
         setupCocoaLumberjack()
 
         setupLogLevel(.verbose)
@@ -63,6 +61,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
+        setupMainWindow()
+        setupComponentsAppearance()
+        
         setupUniversalLinkRouter()
        
         appCoordinator?.start()

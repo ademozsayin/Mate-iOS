@@ -15,8 +15,7 @@ final class MapViewController: UIHostingController<MapView> {
 
     init(navigationController: UINavigationController?) {
         self.viewModel = MapViewModel(
-            navigationController: navigationController, 
-            locationViewModel: LocationViewModel()
+            navigationController: navigationController
         )
         super.init(rootView: MapView(viewModel: viewModel))
 
@@ -29,8 +28,7 @@ final class MapViewController: UIHostingController<MapView> {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        view.backgroundColor = .yellow
-        print(#file)
+        view.backgroundColor = .clear
 //        viewModel.viewDidAppear()
     }
 

@@ -9,49 +9,125 @@
 import SwiftUI
 import MapKit
 import Observation
+import MateNetworking
 
 struct MapView: View {
-
-    @State private var locationViewModel = LocationViewModel()
+    
     @State var viewModel: MapViewModel
+    @State private var lookAroundScene: MKLookAroundScene?
+    @State private var selection: Int?
+    @State private var selectedResult: MateEvent? // Use @State for selectedResult
+    
+    @State private var isTabBarHidden = false // State variable to control the visibility of the tab bar
+
     
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
     }
     
     var body: some View {
+        Group {
+            let currentState = viewModel.syncState
+            switch currentState {
+            case .loading:
+                ZStack {
+                    Map()
+                        .blur(radius: 10.0)
+                    ActivityIndicator(
+                        isAnimating: .constant(true),
+                        style: .medium
+                    )
+                    
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(.clear)
+                    .edgesIgnoringSafeArea(.all)
+                    .hiddenTabBar()
+                }
+            
+            case .error(let error):
+                switch error {
+                case .apiError:
+                    ErrorStateView(
+                        title: "Error loading data.",
+                        subtitle: "Something went wrong. Please try again.",
+                        image: nil,//.errorImage,
+                        actionTitle: "Try Again",
+                        actionHandler: {
+                            Task {
+                                await viewModel.fetchEvents(location: viewModel.userLocation, isReload: true)
+                            }
+                        })
+                case .locationPermissionDenied:
+                    ZStack {
+                        Map()
+                            .blur(radius: 10)
+                        LocationRequestView()
+                            .background(Color.clear)
+                            .navigationBarHidden(true)
+                            .hiddenTabBar()
+                    }
+                }
+                
+            case .content(let events):
+                makeMapContentView(for: events)
+            }
+        }
+        .background(Color.clear)
+    }
+}
 
-        Map(position: $locationViewModel.cameraPosition) {
+// MARK: - ViewBuilders
+private extension MapView {
+    func makeMapContentView(for events: [MateEvent]) -> some View {
+        Map(position: $viewModel.cameraPosition, selection: $selection) {
             UserAnnotation()
-            ForEach(viewModel.events, id: \.id) { event in
+            ForEach(events, id: \.id) { event in
                 if let coordinate = event.coordinate {
-                    Marker(event.name ?? "Mate Event", coordinate: coordinate)
+                    Marker(
+                        event.name ?? "Mate Event",
+                        systemImage: event.markerIcon,
+                        coordinate: coordinate
+                    )
+                    .tint(event.tintColor)
+                    .tag(event.id)
                 }
             }
         }
-        .ignoresSafeArea() // Optional: expand map to edges
-        .overlay(alignment: .bottom) { // Overlay for permission handling
-            if locationViewModel.authorizationStatus == .notDetermined {
-                Button("Request Location Permission") {
-                    locationViewModel.requestLocationPermission()
+        .safeAreaInset(edge: .bottom) {
+            HStack {
+                Spacer()
+                VStack(spacing: 0) {
+                    if let selection {
+                        if let item = viewModel.events.first(where: { $0.id == selection }) {
+                            LocationPreviewLookAroundView(selectedResult: item, onClose: {
+                                self.selection = nil
+                            })
+                            .frame(
+                                maxWidth: .infinity,
+                                maxHeight: 300
+                            )
+                            .padding()
+                        }
+                    }
                 }
-            } else if locationViewModel.authorizationStatus == .denied {
-                Text("Location permission denied. Please enable it in settings.")
+                Spacer()
             }
+            .background(.thinMaterial)
+            .padding(.bottom)
         }
-        .onAppear {
-            if locationViewModel.authorizationStatus == .notDetermined {
-                locationViewModel.requestLocationPermission()
-            }
+        .mapControls {
+            MapUserLocationButton()
         }
-        .onChange(of: locationViewModel.userLocation) {
-            if let location = locationViewModel.userLocation  {
-                Task {
-                    await viewModel.fetchEvents(location: location, isReload: false)
-                }
-            }
-        }
-//        .environment(locationViewModel)
+        .showTabBar()
+    }
+}
+
+
+private extension MapView {
+    enum Constants {
+        static let blockVerticalPadding: CGFloat = 32
+        static let contentVerticalSpacing: CGFloat = 8
+        static let contentPadding: CGFloat = 16
     }
 }
 
@@ -61,139 +137,12 @@ extension CLLocationCoordinate2D: Equatable {
     }
 }
 
-//struct MapView: View {
-//    
-//    @State private var lookAroundScene: MKLookAroundScene?
-//    var body: some View {
-////        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-//        Map() {
-//            Marker("Sisli", coordinate: .sisli)
-//                .tint(.background)
-//            Annotation("Deneme Anno", coordinate: .sisli2) {
-//                ZStack {
-//                   RoundedRectangle(cornerRadius: 5)
-//                       .fill(Color.teal)
-//                   Text("🎓")
-//                       .padding(5)
-//                    HStack {
-//                        MapUserLocationButton()
-//                    }
-//               }
-//            }
-//        }
-//        .mapStyle(.standard(elevation: .automatic))
-////        .mapStyle(.hybrid(elevation: .realistic))
-//        .mapControls {
-//            MapUserLocationButton()
-//        }
-//    }
+
+//#Preview {
+//    MapView(
+//        viewModel: MapViewModel()
+//    )
 //}
 
-#Preview {
-    LocationPreviewView()
-}
 
-//            if let userLocation = viewModel.userLocation {
-//                Annotation("", coordinate: userLocation) { // Use MapAnnotation directly
-//
-//                }
-//                Marker(coordinate: userLocation, tint: .blue)
-//            }
-//        }
 
-extension CLLocationCoordinate2D {
-    static let sisli = CLLocationCoordinate2D(latitude: 41.0536, longitude: 28.9820)
-    static let sisli2 = CLLocationCoordinate2D(latitude: 41.0636, longitude: 28.9820)
-    static let columbiaUniversity = CLLocationCoordinate2D(latitude: 40.8075, longitude: -73.9626)
-}
-
-struct LocationPreviewLookAroundView: View {
-    @State private var lookAroundScene: MKLookAroundScene?
-    var selectedResult: MyFavoriteLocation
-    
-    var body: some View {
-        LookAroundPreview(initialScene: lookAroundScene)
-            .overlay(alignment: .bottomTrailing) {
-                HStack {
-                    Text("\(selectedResult.name)")
-                }
-                .font(.caption)
-                .foregroundStyle(.white)
-                .padding(18)
-            }
-            .onAppear {
-                getLookAroundScene()
-            }
-            .onChange(of: selectedResult) {
-                getLookAroundScene()
-            }
-    }
-    
-    func getLookAroundScene() {
-        lookAroundScene = nil
-        Task {
-            let request = MKLookAroundSceneRequest(coordinate: selectedResult.coordinate)
-            lookAroundScene = try? await request.scene
-        }
-    }
-}
-
-struct MyFavoriteLocation: Identifiable, Equatable {
-    var id = UUID()
-    var name: String
-    var coordinate: CLLocationCoordinate2D
-    static func == (lhs: MyFavoriteLocation, rhs: MyFavoriteLocation) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
-struct LocationPreviewView: View {
-    @State private var selection: UUID?
-    
-    let myFavoriteLocations = [
-        MyFavoriteLocation(name: "Columbia University", coordinate: .sisli2),
-        MyFavoriteLocation(name: "Sisli halısaha", coordinate: .sisli)
-    ]
-        
-    
-    var body: some View {
-        Map(selection: $selection) {
-            ForEach(myFavoriteLocations) { location in
-                Marker(location.name, coordinate: location.coordinate)
-                    .tint(.orange)
-            }
-        }
-        .safeAreaInset(edge: .bottom) {
-            HStack {
-                Spacer()
-                VStack(spacing: 0) {
-                    if let selection {
-                        if let item = myFavoriteLocations.first(where: { $0.id == selection }) {
-                            VStack {
-                                Text("asdasdasd")
-                                HStack(content: {
-                                    /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                                    Text("Placeholder")
-                                    /*@START_MENU_TOKEN@*/Text("Placeholder")/*@END_MENU_TOKEN@*/
-                                })
-                                
-                                LocationPreviewLookAroundView(selectedResult: item)
-                                    .frame(height: 128)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .padding([.top, .horizontal])
-                            }
-                          
-                        }
-                    }
-                }
-                Spacer()
-            }
-            .background(.thinMaterial)
-        }
-        .onChange(of: selection) {
-            guard let selection else { return }
-            guard let item = myFavoriteLocations.first(where: { $0.id == selection }) else { return }
-            print(item.coordinate)
-        }
-    }
-}

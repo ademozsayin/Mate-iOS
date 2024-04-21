@@ -136,10 +136,7 @@ final class MainTabBarController: UITabBarController {
         self.analytics = ServiceLocator.analytics
         super.init(coder: coder)
     }
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
+
         
     deinit {
         cancellableSiteID?.cancel()
@@ -154,8 +151,6 @@ final class MainTabBarController: UITabBarController {
         configureTabViewControllers()
         observeSiteIDForViewControllers()
         viewModel.loadHubMenuTabBadge()
-        
-        tabBar.tintColor = .systemBlue
     }
     
     override func viewWillAppear(_ animated: Bool) {

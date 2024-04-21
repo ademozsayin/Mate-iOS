@@ -22,7 +22,11 @@ struct ErrorStateView: View {
                 Image(uiImage: image)
             }
 
-            Button(actionTitle, action: actionHandler)
+            Button(
+                actionTitle,
+                action: actionHandler
+            )
+            .buttonStyle(SecondaryButtonStyle())
         }
         .padding()
     }

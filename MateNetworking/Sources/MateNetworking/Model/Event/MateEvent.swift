@@ -1,15 +1,22 @@
 //
 //  MateEvent.swift
-//  
+//
 //
 //  Created by Adem Özsayın on 19.04.2024.
 //
 
 import Foundation
 import CoreLocation
+import UIKit
+import SwiftUI
 
 // MARK: - MateEvent
-public struct MateEvent: Codable {
+public struct MateEvent: Codable, Equatable {
+    
+    public static func == (lhs: MateEvent, rhs: MateEvent) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     public let id: Int
     public let name: String?
     public let startTime: String?
@@ -24,7 +31,7 @@ public struct MateEvent: Codable {
     public let joinedAttendees: String?
     public let category: MateCategory?
     public let user: MateUser?
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
@@ -41,5 +48,41 @@ public struct MateEvent: Codable {
         case category = "category"
         case user = "user"
     }
-
 }
+
+public extension MateEvent {
+    var markerIcon: String {
+        if let categoryID {
+            switch categoryID {
+            case "1":
+                return "soccerball"
+            case "2":
+                return "basketball"
+            case "3":
+                return "figure.table.tennis"
+            default:
+                return "􀜇"
+            }
+        }
+        return "􀜇"
+    }
+    
+    var tintColor: Color {
+        var uiColor = UIColor.blue
+        if let categoryID {
+            switch categoryID {
+            case "1":
+                uiColor =  UIColor.green
+            case "2":
+                uiColor =  UIColor.orange
+            case "3":
+                uiColor =  UIColor.red
+            default:
+                uiColor =  UIColor.blue
+            }
+        }
+        let color = Color(uiColor)
+        return color
+    }
+}
+

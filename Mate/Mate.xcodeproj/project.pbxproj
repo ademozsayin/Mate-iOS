@@ -127,8 +127,6 @@
 		0D8E45862B8D00CD0057100C /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45852B8D00CD0057100C /* ConnectionManager.swift */; };
 		0D8E45882B8D017C0057100C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8E45872B8D017C0057100C /* Reachability.swift */; };
 		0D94CB8E2BD1E595004370A1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D94CB8D2BD1E595004370A1 /* MapView.swift */; };
-		0D94CB902BD29A08004370A1 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D94CB8F2BD29A08004370A1 /* LocationViewModel.swift */; };
-		0D94CB922BD2A6DD004370A1 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D94CB912BD2A6DD004370A1 /* EventsViewModel.swift */; };
 		0D98567C2BAB9625008F96E9 /* MainTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D98567B2BAB9625008F96E9 /* MainTabbarController.swift */; };
 		0D98567F2BAD1430008F96E9 /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D98567E2BAD1430008F96E9 /* MainTabViewModel.swift */; };
 		0D9856882BAD161A008F96E9 /* OnsaNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9856872BAD161A008F96E9 /* OnsaNavigationController.swift */; };
@@ -329,6 +327,9 @@
 		0DCA8B612BC71C120052BA12 /* TopBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCA8B602BC71C120052BA12 /* TopBannerViewModel.swift */; };
 		0DCA8B632BC71CE00052BA12 /* OnsaSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCA8B622BC71CE00052BA12 /* OnsaSplitViewController.swift */; };
 		0DD0EE662B914D9700B2AFDC /* Extension+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD0EE652B914D9700B2AFDC /* Extension+UITableView.swift */; };
+		B7C64BAE2BD45AEE00D056FC /* LocationPermissionDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BAD2BD45AEE00D056FC /* LocationPermissionDeniedView.swift */; };
+		B7C64BB02BD45B0C00D056FC /* LocationPreviewLookAroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BAF2BD45B0C00D056FC /* LocationPreviewLookAroundView.swift */; };
+		B7C64BB22BD49B3500D056FC /* Tabbar+Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BB12BD49B3500D056FC /* Tabbar+Modifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -445,8 +446,6 @@
 		0D8E45852B8D00CD0057100C /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		0D8E45872B8D017C0057100C /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		0D94CB8D2BD1E595004370A1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		0D94CB8F2BD29A08004370A1 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
-		0D94CB912BD2A6DD004370A1 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		0D98567B2BAB9625008F96E9 /* MainTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbarController.swift; sourceTree = "<group>"; };
 		0D98567E2BAD1430008F96E9 /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		0D9856872BAD161A008F96E9 /* OnsaNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnsaNavigationController.swift; sourceTree = "<group>"; };
@@ -636,6 +635,9 @@
 		0DCA8B602BC71C120052BA12 /* TopBannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerViewModel.swift; sourceTree = "<group>"; };
 		0DCA8B622BC71CE00052BA12 /* OnsaSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnsaSplitViewController.swift; sourceTree = "<group>"; };
 		0DD0EE652B914D9700B2AFDC /* Extension+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UITableView.swift"; sourceTree = "<group>"; };
+		B7C64BAD2BD45AEE00D056FC /* LocationPermissionDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionDeniedView.swift; sourceTree = "<group>"; };
+		B7C64BAF2BD45B0C00D056FC /* LocationPreviewLookAroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreviewLookAroundView.swift; sourceTree = "<group>"; };
+		B7C64BB12BD49B3500D056FC /* Tabbar+Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tabbar+Modifier.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -880,6 +882,7 @@
 				0D8D38032BBC362500B362DD /* WebViewSheet.swift */,
 				0D8D37EB2BBC362200B362DD /* WooNavigationSheet.swift */,
 				0D8D37CE2BBC35A800B362DD /* WebView.swift */,
+				B7C64BB12BD49B3500D056FC /* Tabbar+Modifier.swift */,
 			);
 			path = "SwiftUI Components";
 			sourceTree = "<group>";
@@ -1251,8 +1254,8 @@
 				0DAF0AA12BBFD788004E9036 /* MapCoordinator.swift */,
 				0DAF0A9B2BBFD568004E9036 /* MapViewController.swift */,
 				0DAF0A9D2BBFD5E0004E9036 /* MapViewModel.swift */,
-				0D94CB8F2BD29A08004370A1 /* LocationViewModel.swift */,
-				0D94CB912BD2A6DD004370A1 /* EventsViewModel.swift */,
+				B7C64BAD2BD45AEE00D056FC /* LocationPermissionDeniedView.swift */,
+				B7C64BAF2BD45B0C00D056FC /* LocationPreviewLookAroundView.swift */,
 			);
 			path = MapView;
 			sourceTree = "<group>";
@@ -1622,6 +1625,7 @@
 				0D98567F2BAD1430008F96E9 /* MainTabViewModel.swift in Sources */,
 				0DCA8B612BC71C120052BA12 /* TopBannerViewModel.swift in Sources */,
 				0DC234952BA7C12500414B13 /* WCEventLoggingDataSource.swift in Sources */,
+				B7C64BB22BD49B3500D056FC /* Tabbar+Modifier.swift in Sources */,
 				0DA8EF7D2BAF9D5F001EF5BF /* AppleIDCredentialChecker.swift in Sources */,
 				0DC234DD2BA8E2A000414B13 /* StyleManager.swift in Sources */,
 				0D84B5DB2BC9773100700F3F /* SpotlightManager.swift in Sources */,
@@ -1643,6 +1647,7 @@
 				0DA8EF962BAF9D5F001EF5BF /* Authenticator.swift in Sources */,
 				0D9856E12BADFBE3008F96E9 /* LocalNotificationScheduler.swift in Sources */,
 				0D8D38272BBC362700B362DD /* IconListItem.swift in Sources */,
+				B7C64BB02BD45B0C00D056FC /* LocationPreviewLookAroundView.swift in Sources */,
 				0D8D38452BBC362700B362DD /* JustInTimeMessageModal.swift in Sources */,
 				0D8D38532BBC362700B362DD /* FormattableAmountTextField.swift in Sources */,
 				0D9856E42BADFBE3008F96E9 /* UserNotificationsCenterAdapter.swift in Sources */,
@@ -1674,7 +1679,6 @@
 				0D9856E22BADFBE3008F96E9 /* PushNotificationsConfiguration.swift in Sources */,
 				0D9856B22BAD1AB4008F96E9 /* NoticeNotificationInfo.swift in Sources */,
 				0DA8EFB22BAF9D60001EF5BF /* ULAccountMismatchViewModel.swift in Sources */,
-				0D94CB922BD2A6DD004370A1 /* EventsViewModel.swift in Sources */,
 				0DC234D42BA8E10A00414B13 /* UIFont+Helpers.swift in Sources */,
 				0D9856DF2BADFBE3008F96E9 /* ApplicationAdapter.swift in Sources */,
 				0DAA47D92BCD3DCA00D16224 /* SettingsViewController.swift in Sources */,
@@ -1690,7 +1694,6 @@
 				0DAF0AA22BBFD788004E9036 /* MapCoordinator.swift in Sources */,
 				0D9856EB2BADFD5C008F96E9 /* Logs.swift in Sources */,
 				0DAA46BA2BCC72CE00D16224 /* HubMenuCoordinator.swift in Sources */,
-				0D94CB902BD29A08004370A1 /* LocationViewModel.swift in Sources */,
 				0D8D381E2BBC362700B362DD /* TopTabView.swift in Sources */,
 				0D9E99CB2BCEA7F000276FF0 /* APNSDevice.swift in Sources */,
 				0D9856D62BADFB1C008F96E9 /* Array+Helpers.swift in Sources */,
@@ -1709,6 +1712,7 @@
 				0D8D38372BBC362700B362DD /* DeltaTag.swift in Sources */,
 				0DA8EEE22BAE3C83001EF5BF /* OnsaAnalyticsEvent+LoginOnboarding.swift in Sources */,
 				0D9856B52BAD1B29008F96E9 /* NoticePresenter.swift in Sources */,
+				B7C64BAE2BD45AEE00D056FC /* LocationPermissionDeniedView.swift in Sources */,
 				0DC2340E2BA78DAC00414B13 /* AuthenticatedState.swift in Sources */,
 				0D8D383C2BBC362700B362DD /* FullScreenTextView.swift in Sources */,
 				0DAA47DB2BCD3DCA00D16224 /* SettingsViewModel.swift in Sources */,
