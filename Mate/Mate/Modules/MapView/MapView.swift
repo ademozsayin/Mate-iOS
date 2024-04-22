@@ -17,7 +17,6 @@ struct MapView: View {
     @State private var lookAroundScene: MKLookAroundScene?
     @State private var selection: Int?
     @State private var selectedResult: MateEvent? // Use @State for selectedResult
-    
     @State private var isTabBarHidden = false // State variable to control the visibility of the tab bar
 
     
@@ -30,44 +29,9 @@ struct MapView: View {
             let currentState = viewModel.syncState
             switch currentState {
             case .loading:
-                ZStack {
-                    Map()
-                        .blur(radius: 10.0)
-                    ActivityIndicator(
-                        isAnimating: .constant(true),
-                        style: .medium
-                    )
-                    
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(.clear)
-                    .edgesIgnoringSafeArea(.all)
-                    .hiddenTabBar()
-                }
-            
+                loadingView()
             case .error(let error):
-                switch error {
-                case .apiError:
-                    ErrorStateView(
-                        title: "Error loading data.",
-                        subtitle: "Something went wrong. Please try again.",
-                        image: nil,//.errorImage,
-                        actionTitle: "Try Again",
-                        actionHandler: {
-                            Task {
-                                await viewModel.fetchEvents(location: viewModel.userLocation, isReload: true)
-                            }
-                        })
-                case .locationPermissionDenied:
-                    ZStack {
-                        Map()
-                            .blur(radius: 10)
-                        LocationRequestView()
-                            .background(Color.clear)
-                            .navigationBarHidden(true)
-                            .hiddenTabBar()
-                    }
-                }
-                
+                errorView(error)
             case .content(let events):
                 makeMapContentView(for: events)
             }
@@ -78,6 +42,54 @@ struct MapView: View {
 
 // MARK: - ViewBuilders
 private extension MapView {
+    
+    @ViewBuilder
+    func loadingView() -> some View {
+        ZStack {
+            Map()
+                .blur(radius: 10.0)
+            ProgressView()
+                .progressViewStyle(IndefiniteCircularProgressViewStyle(size: Layout.progressIndicatorSize,
+                                                                       lineWidth: Layout.progressIndicatorLineWidth))
+
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.clear)
+            .edgesIgnoringSafeArea(.all)
+            .hiddenTabBar()
+        }
+    }
+    
+    private func errorView(_ error: MapViewModel.ErrorType) -> some View {
+        switch error {
+        case .apiError:
+            return AnyView(
+                ErrorStateView(
+                    title: "Error loading data.",
+                    subtitle: "Something went wrong. Please try again.",
+                    image: nil,
+                    actionTitle: "Try Again",
+                    actionHandler: {
+//                        Task {
+//                            await viewModel.fetchEvents(location: viewModel.userLocation)
+//                        }
+                    }
+                )
+            )
+        case .locationPermissionDenied:
+            return AnyView(
+                ZStack {
+                    Map()
+                        .blur(radius: 10)
+                    LocationRequestView()
+                        .background(Color.clear)
+                        .navigationBarHidden(true)
+                        .hiddenTabBar()
+                }
+            )
+        }
+    }
+    
+    @ViewBuilder
     func makeMapContentView(for events: [MateEvent]) -> some View {
         Map(position: $viewModel.cameraPosition, selection: $selection) {
             UserAnnotation()
@@ -138,11 +150,20 @@ extension CLLocationCoordinate2D: Equatable {
 }
 
 
-//#Preview {
-//    MapView(
-//        viewModel: MapViewModel()
-//    )
-//}
+#Preview {
+    MapView(
+        viewModel: MapViewModel()
+    )
+}
 
+    
 
+private enum Layout {
+    static let progressIndicatorSize: CGFloat = 56
+    static let progressIndicatorLineWidth: CGFloat = 6
+    static let horizontalPadding: CGFloat = 16
+    static let verticalPadding: CGFloat = 152
+    static let spacing: CGFloat = 40
+    static let textSpacing: CGFloat = 16
+}
 

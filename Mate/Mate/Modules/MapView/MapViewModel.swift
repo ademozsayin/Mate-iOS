@@ -30,8 +30,8 @@ import MapKit
     
     var userLocation: CLLocationCoordinate2D?
     private(set) var syncState = SyncState.loading
-    
     var events: [MateEvent] = []
+    
     var onReload: (() -> Void)?
     
     private var cancellables = Set<AnyCancellable>()
@@ -62,31 +62,21 @@ import MapKit
             return
         default:
             manager?.startUpdatingLocation()
-            Task {
-                await fetchEvents(location: userLocation, isReload: false)
-            }
         }
     }
     
     @MainActor
-    func fetchEvents(location: CLLocationCoordinate2D?, isReload: Bool) async {
-        if isReload {
-            onReload?()
-        }
+    func fetchEvents(location: CLLocationCoordinate2D) async {
+    
         syncState = .loading
         
         // Check location permissions
         let permissionStatus = manager?.authorizationStatus ?? .denied
         if permissionStatus == .denied {
-            try? await Task.sleep(nanoseconds: 3_000_000_000)
-
             syncState = .error(error: .locationPermissionDenied)
         } else {
             do {
-                
-                try? await Task.sleep(nanoseconds: 3_000_000_000)
-                
-                events = try await loadSuggestedEvents(latitude: location?.latitude, longitude: location?.longitude)
+                events = try await loadNearByEvents(latitude: location.latitude, longitude: location.longitude)
                 syncState = .content(events: events)
             } catch {
                 DDLogError("⛔️ Error loading suggested events: \(error)")
@@ -94,20 +84,18 @@ import MapKit
             }
         }
     }
-
+    
     @MainActor
-    func loadSuggestedEvents(latitude: Double?, longitude: Double?) async throws -> [MateEvent] {
+    func loadNearByEvents(latitude: Double, longitude: Double) async throws -> [MateEvent] {
         try await withCheckedThrowingContinuation { continuation in
-            stores.dispatch(EventAction.loadEvents(
-                    type: .all,
+            stores.dispatch(EventAction.getNearByEvents(
                     latitude: latitude,
                     longitude: longitude,
                     categoryId: nil,
-                    page: nil,
                     completion: { result in
                         switch result {
                         case .success(let data):
-                            continuation.resume(returning: data.data ?? [])
+                            continuation.resume(returning: data)
                         case .failure(let error):
                             continuation.resume(throwing: error)
                         }
@@ -139,6 +127,9 @@ extension MapViewModel: CLLocationManagerDelegate {
                 )
             ))
             self.manager?.stopUpdatingLocation()
+            Task {
+                await fetchEvents(location: userLocation) // Fetch events once the location is obtained
+            }
         }
     }
 }

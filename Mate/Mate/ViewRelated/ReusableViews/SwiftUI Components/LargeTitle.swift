@@ -1,4 +1,5 @@
 import SwiftUI
+import FiableFoundation
 
 /// Represents a large title, mostly to be used at the top of view controllers like What's New Component
 struct LargeTitle: View {

@@ -48,6 +48,24 @@ public struct MateEvent: Codable, Equatable {
         case category = "category"
         case user = "user"
     }
+    
+    public init(id: Int, name: String?, startTime: String?, categoryID: String?, createdAt: String?, updatedAt: String?, userID: String?, address: String?, latitude: String?, longitude: String?, maxAttendees: String?, joinedAttendees: String?, category: MateCategory?, user: MateUser?) {
+        self.id = id
+        self.name = name
+        self.startTime = startTime
+        self.categoryID = categoryID
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.userID = userID
+        self.address = address
+        self.latitude = latitude
+        self.longitude = longitude
+        self.maxAttendees = maxAttendees
+        self.joinedAttendees = joinedAttendees
+        self.category = category
+        self.user = user
+    }
+
 }
 
 public extension MateEvent {
@@ -86,3 +104,12 @@ public extension MateEvent {
     }
 }
 
+
+
+// MARK: - Hashable Conformance
+//
+extension MateEvent: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}

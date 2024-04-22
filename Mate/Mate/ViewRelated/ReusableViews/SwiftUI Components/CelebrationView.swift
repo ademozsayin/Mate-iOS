@@ -1,4 +1,5 @@
 import SwiftUI
+import FiableFoundation
 
 /// Hosting controller for `CelebrationView`.
 ///

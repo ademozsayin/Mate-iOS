@@ -18,4 +18,10 @@ public enum EventAction: Action {
                     categoryId: Int?,
                     page: Int?,
                     completion: (Result<EventPayload, Error>) -> Void)
+    
+    case getNearByEvents(
+        latitude: Double,
+        longitude: Double,
+        categoryId: Int?,
+        completion: (Result<[MateEvent], Error>) -> Void)
 }

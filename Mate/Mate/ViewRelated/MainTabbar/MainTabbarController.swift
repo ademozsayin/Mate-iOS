@@ -24,9 +24,9 @@ enum WooTab {
     //    ///
     //    case orders
     //
-    //    /// Products Tab
-    //    ///
-    //    case products
+        /// Products Tab
+        ///
+    case products
     
     /// Hub Menu Tab
     ///
@@ -55,7 +55,7 @@ extension WooTab {
     
     // Note: currently only the Dashboard tab (My Store) view controller is set up in Main.storyboard.
     private static func visibleTabs() -> [WooTab] {
-        [.map, .hubMenu]
+        [.map, .products,.hubMenu]
         //        [.myStore, .orders, .products, .hubMenu]
     }
 }
@@ -91,14 +91,14 @@ final class MainTabBarController: UITabBarController {
     private let dashboardNavigationController = OnsaTabNavigationController()
     private let ordersContainerController = TabContainerController()
     
-    private let productsContainerController = TabContainerController()
+    private let eventsContainerController = TabContainerController()
     
     /// Unfortunately, we can't use the above container to directly hold a WooTabNavigationController, due to
     /// a longstanding bug where a black bar equal to the tab bar height is shown when a nav controller
     /// is shown as an embedded vc in a tab. See link for details, but the solutions don't work here.
     /// https://stackoverflow.com/questions/28608817/uinavigationcontroller-embedded-in-a-container-view-displays-a-table-view-contr
     /// remove when .splitViewInProductsTab is removed.
-    private let productsNavigationController = OnsaTabNavigationController()
+    private let eventsNavigationController = OnsaTabNavigationController()
     
     private let reviewsNavigationController = OnsaTabNavigationController()
     private let hubMenuNavigationController = OnsaTabNavigationController()
@@ -317,7 +317,7 @@ extension MainTabBarController {
     /// Switches to the Products tab and pops to the root view controller
     ///
     static func switchToProductsTab(completion: (() -> Void)? = nil) {
-        //        navigateTo(.products, completion: completion)
+        navigateTo(.products, completion: completion)
     }
     
     /// Switches to the Hub Menu tab and pops to the root view controller
@@ -420,7 +420,7 @@ private extension MainTabBarController {
         viewControllers = {
             var controllers = [UIViewController]()
             
-            let tabs: [WooTab] = [.map, .hubMenu]
+            let tabs: [WooTab] = [.map, .products, .hubMenu]
             tabs.forEach { tab in
                 let tabIndex = tab.visibleIndex()
                 let tabViewController = rootTabViewController(tab: tab)
@@ -435,6 +435,8 @@ private extension MainTabBarController {
         case .map:
             return mapNavigationController
             
+        case .products:
+            return isProductsSplitViewFeatureFlagOn ? eventsContainerController: eventsNavigationController
         case .hubMenu:
             return hubMenuNavigationController
        
@@ -464,7 +466,14 @@ private extension MainTabBarController {
 //        let dashboardViewController = createDashboardViewController()
 //        dashboardNavigationController.viewControllers = [dashboardViewController]
 
-                
+        if isProductsSplitViewFeatureFlagOn {
+            eventsContainerController.wrappedController = EventsSplitViewWrapperController()
+        } else {
+            eventsNavigationController.viewControllers = [
+                EventsViewController(selectedEvent: Empty().eraseToAnyPublisher(),
+                                     navigateToContent: { _ in })
+            ]
+        }
 //        ordersContainerController.wrappedController = createOrdersViewController()
 
         // Configure hub menu tab coordinator once per logged in session potentially with multiple sites.

@@ -15,6 +15,8 @@ public typealias Account = MateNetworking.Account
 public typealias AccountSettings = MateNetworking.AccountSettings
 public typealias APNSDevice = MateNetworking.APNSDevice
 public typealias MateDevice = MateNetworking.MateDevice
+public typealias MateEvent = MateNetworking.MateEvent
+public typealias MateCategory = MateNetworking.MateCategory
 
 public typealias EmailCheck = MateNetworking.EmailCheckData
 public typealias Note = MateNetworking.Note
@@ -28,6 +30,7 @@ public typealias BlazeTargetLanguage = MateNetworking.BlazeTargetLanguage
 // MARK: - Exported Storage Symbols
 
 public typealias LocalAnnouncement = MateStorage.LocalAnnouncement
+public typealias StorageEvent = MateStorage.Event
 
 
 // MARK: - Internal ReadOnly Models

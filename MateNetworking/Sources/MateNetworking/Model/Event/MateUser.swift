@@ -32,4 +32,17 @@ public struct MateUser: Codable {
         case magicLinkToken = "magic_link_token"
         case magicLinkTokenExpiresAt = "magic_link_token_expires_at"
     }
+    
+    init(id: Int?, name: String?, email: String?, providerID: String?, provider: String?, emailVerifiedAt: String?, createdAt: String?, updatedAt: String?, magicLinkToken: String?, magicLinkTokenExpiresAt: String?) {
+        self.id = id
+        self.name = name
+        self.email = email
+        self.providerID = providerID
+        self.provider = provider
+        self.emailVerifiedAt = emailVerifiedAt
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.magicLinkToken = magicLinkToken
+        self.magicLinkTokenExpiresAt = magicLinkTokenExpiresAt
+    }
 }

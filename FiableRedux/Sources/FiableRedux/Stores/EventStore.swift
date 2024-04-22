@@ -56,6 +56,8 @@ final public class EventStore: Store {
                page: page,
                completion: completion
             )
+        case .getNearByEvents(latitude: let latitude, longitude: let longitude, categoryId: let categoryId, completion: let completion):
+            loadNearbyEvents(latitude: latitude, longitude: longitude, categoryId: categoryId, completion: completion)
         }
     }
 }
@@ -81,5 +83,13 @@ private extension EventStore {
         )
         
     }
-
+    
+    func loadNearbyEvents(
+        latitude: Double,
+        longitude: Double,
+        categoryId: Int?,
+        completion: @escaping (Result<[MateEvent], Error>) -> Void
+    ) {
+        remote.getNearbyEvents(latitude: latitude, longitude: longitude, categoryId: categoryId, completion: completion)
+    }
 }

@@ -94,3 +94,4 @@ private extension IndefiniteCircularProgressViewStyle {
             comment: "Accessibility label for an indeterminate loading indicator")
     }
 }
+

@@ -1,4 +1,5 @@
 import SwiftUI
+import FiableFoundation
 
 struct SelectableItemRow: View {
     private let id = UUID()

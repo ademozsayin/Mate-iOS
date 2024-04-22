@@ -1,5 +1,5 @@
 import SwiftUI
-
+import FiableFoundation
 /// View to input a simple text in a full screen view.
 ///
 struct FullScreenTextView: View {

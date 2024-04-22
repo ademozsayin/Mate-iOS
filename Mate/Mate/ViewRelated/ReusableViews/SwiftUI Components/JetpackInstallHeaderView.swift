@@ -1,5 +1,5 @@
 import SwiftUI
-
+import FiableFoundation
 /// Header view on top of the screens in Jetpack Install flows
 ///
 struct JetpackInstallHeaderView: View {

@@ -8,9 +8,9 @@
 import Foundation
 
 // MARK: - Category
-public struct MateCategory: Codable {
-    public let id: Int?
-    public let name: String?
+public struct MateCategory: Codable, Equatable {
+    public let id: Int
+    public let name: String
     public let createdAt: String?
     public let updatedAt: String?
 
@@ -19,5 +19,23 @@ public struct MateCategory: Codable {
         case name = "name"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
+    }
+    
+    public init(id: Int, name: String, createdAt: String?, updatedAt: String?) {
+        self.id = id
+        self.name = name
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
+}
+
+
+// MARK: - Comparable Conformance
+//
+extension MateCategory: Comparable {
+    public static func < (lhs: MateCategory, rhs: MateCategory) -> Bool {
+        return lhs.id < rhs.id ||
+            (lhs.id == rhs.id && lhs.name < rhs.name) ||
+            (lhs.id == rhs.id && lhs.name == rhs.name )
     }
 }

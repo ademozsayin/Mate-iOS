@@ -6,6 +6,11 @@ import GridIcons
 ///
 extension UIImage {
 
+    static var addOutlineImage: UIImage {
+        return UIImage.gridicon(.addOutline)
+    }
+
+    
     /// Woo logo that is displayed on the login prologue.
     ///
     static var wooLogoPrologueImage: UIImage {

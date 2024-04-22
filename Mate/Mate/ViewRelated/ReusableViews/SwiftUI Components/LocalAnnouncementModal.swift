@@ -1,5 +1,5 @@
 import SwiftUI
-
+import FiableFoundation
 /// A modal to announcement a feature locally on the dashboard tab.
 struct LocalAnnouncementModal: View {
     let viewModel: LocalAnnouncementViewModel

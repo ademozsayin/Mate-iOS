@@ -18,11 +18,18 @@ public protocol EventRemoteProtocol {
                     page: Int?,
                     completion: @escaping (Result<EventPayload, Error>) -> Void)
     
+    func getNearbyEvents(
+        latitude: Double,
+        longitude: Double,
+        categoryId: Int?,
+        completion: @escaping (Result<[MateEvent], Error>) -> Void)
+    
 }
 
 /// Events: Remote Endpoints
 ///
 public final class EventRemote: Remote, EventRemoteProtocol {
+   
     public func loadEvents(
         _for type: EventTypeEndpointType,
         latitude: Double?,
@@ -39,10 +46,28 @@ public final class EventRemote: Remote, EventRemoteProtocol {
             categoryId: categoryId,
             page: page
         )
+        
+        
         let mapper = EventPayloadMapper()
 
         enqueue(request, mapper: mapper, completion: completion)
     }
+    
+    public func getNearbyEvents(latitude: Double, longitude: Double, categoryId: Int?, completion: @escaping (Result<[MateEvent], any Error>) -> Void) {
+        
+        let request = requestForEvents(
+            type: .nearBy,
+            latitude: latitude,
+            longitude: longitude,
+            categoryId: categoryId,
+            page: nil
+        )
+        
+        let mapper = NearbyEventMapper()
+
+        enqueue(request, mapper: mapper, completion: completion)
+    }
+    
 }
 
 

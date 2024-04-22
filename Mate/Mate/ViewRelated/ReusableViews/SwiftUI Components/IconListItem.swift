@@ -1,6 +1,6 @@
 import Kingfisher
 import SwiftUI
-
+import FiableFoundation
 /// Represent a row with a title, subtitle and icon. Used to fill up reports such as What's New in WooCommerce
 ///
 struct IconListItem: View {
