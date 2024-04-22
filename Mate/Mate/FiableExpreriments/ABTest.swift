@@ -1,4 +1,3 @@
-import AutomatticTracks
 
 /// ABTest adds A/B testing experiments and runs the tests based on their variations from the ExPlat service.
 ///

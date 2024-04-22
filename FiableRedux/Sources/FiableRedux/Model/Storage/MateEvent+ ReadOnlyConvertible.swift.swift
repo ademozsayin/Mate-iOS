@@ -19,6 +19,7 @@ extension StorageEvent: ReadOnlyConvertible {
     public func update(with event: FiableRedux.MateEvent) {
         id = Int64(event.id)
         title = event.name
+        categoryID = (Int64(event.category?.id ?? 0)) as NSNumber
     }
 
     /// Returns a ReadOnly version of the receiver.
@@ -31,7 +32,7 @@ extension StorageEvent: ReadOnlyConvertible {
         return MateEvent(id: Int(id),
                          name: title,
                          startTime: nil,
-                         categoryID: nil,
+                         categoryID: "\(categoryID ?? 0)",
                          createdAt: nil,
                          updatedAt: nil,
                          userID: nil,

@@ -415,6 +415,9 @@
 		B74AF49A2BD6EDFF00D44F03 /* BottomSheetProductType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF4992BD6EDFF00D44F03 /* BottomSheetProductType.swift */; };
 		B74AF49C2BD6F1FA00D44F03 /* ProductFormViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF49B2BD6F1FA00D44F03 /* ProductFormViewModelProtocol.swift */; };
 		B74AF49E2BD6F26400D44F03 /* ProductFormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF49D2BD6F26400D44F03 /* ProductFormDataModel.swift */; };
+		B74AF4A02BD71FFE00D44F03 /* UIRefreshControl+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF49F2BD71FFE00D44F03 /* UIRefreshControl+Helper.swift */; };
+		B74AF4A22BD7201D00D44F03 /* UIScrollView+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF4A12BD7201D00D44F03 /* UIScrollView+Helpers.swift */; };
+		B74AF4A42BD7204200D44F03 /* GhostStyle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF4A32BD7204200D44F03 /* GhostStyle+Helpers.swift */; };
 		B7C64BAE2BD45AEE00D056FC /* LocationPermissionDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BAD2BD45AEE00D056FC /* LocationPermissionDeniedView.swift */; };
 		B7C64BB02BD45B0C00D056FC /* LocationPreviewLookAroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BAF2BD45B0C00D056FC /* LocationPreviewLookAroundView.swift */; };
 		B7C64BB22BD49B3500D056FC /* Tabbar+Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BB12BD49B3500D056FC /* Tabbar+Modifier.swift */; };
@@ -811,6 +814,9 @@
 		B74AF4992BD6EDFF00D44F03 /* BottomSheetProductType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetProductType.swift; sourceTree = "<group>"; };
 		B74AF49B2BD6F1FA00D44F03 /* ProductFormViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFormViewModelProtocol.swift; sourceTree = "<group>"; };
 		B74AF49D2BD6F26400D44F03 /* ProductFormDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFormDataModel.swift; sourceTree = "<group>"; };
+		B74AF49F2BD71FFE00D44F03 /* UIRefreshControl+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Helper.swift"; sourceTree = "<group>"; };
+		B74AF4A12BD7201D00D44F03 /* UIScrollView+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Helpers.swift"; sourceTree = "<group>"; };
+		B74AF4A32BD7204200D44F03 /* GhostStyle+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GhostStyle+Helpers.swift"; sourceTree = "<group>"; };
 		B7C64BAD2BD45AEE00D056FC /* LocationPermissionDeniedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPermissionDeniedView.swift; sourceTree = "<group>"; };
 		B7C64BAF2BD45B0C00D056FC /* LocationPreviewLookAroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPreviewLookAroundView.swift; sourceTree = "<group>"; };
 		B7C64BB12BD49B3500D056FC /* Tabbar+Modifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tabbar+Modifier.swift"; sourceTree = "<group>"; };
@@ -956,6 +962,9 @@
 				0D9E99D72BCED04400276FF0 /* Data+Mate.swift */,
 				0D8798EB2BD3169000BC5443 /* Event+Coordinate.swift */,
 				B74AF42A2BD6B3BD00D44F03 /* UIAlertController+Helpers.swift */,
+				B74AF49F2BD71FFE00D44F03 /* UIRefreshControl+Helper.swift */,
+				B74AF4A12BD7201D00D44F03 /* UIScrollView+Helpers.swift */,
+				B74AF4A32BD7204200D44F03 /* GhostStyle+Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -2120,6 +2129,7 @@
 				B74AF4742BD6DF8C00D44F03 /* ProductsTabProductTableViewCell.swift in Sources */,
 				0DCA8B502BC7199C0052BA12 /* TopBannerView.swift in Sources */,
 				0DA8EFDD2BAF9D60001EF5BF /* Keychain+Entries.swift in Sources */,
+				B74AF4A22BD7201D00D44F03 /* UIScrollView+Helpers.swift in Sources */,
 				0DA8EFB62BAF9D60001EF5BF /* WooSetupWebViewModel.swift in Sources */,
 				0DC2348C2BA7BAF200414B13 /* CrashLoggingStack.swift in Sources */,
 				0DAF0ABA2BBFEBE0004E9036 /* View+ScrollModifier.swift in Sources */,
@@ -2293,6 +2303,7 @@
 				0D9856E32BADFBE3008F96E9 /* PushNotificationsManager.swift in Sources */,
 				B74AF4052BD6AD3500D44F03 /* ScrollWatcher.swift in Sources */,
 				0D9856C02BAD1B7F008F96E9 /* KeyboardFrameAdjustmentProvider.swift in Sources */,
+				B74AF4A02BD71FFE00D44F03 /* UIRefreshControl+Helper.swift in Sources */,
 				0DA8EF802BAF9D5F001EF5BF /* SiteCredentialLoginUseCase.swift in Sources */,
 				0DA8EF6E2BAF9D5F001EF5BF /* ApplicationPasswordTutorial.swift in Sources */,
 				0DAA47F22BCD42CC00D16224 /* HeadlineTableViewCell.swift in Sources */,
@@ -2371,6 +2382,7 @@
 				0DA8EF722BAF9D5F001EF5BF /* LoggedOutAppSettingsProtocol.swift in Sources */,
 				0D8D38282BBC362700B362DD /* LargeTitle.swift in Sources */,
 				B74AF4692BD6DF8C00D44F03 /* ExtendedAddProductImageCollectionViewCell.swift in Sources */,
+				B74AF4A42BD7204200D44F03 /* GhostStyle+Helpers.swift in Sources */,
 				B74AF3F92BD6A4BF00D44F03 /* BottomSheetListSelector.swift in Sources */,
 				B74AF4092BD6ADAB00D44F03 /* PaginatedListViewControllerStateCoordinator.swift in Sources */,
 				0DAA48002BCD476E00D16224 /* AppRatingManager.swift in Sources */,

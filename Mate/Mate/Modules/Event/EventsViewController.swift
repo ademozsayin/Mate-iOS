@@ -20,6 +20,7 @@ import class AutomatticTracks.CrashLogging
 ///
 final class EventsViewController: UIViewController, GhostableViewController {
     
+    
     enum NavigationContentType {
         case productForm(product: MateEvent)
         case addProduct(sourceView: AddEventCoordinator.SourceView, isFirstProduct: Bool)
@@ -46,7 +47,11 @@ final class EventsViewController: UIViewController, GhostableViewController {
     ///
     private lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(pullToRefresh(sender:)), for: .valueChanged)
+        refreshControl.addTarget(
+            self,
+            action: #selector(pullToRefresh(sender:)),
+            for: .valueChanged
+        )
         return refreshControl
     }()
 
@@ -91,19 +96,6 @@ final class EventsViewController: UIViewController, GhostableViewController {
     // Used to trick the navigation bar for large title (ref: issue 3 in p91TBi-45c-p2).
     private let hiddenScrollView = UIScrollView()
 
-    /// The filter CTA in the top toolbar.
-    private lazy var filterButton: UIButton = UIButton(frame: .zero)
-
-    /// The bulk edit CTA in the navbar.
-    private lazy var bulkEditButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(title: Localization.bulkEditingToolbarButtonTitle,
-                                     style: .plain,
-                                     target: self,
-                                     action: #selector(openBulkEditingOptions(sender:)))
-        button.isEnabled = false
-        return button
-    }()
-
     /// Container of the top banner that shows that the Products feature is still work in progress.
     ///
     private lazy var topBannerContainerView: SwappableSubviewContainerView = SwappableSubviewContainerView()
@@ -112,33 +104,9 @@ final class EventsViewController: UIViewController, GhostableViewController {
     ///
     private var topBannerView: TopBannerView?
 
-    /// ResultsController: Surrounds us. Binds the galaxy together. And also, keeps the UITableView <> (Stored) Products in sync.
-    ///
-//    private lazy var resultsController: ResultsController<StorageEvent> = {
-//        let resultsController = createResultsController(siteID: siteID)
-//        configureResultsController(resultsController, onReload: { [weak self] in
-//            guard let self else { return }
-//            self.reloadTableAndView()
-//        })
-//        return resultsController
-//    }()
 
 //    private var selectedEventListener: EntityListener<MateEvent>?
 
-    private var sortOrder: EventsSortOrder = .default {
-        didSet {
-            if sortOrder != oldValue {
-//                updateLocalProductSettings(sort: sortOrder,
-//                                           filters: filters)
-//                resultsController.updateSortOrder(sortOrder)
-//
-//                /// Reload data because `updateSortOrder` generates a new `predicate` which calls `performFetch`
-//                tableView.reloadData()
-//
-//                paginationTracker.resync()
-            }
-        }
-    }
 
     /// Keep track of the (Autosizing Cell's) Height. This helps us prevent UI flickers, due to sizing recalculations.
     ///
@@ -146,13 +114,14 @@ final class EventsViewController: UIViewController, GhostableViewController {
 
     /// Indicates if there are no results onscreen.
     ///
-    private var isEmpty: Bool {
-        return true//resultsController.isEmpty
+    private var isEmpty: Bool = true {
+        didSet {
+            print("isEmpty: \(isEmpty)")
+        }
     }
 
     /// Supports infinite scroll.
     private let scrollWatcher = ScrollWatcher()
-    private let paginationTracker: PaginationTracker
     private var scrollWatcherSubscription: AnyCancellable?
 
     private lazy var stateCoordinator: PaginatedListViewControllerStateCoordinator = {
@@ -166,26 +135,6 @@ final class EventsViewController: UIViewController, GhostableViewController {
 
 //    private let imageService: ImageService = ServiceLocator.imageService
 
-    private var filters: FilterProductListViewModel.Filters = FilterProductListViewModel.Filters() {
-        didSet {
-            if filters != oldValue ||
-                categoryHasChangedRemotely {
-//                updateLocalProductSettings(sort: sortOrder,
-//                                           filters: filters)
-                updateFilterButtonTitle(filters: filters)
-
-//                resultsController.updatePredicate(siteID: siteID,
-//                                                  stockStatus: filters.stockStatus,
-//                                                  productStatus: filters.productStatus,
-//                                                  productType: filters.promotableProductType?.productType)
-
-                /// Reload because `updatePredicate` calls `performFetch` when creating a new predicate
-                tableView.reloadData()
-
-                paginationTracker.resync()
-            }
-        }
-    }
 
     /// Set to `true` when a category is applied to the product filters and the value has changed after a remote sync.
     private var categoryHasChangedRemotely: Bool = false
@@ -229,7 +178,7 @@ final class EventsViewController: UIViewController, GhostableViewController {
         self.selectedEvent = selectedEvent
         self.isSplitViewEnabled = featureFlagService.isFeatureFlagEnabled(.splitViewInProductsTab)
         self.navigateToContent = navigateToContent
-        self.paginationTracker = PaginationTracker()
+//        self.paginationTracker = PaginationTracker()
         super.init(nibName: type(of: self).nibName, bundle: nil)
 
         configureTabBarItem()
@@ -250,22 +199,23 @@ final class EventsViewController: UIViewController, GhostableViewController {
         configureHiddenScrollView()
         configureToolbar()
         configureScrollWatcher()
-        configurePaginationTracker()
-//        configureStorePlanBannerPresenter()
         registerTableViewCells()
 
         showTopBannerViewIfNeeded()
-        syncProductsSettings()
-        observeSelectedProductAndDataLoadedStateToUpdateSelectedRow()
-        observeSelectedProductToAutoScrollWhenProductChanges()
+       
+        stateCoordinator.transitionToLoadingState()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+           // Code you want to be delayed
+//            self.isEmpty = false
+//            self.transitionToResultsUpdatedState()
+            
+            self.stateCoordinator.transitionToResultsUpdatedState(hasData: false)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if AppRatingManager.shared.shouldPromptForAppReview() {
-//            displayRatingPrompt()
-        }
 
         // Fix any incomplete animation of the refresh control
         // when switching tabs mid-animation
@@ -281,8 +231,6 @@ final class EventsViewController: UIViewController, GhostableViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-        finishBulkEditing()
     }
 
     override func viewDidLayoutSubviews() {
@@ -371,27 +319,8 @@ private extension EventsViewController {
         showOrHideToolbar()
     }
 
-    @objc func finishBulkEditing() {
-        guard let tableView, tableView.isEditing else {
-            return
-        }
-
-        viewModel.deselectAll()
-        tableView.setEditing(false, animated: true)
-        onTableViewEditingEnd.send(())
-
-        bulkEditButton.isEnabled = false
-
-        // Enable pull-to-refresh
-        tableView.addSubview(refreshControl)
-
-        configureNavigationBar()
-        showOrHideToolbar()
-    }
-
     func updatedSelectedItems() {
         updateNavigationBarTitleForEditing()
-        bulkEditButton.isEnabled = viewModel.bulkEditActionIsEnabled
     }
 
     @objc func selectAllProducts() {
@@ -402,118 +331,8 @@ private extension EventsViewController {
         tableView.reloadRows(at: tableView.indexPathsForVisibleRows ?? [], with: .none)
     }
 
-    @objc func openBulkEditingOptions(sender: UIBarButtonItem) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-        let updateStatus = UIAlertAction(title: Localization.bulkEditingStatusOption, style: .default) { [weak self] _ in
-            self?.showStatusBulkEditingModal()
-        }
-        let updatePrice = UIAlertAction(title: Localization.bulkEditingPriceOption, style: .default) { [weak self] _ in
-            self?.showPriceBulkEditingModal()
-        }
-        let cancelAction = UIAlertAction(title: Localization.cancel, style: .cancel)
-
-        actionSheet.addAction(updateStatus)
-//        if !viewModel.onlyPriceIncompatibleProductsSelected {
-//            actionSheet.addAction(updatePrice)
-//        }
-        actionSheet.addAction(cancelAction)
-
-        if let popoverController = actionSheet.popoverPresentationController {
-            popoverController.barButtonItem = sender
-        }
-
-        present(actionSheet, animated: true)
-    }
-
-    func showStatusBulkEditingModal() {
-//        ServiceLocator.analytics.track(event: .ProductsList.bulkUpdateRequested(field: .status, selectedProductsCount: viewModel.selectedProductsCount))
-
-//        let initialStatus = viewModel.commonStatusForSelectedProducts
-//        let command = ProductStatusSettingListSelectorCommand(selected: initialStatus)
-//        let listSelectorViewController = ListSelectorViewController(command: command) { _ in
-//            // view dismiss callback - no-op
-//        }
-//        listSelectorViewController.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-//                                                                                      target: self,
-//                                                                                      action: #selector(dismissModal))
-//
-//        let applyButton = UIBarButtonItem(title: Localization.bulkEditingApply)
-//        applyButton.on(call: { [weak self] _ in
-//            self?.applyBulkEditingStatus(newStatus: command.selected, modalVC: listSelectorViewController)
-//        })
-//        command.$selected.sink { newStatus in
-//            if let newStatus, newStatus != initialStatus {
-//                applyButton.isEnabled = true
-//            } else {
-//                applyButton.isEnabled = false
-//            }
-//        }.store(in: &subscriptions)
-//        listSelectorViewController.navigationItem.rightBarButtonItem = applyButton
-//
-//        present(OnsaNavigationController(rootViewController: listSelectorViewController), animated: true)
-    }
-
     @objc func dismissModal() {
         dismiss(animated: true)
-    }
-
-//    func applyBulkEditingStatus(newStatus: ProductStatus?, modalVC: UIViewController) {
-//        guard let newStatus else { return }
-//
-//        ServiceLocator.analytics.track(event: .ProductsList.bulkUpdateConfirmed(field: .status, selectedProductsCount: viewModel.selectedProductsCount))
-//
-//        displayProductsSavingInProgressView(on: modalVC)
-//        viewModel.updateSelectedProducts(with: newStatus) { [weak self] result in
-//            guard let self else { return }
-//
-//            self.dismiss(animated: true, completion: nil)
-//            switch result {
-//            case .success:
-//                self.finishBulkEditing()
-//                self.presentNotice(title: Localization.statusUpdatedNotice)
-//                ServiceLocator.analytics.track(event: .ProductsList.bulkUpdateSuccess(field: .status))
-//            case .failure:
-//                self.presentNotice(title: Localization.updateErrorNotice)
-//                ServiceLocator.analytics.track(event: .ProductsList.bulkUpdateFailure(field: .status))
-//            }
-//        }
-//    }
-
-    func showPriceBulkEditingModal() {
-//        ServiceLocator.analytics.track(event: .ProductsList.bulkUpdateRequested(field: .price, selectedProductsCount: viewModel.selectedProductsCount))
-//
-//        let priceInputViewModel = PriceInputViewModel(productListViewModel: viewModel)
-//        let priceInputViewController = PriceInputViewController(viewModel: priceInputViewModel)
-//        priceInputViewModel.cancelClosure = { [weak self] in
-//            self?.dismissModal()
-//        }
-//        priceInputViewModel.applyClosure = { [weak self] newPrice in
-//            self?.applyBulkEditingPrice(newPrice: newPrice, modalVC: priceInputViewController)
-//        }
-//        present(WooNavigationController(rootViewController: priceInputViewController), animated: true)
-    }
-
-    func applyBulkEditingPrice(newPrice: String?, modalVC: UIViewController) {
-//        guard let newPrice else { return }
-//
-//        ServiceLocator.analytics.track(event: .ProductsList.bulkUpdateConfirmed(field: .price, selectedProductsCount: viewModel.selectedProductsCount))
-//
-//        displayProductsSavingInProgressView(on: modalVC)
-//        viewModel.updateSelectedProducts(with: newPrice) { [weak self] result in
-//            guard let self else { return }
-//
-//            self.dismiss(animated: true, completion: nil)
-//            switch result {
-//            case .success:
-//                self.finishBulkEditing()
-//                self.presentNotice(title: Localization.priceUpdatedNotice)
-//                ServiceLocator.analytics.track(event: .ProductsList.bulkUpdateSuccess(field: .price))
-//            case .failure:
-//                self.presentNotice(title: Localization.updateErrorNotice)
-//                ServiceLocator.analytics.track(event: .ProductsList.bulkUpdateFailure(field: .price))
-//            }
-//        }
     }
 
     func displayProductsSavingInProgressView(on vc: UIViewController) {
@@ -551,7 +370,7 @@ private extension EventsViewController {
     ///
     func configureNavigationBar() {
         navigationItem.title = NSLocalizedString(
-            "Products",
+            "Events",
             comment: "Title that appears on top of the Product List screen (plural form of the word Product)."
         )
         configureNavigationBarRightButtonItems()
@@ -568,9 +387,9 @@ private extension EventsViewController {
                                          target: self,
                                          action: #selector(displaySearchProducts))
             button.accessibilityTraits = .button
-            button.accessibilityLabel = NSLocalizedString("Search products", comment: "Search Products")
+            button.accessibilityLabel = NSLocalizedString("Search events", comment: "Search events")
             button.accessibilityHint = NSLocalizedString(
-                "Retrieves a list of products that contain a given keyword.",
+                "Retrieves a list of events that contain a given keyword.",
                 comment: "VoiceOver accessibility hint, informing the user the button can be used to search products."
             )
             button.accessibilityIdentifier = "product-search-button"
@@ -579,18 +398,6 @@ private extension EventsViewController {
         }()
         rightBarButtonItems.append(searchItem)
 
-        let bulkEditItem: UIBarButtonItem = {
-            let button = UIBarButtonItem(image: .multiSelectIcon,
-                                         style: .plain,
-                                         target: self,
-                                         action: #selector(startBulkEditing))
-            button.accessibilityTraits = .button
-            button.accessibilityLabel = Localization.bulkEditingNavBarButtonTitle
-            button.accessibilityHint = Localization.bulkEditingNavBarButtonHint
-
-            return button
-        }()
-        rightBarButtonItems.append(bulkEditItem)
 
 
         navigationItem.rightBarButtonItems = rightBarButtonItems
@@ -598,7 +405,6 @@ private extension EventsViewController {
 
     func configureNavigationBarForEditing() {
         updateNavigationBarTitleForEditing()
-        configureNavigationBarItemsForEditing()
     }
 
     func updateNavigationBarTitleForEditing() {
@@ -610,13 +416,6 @@ private extension EventsViewController {
         }
     }
 
-    func configureNavigationBarItemsForEditing() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
-                                                           target: self,
-                                                           action: #selector(finishBulkEditing))
-        navigationItem.rightBarButtonItems = [bulkEditButton]
-    }
-
     /// Apply Woo styles.
     ///
     func configureMainView() {
@@ -624,7 +423,7 @@ private extension EventsViewController {
     }
 
     func configureTabBarItem() {
-        tabBarItem.title = NSLocalizedString("Products", comment: "Title of the Products tab — plural form of Product")
+        tabBarItem.title = "asdas"//NSLocalizedString("Events", comment: "Title of the Events tab — plural form of Events")
         tabBarItem.image = .productImage
         tabBarItem.accessibilityIdentifier = "tab-bar-products-item"
     }
@@ -685,26 +484,8 @@ private extension EventsViewController {
     }
 
     private func setupToolbar() {
-        let sortTitle = NSLocalizedString("Sort by", comment: "Title of the toolbar button to sort products in different ways.")
-        let sortButton = UIButton(frame: .zero)
-        sortButton.setTitle(sortTitle, for: .normal)
-        sortButton.addTarget(self, action: #selector(sortButtonTapped(sender:)), for: .touchUpInside)
-
-        let filterTitle = NSLocalizedString("Filter", comment: "Title of the toolbar button to filter products by different attributes.")
-        filterButton.setTitle(filterTitle, for: .normal)
-        filterButton.addTarget(self, action: #selector(filterButtonTapped), for: .touchUpInside)
-        filterButton.accessibilityIdentifier = "product-filter-button"
-
-        [sortButton, filterButton].forEach {
-            $0.applyLinkButtonStyle()
-            var configuration = UIButton.Configuration.plain()
-            configuration.contentInsets = Constants.toolbarButtonInsets
-            $0.configuration = configuration
-        }
-
-        toolbar.backgroundColor = .systemColor(.secondarySystemGroupedBackground)
-        toolbar.setSubviews(leftViews: [sortButton], rightViews: [filterButton])
-
+    
+    
         toolbarBottomSeparator.backgroundColor = .systemColor(.separator)
         toolbarBottomSeparatorHeightConstraint.constant = 1.0 / UIScreen.main.scale
     }
@@ -713,17 +494,10 @@ private extension EventsViewController {
         scrollWatcher.startObservingScrollPosition(tableView: tableView)
     }
 
-    func configurePaginationTracker() {
-        paginationTracker.delegate = self
-//        scrollWatcherSubscription = scrollWatcher.trigger.sink { [weak self] _ in
-//            self?.paginationTracker.ensureNextPageIsSynced()
-//        }
-    }
-
     /// Register table cells.
     ///
     func registerTableViewCells() {
-//        tableView.register(ProductsTabProductTableViewCell.self)
+        tableView.register(ProductsTabProductTableViewCell.self)
     }
 
     /// Show or hide the toolbar based on number of products
@@ -737,7 +511,7 @@ private extension EventsViewController {
             return
         }
 
-        toolbar.isHidden = filters.numberOfActiveFilters == 0 ? isEmpty : false
+//        toolbar.isHidden = filters.numberOfActiveFilters == 0 ? isEmpty : false
     }
 
 }
@@ -745,7 +519,7 @@ private extension EventsViewController {
 // MARK: - Updates
 //
 private extension EventsViewController {
-
+    
     /// Slightly reveal swipe actions of the first visible cell that contains at least one swipe action.
     /// This action is performed only once, using `swipeActionsGlanced` as a control variable.
     ///
@@ -837,73 +611,6 @@ private extension EventsViewController {
             return
         }
         displayNoResultsOverlay()
-    }
-
-    /// We sync the local product settings for configuring local sorting and filtering.
-    /// If there are some info stored when this screen is loaded, the data will be updated using the stored sort/filters.
-    /// If any of the filters has to be synchronize remotely, it is done so after the filters are loaded, and the data updated if necessary.
-    /// If no info are stored (so there is a failure), we resynchronize the syncingCoordinator for updating the screen using the default sort/filters.
-    ///
-    func syncProductsSettings() {
-
-    }
-
-    func observeSelectedProductAndDataLoadedStateToUpdateSelectedRow() {
-//        Publishers.CombineLatest3(selectedEvent,
-//                                  // Giving it an initial value to enable the combined publisher from the beginning.
-//                                  onDataReloaded.merge(with: Just<Void>(())),
-//                                  // Giving it an initial value to enable the combined publisher from the beginning.
-//                                  onTableViewEditingEnd.merge(with: Just<Void>(())))
-//            .map { $0.0 }
-//            .withPrevious()
-//            .sink { [weak self] previousSelectedProduct, selectedEvent in
-//                guard let self else { return }
-//
-//                let currentSelectedIndexPath = tableView.indexPathForSelectedRow
-//                let selectedIndexPath = selectedProduct != nil ? resultsController.indexPath(forObjectMatching: {
-//                    $0.productID == selectedProduct?.productID
-//                }): nil
-//                if let selectedIndexPath {
-//                    guard currentSelectedIndexPath != selectedIndexPath else {
-//                        return
-//                    }
-//                    if let currentSelectedIndexPath {
-//                        tableView.deselectRow(at: currentSelectedIndexPath, animated: false)
-//                    }
-//
-//                    let scrollPosition: UITableView.ScrollPosition = {
-//                        let hasSelectedProductChanged = (selectedProduct != previousSelectedProduct)
-//                        guard hasSelectedProductChanged else { return .none }
-//                        let isSelectedIndexPathVisible = self.isIndexPathVisible(selectedIndexPath)
-//                        return isSelectedIndexPathVisible ? .none : .middle
-//                    }()
-//
-//                    tableView.selectRow(at: selectedIndexPath, animated: false, scrollPosition: scrollPosition)
-//                } else if let currentSelectedIndexPath {
-//                    tableView.deselectRow(at: currentSelectedIndexPath, animated: false)
-//                }
-//            }
-//            .store(in: &subscriptions)
-    }
-
-    func observeSelectedProductToAutoScrollWhenProductChanges() {
-        selectedEvent.compactMap { $0 }
-            .sink { [weak self] selectedEvent in
-                self?.listenToSelectedProductToAutoScrollWhenProductChanges(product: selectedEvent)
-            }
-            .store(in: &subscriptions)
-    }
-
-    func listenToSelectedProductToAutoScrollWhenProductChanges(product: MateEvent) {
-//        selectedProductListener = .init(storageManager: ServiceLocator.storageManager, readOnlyEntity: product)
-//        selectedProductListener?.onUpsert = { [weak self] product in
-//            guard let self,
-//                  let selectedIndexPath = tableView.indexPathForSelectedRow,
-//                  !isIndexPathVisible(selectedIndexPath) else {
-//                return
-//            }
-//            tableView.scrollToRow(at: selectedIndexPath, at: .middle, animated: false)
-//        }
     }
 
     func isIndexPathVisible(_ indexPath: IndexPath) -> Bool {
@@ -1058,50 +765,19 @@ private extension EventsViewController {
 //
 private extension EventsViewController {
     @objc private func pullToRefresh(sender: UIRefreshControl) {
-        ServiceLocator.analytics.track(.productListPulledToRefresh)
+//        ServiceLocator.analytics.track(.productListPulledToRefresh)
 
-        paginationTracker.resync {
-            sender.endRefreshing()
-        }
-    }
-
-    @objc func sortButtonTapped(sender: UIButton) {
-//        ServiceLocator.analytics.track(.productListViewSortingOptionsTapped)
-//        let title = NSLocalizedString("Sort by",
-//                                      comment: "Message title for sort products action bottom sheet")
-//        let viewProperties = BottomSheetListSelectorViewProperties(subtitle: title)
-//        let command = ProductsSortOrderBottomSheetListSelectorCommand(selected: sortOrder) { [weak self] selectedSortOrder in
-//            self?.dismiss(animated: true, completion: nil)
-//            guard let selectedSortOrder = selectedSortOrder as ProductsSortOrder? else {
-//                    return
-//                }
-//            self?.sortOrder = selectedSortOrder
+        sender.endRefreshing()
+        
+//        refreshControl.resetAnimation(in: tableView) { [unowned self] in
+//            // ghost animation is also removed after switching tabs
+//            // show make sure it's displayed again
+//            self.refreshControl.endRefreshing()
+//            self.removeGhostContent()
+//            self.displayGhostContent(over: tableView)
 //        }
-//        let sortOrderListPresenter = BottomSheetListSelectorPresenter(viewProperties: viewProperties,
-//                                                                      command: command)
-//
-//        sortOrderListPresenter.show(from: self, sourceView: sender, arrowDirections: .up)
-    }
 
-    @objc func filterButtonTapped() {
-//        ServiceLocator.analytics.track(event: .ProductListFilter.productListViewFilterOptionsTapped(source: .productsTab))
-//        let viewModel = FilterProductListViewModel(filters: filters, siteID: siteID)
-//        let filterProductListViewController = FilterListViewController(viewModel: viewModel, onFilterAction: { [weak self] filters in
-//            ServiceLocator.analytics.track(event: .ProductListFilter.productFilterListShowProductsButtonTapped(source: .productsTab, filters: filters))
-//            self?.filters = filters
-//        }, onClearAction: {
-//            ServiceLocator.analytics.track(.productFilterListClearMenuButtonTapped)
-//        }, onDismissAction: {
-//            ServiceLocator.analytics.track(.productFilterListDismissButtonTapped)
-//        })
-//        present(filterProductListViewController, animated: true, completion: nil)
     }
-
-    func clearFilter(sourceBarButtonItem: UIBarButtonItem? = nil, sourceView: UIView? = nil) {
-        ServiceLocator.analytics.track(.productListClearFiltersTapped)
-        filters = FilterProductListViewModel.Filters()
-    }
-
     /// Presents productsFeedback survey.
     ///
     func presentProductsFeedback() {
@@ -1131,21 +807,17 @@ private extension EventsViewController {
     }
 
     func createFilterConfig() ->  EmptyStateViewController.Config {
-        if filters.numberOfActiveFilters == 0 {
-            return createNoProductsConfig()
-        } else {
-            return createNoProductsMatchFilterConfig()
-        }
+        return createNoProductsConfig()
     }
 
     /// Creates EmptyStateViewController.Config for no products empty view
     ///
     func createNoProductsConfig() ->  EmptyStateViewController.Config {
-        let message = NSLocalizedString("No products yet",
+        let message = NSLocalizedString("No events yet",
                                         comment: "The text on the placeholder overlay when there are no products on the Products tab")
-        let details = NSLocalizedString("Start selling today by adding your first product to the store.",
+        let details = NSLocalizedString("Start creating event today join your first event.",
                                         comment: "The details on the placeholder overlay when there are no products on the Products tab")
-        let buttonTitle = NSLocalizedString("Add Product",
+        let buttonTitle = NSLocalizedString("Add Event",
                                             comment: "Action to add product on the placeholder overlay when there are no products on the Products tab")
         return EmptyStateViewController.Config.withButton(
             message: .init(string: message),
@@ -1160,25 +832,6 @@ private extension EventsViewController {
             })
     }
 
-    /// Creates EmptyStateViewController.Config for no products match the filter empty view
-    ///
-    func createNoProductsMatchFilterConfig() ->  EmptyStateViewController.Config {
-        let message = NSLocalizedString("No matching products found",
-                                        comment: "The text on the placeholder overlay when no products match the filter on the Products tab")
-        let buttonTitle = NSLocalizedString("Clear Filters",
-                                            comment: "Action to add product on the placeholder overlay when no products match the filter on the Products tab")
-        return EmptyStateViewController.Config.withButton(
-            message: .init(string: message),
-            image: .emptyProductsTabImage,
-            details: "",
-            buttonTitle: buttonTitle,
-            onTap: { [weak self] button in
-                self?.clearFilter(sourceView: button)
-            },
-            onPullToRefresh: { [weak self] refreshControl in
-                self?.pullToRefresh(sender: refreshControl)
-            })
-    }
 
     /// Shows the EmptyStateViewController as a child view controller.
     ///
@@ -1213,17 +866,7 @@ private extension EventsViewController {
 
 }
 
-// MARK: - Sync'ing Helpers
-//
-extension EventsViewController: PaginationTrackerDelegate {
-    func sync(pageNumber: Int, pageSize: Int, reason: String?, onCompletion: SyncCompletion?) {
-        
-    }
-    
-}
-
 // MARK: - Finite State Machine Management
-//
 private extension EventsViewController {
 
     func didEnter(state: PaginatedListViewControllerState) {
@@ -1244,6 +887,8 @@ private extension EventsViewController {
             }
         case .results:
             glanceTrailingActionsIfNeeded()
+        case .loading:
+            displayGhostContent(over: tableView)
         }
     }
 
@@ -1252,6 +897,11 @@ private extension EventsViewController {
         case .noResultsPlaceholder:
             removeAllOverlays()
         case .syncing:
+            ensureFooterSpinnerIsStopped()
+            removeGhostContent()
+            showTopBannerViewIfNeeded()
+            showOrHideToolbar()
+        case .loading:
             ensureFooterSpinnerIsStopped()
             removeGhostContent()
             showTopBannerViewIfNeeded()
@@ -1267,24 +917,6 @@ private extension EventsViewController {
 
     func transitionToResultsUpdatedState() {
         stateCoordinator.transitionToResultsUpdatedState(hasData: !isEmpty)
-    }
-}
-
-// MARK: - Filter UI Helpers
-//
-private extension EventsViewController {
-    func updateFilterButtonTitle(filters: FilterProductListViewModel.Filters) {
-        let activeFilterCount = filters.numberOfActiveFilters
-
-        let titleWithoutActiveFilters =
-            NSLocalizedString("Filter", comment: "Title of the toolbar button to filter products without any filters applied.")
-        let titleFormatWithActiveFilters =
-            NSLocalizedString("Filter (%ld)", comment: "Title of the toolbar button to filter products with filters applied.")
-
-        let title = activeFilterCount > 0 ?
-            String.localizedStringWithFormat(titleFormatWithActiveFilters, activeFilterCount): titleWithoutActiveFilters
-
-        filterButton.setTitle(title, for: .normal)
     }
 }
 
@@ -1366,56 +998,4 @@ private extension EventsViewController {
 }
 
 
-extension UIRefreshControl {
-    /// Reset animation of refresh control by forcing refreshing animation again
-    func resetAnimation(in scrollView: UIScrollView, completion: (() -> Void)? = nil) {
-        if isRefreshing {
-            endRefreshing()
-            scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y - frame.size.height), animated: true)
-            beginRefreshing()
-            completion?()
-        }
-    }
-}
 
-
-extension UIScrollView {
-    /// Configures a scroll view to be hidden and used to relay scroll action from any of the multiple scroll views in the view hierarchy below.
-    func configureForLargeTitleWorkaround() {
-        contentInsetAdjustmentBehavior = .never
-        isHidden = true
-        bounces = false
-    }
-
-    /// Updates the hidden scroll view from `scrollViewDidScroll` events from another `UIScrollView`.
-    /// - Parameter scrollView: the scroll view where `scrollViewDidScroll` events are triggered.
-    func updateFromScrollViewDidScrollEventForLargeTitleWorkaround(_ scrollView: UIScrollView) {
-        contentSize = scrollView.contentSize
-        contentOffset = scrollView.contentOffset
-        panGestureRecognizer.state = scrollView.panGestureRecognizer.state
-    }
-}
-
-extension UIView {
-    @discardableResult
-    public func constrainToSuperview(attribute: NSLayoutConstraint.Attribute,
-                                     relatedBy relation: UIKit.NSLayoutConstraint.Relation = .equal,
-                                     constant: CoreGraphics.CGFloat = 0) -> UIKit.NSLayoutConstraint {
-        NSLayoutConstraint(item: self,
-                           attribute: attribute,
-                           relatedBy: relation,
-                           toItem: superview,
-                           attribute: attribute,
-                           multiplier: 1,
-                           constant: constant)
-    }
-}
-
-///
-extension GhostStyle {
-    static var wooDefaultGhostStyle: Self {
-        return GhostStyle(beatDuration: Defaults.beatDuration,
-                          beatStartColor: .listForeground(modal: false),
-                          beatEndColor: .ghostCellAnimationEndColor)
-    }
-}

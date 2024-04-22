@@ -17,5 +17,5 @@ extension Event {
 
     @NSManaged public var id: Int64
     @NSManaged public var title: String?
-
+    @NSManaged public var categoryID: NSNumber?
 }

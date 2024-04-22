@@ -37,9 +37,9 @@ public enum BottomSheetProductType: Hashable, Identifiable {
         case 1:
             return MateCategory(id: 1, name: "Football", createdAt: nil, updatedAt: nil)
         case 2:
-            return MateCategory(id: 2, name: "Football", createdAt: nil, updatedAt: nil)
+            return MateCategory(id: 2, name: "Basketball", createdAt: nil, updatedAt: nil)
         case 3:
-            return MateCategory(id: 3, name: "Football", createdAt: nil, updatedAt: nil)
+            return MateCategory(id: 3, name: "Tennis", createdAt: nil, updatedAt: nil)
         default:
             return MateCategory(id: 1, name: "Football", createdAt: nil, updatedAt: nil)
         }
@@ -54,18 +54,18 @@ public enum BottomSheetProductType: Hashable, Identifiable {
   
         case .football:
             return NSLocalizedString(
-                "bottomSheetProductType.variable.title",
-                value: "Variable product",
+                "Football",
+                value: "Football",
                 comment: "Action sheet option when the user wants to change the Product type to varible product")
         case .basketball:
             return NSLocalizedString(
-                "bottomSheetProductType.grouped.title",
-                value: "Grouped product",
+                "Basketball",
+                value: "Basketball",
                 comment: "Action sheet option when the user wants to change the Product type to grouped product")
         case .tenins:
             return NSLocalizedString(
-                "bottomSheetProductType.affiliate.title",
-                value: "External product",
+                "Tennis",
+                value: "Tennis",
                 comment: "Action sheet option when the user wants to change the Product type to external product")
     
         }
@@ -78,18 +78,15 @@ public enum BottomSheetProductType: Hashable, Identifiable {
      
         case .football:
             return NSLocalizedString(
-                "bottomSheetProductType.variable.description",
-                value: "A product with variations like color or size",
+                "If you're setting up a football form, the default maximum capacity is 12 players. Feel free to modify this value to suit your requirements before proceeding.",
                 comment: "Description of the Action sheet option when the user wants to change the Product type to variable product")
         case .basketball:
             return NSLocalizedString(
-                "bottomSheetProductType.grouped.description",
-                value: "A collection of related products",
+                "For basketball forms, the default maximum number of players is 10, but you can adjust this value as needed before creating the form",
                 comment: "Description of the Action sheet option when the user wants to change the Product type to grouped product")
         case .tenins:
             return NSLocalizedString(
-                "bottomSheetProductType.affiliate.description",
-                value: "Link a product to an external website",
+                "When choosing tennis, the default setting is for 2 players.",
                 comment: "Description of the Action sheet option when the user wants to change the Product type to external product")
         }
     }
@@ -100,28 +97,13 @@ public enum BottomSheetProductType: Hashable, Identifiable {
         
         switch self {
         case .football:
-            return UIImage.cloudOutlineImage
+            return UIImage.init(systemName: "soccerball")!
         case .basketball:
-            return UIImage.cloudOutlineImage
+            return UIImage.init(systemName: "basketball")!
         case .tenins:
-            return UIImage.productImage
+            return UIImage.init(systemName: "tennisball")!
         }
         
     }
 
-//    init(productType: MateCategory, isVirtual: Bool) {
-//        
-//        switch productType.id {
-//        case 1:
-//            self = .football
-//        case 2:
-//            self = .basketball
-//        case 3:
-//            self = .tenins
-//        default:
-//            break
-//        }
-//        
-////        super.init(productType: productType, isVirtual: false)
-//    }
 }
