@@ -14,7 +14,7 @@ final class WrongAccountErrorViewModel: ULAccountMismatchViewModel {
     private let showsConnectedStores: Bool
     private let defaultAccount: Account?
     private let storesManager: StoresManager
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     private let jetpackSetupCompletionHandler: (_ email: String, _ xmlrpc: String) -> Void
     private let authentication: Authentication
     private let authenticatorType: Authenticator.Type
@@ -36,7 +36,7 @@ final class WrongAccountErrorViewModel: ULAccountMismatchViewModel {
          siteCredentials: WordPressOrgCredentials?,
          authenticatorType: Authenticator.Type = FiableAuthenticator.self,
          storesManager: StoresManager = ServiceLocator.stores,
-         analytics: Analytics = ServiceLocator.analytics,
+         analytics: MateAnalytics = ServiceLocator.analytics,
          authentication: Authentication = ServiceLocator.authenticationManager,
          onJetpackSetupCompletion: @escaping (String, String) -> Void) {
         self.siteURL = siteURL ?? Localization.yourSite
@@ -126,7 +126,7 @@ final class WrongAccountErrorViewModel: ULAccountMismatchViewModel {
     }
 
     func didTapPrimaryButton(in viewController: UIViewController?) {
-        analytics.track(.loginJetpackConnectButtonTapped)
+//        analytics.track(.loginJetpackConnectButtonTapped)
         guard let viewController = viewController else {
             return
         }

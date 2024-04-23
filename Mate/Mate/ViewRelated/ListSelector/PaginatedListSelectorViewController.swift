@@ -3,7 +3,6 @@ import UIKit
 import FiableUI
 import FiableRedux
 import MateStorage
-import class AutomatticTracks.CrashLogging
 
 /// A generic data source for the paginated list selector UI `PaginatedListSelectorViewController`.
 ///
@@ -470,7 +469,6 @@ private extension PaginatedListSelectorViewController {
         do {
             try resultsController.performFetch()
         } catch {
-            ServiceLocator.crashLogging.logError(error)
         }
 
         tableView.reloadData()

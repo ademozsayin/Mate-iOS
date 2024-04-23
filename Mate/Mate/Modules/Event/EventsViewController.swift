@@ -13,8 +13,6 @@ import Combine
 import FiableFoundation
 import MateNetworking
 
-import class AutomatticTracks.CrashLogging
-
 /// Shows a list of products with pull to refresh and infinite scroll
 /// TODO: it will be good to have unit tests for this, introducing a `ViewModel`
 ///
@@ -209,6 +207,8 @@ final class EventsViewController: UIViewController, GhostableViewController {
            // Code you want to be delayed
 //            self.isEmpty = false
 //            self.transitionToResultsUpdatedState()
+            
+            ServiceLocator.analytics.track(event: .closeAccountTapped(source: .settings))
             
             self.stateCoordinator.transitionToResultsUpdatedState(hasData: false)
         }

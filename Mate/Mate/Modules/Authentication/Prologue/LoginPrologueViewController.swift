@@ -8,7 +8,7 @@ import UIKit
 ///
 final class LoginPrologueViewController: UIViewController {
 
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     private let featureFlagService: FeatureFlagService
 
     /// Background View, to be placed surrounding the bottom area.
@@ -35,7 +35,7 @@ final class LoginPrologueViewController: UIViewController {
 
     // MARK: - Overridden Methods
 
-    init(analytics: Analytics = ServiceLocator.analytics,
+    init(analytics: MateAnalytics = ServiceLocator.analytics,
          featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService) {
         self.analytics = analytics
         self.featureFlagService = featureFlagService

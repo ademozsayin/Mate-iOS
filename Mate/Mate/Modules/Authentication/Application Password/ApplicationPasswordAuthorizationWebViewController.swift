@@ -7,7 +7,7 @@ import MateNetworking
 ///
 final class ApplicationPasswordAuthorizationWebViewController: UIViewController {
 
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
 
     /// Callback when application password is authorized.
     private let onSuccess: (ApplicationPassword, UINavigationController?) -> Void
@@ -49,7 +49,7 @@ final class ApplicationPasswordAuthorizationWebViewController: UIViewController 
     private var authorizationURL: String?
 
     init(viewModel: ApplicationPasswordAuthorizationViewModel,
-         analytics: Analytics = ServiceLocator.analytics,
+         analytics: MateAnalytics = ServiceLocator.analytics,
          onSuccess: @escaping (ApplicationPassword, UINavigationController?) -> Void) {
         self.viewModel = viewModel
         self.onSuccess = onSuccess
@@ -238,7 +238,6 @@ extension ApplicationPasswordAuthorizationWebViewController: WKNavigationDelegat
               let username = queryItems.first(where: { $0.name == Constants.Query.username })?.value,
               let password = queryItems.first(where: { $0.name == Constants.Query.password })?.value else {
             DDLogError("⛔️ Authorization rejected for application passwords")
-            analytics.track(.applicationPasswordAuthorizationRejected)
             showErrorAlert(message: Localization.authorizationRejected)
             return .cancel
         }
@@ -248,7 +247,6 @@ extension ApplicationPasswordAuthorizationWebViewController: WKNavigationDelegat
         progressBar.setProgress(0, animated: false)
         activityIndicator.startAnimating()
 
-        analytics.track(.applicationPasswordAuthorizationApproved)
         let applicationPassword = ApplicationPassword(wpOrgUsername: username, password: .init(password), uuid: appID)
         onSuccess(applicationPassword, navigationController)
         DDLogInfo("✅ Application password authorized")

@@ -25,7 +25,7 @@ import FiableShared
 /// Note: If you would like to exclude site properties (e.g. `blog_id`) for a given event, please
 /// add the event to the `OnsaAnalyticsStat.shouldSendSiteProperties` var.
 ///
-public enum OnsaAnalyticsStat: String {
+public enum MateAnalyticsStat: String {
 
     // MARK: Application Events
     //
@@ -1188,7 +1188,7 @@ public enum OnsaAnalyticsStat: String {
     case connectivityToolContactSupportTapped = "connectivity_tool_contact_support_tapped"
 }
 
-public extension OnsaAnalyticsStat {
+public extension MateAnalyticsStat {
 
 
     /// Indicates if site information should be included with this event when it's sent to the tracks server.
@@ -1222,23 +1222,4 @@ public extension OnsaAnalyticsStat {
         }
     }
 
-    /// Converts the provided OnsaAnalyticsStat into a OnsaAnalyticsStat.
-    /// This whole process kinda stinks, but we need this for the `FiableAuthenticatorDelegate`
-    /// implementation. ☹️ Feel free to refactor later on!
-    ///
-    /// - Parameter stat: The OnsaAnalyticsStat to convert
-    /// - Returns: The corresponding OnsaAnalyticsStat or nil if it cannot be converted
-    ///
-    static func valueOf(stat: FiableAnalyticsStat) -> OnsaAnalyticsStat? {
-        var wooEvent: OnsaAnalyticsStat? = nil
-
-        switch stat {
-        case .signedIn:
-            wooEvent = OnsaAnalyticsStat.signedIn
-        default:
-            wooEvent = nil
-        }
-
-        return wooEvent
-    }
 }

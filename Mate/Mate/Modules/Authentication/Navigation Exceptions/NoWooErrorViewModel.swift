@@ -6,7 +6,7 @@ import FiableRedux
 final class NoWooErrorViewModel: ULErrorViewModel {
 //    private let site: Site
     private let showsConnectedStores: Bool
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     private let stores: StoresManager
     private let setupCompletionHandler: (Int64) -> Void
     private let authentication: Authentication
@@ -14,7 +14,7 @@ final class NoWooErrorViewModel: ULErrorViewModel {
     init(
 //        site: Site,
          showsConnectedStores: Bool,
-         analytics: Analytics = ServiceLocator.analytics,
+         analytics: MateAnalytics = ServiceLocator.analytics,
          stores: StoresManager = ServiceLocator.stores,
          authentication: Authentication = ServiceLocator.authenticationManager,
          onSetupCompletion: @escaping (Int64) -> Void) {
@@ -104,7 +104,7 @@ final class NoWooErrorViewModel: ULErrorViewModel {
     }
 
     func viewDidLoad(_ viewController: UIViewController?) {
-        analytics.track(.loginWooCommerceErrorShown)
+//        analytics.track(.loginWooCommerceErrorShown)
     }
 }
 

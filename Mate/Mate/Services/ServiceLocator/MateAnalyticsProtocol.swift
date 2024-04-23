@@ -2,15 +2,14 @@
 //  Analytics.swift
 //  Mate
 //
-//  Created by Adem Özsayın on 20.03.2024.
+//  Created by Adem Özsayın on 23.04.2024.
 //
 
 import Foundation
-import FiableShared
 
 /// Abstracts the Analytics engine.
 ///
-protocol Analytics {
+protocol MateAnalyticsProtocol {
     /// Initialize the analytics engine
     ///
     func initialize()
@@ -19,7 +18,7 @@ protocol Analytics {
     ///
     /// - Parameter stat: the event name
     ///
-    func track(_ stat: OnsaAnalyticsStat)
+    func track(_ stat: MateAnalyticsStat)
 
     /// Track a specific event with associated properties
     ///
@@ -27,7 +26,7 @@ protocol Analytics {
     ///   - stat: the event name
     ///   - properties: a collection of properties related to the event
     ///
-    func track(_ stat: OnsaAnalyticsStat, withProperties properties: [AnyHashable: Any]?)
+    func track(_ stat: MateAnalyticsStat, withProperties properties: [AnyHashable: Any]?)
 
     /// Track a specific event with an associated error (that is translated to properties)
     ///
@@ -35,7 +34,7 @@ protocol Analytics {
     ///   - stat: the event name
     ///   - error: the error to track
     ///
-    func track(_ stat: OnsaAnalyticsStat, withError error: Error)
+    func track(_ stat: MateAnalyticsStat, withError error: Error)
 
     /// Track a specific event with associated properties and an associated error (that is translated to properties)
     ///
@@ -44,7 +43,7 @@ protocol Analytics {
     ///   - properties: a collection of properties related to the event
     ///   - error: the error to track
     ///
-    func track(_ stat: OnsaAnalyticsStat, properties: [AnyHashable: Any]?, error: Error?)
+    func track(_ stat: MateAnalyticsStat, properties: [AnyHashable: Any]?, error: Error?)
 
     /// Refresh the tracking metadata for the currently logged-in or anonymous user.
     /// It's good to call this function after a user logs in or out of the app.
@@ -64,15 +63,15 @@ protocol Analytics {
 
     /// AnalyticsProvider: Interface to the actual analytics implementation
     ///
-    var analyticsProvider: AnalyticsProvider { get }
+    var analyticsProvider: MateAnalyticsProvider { get }
 }
 
-extension Analytics {
+extension MateAnalyticsProtocol {
     /// Track a specific event.
     ///
     /// - Parameter event: The event to track along with its properties.
     ///
-    func track(event: FiableAnalyticsEvent) {
-        track(event.statName, properties: event.properties, error: event.error)
+    func track(event: MateAnalyticsEvent) {
+        track(event.name, properties: event.properties, error: event.error)
     }
 }

@@ -52,7 +52,7 @@ public final class SupportFormViewModel: ObservableObject {
 
     /// Handles the communication with Tracks..
     ///
-    private let analyticsProvider: Analytics
+    private let analyticsProvider: MateAnalytics
 
     /// Defines when the submit button should be enabled or not.
     ///
@@ -84,7 +84,7 @@ public final class SupportFormViewModel: ObservableObject {
     init(areas: [Area] = wooSupportAreas(),
          sourceTag: String? = nil,
          zendeskProvider: ZendeskManagerProtocol = ZendeskProvider.shared,
-         analyticsProvider: Analytics = ServiceLocator.analytics) {
+         analyticsProvider: MateAnalytics = ServiceLocator.analytics) {
         self.areas = areas
         self.sourceTag = sourceTag
         self.zendeskProvider = zendeskProvider
@@ -94,7 +94,7 @@ public final class SupportFormViewModel: ObservableObject {
     /// Tracks when the support form is viewed.
     ///
     func onViewAppear() {
-        analyticsProvider.track(.supportNewRequestViewed)
+//        analyticsProvider.track(.supportNewRequestViewed)
         requestZendeskIdentityIfNeeded()
     }
 
@@ -127,10 +127,10 @@ public final class SupportFormViewModel: ObservableObject {
             // Analytics
             switch result {
             case .success:
-                self.analyticsProvider.track(.supportNewRequestCreated)
+//                self.analyticsProvider.track(.supportNewRequestCreated)
                 self.shouldShowSuccessAlert = true
             case .failure(let error):
-                self.analyticsProvider.track(.supportNewRequestFailed)
+//                self.analyticsProvider.track(.supportNewRequestFailed)
                 self.error = error
                 self.shouldShowErrorAlert = true
             }

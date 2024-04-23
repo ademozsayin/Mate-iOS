@@ -7,7 +7,7 @@ import FiableRedux
     private let removeAction: () async throws -> Void
     private let onRemoveSuccess: () -> Void
     private let stores: StoresManager
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
 
     /// - Parameters:
     ///   - sourceViewController: the view controller that presents the in-progress UI and alerts.
@@ -17,7 +17,7 @@ import FiableRedux
          removeAction: @escaping () async throws -> Void,
          onRemoveSuccess: @escaping () -> Void,
          stores: StoresManager = ServiceLocator.stores,
-         analytics: Analytics = ServiceLocator.analytics) {
+         analytics: MateAnalytics = ServiceLocator.analytics) {
         self.sourceViewController = sourceViewController
         self.removeAction = removeAction
         self.onRemoveSuccess = onRemoveSuccess

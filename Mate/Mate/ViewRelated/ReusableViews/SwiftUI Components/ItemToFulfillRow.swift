@@ -27,11 +27,11 @@ struct ItemToFulfillRow: View, Identifiable {
                     // delay to make sure that any other popover has been dismissed.
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         showingMoveItemDialog = true
-                        ServiceLocator.analytics.track(.shippingLabelMoveItemTapped)
+//                        ServiceLocator.analytics.track(.shippingLabelMoveItemTapped)
                     }
                 default:
                     showingMoveItemDialog = true
-                    ServiceLocator.analytics.track(.shippingLabelMoveItemTapped)
+//                    ServiceLocator.analytics.track(.shippingLabelMoveItemTapped)
                 }
 
             }, label: {

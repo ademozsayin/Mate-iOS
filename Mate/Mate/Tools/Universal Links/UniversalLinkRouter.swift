@@ -55,7 +55,7 @@ protocol UniversalLinkRouterAnalyticsTracking {
 }
 
 struct UniversalLinkAnalyticsTracker: UniversalLinkRouterAnalyticsTracking {
-    let analytics: Analytics
+    let analytics: MateAnalytics
 
     func trackUniversalLinkFailure(url: URL) {
 //        analytics.track(event: FiableAnalyticsEvent.universalLinkFailed(with: url))

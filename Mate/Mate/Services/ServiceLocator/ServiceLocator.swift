@@ -17,27 +17,22 @@ final class ServiceLocator {
     // MARK: - Private properties
 
     /// WooAnalytics Wrapper
-    ///
-    private static var _analytics: Analytics = OnsaAnalytics(analyticsProvider: TracksProvider())
-    
+//    private static var _analytics: Analytics = OnsaAnalytics(analyticsProvider: TracksProvider())
+    /// Analytics instance
+    private static var _analytics: MateAnalytics = MateAnalytics(provider: FirebaseAnalyticsProvider())
+
     /// StoresManager
     ///
     private static var _stores: StoresManager = DefaultStoresManager(sessionManager: SessionManager.standard)
 
     /// CoreData Stack
     ///
-    private static var _storageManager = CoreDataManager(name: FiableConstants.databaseStackName, crashLogger: crashLogging)
+    private static var _storageManager = CoreDataManager(name: FiableConstants.databaseStackName)
 
     /// Push Notifications Manager
     ///
     private static var _pushNotesManager: PushNotesManager = PushNotificationsManager()
     
-    /// Crash Logging Stack
-    ///
-    private static var _crashLogging: CrashLoggingStack = WooCrashLoggingStack(
-        featureFlagService: featureFlagService
-    )
-
     /// In-App Notifications Presenter
     ///
     private static var _noticePresenter: NoticePresenter = DefaultNoticePresenter()
@@ -59,7 +54,7 @@ final class ServiceLocator {
 
     /// Provides the access point to the analytics.
     /// - Returns: An implementation of the Analytics protocol. It defaults to WooAnalytics
-    static var analytics: Analytics {
+    static var analytics: MateAnalytics {
         return _analytics
     }
 
@@ -94,13 +89,6 @@ final class ServiceLocator {
     /// of the CoreDataManager should be subclasses
     static var storageManager: CoreDataManager {
         return _storageManager
-    }
-    
-    
-    /// Provides the access point to the CrashLogger
-    /// - Returns: An implementation
-    static var crashLogging: CrashLoggingStack {
-        return _crashLogging
     }
     
     

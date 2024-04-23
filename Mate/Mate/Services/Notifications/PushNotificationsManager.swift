@@ -2,9 +2,9 @@ import Combine
 //import FiableExperiments
 import Foundation
 import UserNotifications
-import AutomatticTracks
+//import AutomatticTracks
 import FiableRedux
-
+import UIKit
 
 /// PushNotificationsManager: Encapsulates all the tasks related to Push Notifications Auth + Registration + Handling.
 ///
@@ -99,14 +99,14 @@ final class PushNotificationsManager: PushNotesManager {
         configuration.storesManager
     }
 
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
 
     /// Initializes the PushNotificationsManager.
     ///
     /// - Parameter configuration: PushNotificationsConfiguration Instance that should be used.
     ///
     init(configuration: PushNotificationsConfiguration = .default,
-         analytics: Analytics = ServiceLocator.analytics) {
+         analytics: MateAnalytics = ServiceLocator.analytics) {
         self.configuration = configuration
         self.analytics = analytics
     }
@@ -131,13 +131,13 @@ extension PushNotificationsManager {
             }
 
             nc.requestAuthorization(queue: .main, includesProvisionalAuth: includesProvisionalAuth) { [weak self] allowed in
-                let stat: OnsaAnalyticsStat = allowed ? .pushNotificationOSAlertAllowed : .pushNotificationOSAlertDenied
-                self?.analytics.track(stat)
+                let stat: MateAnalyticsStat = allowed ? .pushNotificationOSAlertAllowed : .pushNotificationOSAlertDenied
+//                self?.analytics.track(stat)
 
                 onCompletion?(allowed)
             }
 //
-            self?.analytics.track(.pushNotificationOSAlertShown)
+//            self?.analytics.track(.pushNotificationOSAlertShown)
         }
     }
 
@@ -268,8 +268,8 @@ extension PushNotificationsManager {
                     guard let self = self else { return }
                     self.presentDetails(for: foregroundNotification)
                     self.foregroundNotificationsToViewSubject.send(foregroundNotification)
-                    self.analytics.track(.viewInAppPushNotificationPressed,
-                                                   withProperties: [AnalyticKey.type: foregroundNotification.kind.rawValue])
+//                    self.analytics.track(.viewInAppPushNotificationPressed,
+//                                                   withProperties: [AnalyticKey.type: foregroundNotification.kind.rawValue])
                 }
 
             foregroundNotificationsSubject.send(foregroundNotification)
@@ -604,10 +604,11 @@ private extension PushNotificationsManager {
 
         switch applicationState {
         case .inactive:
-            analytics.track(.pushNotificationAlertPressed, withProperties: properties)
+            print("inactive")
+//            analytics.track(.pushNotificationAlertPressed, withProperties: properties)
         default:
             properties[AnalyticKey.appState] = applicationState.rawValue
-            analytics.track(.pushNotificationReceived, withProperties: properties)
+//            analytics.track(.pushNotificationReceived, withProperties: properties)
         }
     }
 }

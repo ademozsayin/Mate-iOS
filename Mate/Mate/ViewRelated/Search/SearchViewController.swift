@@ -4,8 +4,6 @@ import UIKit
 import FiableRedux
 import FiableUI
 
-import class AutomatticTracks.CrashLogging
-
 
 /// SearchViewController: Displays the Search Interface for A Generic Model
 ///
@@ -515,7 +513,7 @@ private extension SearchViewController {
         do {
             try resultsController.performFetch()
         } catch {
-            ServiceLocator.crashLogging.logError(error)
+//            ServiceLocator.crashLogging.logError(error)
         }
 
         tableView.setContentOffset(.zero, animated: false)

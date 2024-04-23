@@ -311,7 +311,7 @@ private extension SettingsViewController {
     }
 
     func logoutWasPressed() {
-        ServiceLocator.analytics.track(.settingsLogoutTapped)
+//        ServiceLocator.analytics.track(.settingsLogoutTapped)
         let messageFormatted: String = {
             guard viewModel.accountName.isNotEmpty else {
                 return Localization.LogoutAlert.alertMessageWithoutDisplayName
@@ -321,11 +321,11 @@ private extension SettingsViewController {
         let alertController = UIAlertController(title: "", message: messageFormatted, preferredStyle: .alert)
 
         alertController.addActionWithTitle(Localization.LogoutAlert.cancelButtonTitle, style: .cancel) { _ in
-            ServiceLocator.analytics.track(.settingsLogoutConfirmation, withProperties: ["result": "negative"])
+//            ServiceLocator.analytics.track(.settingsLogoutConfirmation, withProperties: ["result": "negative"])
         }
 
         alertController.addDefaultActionWithTitle(Localization.LogoutAlert.logoutButtonTitle) { [weak self] _ in
-            ServiceLocator.analytics.track(.settingsLogoutConfirmation, withProperties: ["result": "positive"])
+//            ServiceLocator.analytics.track(.settingsLogoutConfirmation, withProperties: ["result": "positive"])
             self?.logOutUser()
         }
 
@@ -383,7 +383,7 @@ private extension SettingsViewController {
     }
 
     func privacyWasPressed() {
-        ServiceLocator.analytics.track(.settingsPrivacySettingsTapped)
+//        ServiceLocator.analytics.track(.settingsPrivacySettingsTapped)
 //        guard let viewController = UIStoryboard.dashboard.instantiateViewController(ofClass: PrivacySettingsViewController.self) else {
 //            fatalError("Cannot instantiate `PrivacySettingsViewController` from Dashboard storyboard")
 //        }
@@ -391,7 +391,7 @@ private extension SettingsViewController {
     }
 
     func aboutWasPressed() {
-        ServiceLocator.analytics.track(.settingsAboutLinkTapped)
+//        ServiceLocator.analytics.track(.settingsAboutLinkTapped)
 
         let configuration = MateAboutScreenConfiguration()
         let controller = AutomatticAboutScreen.controller(appInfo: MateAboutScreenConfiguration.appInfo,
@@ -444,7 +444,7 @@ private extension SettingsViewController {
     }
 
     func weAreHiringWasPressed(url: URL) {
-        ServiceLocator.analytics.track(.settingsWereHiringTapped)
+//        ServiceLocator.analytics.track(.settingsWereHiringTapped)
 
         WebviewHelper.launch(url, with: self)
     }
@@ -483,7 +483,7 @@ private extension SettingsViewController {
 
     var crashDebugMenuCrashAction: UIAlertAction {
         return UIAlertAction(title: Localization.HiddenSettingsMenu.crashImmediately, style: .destructive) { _ in
-            ServiceLocator.crashLogging.crash()
+//            ServiceLocator.crashLogging.crash()
         }
     }
 

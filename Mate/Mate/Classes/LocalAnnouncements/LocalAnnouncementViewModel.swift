@@ -21,12 +21,12 @@ final class LocalAnnouncementViewModel {
     let image: UIImage
 
     private let announcement: LocalAnnouncement
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     private let stores: StoresManager
 
     init(announcement: LocalAnnouncement,
          stores: StoresManager = ServiceLocator.stores,
-         analytics: Analytics = ServiceLocator.analytics) {
+         analytics: MateAnalytics = ServiceLocator.analytics) {
         self.title = announcement.title
         self.message = announcement.message
         self.buttonTitle = announcement.buttonTitle

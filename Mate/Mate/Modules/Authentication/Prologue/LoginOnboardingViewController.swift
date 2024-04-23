@@ -16,11 +16,11 @@ final class LoginOnboardingViewController: UIViewController {
     private lazy var nextButton: UIButton = createNextButton()
     private lazy var imageView = UIImageView(image: .onsamateLogo)
 
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     private let featureFlagService: FeatureFlagService
     private let onDismiss: (DismissAction) -> Void
 
-    init(analytics: Analytics = ServiceLocator.analytics,
+    init(analytics: MateAnalytics = ServiceLocator.analytics,
          featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService,
          onDismiss: @escaping (DismissAction) -> Void) {
         self.analytics = analytics
@@ -131,7 +131,7 @@ private extension LoginOnboardingViewController {
             guard self.pageViewController.goToNextPageIfPossible() else {
                 return self.onDismiss(.next)
             }
-            self.analytics.track(event: .LoginOnboarding.loginOnboardingNextButtonTapped(isFinalPage: false))
+//            self.analytics.track(event: .LoginOnboarding.loginOnboardingNextButtonTapped(isFinalPage: false))
         }
         return button
     }

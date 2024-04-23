@@ -115,7 +115,7 @@ final class SettingsViewModel: SettingsViewModelOutput, SettingsViewModelActions
     private let storageManager: StorageManagerType
     private let featureFlagService: FeatureFlagService
     private let defaults: UserDefaults
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
 
     /// Reference to the Zendesk shared instance
     ///
@@ -125,7 +125,7 @@ final class SettingsViewModel: SettingsViewModelOutput, SettingsViewModelActions
          storageManager: StorageManagerType = ServiceLocator.storageManager,
          featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService,
          defaults: UserDefaults = .standard,
-         analytics: Analytics = ServiceLocator.analytics) {
+         analytics: MateAnalytics = ServiceLocator.analytics) {
         self.stores = stores
         self.storageManager = storageManager
         self.featureFlagService = featureFlagService

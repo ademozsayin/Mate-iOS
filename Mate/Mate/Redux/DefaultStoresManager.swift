@@ -219,7 +219,7 @@ class DefaultStoresManager: StoresManager {
             case .success(let accountSettings):
                 if let self = self, self.isAuthenticated {
                     // Save the user's preference
-                    ServiceLocator.analytics.setUserHasOptedOut(accountSettings.tracksOptOut)
+//                    ServiceLocator.analytics.setUserHasOptedOut(accountSettings.tracksOptOut)
                 }
                 onCompletion(.success(()))
             case .failure(let error):

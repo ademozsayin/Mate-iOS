@@ -43,7 +43,7 @@ final class AddEventCoordinator: Coordinator {
     private let sourceView: UIView?
     private let storage: StorageManagerType
     private let isFirstProduct: Bool
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     private let navigateToProductForm: ((UIViewController) -> Void)?
     private let onDeleteCompletion: () -> Void
 
@@ -70,7 +70,7 @@ final class AddEventCoordinator: Coordinator {
          sourceView: SourceView?,
          sourceNavigationController: UINavigationController,
          storage: StorageManagerType = ServiceLocator.storageManager,
-         analytics: Analytics = ServiceLocator.analytics,
+         analytics: MateAnalytics = ServiceLocator.analytics,
          isFirstProduct: Bool,
          navigateToProductForm: ((UIViewController) -> Void)? = nil,
          onDeleteCompletion: @escaping () -> Void = {}

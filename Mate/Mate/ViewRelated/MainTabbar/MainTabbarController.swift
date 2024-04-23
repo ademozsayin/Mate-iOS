@@ -109,7 +109,7 @@ final class MainTabBarController: UITabBarController {
     private let featureFlagService: FeatureFlagService
     private let noticePresenter: NoticePresenter
     private let stores: StoresManager = ServiceLocator.stores
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     
     private var productImageUploadErrorsSubscription: AnyCancellable?
     
@@ -118,7 +118,7 @@ final class MainTabBarController: UITabBarController {
     
     init(featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService,
          noticePresenter: NoticePresenter = ServiceLocator.noticePresenter,
-         analytics: Analytics = ServiceLocator.analytics) {
+         analytics: MateAnalytics = ServiceLocator.analytics) {
         
         // Initialize your custom properties first
         self.featureFlagService = featureFlagService
@@ -386,8 +386,6 @@ extension MainTabBarController {
             break
         }
 
-        ServiceLocator.analytics.track(.notificationOpened, withProperties: [ "type": note.kind.rawValue,
-                                                                              "already_read": note.read ])
     }
 
 

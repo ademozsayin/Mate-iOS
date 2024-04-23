@@ -48,8 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         setupPushNotificationsManagerIfPossible()
         setupAppRatingManager()
         setupUserNotificationCenter()
-       
-        
         
         if let path = getSQLitePath() {
             print("SQLite database path: \(path)")
@@ -63,10 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
        
         setupMainWindow()
         setupComponentsAppearance()
-        
         setupUniversalLinkRouter()
-       
         appCoordinator?.start()
+        
+//        ServiceLocator.analytics.track(.applicationOpened, withProperties: [:])
+
         return true
     }
     
@@ -75,7 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         guard let rootViewController = window?.rootViewController else {
             fatalError()
         }
-
 //        if ServiceLocator.stores.isAuthenticatedWithoutWPCom,
 //           let site = ServiceLocator.stores.sessionManager.defaultSite {
 //            let coordinator = JetpackSetupCoordinator(site: site, rootViewController: rootViewController)
@@ -93,8 +91,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         }
 
         SpotlightManager.handleUserActivity(userActivity)
-//        trackWidgetTappedIfNeeded(userActivity: userActivity)
-
         return true
     }
 
@@ -138,7 +134,6 @@ private extension AppDelegate {
         let window = UIWindow()
         window.makeKeyAndVisible()
         self.window = window
-
         appCoordinator = AppCoordinator(window: window)
     }
     
@@ -169,16 +164,13 @@ private extension AppDelegate {
         }
         UNUserNotificationCenter.current().delegate = self
     }
-    
-    ///
-   
+       
     func setupUniversalLinkRouter() {
         guard let tabBarController = tabBarController else { return }
         universalLinkRouter = UniversalLinkRouter.defaultUniversalLinkRouter(tabBarController: tabBarController)
     }
     
     /// Set up app review prompt
-    ///
     func setupAppRatingManager() {
         guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else {
             DDLogError("No CFBundleShortVersionString found in Info.plist")
@@ -198,7 +190,6 @@ private extension AppDelegate {
         }
 
         UIView.setAnimationsEnabled(false)
-
         /// Trick found at: https://twitter.com/twannl/status/1232966604142653446
         UIApplication
             .shared
@@ -208,7 +199,6 @@ private extension AppDelegate {
                 $0.layer.speed = 100
             }
     }
-
 }
 
 // MARK: - Minimum Version
@@ -220,12 +210,12 @@ private extension AppDelegate {
         let versionOfLastRun = UserDefaults.standard[.versionOfLastRun] as? String
         if versionOfLastRun == nil {
             // First run after a fresh install
-            ServiceLocator.analytics.track(.applicationInstalled,
-                                           withProperties: ["after_abtest_setup": true])
+//            ServiceLocator.analytics.track(.applicationInstalled,
+//                                           withProperties: ["after_abtest_setup": true])
             UserDefaults.standard[.installationDate] = Date()
         } else if versionOfLastRun != currentVersion {
             // App was upgraded
-            ServiceLocator.analytics.track(.applicationUpgraded, withProperties: ["previous_version": versionOfLastRun ?? String()])
+//            ServiceLocator.analytics.track(.applicationUpgraded, withProperties: ["previous_version": versionOfLastRun ?? String()])
         }
 
         UserDefaults.standard[.versionOfLastRun] = currentVersion

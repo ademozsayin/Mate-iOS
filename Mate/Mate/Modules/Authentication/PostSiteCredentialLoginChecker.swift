@@ -13,12 +13,12 @@ final class PostSiteCredentialLoginChecker {
     private let stores: StoresManager
     private let applicationPasswordUseCase: ApplicationPasswordUseCase
     private let roleEligibilityUseCase: RoleEligibilityUseCaseProtocol
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
 
     init(applicationPasswordUseCase: ApplicationPasswordUseCase,
          roleEligibilityUseCase: RoleEligibilityUseCaseProtocol = RoleEligibilityUseCase(stores: ServiceLocator.stores),
          stores: StoresManager = ServiceLocator.stores,
-         analytics: Analytics = ServiceLocator.analytics) {
+         analytics: MateAnalytics = ServiceLocator.analytics) {
         self.applicationPasswordUseCase = applicationPasswordUseCase
         self.roleEligibilityUseCase = roleEligibilityUseCase
         self.stores = stores

@@ -3,12 +3,12 @@ import WebKit
 
 final class WooSetupWebViewModel: AuthenticatedWebViewModel {
     private let siteURL: String
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     private let completionHandler: () -> Void
     private let dismissHandler: () -> Void
     private var hasCompleted = false
 
-    init(siteURL: String, analytics: Analytics = ServiceLocator.analytics, onCompletion: @escaping () -> Void, onDismiss: @escaping () -> Void) {
+    init(siteURL: String, analytics: MateAnalytics = ServiceLocator.analytics, onCompletion: @escaping () -> Void, onDismiss: @escaping () -> Void) {
         self.siteURL = siteURL
         self.analytics = analytics
         self.completionHandler = onCompletion

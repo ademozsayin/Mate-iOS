@@ -33,14 +33,14 @@ final class ProductSearchUICommand: SearchUICommand {
     private var filter: ProductSearchFilter = .all
 
     private let stores: StoresManager
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
     private let isSearchProductsBySKUEnabled: Bool
     private let onProductSelection: (MateEvent) -> Void
     private let onCancel: () -> Void
 
     init(
          stores: StoresManager = ServiceLocator.stores,
-         analytics: Analytics = ServiceLocator.analytics,
+         analytics: MateAnalytics = ServiceLocator.analytics,
          isSearchProductsBySKUEnabled: Bool = true,
          onProductSelection: @escaping (MateEvent) -> Void,
          onCancel: @escaping () -> Void) {
@@ -158,7 +158,7 @@ final class ProductSearchUICommand: SearchUICommand {
 //
 //        stores.dispatch(action)
 
-        analytics.track(.productListSearched, withProperties: isSearchProductsBySKUEnabled ? ["filter": filter.analyticsValue]: nil)
+//        analytics.track(.productListSearched, withProperties: isSearchProductsBySKUEnabled ? ["filter": filter.analyticsValue]: nil)
     }
 
     func didSelectSearchResult(model: MateEvent, from viewController: UIViewController, reloadData: () -> Void, updateActionButton: () -> Void) {

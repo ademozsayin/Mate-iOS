@@ -44,7 +44,7 @@ class AuthenticationManager: Authentication {
 
     private let featureFlagService: FeatureFlagService
 
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
 
 //    private let abTestVariationProvider: ABTestVariationProvider
 
@@ -60,7 +60,7 @@ class AuthenticationManager: Authentication {
     init(stores: StoresManager = ServiceLocator.stores,
          storageManager: StorageManagerType = ServiceLocator.storageManager,
          featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService,
-         analytics: Analytics = ServiceLocator.analytics
+         analytics: MateAnalytics = ServiceLocator.analytics
     ) {
         self.stores = stores
         self.storageManager = storageManager
@@ -84,7 +84,7 @@ class AuthenticationManager: Authentication {
                 // Resets Apple ID at the beginning of the authentication.
                 self.appleUserID = nil
 
-                self.analytics.track(.loginPrologueContinueTapped)
+//                self.analytics.track(.loginPrologueContinueTapped)
             })
             guard let loginVC = loginUI else {
                 fatalError("Cannot instantiate login UI from FiableAuthenticator")
@@ -573,30 +573,30 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
     /// Tracks a given Analytics Event.
     ///
     func track(event: FiableAnalyticsStat) {
-        guard let wooEvent = OnsaAnalyticsStat.valueOf(stat: event) else {
-            DDLogWarn("⚠️ Could not convert WPAnalyticsStat with value: \(event.rawValue)")
-            return
-        }
-        analytics.track(wooEvent)
+//        guard let wooEvent = OnsaAnalyticsStat.valueOf(stat: event) else {
+//            DDLogWarn("⚠️ Could not convert WPAnalyticsStat with value: \(event.rawValue)")
+//            return
+//        }
+//        analytics.track(wooEvent)
     }
 
     /// Tracks a given Analytics Event, with the specified properties.
     ///
     func track(event: FiableAnalyticsStat, properties: [AnyHashable: Any]) {
-        guard let wooEvent = OnsaAnalyticsStat.valueOf(stat: event) else {
-            DDLogWarn("⚠️ Could not convert WPAnalyticsStat with value: \(event.rawValue)")
-            return
-        }
+//        guard let wooEvent = OnsaAnalyticsStat.valueOf(stat: event) else {
+//            DDLogWarn("⚠️ Could not convert WPAnalyticsStat with value: \(event.rawValue)")
+//            return
+//        }
 //        analytics.track(wooEvent, withProperties: properties)
     }
 
     /// Tracks a given Analytics Event, with the specified error.
     ///
     func track(event: FiableAnalyticsStat, error: Error) {
-        guard let wooEvent = OnsaAnalyticsStat.valueOf(stat: event) else {
-            DDLogWarn("⚠️ Could not convert WPAnalyticsStat with value: \(event.rawValue)")
-            return
-        }
+//        guard let wooEvent = OnsaAnalyticsStat.valueOf(stat: event) else {
+//            DDLogWarn("⚠️ Could not convert WPAnalyticsStat with value: \(event.rawValue)")
+//            return
+//        }
 //        analytics.track(wooEvent, withError: error)
     }
 
@@ -616,7 +616,7 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
         let isAppPasswordTutorialDisabled = !ServiceLocator.featureFlagService.isFeatureFlagEnabled(.appPasswordTutorial)
         let defaultAction = isAppPasswordTutorialDisabled ? { [weak self] in
             guard let self else { return }
-            self.analytics.track(.applicationPasswordAuthorizationButtonTapped)
+//            self.analytics.track(.applicationPasswordAuthorizationButtonTapped)
         } : nil
 
         let alertController = FancyAlertViewController.makeSiteCredentialLoginErrorAlert(
@@ -899,7 +899,7 @@ private extension AuthenticationManager {
             let webViewController = self.applicationPasswordWebView(for: siteURL)
             viewController.navigationController?.pushViewController(webViewController, animated: true)
             self.presentApplicationPasswordWebView(for: siteURL, in: viewController)
-            self.analytics.track(.applicationPasswordAuthorizationButtonTapped)
+//            self.analytics.track(.applicationPasswordAuthorizationButtonTapped)
         } : nil
 
        

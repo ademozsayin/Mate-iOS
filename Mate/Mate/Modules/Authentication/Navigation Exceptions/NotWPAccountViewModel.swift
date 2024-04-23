@@ -40,11 +40,11 @@ final class NotWPAccountViewModel: ULErrorViewModel {
         return button
     }()
 
-    private let analytics: Analytics
+    private let analytics: MateAnalytics
 //    private var storePickerCoordinator: StorePickerCoordinator?
 
     init(error: Error,
-         analytics: Analytics = ServiceLocator.analytics,
+         analytics: MateAnalytics = ServiceLocator.analytics,
          featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService) {
         self.analytics = analytics
         if let error = error as? SignInError,
@@ -74,7 +74,7 @@ final class NotWPAccountViewModel: ULErrorViewModel {
 
     func viewDidLoad(_ viewController: UIViewController?) {
         self.viewController = viewController
-        analytics.track(.loginInvalidEmailScreenViewed)
+//        analytics.track(.loginInvalidEmailScreenViewed)
     }
 }
 

@@ -10,7 +10,7 @@ public final class CoreDataManager: StorageManagerType {
     ///
     public let name: String
 
-    private let crashLogger: CrashLogger
+//    private let crashLogger: CrashLogger
 
     private let modelsInventory: ManagedObjectModelsInventory
 
@@ -25,10 +25,9 @@ public final class CoreDataManager: StorageManagerType {
     /// - Important: This should *match* with your actual Data Model file!.
     ///
     init(name: String,
-         crashLogger: CrashLogger,
-         modelsInventory: ManagedObjectModelsInventory?) {
+         modelsInventory: ManagedObjectModelsInventory?
+    ) {
         self.name = name
-        self.crashLogger = crashLogger
 
         do {
             if let modelsInventory = modelsInventory {
@@ -42,7 +41,8 @@ public final class CoreDataManager: StorageManagerType {
             // We'll throw a fatalError() because we can't really proceed without a
             // ManagedObjectModel.
             let error = CoreDataManagerError.modelInventoryLoadingFailed(name, error)
-            crashLogger.logFatalErrorAndExit(error, userInfo: nil)
+//            crashLogger.logFatalErrorAndExit(error, userInfo: nil)
+            fatalError("sada")
         }
     }
 
@@ -53,8 +53,8 @@ public final class CoreDataManager: StorageManagerType {
     ///
     /// - Important: This should *match* with your actual Data Model file!.
     ///
-    public convenience init(name: String, crashLogger: CrashLogger) {
-        self.init(name: name, crashLogger: crashLogger, modelsInventory: nil)
+    public convenience init(name: String) {
+        self.init(name: name, modelsInventory: nil)
     }
 
     /// Returns the Storage associated with the View Thread.
@@ -111,17 +111,17 @@ public final class CoreDataManager: StorageManagerType {
                                                      "retryError": underlyingError,
                                                      "appState": UIApplication.shared.applicationState.rawValue,
                                                      "migrationMessages": migrationDebugMessages]
-                self?.crashLogger.logFatalErrorAndExit(error,
-                                                  userInfo: logProperties.compactMapValues { $0 })
+//                self?.crashLogger.logFatalErrorAndExit(error,
+//                                                  userInfo: logProperties.compactMapValues { $0 })
             }
 
             let logProperties: [String: Any?] = ["persistentStoreLoadingError": persistentStoreLoadingError,
                                                  "persistentStoreRemovalError": persistentStoreRemovalError,
                                                  "appState": UIApplication.shared.applicationState.rawValue,
                                                  "migrationMessages": migrationDebugMessages]
-            self.crashLogger.logMessage("[CoreDataManager] Recovered from persistent store loading error",
-                                        properties: logProperties.compactMapValues { $0 },
-                                        level: .info)
+//            self.crashLogger.logMessage("[CoreDataManager] Recovered from persistent store loading error",
+//                                        properties: logProperties.compactMapValues { $0 },
+//                                        level: .info)
         }
 
         return container
