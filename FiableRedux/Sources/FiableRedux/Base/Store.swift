@@ -71,6 +71,6 @@ open class Store: ActionsProcessor {
 public extension Store {
 
     enum Default {
-        public static let firstPageNumber: Int = 1//Remote.Default.firstPageNumber
+        public static let firstPageNumber: Int = Remote.Default.firstPageNumber
     }
 }

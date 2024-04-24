@@ -124,7 +124,7 @@ private enum ZendeskForms {
     /// Custom Field Values
     ///
     enum Fields {
-        static let wooMobileApps = "WooCommerce Mobile Apps"
+        static let wooMobileApps = "Onsa Mate Mobile Apps"
         static let support = "support"
         static let store = "store"
         static let payment = "payment"
@@ -140,7 +140,7 @@ private enum ZendeskForms {
         static let wcCore = "woocommerce_core"
         static let wcPayments = "woocommerce_payments"
         static let appTransfer = "mobile_app_woo_transfer"
-        static let wcMobileApps = "woocommerce_mobile_apps"
+        static let wcMobileApps = "onsa_mate_mobile_apps"
         static let productAreaIPP = "product_area_apps_in_person_payments"
         static let productAreaWooExtensions = "product_area_woo_extensions"
         static let productAreaWCPayments = "product_area_woo_payment_gateway"

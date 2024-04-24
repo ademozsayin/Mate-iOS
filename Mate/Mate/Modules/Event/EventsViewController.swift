@@ -25,7 +25,7 @@ final class EventsViewController: UIViewController, GhostableViewController {
         case search
     }
 
-    let viewModel: EventListViewModel
+    @State var viewModel: EventListViewModel
 
     /// Main TableView
     ///
@@ -80,7 +80,7 @@ final class EventsViewController: UIViewController, GhostableViewController {
                                      target: self,
                                      action: #selector(addProduct(_:)))
         button.accessibilityTraits = .button
-        button.accessibilityLabel = NSLocalizedString("Add a product", comment: "The action to add a product")
+        button.accessibilityLabel = NSLocalizedString("Add an event", comment: "The action to add an event")
         button.accessibilityIdentifier = "product-add-button"
         return button
     }()
@@ -143,7 +143,7 @@ final class EventsViewController: UIViewController, GhostableViewController {
 
     /// Set when sync fails, and used to display an error loading data banner
     ///
-    @Published private var dataLoadingError: Error?
+    private var dataLoadingError: Error?
 
     /// Store plan banner presentation handler.
     ///
@@ -203,14 +203,15 @@ final class EventsViewController: UIViewController, GhostableViewController {
        
         stateCoordinator.transitionToLoadingState()
         
+        viewModel.getUserEvents(page: 1)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-           // Code you want to be delayed
-//            self.isEmpty = false
-//            self.transitionToResultsUpdatedState()
-            
-            ServiceLocator.analytics.track(event: .closeAccountTapped(source: .settings))
-            
             self.stateCoordinator.transitionToResultsUpdatedState(hasData: false)
+        }
+        
+        viewModel.onDataLoadingError = { [weak self] error in
+            self?.dataLoadingError = error
+            // Show error banner view if needed
+            self?.showTopBannerViewIfNeeded()
         }
     }
 
@@ -907,6 +908,7 @@ private extension EventsViewController {
             showTopBannerViewIfNeeded()
             showOrHideToolbar()
         case .results:
+            showTopBannerViewIfNeeded()
             break
         }
     }

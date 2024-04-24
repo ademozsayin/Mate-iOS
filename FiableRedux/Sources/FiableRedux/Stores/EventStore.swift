@@ -58,6 +58,8 @@ final public class EventStore: Store {
             )
         case .getNearByEvents(latitude: let latitude, longitude: let longitude, categoryId: let categoryId, completion: let completion):
             loadNearbyEvents(latitude: latitude, longitude: longitude, categoryId: categoryId, completion: completion)
+        case .getUserEvents(page: let page, completion: let completion):
+            getUserEvents(page: page, completion: completion)
         }
     }
 }
@@ -91,5 +93,9 @@ private extension EventStore {
         completion: @escaping (Result<[MateEvent], Error>) -> Void
     ) {
         remote.getNearbyEvents(latitude: latitude, longitude: longitude, categoryId: categoryId, completion: completion)
+    }
+    
+    func getUserEvents(page:Int? ,completion: @escaping (Result<PaginatedResponse<UserEvent>, Error>) -> Void) {
+        remote.getUserEvents(page: page, completion: completion)
     }
 }

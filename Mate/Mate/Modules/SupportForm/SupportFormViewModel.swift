@@ -1,4 +1,5 @@
 import Foundation
+import FiableRedux
 import FiableShared
 
 /// Data Source for the Support Request
@@ -53,6 +54,8 @@ public final class SupportFormViewModel: ObservableObject {
     /// Handles the communication with Tracks..
     ///
     private let analyticsProvider: MateAnalytics
+    
+    private let stores: StoresManager
 
     /// Defines when the submit button should be enabled or not.
     ///
@@ -84,11 +87,14 @@ public final class SupportFormViewModel: ObservableObject {
     init(areas: [Area] = wooSupportAreas(),
          sourceTag: String? = nil,
          zendeskProvider: ZendeskManagerProtocol = ZendeskProvider.shared,
-         analyticsProvider: MateAnalytics = ServiceLocator.analytics) {
+         analyticsProvider: MateAnalytics = ServiceLocator.analytics,
+         stores: StoresManager = ServiceLocator.stores
+    ) {
         self.areas = areas
         self.sourceTag = sourceTag
         self.zendeskProvider = zendeskProvider
         self.analyticsProvider = analyticsProvider
+        self.stores = stores
     }
 
     /// Tracks when the support form is viewed.
@@ -112,29 +118,28 @@ public final class SupportFormViewModel: ObservableObject {
 
     /// Submits the support request using the Zendesk Provider.
     ///
+    @MainActor
     func submitSupportRequest() {
         guard let area else { return }
-
-        showLoadingIndicator = true
-        zendeskProvider.createSupportRequest(formID: area.datasource.formID,
-                                             customFields: area.datasource.customFields,
-                                             tags: assembleTags(),
-                                             subject: subject,
-                                             description: description) { [weak self] result in
+      
+        let formId = "\(area.datasource.formID)"
+        
+        stores.dispatch(SupportAction.createTicket(form_id:formId, subject: "", description: "", onCompletion: { [weak self] res in
             guard let self else { return }
             self.showLoadingIndicator = false
-
-            // Analytics
-            switch result {
-            case .success:
-//                self.analyticsProvider.track(.supportNewRequestCreated)
+            switch res {
+            case .success(let data):
+                print(data)
+                self.analyticsProvider.track(.supportNewRequestCreated)
                 self.shouldShowSuccessAlert = true
-            case .failure(let error):
-//                self.analyticsProvider.track(.supportNewRequestFailed)
+            case .failure(let err):
+                print(err)
+                self.analyticsProvider.track(.supportNewRequestFailed)
                 self.error = error
                 self.shouldShowErrorAlert = true
             }
-        }
+        }))
+
     }
 
     /// Joins the selected area tags with the source tag(if available).
@@ -209,9 +214,9 @@ private extension SupportFormViewModel {
         let metadataProvider = SupportFormMetadataProvider()
         return [
             .init(title: Localization.mobileApp, datasource: MobileAppSupportDataSource(metadataProvider: metadataProvider)),
-            .init(title: Localization.ipp, datasource: IPPSupportDataSource(metadataProvider: metadataProvider)),
-            .init(title: Localization.wcPayments, datasource: WCPaySupportDataSource(metadataProvider: metadataProvider)),
-            .init(title: Localization.wcPlugin, datasource: WCPluginsSupportDataSource(metadataProvider: metadataProvider)),
+//            .init(title: Localization.ipp, datasource: IPPSupportDataSource(metadataProvider: metadataProvider)),
+//            .init(title: Localization.wcPayments, datasource: WCPaySupportDataSource(metadataProvider: metadataProvider)),
+//            .init(title: Localization.wcPlugin, datasource: WCPluginsSupportDataSource(metadataProvider: metadataProvider)),
             .init(title: Localization.otherPlugin, datasource: OtherPluginsSupportDataSource(metadataProvider: metadataProvider))
         ]
     }
@@ -221,7 +226,7 @@ private extension SupportFormViewModel {
         static let ipp = NSLocalizedString("Card Reader / In-Person Payments", comment: "Title of the card reader support area option")
         static let wcPayments = NSLocalizedString("WooCommerce Payments", comment: "Title of the WooCommerce Payments support area option")
         static let wcPlugin = NSLocalizedString("WooCommerce Plugin", comment: "Title of the WooCommerce Plugin support area option")
-        static let otherPlugin = NSLocalizedString("Other Extension / Plugin", comment: "Title of the Other Plugin support area option")
+        static let otherPlugin = NSLocalizedString("Other", comment: "Title of the Other Plugin support area option")
         static let badIdentityError = NSLocalizedString(
             "supportFormViewModel.badIdentityError",
             value: "Sorry, we cannot create support requests right now, please try again later.",

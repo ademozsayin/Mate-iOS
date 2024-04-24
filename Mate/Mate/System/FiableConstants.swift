@@ -247,11 +247,11 @@ extension FiableConstants {
 
         /// URL for troubleshooting documentation used in Error Loading Data banner
         ///
-        case troubleshootErrorLoadingData = "https://woo.com/document/android-ios-apps-troubleshooting-error-fetching-orders/"
+        case troubleshootErrorLoadingData = "https://fiable.agency/public/ios-apps-troubleshooting/"
 
         /// URL for troubleshooting documentation used in error banner when Jetpack is not connected
         ///
-        case troubleshootJetpackConnection = "https://jetpack.com/support/reconnecting-reinstalling-jetpack/"
+        case troubleshootJetpackConnection = "https://fiable.agency/public/support/"
 
         /// URL for roles and permissions information
         ///

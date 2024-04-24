@@ -288,20 +288,35 @@ private extension Remote {
 
     /// Handles *all* of the DotcomError(s) that are successfully parsed.
     ///
+//    func handleResponseError(error: Error, for request: Request) {
+//        
+//        if let onsaApierror = error as? OnsaApiError {
+//            switch onsaApierror {
+//            case .unauthorized where request is OnsaApiRequest:
+//                publishInvalidTokenNotification(error: onsaApierror)
+//            case .invalidToken where request is OnsaApiRequest:
+//                publishInvalidTokenNotification(error: onsaApierror)
+//            default:
+//                break
+//            }
+//            
+//        } else {
+//            DDLogInfo("Unkown error type")
+//        }
+//    }
+    
     func handleResponseError(error: Error, for request: Request) {
-        
-        if let onsaApierror = error as? OnsaApiError {
-            switch onsaApierror {
-            case .unauthorized where request is OnsaApiRequest:
-                publishInvalidTokenNotification(error: onsaApierror)
-            case .invalidToken where request is OnsaApiRequest:
-                publishInvalidTokenNotification(error: onsaApierror)
-            default:
-                break
-            }
-            
-        } else {
-            DDLogInfo("Unkown error type")
+        guard let dotcomError = error as? DotcomError else {
+            return
+        }
+
+        switch dotcomError {
+        case .requestFailed where request is OnsaApiRequest:
+            publishJetpackTimeoutNotification(error: dotcomError)
+        case .invalidToken:
+            publishInvalidTokenNotification(error: dotcomError)
+        default:
+            break
         }
     }
 

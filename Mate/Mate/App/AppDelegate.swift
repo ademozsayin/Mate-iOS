@@ -49,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         setupAppRatingManager()
         setupUserNotificationCenter()
         
+        
+        listenToAuthenticationFailureNotifications()
         if let path = getSQLitePath() {
             print("SQLite database path: \(path)")
         } else {

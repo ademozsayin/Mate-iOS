@@ -7,7 +7,7 @@
 
 import Foundation
 import SafariServices
-
+import FiableRedux
 /// Defines methods for showing Zendesk UI.
 ///
 /// This is primarily used for testability. Not all methods in `ZendeskManager` are defined but
@@ -62,7 +62,18 @@ struct NoZendeskManager: ZendeskManagerProtocol {
                               subject: String,
                               description: String,
                               onCompletion: @escaping (Result<Void, Error>) -> Void) {
-        // no-op
+        
+        print("formID :\(formID)")
+        print("customFields :\(customFields)")
+        print("tags :\(tags)")
+        print("subject :\(subject)")
+        print("description :\(description)")
+        
+        print("done")
+        
+
+        
+        
     }
 
     let zendeskEnabled = false

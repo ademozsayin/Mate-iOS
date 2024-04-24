@@ -24,6 +24,10 @@ public protocol EventRemoteProtocol {
         categoryId: Int?,
         completion: @escaping (Result<[MateEvent], Error>) -> Void)
     
+    func getUserEvents(
+        page: Int?,
+        completion: @escaping (Result<PaginatedResponse<UserEvent>, Error>) -> Void)
+    
 }
 
 /// Events: Remote Endpoints
@@ -64,6 +68,15 @@ public final class EventRemote: Remote, EventRemoteProtocol {
         )
         
         let mapper = NearbyEventMapper()
+
+        enqueue(request, mapper: mapper, completion: completion)
+    }
+    
+    public func getUserEvents(page: Int?,  completion: @escaping (Result<PaginatedResponse<UserEvent>, any Error>) -> Void) {
+        
+        let request = OnsaApiRequest(method: .get, path: "events/user")
+        
+        let mapper = UserEventsMapper()
 
         enqueue(request, mapper: mapper, completion: completion)
     }

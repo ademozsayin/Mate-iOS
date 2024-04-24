@@ -410,6 +410,7 @@
 		B74AF4B52BD7443D00D44F03 /* MateAnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF4B42BD7443D00D44F03 /* MateAnalyticsEvent.swift */; };
 		B74AF4B72BD7447800D44F03 /* MateAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF4B62BD7447800D44F03 /* MateAnalytics.swift */; };
 		B74AF4B92BD74E7700D44F03 /* MateAnalyticsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74AF4B82BD74E7700D44F03 /* MateAnalyticsProtocol.swift */; };
+		B75E7EBC2BD84B0000639DC3 /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = B75E7EBB2BD84B0000639DC3 /* Algorithms */; };
 		B7C64BAE2BD45AEE00D056FC /* LocationPermissionDeniedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BAD2BD45AEE00D056FC /* LocationPermissionDeniedView.swift */; };
 		B7C64BB02BD45B0C00D056FC /* LocationPreviewLookAroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BAF2BD45B0C00D056FC /* LocationPreviewLookAroundView.swift */; };
 		B7C64BB22BD49B3500D056FC /* Tabbar+Modifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C64BB12BD49B3500D056FC /* Tabbar+Modifier.swift */; };
@@ -831,6 +832,7 @@
 				0D30FB1F2BC071C7006AB81B /* CocoaLumberjack in Frameworks */,
 				0D473F922BC01044002D2F72 /* SVProgressHUD in Frameworks */,
 				0DA2D6FE2BC15ACF003734A6 /* FiableFoundation in Frameworks */,
+				B75E7EBC2BD84B0000639DC3 /* Algorithms in Frameworks */,
 				0D9E99DD2BCED85700276FF0 /* FirebaseAnalyticsSwift in Frameworks */,
 				0D9E99DB2BCED85700276FF0 /* FirebaseAnalytics in Frameworks */,
 				0DA0C5902BC016C300D96B7F /* FiableShared in Frameworks */,
@@ -1914,6 +1916,7 @@
 				0D9E99DC2BCED85700276FF0 /* FirebaseAnalyticsSwift */,
 				0D9E99DE2BCED85700276FF0 /* FirebaseCrashlytics */,
 				0D9E99E02BCED85700276FF0 /* FirebaseMessaging */,
+				B75E7EBB2BD84B0000639DC3 /* Algorithms */,
 			);
 			productName = Mate;
 			productReference = 0D2D26442B8C95FA008EB605 /* Mate.app */;
@@ -1950,6 +1953,7 @@
 				0D473F932BC01085002D2F72 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0D30FB1D2BC071C7006AB81B /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 				0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B75E7EBA2BD84B0000639DC3 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = 0D2D26452B8C95FA008EB605 /* Products */;
 			projectDirPath = "";
@@ -2964,6 +2968,14 @@
 				minimumVersion = 10.24.0;
 			};
 		};
+		B75E7EBA2BD84B0000639DC3 /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3060,6 +3072,11 @@
 		0DAA47E22BCD3FD300D16224 /* FiableAbout */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FiableAbout;
+		};
+		B75E7EBB2BD84B0000639DC3 /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B75E7EBA2BD84B0000639DC3 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

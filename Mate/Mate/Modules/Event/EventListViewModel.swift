@@ -7,12 +7,14 @@
 
 import Foundation
 import FiableRedux
+import SwiftUI
+import MateNetworking
 
 protocol ProductsListViewModelProtocol { }
 
 /// View model for `ProductsViewController`. Has stores logic related to Bulk Editing and Woo Subscriptions.
 ///
-class EventListViewModel: ProductsListViewModelProtocol {
+@Observable class EventListViewModel: ProductsListViewModelProtocol {
 
     enum BulkEditError: Error {
         case noProductsSelected
@@ -24,12 +26,33 @@ class EventListViewModel: ProductsListViewModelProtocol {
 
     private let featureFlagService: FeatureFlagService
 
+    var userEvent:[UserEvent] = []
+    var onDataLoadingError: ((Error?) -> Void)?
+    
     init(
          stores: StoresManager = ServiceLocator.stores,
          featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService
     ) {
         self.stores = stores
         self.featureFlagService = featureFlagService
+    }
+    
+    func getUserEvents(page:Int?) {
+        let action = EventAction.getUserEvents(
+            page: page,
+            completion: { result in
+                switch result {
+                case .success(let data):
+                    self.userEvent = data.data ?? []
+                    self.onDataLoadingError?(nil)
+
+                case .failure(let error):
+                    self.onDataLoadingError?(error)
+                }
+            }
+        )
+        
+        stores.dispatch(action)
     }
 
     var selectedProductsCount: Int {

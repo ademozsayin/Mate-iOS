@@ -24,4 +24,8 @@ public enum EventAction: Action {
         longitude: Double,
         categoryId: Int?,
         completion: (Result<[MateEvent], Error>) -> Void)
+    
+    
+    case getUserEvents(page: Int?, completion: (Result<PaginatedResponse<UserEvent>, Error>) -> Void)
+
 }

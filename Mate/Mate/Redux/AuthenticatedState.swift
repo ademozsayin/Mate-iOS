@@ -39,7 +39,8 @@ class AuthenticatedState: StoresManagerState {
         
         var services: [ActionsProcessor] = [
             NotificationStore(dispatcher: dispatcher, storageManager: storageManager, network: network),
-            EventStore(dispatcher: dispatcher, storageManager: storageManager, network: network)
+            EventStore(dispatcher: dispatcher, storageManager: storageManager, network: network),
+            SupportStore(dispatcher: dispatcher, storageManager: storageManager, network: network)
         ]
 
 
@@ -116,15 +117,15 @@ private extension AuthenticatedState {
     ///
     func startListeningToNotifications() {
         let nc = NotificationCenter.default
-//        errorObserverToken = nc.addObserver(forName: .RemoteDidReceiveJetpackTimeoutError, object: nil, queue: .main) { [weak self] note in
-//            self?.tunnelTimeoutWasReceived(note: note)
-//        }
+        errorObserverToken = nc.addObserver(forName: .RemoteDidReceiveJetpackTimeoutError, object: nil, queue: .main) { [weak self] note in
+            self?.tunnelTimeoutWasReceived(note: note)
+        }
     }
 
     /// Executed whenever a DotcomError is received (ApplicationLayer). This allows us to have a *main* error handling flow!
     ///
     func tunnelTimeoutWasReceived(note: Notification) {
-//        ServiceLocator.analytics.track(.jetpackTunnelTimeout)
+        ServiceLocator.analytics.track(.jetpackTunnelTimeout)
     }
 }
 

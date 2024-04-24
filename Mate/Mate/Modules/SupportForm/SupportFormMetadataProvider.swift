@@ -60,14 +60,14 @@ class SupportFormMetadataProvider {
     ///
     func systemFields() -> [Int64: String] {
         [
-//            ZendeskFieldsIDs.appVersion: Bundle.main.version,
+            ZendeskFieldsIDs.appVersion: Bundle.main.version,
             ZendeskFieldsIDs.deviceFreeSpace: getDeviceFreeSpace(),
             ZendeskFieldsIDs.networkInformation: getNetworkInformation(),
 //            ZendeskFieldsIDs.logs: getLogFile(),
 //            ZendeskFieldsIDs.legacyLogs: systemStatusReportViewModel.statusReport,
             ZendeskFieldsIDs.currentSite: getCurrentSiteDescription(),
             ZendeskFieldsIDs.sourcePlatform: Constants.sourcePlatform,
-//            ZendeskFieldsIDs.appLanguage: Locale.preferredLanguage,
+            ZendeskFieldsIDs.appLanguage: Locale.preferredLanguage,
         ]
     }
 }
@@ -197,7 +197,7 @@ private extension SupportFormMetadataProvider {
         static let networkTypeLabel = "Network Type:"
         static let networkCarrierLabel = "Carrier:"
         static let networkCountryCodeLabel = "Country Code:"
-        static let sourcePlatform = "mobile_-_woo_ios"
+        static let sourcePlatform = "mobile_-_mate_ios"
     }
 
     /// Payments extensions Slugs
@@ -205,5 +205,17 @@ private extension SupportFormMetadataProvider {
     enum PluginSlug {
         static let stripe = "woocommerce-gateway-stripe/woocommerce-gateway-stripe"
         static let wcpay = "woocommerce-payments/woocommerce-payments"
+    }
+}
+
+
+/// Locale: Woo Methods
+///
+extension Locale {
+
+    /// Returns the System's Preferred Language. Defaults to English
+    ///
+    static var preferredLanguage: String {
+        return Locale.preferredLanguages.first ?? "en"
     }
 }

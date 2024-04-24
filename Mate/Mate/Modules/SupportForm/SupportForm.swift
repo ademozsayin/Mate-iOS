@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
-
+import FiableFoundation
+import Algorithms
 /// Hosting Controller for the Support Form.
 ///
 final class SupportFormHostingController: UIHostingController<SupportForm> {
@@ -50,12 +51,79 @@ struct SupportForm: View {
                 VStack(alignment: .leading, spacing: Layout.sectionSpacing) {
 
                     Text(Localization.iNeedHelp.uppercased())
-//                        .footnoteStyle()
+                        .footnoteStyle()
                         .padding([.horizontal, .top])
 
-                    // Area Lis
+                    // Area List
+                    VStack(alignment: .leading, spacing: .zero) {
+                        ForEach(viewModel.areas.indexed(), id: \.0.self) { index, area in
+                            HStack(alignment: .center, spacing: Layout.radioButtonSpacing) {
+                                // Radio-Button emulation
+                                Circle()
+                                    .stroke(Color(.separator), lineWidth: Layout.radioButtonBorderWidth)
+                                    .frame(width: Layout.radioButtonSize, height: Layout.radioButtonSize)
+                                    .background(
+                                        // Use a clear color for non-selected radio buttons.
+                                        Circle()
+                                            .fill( viewModel.isAreaSelected(area) ? Color(.accent) : .clear)
+                                            .padding(Layout.radioButtonBorderWidth)
+                                    )
 
+                                Text(area.title)
+                                    .headlineStyle()
+                            }
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading) // Needed to make tap area the whole width
+                            .background(Color(.listForeground(modal: false)))
+                            .onTapGesture {
+                                viewModel.selectArea(area)
+                            }
 
+                            Divider()
+                                .padding(.leading)
+                                .renderedIf(index < viewModel.areas.count - 1) // Don't render the last divider
+                        }
+                    }
+                    .cornerRadius(Layout.cornerRadius)
+                    .padding(.bottom)
+
+                    // Info Section
+                    VStack(alignment: .leading, spacing: Layout.subSectionsSpacing) {
+                        Text(Localization.letsGetItSorted)
+                            .headlineStyle()
+
+                        Text(Localization.tellUsInfo)
+                            .subheadlineStyle()
+                    }
+
+                    // Subject Text Field
+                    VStack(alignment: .leading, spacing: Layout.subSectionsSpacing) {
+                        Text(Localization.subject)
+                            .foregroundColor(Color(.text))
+                            .subheadlineStyle()
+
+                        TextField("", text: $viewModel.subject)
+                            .bodyStyle()
+                            .padding(insets: Layout.subjectInsets)
+                            .background(Color(.listForeground(modal: false)))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: Layout.cornerRadius).stroke(Color(.separator))
+                            )
+                    }
+
+                    // Description Text Editor
+                    VStack(alignment: .leading, spacing: Layout.subSectionsSpacing) {
+                        Text(Localization.message)
+                            .foregroundColor(Color(.text))
+                            .subheadlineStyle()
+
+                        TextEditor(text: $viewModel.description)
+                            .bodyStyle()
+                            .frame(minHeight: Layout.minimuEditorSize)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: Layout.cornerRadius).stroke(Color(.separator))
+                            )
+                    }
                 }
                 .padding()
             }
@@ -75,10 +143,10 @@ struct SupportForm: View {
             }
             .background(Color(.listForeground(modal: false)))
         }
-//        .background(Color(.listBackground))
+        .background(Color(.listBackground))
         .navigationTitle(Localization.title)
         .navigationBarTitleDisplayMode(.inline)
-//        .wooNavigationBarStyle()
+        .wooNavigationBarStyle()
         .onAppear {
             viewModel.onViewAppear()
         }
