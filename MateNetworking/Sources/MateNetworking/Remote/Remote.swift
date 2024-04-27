@@ -52,10 +52,10 @@ public class Remote: NSObject {
     /// - Parameter request: Request that should be performed.
     /// - Returns: The result from the JSON parsed response for the expected type.
     func enqueue<T: Decodable>(_ request: Request) async throws -> T {
+        
         try await withCheckedThrowingContinuation { continuation in
             network.responseData(for: request) { [weak self] result in
                 guard let self else { return }
-
                 switch result {
                 case .success(let data):
                     do {
@@ -89,7 +89,7 @@ public class Remote: NSObject {
     func enqueue<M: Mapper>(_ request: Request, mapper: M, completion: @escaping (M.Output?, Error?) -> Void) {
        
         if let urlRequest = request.urlRequest {
-                NetworkLogger.log(request: urlRequest)
+            NetworkLogger.log(request: urlRequest)
         }
            
         network.responseData(for: request) { [weak self] ( data, networkError) in
@@ -288,35 +288,31 @@ private extension Remote {
 
     /// Handles *all* of the DotcomError(s) that are successfully parsed.
     ///
-//    func handleResponseError(error: Error, for request: Request) {
-//        
-//        if let onsaApierror = error as? OnsaApiError {
-//            switch onsaApierror {
-//            case .unauthorized where request is OnsaApiRequest:
-//                publishInvalidTokenNotification(error: onsaApierror)
-//            case .invalidToken where request is OnsaApiRequest:
-//                publishInvalidTokenNotification(error: onsaApierror)
-//            default:
-//                break
-//            }
-//            
-//        } else {
-//            DDLogInfo("Unkown error type")
-//        }
-//    }
-    
     func handleResponseError(error: Error, for request: Request) {
-        guard let dotcomError = error as? DotcomError else {
-            return
-        }
 
-        switch dotcomError {
-        case .requestFailed where request is OnsaApiRequest:
-            publishJetpackTimeoutNotification(error: dotcomError)
-        case .invalidToken:
-            publishInvalidTokenNotification(error: dotcomError)
-        default:
-            break
+        if let onsaApierror = error as? OnsaApiError {
+            switch onsaApierror {
+            case .unauthorized where request is OnsaApiRequest:
+                publishInvalidTokenNotification(error: onsaApierror)
+            case .invalidToken where request is OnsaApiRequest:
+                publishInvalidTokenNotification(error: onsaApierror)
+            default:
+                break
+            }
+            
+        } else {
+            guard let dotcomError = error as? DotcomError else {
+                return
+            }
+
+            switch dotcomError {
+            case .requestFailed where request is OnsaApiRequest:
+                publishJetpackTimeoutNotification(error: dotcomError)
+            case .invalidToken:
+                publishInvalidTokenNotification(error: dotcomError)
+            default:
+                break
+            }
         }
     }
 
@@ -339,7 +335,7 @@ private extension Remote {
         guard let networkError = error as? NetworkError else {
             return error
         }
-
+        
         /// We will to attempt to validate the error using `ResponseDataValidator`
         /// if the error has accompanied response data.
         ///
@@ -357,6 +353,13 @@ private extension Remote {
             try validator.validate(data: response)
             return networkError
         } catch {
+//            return error
+            switch networkError {
+            case .unauthorized:
+                publishInvalidTokenNotification(error: networkError)
+            default:
+                break
+            }
             return error
         }
     }
@@ -376,6 +379,10 @@ private extension Remote {
     /// Publishes an `Invalid Token` Notification.
     ///
     private func publishInvalidTokenNotification(error: OnsaApiError) {
+        NotificationCenter.default.post(name: .RemoteDidReceiveInvalidTokenError, object: error, userInfo: nil)
+    }
+    
+    private func publishInvalidTokenNotification(error: NetworkError) {
         NotificationCenter.default.post(name: .RemoteDidReceiveInvalidTokenError, object: error, userInfo: nil)
     }
 

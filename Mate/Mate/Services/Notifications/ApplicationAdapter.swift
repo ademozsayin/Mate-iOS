@@ -49,4 +49,14 @@ extension UIApplication: ApplicationAdapter {
                             actionHandler: actionHandler)
         ServiceLocator.noticePresenter.enqueue(notice: notice)
     }
+    
+    func presentInAppNotification(title: String) {
+        let notice = Notice(title: title,
+                            subtitle: nil,
+                            message: nil,
+                            feedbackType: .error,
+                            actionTitle: nil,
+                            actionHandler: nil)
+        ServiceLocator.noticePresenter.enqueue(notice: notice)
+    }
 }

@@ -30,6 +30,16 @@ struct EventFactory {
 //    func newEvent(from existingEvent: MateEvent) -> MateEvent {
 //        return existingEvent.copy(id: 0, name: "")
 //    }
+    
+    /// Copies a product by cleaning properties like `id, name, statusKey, and groupedProducts` to their default state.
+    /// This is useful to turn an existing (on core) `auto-draft` product into a new app-product ready to be saved.
+    ///
+    /// - Parameters:
+    ///   - existingProduct: The product to copy.
+    ///   - status: The status of the new product.
+    func newEvent(from existingProduct: MateEvent) -> MateEvent {
+        return existingProduct.copy(id: 0, name: "")
+    }
 }
 
 private extension EventFactory {
@@ -47,7 +57,8 @@ private extension EventFactory {
                   maxAttendees: nil,
                   joinedAttendees: nil,
                   category: nil,
-                  user: nil)
+                  user: nil,
+                  status: nil)
     }
             
 }

@@ -71,8 +71,8 @@ private extension EventsSplitViewWrapperController {
 
 extension EventsSplitViewWrapperController {
     private enum Localization {
-        static let tabTitle = NSLocalizedString("productsTab.tabTitle",
-                                                value: "Products",
+        static let tabTitle = NSLocalizedString("eventsTab.tabTitle",
+                                                value: "Events",
                                                 comment: "Title of the Products tab — plural form of Product")
     }
 }

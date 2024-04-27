@@ -13,35 +13,24 @@ import protocol Alamofire.ParameterEncoding
 
 public protocol SupportRemoteProtocol {
     
-    func createTicket(form_id: String, subject: String, description: String) async throws -> SupportTicketResponse
+    func createTicket(form_id: String, subject: String, description: String) async throws -> MateResponse<Ticket>
 }
 
 ///
 public class SupportRemote: Remote, SupportRemoteProtocol {
    
-    public func createTicket(form_id: String, subject: String, description: String) async throws -> SupportTicketResponse {
+    public func createTicket(form_id: String, subject: String, description: String) async throws -> MateResponse<Ticket> {
         let path = "\(Path.createTicket)"
         
         let parameters: [String: Any] = [
             "form_id": form_id,
             "subject": subject,
             "description": description
+//            "tags": ["ios", "mate", "app"]
         ]
         let request = OnsaApiRequest( method: .post, path: path, parameters: parameters)
 
         return try await enqueue(request)
-    }
-}
-
-
-/// Contains necessary data for handling the remote response from creating a cart.
-public struct SupportTicketResponse: Decodable {
-    public let success: Bool?
-    public let message: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case success
-        case message
     }
 }
 

@@ -11,6 +11,7 @@ import FiableRedux
 import MateNetworking
 import KeychainAccess
 import WidgetKit
+import UIKit
 
 // MARK: - DefaultStoresManager
 //
@@ -180,7 +181,7 @@ class DefaultStoresManager: StoresManager {
         invalidWPCOMTokenNotificationObserver = notificationCenter.addObserver(forName: .RemoteDidReceiveInvalidTokenError,
                                                                                object: nil,
                                                                                queue: .main) { [weak self] note in
-            _ = self?.deauthenticate()
+            _ = self?.deauthenticate()            
         }
     }
 
@@ -272,6 +273,8 @@ class DefaultStoresManager: StoresManager {
 //        updateAndReloadWidgetInformation(with: nil)
 
         NotificationCenter.default.post(name: .logOutEventReceived, object: nil)
+        
+
 
         return self
     }

@@ -121,7 +121,8 @@ final class ProductSearchUICommand: SearchUICommand {
                   maxAttendees: nil,
                   joinedAttendees: nil,
                   category: nil,
-                  user: nil)
+                  user: nil,
+                  status: nil)
     }
 
     /// Synchronizes the Products matching a given Keyword

@@ -57,7 +57,7 @@ private extension SupportStore {
         form_id: String,
         subject: String,
         description: String,
-        completion: @escaping (Result<SupportTicketResponse, OnsaApiError>) -> Void) {
+        completion: @escaping (Result<MateResponse<Ticket>, OnsaApiError>) -> Void) {
             
         Task { @MainActor in
             do {

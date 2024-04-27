@@ -62,7 +62,7 @@ public class DevicesRemote: Remote {
     ///
     public func unregisterDevice(deviceId: String, completion: @escaping (Error?) -> Void) {
         let path = String(format: Paths.delete, deviceId)
-        let unregisterRequest = FiableRequest(method: .post, path: path)
+        let unregisterRequest = OnsaApiRequest(method: .post, path: path)
 
         let mapper = SuccessResultMapper()
 

@@ -188,8 +188,7 @@ private extension AddEventCoordinator {
                 case .manual:
                     self.presentProductForm(bottomSheetProductType: selectedBottomSheetProductType)
                 case .template:
-                    print("sss")
-//                    self.createAndPresentTemplate(productType: selectedBottomSheetProductType)
+                    self.createAndPresentTemplate(productType: selectedBottomSheetProductType)
                 }
             }
         }
@@ -226,28 +225,28 @@ private extension AddEventCoordinator {
     /// Presents a product onto the current navigation stack.
     ///
     func presentProduct(_ product: MateEvent, formType: ProductFormType = .add, isAIContent: Bool = false) {
-//        let model = EditableProductModel(product: product)
-//                        
+       
+        let model = EditableEventModel(product: product)
 //
-//        let viewModel = ProductFormViewModel(product: model,
-//                                             formType: formType)
+//
+        let viewModel = EventFormViewModel(product: model,
+                                             formType: formType)
 //        
-//        viewModel.onProductCreated = { [weak self] product in
-//            guard let self else { return }
-//            self.onProductCreated(product)
-//    
-//        }
-//        let viewController = ProductFormViewController(viewModel: viewModel,
-//                                                       isAIContent: isAIContent,
-//                                                       presentationStyle: .navigationStack,
-//                                                       onDeleteCompletion: onDeleteCompletion)
+        viewModel.onProductCreated = { [weak self] product in
+            guard let self else { return }
+            self.onProductCreated(product)
+    
+        }
+        let viewController = ProductFormViewController(viewModel: viewModel,
+                                                       presentationStyle: .navigationStack,
+                                                       onDeleteCompletion: onDeleteCompletion)
 //        // Since the Add Product UI could hold local changes, disables the bottom bar (tab bar) to simplify app states.
-//        viewController.hidesBottomBarWhenPushed = true
-//        if let navigateToProductForm {
-//            navigateToProductForm(viewController)
-//        } else {
-//            navigationController.pushViewController(viewController, animated: true)
-//        }
+        viewController.hidesBottomBarWhenPushed = true
+        if let navigateToProductForm {
+            navigateToProductForm(viewController)
+        } else {
+            navigationController.pushViewController(viewController, animated: true)
+        }
     }
 
 
@@ -268,9 +267,17 @@ private extension AddEventCoordinator {
             sheet.prefersGrabberVisible = !isIPad
         })
     }
+    
+    /// Creates & Fetches a template product.
+    /// If success: Navigates to the product.
+    /// If failure: Shows an error notice
+    ///
+    func createAndPresentTemplate(productType: BottomSheetProductType) {
+   
+        let newProduct = EventFactory().createNewEvent(type: productType, isVirtual: false)
+        self.presentProduct(newProduct!) 
+    }
 }
-
-
 
 ///
 public enum ProductCreationType: Equatable {

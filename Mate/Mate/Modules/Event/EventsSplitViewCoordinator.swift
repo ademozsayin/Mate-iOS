@@ -33,8 +33,9 @@ final class EventsSplitViewCoordinator: NSObject {
     private let splitViewController: UISplitViewController
     private let primaryNavigationController: UINavigationController
     private let secondaryNavigationController: UINavigationController
-    private lazy var productsViewController = EventsViewController(selectedEvent: selectedEvent,
-                                                                     navigateToContent: showFromProductList
+    private lazy var productsViewController = EventsViewController(
+        selectedEvent: selectedEvent,
+        navigateToContent: showFromProductList
     )
 
     private var addProductCoordinator: AddEventCoordinator?
@@ -113,9 +114,9 @@ private extension EventsSplitViewCoordinator {
     }
 
     func showProductFormIfNoUnsavedChanges(product: MateEvent) {
-//        whenSecondaryViewProductHasNoUnsavedChanges { [weak self] in
-            self.showProductForm(product: product)
-//        }
+        whenSecondaryViewProductHasNoUnsavedChanges { [weak self] in
+            self?.showProductForm(product: product)
+        }
     }
 
     func showProductForm(product: MateEvent) {
@@ -137,12 +138,18 @@ private extension EventsSplitViewCoordinator {
 
     func startProductCreation(sourceView: AddEventCoordinator.SourceView, isFirstProduct: Bool) {
         let addProductCoordinator = AddEventCoordinator(
-                                                          source: .productsTab,
-                                                          sourceView: sourceView,
-                                                          sourceNavigationController: primaryNavigationController,
-                                                          isFirstProduct: isFirstProduct,
-                                                          navigateToProductForm: { [weak self] viewController in
-//            self?.showSecondaryView(contentType: .productForm(product: nil), viewController: viewController, replacesNavigationStack: true)
+            source: .productsTab,
+            sourceView: sourceView,
+            sourceNavigationController: primaryNavigationController,
+            isFirstProduct: isFirstProduct,
+            navigateToProductForm: { [weak self] viewController in
+                guard let self else { return }
+                                                            
+            self.showSecondaryView(
+                contentType: .eventForm(event: nil),
+                viewController: viewController,
+                replacesNavigationStack: true
+            )
         }, onDeleteCompletion: { [weak self] in
             self?.onSecondaryProductFormDeletion()
         })
@@ -157,7 +164,19 @@ private extension EventsSplitViewCoordinator {
     func whenSecondaryViewProductHasNoUnsavedChanges(then closure: @escaping () -> Void) {
         // Closes the product form in the secondary view only if there are no unsaved changes or if the user chooses to discard the changes.
         // This works based on the assumption that there is only one product form in the secondary navigation stack.
-  
+        if let lastProductFormViewController = secondaryNavigationController.viewControllers
+            .compactMap({ $0 as? ProductFormViewController<EventFormViewModel> }).last {
+            return lastProductFormViewController.close(completion: {
+                closure()
+            }, onCancel: { [weak self] in
+                guard let self else { return }
+                // Reassigns the secondary content types to trigger product list row selection to re-select the product in the secondary view.
+                // Otherwise, the most recently tapped row is selected in the table view.
+                contentTypes = contentTypes
+            })
+        } else {
+            closure()
+        }
     }
 
     func showSecondaryView(contentType: SecondaryViewContentType, viewController: UIViewController, replacesNavigationStack: Bool) {
@@ -258,12 +277,10 @@ private extension EventsSplitViewCoordinator {
     /// - The view controller to show in the primary navigation stack is the product list
     func willNavigateFromTheLastSecondaryViewControllerToProductListInCollapsedMode(_ navigationController: UINavigationController,
                                                                                     willShow viewController: UIViewController) -> Bool {
-//        let isNavigatingToProductList = viewController == productsViewController ||
-//        viewController is SearchViewController<ProductsTabProductTableViewCell, ProductSearchUICommand>
-//        return splitViewController.isCollapsed && navigationController == primaryNavigationController
-//            && contentTypes.isNotEmpty && isNavigatingToProductList
-//        
-        return true
+        let isNavigatingToProductList = viewController == productsViewController ||
+        viewController is SearchViewController<ProductsTabProductTableViewCell, ProductSearchUICommand>
+        return splitViewController.isCollapsed && navigationController == primaryNavigationController
+            && contentTypes.isNotEmpty && isNavigatingToProductList
     }
 }
 

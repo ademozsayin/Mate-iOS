@@ -190,7 +190,6 @@ final class EventsViewController: UIViewController, GhostableViewController {
         super.viewDidLoad()
 
 //        registerUserActivity()
-
         configureNavigationBar()
         configureMainView()
         configureTableView()
@@ -198,21 +197,18 @@ final class EventsViewController: UIViewController, GhostableViewController {
         configureToolbar()
         configureScrollWatcher()
         registerTableViewCells()
-
         showTopBannerViewIfNeeded()
-       
         stateCoordinator.transitionToLoadingState()
         
         viewModel.getUserEvents(page: 1)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
-            self.stateCoordinator.transitionToResultsUpdatedState(hasData: false)
-        }
         
         viewModel.onDataLoadingError = { [weak self] error in
             self?.dataLoadingError = error
             // Show error banner view if needed
             self?.showTopBannerViewIfNeeded()
+            self?.stateCoordinator.transitionToResultsUpdatedState(hasData: false)
         }
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -410,11 +406,11 @@ private extension EventsViewController {
 
     func updateNavigationBarTitleForEditing() {
         let selectedProducts = viewModel.selectedProductsCount
-        if selectedProducts == 0 {
-            navigationItem.title = Localization.bulkEditingTitle
-        } else {
-            navigationItem.title = String.localizedStringWithFormat(Localization.bulkEditingItemsTitle, String(selectedProducts))
-        }
+//        if selectedProducts == 0 {
+//            navigationItem.title = Localization.bulkEditingTitle
+//        } else {
+//            navigationItem.title = String.localizedStringWithFormat(Localization.bulkEditingItemsTitle, String(selectedProducts))
+//        }
     }
 
     /// Apply Woo styles.
@@ -424,7 +420,7 @@ private extension EventsViewController {
     }
 
     func configureTabBarItem() {
-        tabBarItem.title = "asdas"//NSLocalizedString("Events", comment: "Title of the Events tab — plural form of Events")
+        tabBarItem.title = NSLocalizedString("Events", comment: "Title of the Events tab — plural form of Events")
         tabBarItem.image = .productImage
         tabBarItem.accessibilityIdentifier = "tab-bar-products-item"
     }
@@ -955,34 +951,9 @@ private extension EventsViewController {
     }
 
     enum Localization {
-        static let bulkEditingNavBarButtonTitle = NSLocalizedString("Edit products", comment: "Action to start bulk editing of products")
-        static let bulkEditingNavBarButtonHint = NSLocalizedString(
-            "Edit status or price for multiple products at once",
-            comment: "VoiceOver accessibility hint, informing the user the button can be used to bulk edit products"
-        )
-
-        static let selectAllToolbarButtonTitle = NSLocalizedString(
-            "Select all",
-            comment: "Title of a button that selects all products for bulk update"
-        )
-        static let bulkEditingToolbarButtonTitle = NSLocalizedString(
-            "Bulk update",
-            comment: "Title of a button that presents a menu with possible products bulk update options"
-        )
-        static let bulkEditingStatusOption = NSLocalizedString("Update status", comment: "Title of an option that opens bulk products status update flow")
-        static let bulkEditingPriceOption = NSLocalizedString("Update price", comment: "Title of an option that opens bulk products price update flow")
+        
         static let cancel = NSLocalizedString("Cancel", comment: "Title of an option to dismiss the bulk edit action sheet")
 
-        static let bulkEditingTitle = NSLocalizedString(
-            "Select items",
-            comment: "Title that appears on top of the Product List screen when bulk editing starts."
-        )
-        static let bulkEditingItemsTitle = NSLocalizedString(
-            "%1$@ selected",
-            comment: "Title that appears on top of the Product List screen during bulk editing. Reads like: 2 selected"
-        )
-
-        static let bulkEditingApply = NSLocalizedString("Apply", comment: "Title for the button to apply bulk editing changes to selected products.")
 
         static let productsSavingTitle = NSLocalizedString("Updating your products...",
                                                           comment: "Title of the in-progress UI while bulk updating selected products remotely")

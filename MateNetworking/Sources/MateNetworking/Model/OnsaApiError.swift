@@ -44,8 +44,9 @@ public enum OnsaApiError: Error, Decodable, Equatable, GeneratedFakeable {
     ///
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        let error = try container.decodeIfPresent(String.self, forKey: .error)
-        let message = try container.decode(String.self, forKey: .message) 
+        let validation_error = try container.decodeIfPresent(String.self, forKey: .validation_error)
+        let message = try container.decode(String.self, forKey: .message)
+        let errors = try container.decodeIfPresent([String: [String]].self, forKey: .errors)
 
         switch message {
         case Constants.invalidToken:
@@ -64,7 +65,7 @@ public enum OnsaApiError: Error, Decodable, Equatable, GeneratedFakeable {
             self = .resourceDoesNotExist
 
         default:
-            self = .unknown(error: error, message: message)
+            self = .unknown(error: "Unknown Error", message: message)
         }
     }
 
@@ -84,17 +85,15 @@ public enum OnsaApiError: Error, Decodable, Equatable, GeneratedFakeable {
     /// Coding Keys
     ///
     private enum CodingKeys: String, CodingKey {
-        case error
         case message
+        case errors
+        case validation_error
     }
 
     /// Possible Error Messages
     ///
     private enum ErrorMessages {
-        static let statsModuleDisabled = "This blog does not have the Stats module enabled"
-        static let noStatsPermission = "user cannot view stats"
         static let resourceDoesNotExist = "Resource does not exist."
-        static let jetpackNotConnected = "This blog does not have Jetpack connected"
     }
 }
 

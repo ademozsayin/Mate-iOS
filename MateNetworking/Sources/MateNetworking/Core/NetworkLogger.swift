@@ -30,10 +30,10 @@ public class NetworkLogger {
      */
     public static func log(request: URLRequest) {
         
-#if DEBUG
+//#if DEBUG
         print("\n - - - - - - - - - - OUTGOING REQUEST - - - - - - - - - - \n")
         defer { print("\n - - - - - - - - - -  OUTGOING REQUEST END - - - - - - - - - - \n") }
-#endif
+//#endif
         
         let urlAsString = request.url?.absoluteString ?? ""
         let urlComponents = NSURLComponents(string: urlAsString)
@@ -55,9 +55,9 @@ public class NetworkLogger {
             logOutput += "\n \(NSString(data: body, encoding: String.Encoding.utf8.rawValue) ?? "")"
         }
         
-#if DEBUG
+//#if DEBUG
         print(logOutput)
-#endif
+//#endif
         
     }
     

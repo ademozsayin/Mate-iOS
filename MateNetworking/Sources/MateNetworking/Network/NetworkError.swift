@@ -28,6 +28,10 @@ public enum NetworkError: Error, Equatable {
 
     /// Error for REST API requests with invalid cookie nonce
     case invalidCookieNonce
+    
+    /// Unauthorized (statusCode = 401)
+    /// this comes from laravel auth sanctum return 401 when unauth.
+    case unauthorized(response: Data? = nil)
 
     /// The HTTP response code of the network error, for cases that are deducted from the status code.
     public var responseCode: Int? {
@@ -38,6 +42,8 @@ public enum NetworkError: Error, Equatable {
                 return StatusCode.timeout
             case let .unacceptableStatusCode(statusCode, _):
                 return statusCode
+            case .unauthorized:
+                return StatusCode.unauth
             default:
                 return nil
         }
@@ -46,6 +52,8 @@ public enum NetworkError: Error, Equatable {
     /// Response data accompanied the error if available
     var response: Data? {
         switch self {
+        case .unauthorized(let response):
+            return response
         case .notFound(let response):
             return response
         case .timeout(let response):
@@ -54,6 +62,7 @@ public enum NetworkError: Error, Equatable {
             return response
         case .invalidURL, .invalidCookieNonce:
             return nil
+        
         }
     }
 }
@@ -76,6 +85,8 @@ extension NetworkError {
             self = .notFound(response: responseData)
         case StatusCode.timeout:
             self = .timeout(response: responseData)
+        case StatusCode.unauth:
+            self = .unauthorized(response: responseData)
         default:
             self = .unacceptableStatusCode(statusCode: statusCode, response: responseData)
         }
@@ -87,12 +98,14 @@ extension NetworkError {
         static let success  = 200..<300
         static let notFound = 404
         static let timeout  = 408
+        static let unauth = 401
     }
 }
 
 extension NetworkError: CustomStringConvertible {
     public var description: String {
         switch self {
+            
         case let .notFound(responseData):
             let response: String? = responseData.map { String(data: $0, encoding: .utf8) } ?? nil
             let format = NSLocalizedString(
@@ -121,6 +134,11 @@ extension NetworkError: CustomStringConvertible {
                 value: "Sorry, the URL is not valid. Please try again.",
                 comment: "Error message when the URL is invalid.")
         case .invalidCookieNonce:
+            return NSLocalizedString(
+                "NetworkError.invalidCookieNonce",
+                value: "Sorry, your session has expired. Please log in again.",
+                comment: "Error message when session cookie has expired.")
+        case .unauthorized(response: let response):
             return NSLocalizedString(
                 "NetworkError.invalidCookieNonce",
                 value: "Sorry, your session has expired. Please log in again.",

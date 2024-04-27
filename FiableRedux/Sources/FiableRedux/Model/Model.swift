@@ -17,6 +17,7 @@ public typealias APNSDevice = MateNetworking.APNSDevice
 public typealias MateDevice = MateNetworking.MateDevice
 public typealias MateEvent = MateNetworking.MateEvent
 public typealias MateCategory = MateNetworking.MateCategory
+public typealias EventStatus = MateNetworking.EventStatus
 
 public typealias EmailCheck = MateNetworking.EmailCheckData
 public typealias Note = MateNetworking.Note

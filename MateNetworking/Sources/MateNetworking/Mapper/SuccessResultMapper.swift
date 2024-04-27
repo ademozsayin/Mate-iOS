@@ -22,7 +22,7 @@ struct SuccessResultMapper: Mapper {
 
 /// Success Flag Envelope
 ///
-private struct SuccessResult: Decodable {
+public struct SuccessResult: Decodable {
 
     /// Success Flag
     ///

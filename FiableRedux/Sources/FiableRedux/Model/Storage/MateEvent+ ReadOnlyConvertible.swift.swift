@@ -42,7 +42,9 @@ extension StorageEvent: ReadOnlyConvertible {
                          maxAttendees: nil,
                          joinedAttendees: nil,
                          category: nil,
-                         user: nil)
+                         user: nil,
+                         status: nil
+        )
     }
     
 }

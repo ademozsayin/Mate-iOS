@@ -124,7 +124,7 @@ public final class SupportFormViewModel: ObservableObject {
       
         let formId = "\(area.datasource.formID)"
         
-        stores.dispatch(SupportAction.createTicket(form_id:formId, subject: "", description: "", onCompletion: { [weak self] res in
+        stores.dispatch(SupportAction.createTicket(form_id:formId, subject: subject, description: description, onCompletion: { [weak self] res in
             guard let self else { return }
             self.showLoadingIndicator = false
             switch res {

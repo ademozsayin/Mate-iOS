@@ -16,7 +16,5 @@ public enum SupportAction: Action {
         form_id: String,
         subject:String,
         description: String,
-        onCompletion: (Result<SupportTicketResponse, OnsaApiError>) -> Void)
-
-   
+        onCompletion: (Result<MateResponse<Ticket>, OnsaApiError>) -> Void)
 }

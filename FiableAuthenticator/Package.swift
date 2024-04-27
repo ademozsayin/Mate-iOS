@@ -19,6 +19,7 @@ let package = Package(
         .package(path: "FiableKit"), // Local package named "FiableKit"
         .package(url: "https://github.com/SVProgressHUD/SVProgressHUD.git", from: "2.2.5"),
         .package(path: "MateNetworking"),
+        .package(path: "FiableRedux"), // Local package named "FiableUI"
     ],
     targets: [
         // Define the targets in your package, such as the main target and test target
@@ -28,7 +29,8 @@ let package = Package(
                            "FiableShared",
                            "SVProgressHUD",
                            "FiableKit",
-                           "MateNetworking"]
+                           "MateNetworking",
+                           "FiableRedux"]
         ), // Specify dependencies for the main target
         .testTarget(
             name: "FiableAuthenticatorTests",

@@ -31,6 +31,15 @@ public struct MateEvent: Codable, Equatable {
     public let joinedAttendees: String?
     public let category: MateCategory?
     public let user: MateUser?
+    public let status: EventStatus?
+    
+    
+    /// Returns `true` if the product has a remote representation; `false` otherwise.
+    ///
+    public var existsRemotely: Bool {
+        id != 0
+    }
+
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -47,9 +56,10 @@ public struct MateEvent: Codable, Equatable {
         case joinedAttendees = "joined_attendees"
         case category = "category"
         case user = "user"
+        case status = "status"
     }
     
-    public init(id: Int, name: String?, startTime: String?, categoryID: String?, createdAt: String?, updatedAt: String?, userID: String?, address: String?, latitude: String?, longitude: String?, maxAttendees: String?, joinedAttendees: String?, category: MateCategory?, user: MateUser?) {
+    public init(id: Int, name: String?, startTime: String?, categoryID: String?, createdAt: String?, updatedAt: String?, userID: String?, address: String?, latitude: String?, longitude: String?, maxAttendees: String?, joinedAttendees: String?, category: MateCategory?, user: MateUser?, status: EventStatus?) {
         self.id = id
         self.name = name
         self.startTime = startTime
@@ -64,6 +74,7 @@ public struct MateEvent: Codable, Equatable {
         self.joinedAttendees = joinedAttendees
         self.category = category
         self.user = user
+        self.status = status
     }
 
 }
