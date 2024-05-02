@@ -69,9 +69,10 @@ private extension MapView {
                     image: nil,
                     actionTitle: "Try Again",
                     actionHandler: {
-//                        Task {
+                        Task {
+                            viewModel.fetch()
 //                            await viewModel.fetchEvents(location: viewModel.userLocation)
-//                        }
+                        }
                     }
                 )
             )

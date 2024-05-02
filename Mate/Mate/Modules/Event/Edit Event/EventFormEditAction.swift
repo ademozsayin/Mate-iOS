@@ -12,18 +12,12 @@ enum EventFormEditAction: Equatable {
     case name(editable: Bool)
     case productType(editable: Bool)
     case categories(editable: Bool)
+    case date(editable: Bool)
+    case google_place_id(editable: Bool)
 }
 
 /// Creates actions for different sections/UI on the product form.
 struct EventFormActionsFactory: EventFormActionsFactoryProtocol {
-
-    /// Represents the variation price state.
-    ///
-    enum VariationsPrice {
-        case unknown // Un-fetched variations
-        case notSet
-        case set
-    }
 
     private let product: EditableEventModel
     private let formType: ProductFormType
@@ -45,10 +39,10 @@ struct EventFormActionsFactory: EventFormActionsFactoryProtocol {
     func primarySectionActions() -> [EventFormEditAction] {
         let shouldShowImagesRow = false//editable || product.images.isNotEmpty
         let shouldShowDescriptionRow = false//editable || product.description?.isNotEmpty == true
-
+        let canEditProductType = editable
 
         let actions: [EventFormEditAction?] = [
-            .name(editable: editable),
+            .name(editable: editable)
         ]
         return actions.compactMap { $0 }
     }
@@ -97,8 +91,7 @@ private extension EventFormActionsFactory {
         let canEditProductType = editable
 
         let actions: [EventFormEditAction?] = [
-            .categories(editable: editable),
-            .productType(editable: canEditProductType)
+            .categories(editable: editable)
         ]
         return actions.compactMap { $0 }
     }
@@ -110,8 +103,7 @@ private extension EventFormActionsFactory {
         let shouldShowQuantityRulesRow = true //isMinMaxQuantitiesEnabled && product.hasQuantityRules
 
         let actions: [EventFormEditAction?] = [
-            .categories(editable: editable),
-            .productType(editable: false)
+            .categories(editable: editable)
         ]
         return actions.compactMap { $0 }
     }
@@ -128,8 +120,8 @@ private extension EventFormActionsFactory {
         case .productType:
             // The product type action is always visible in the settings section.
             return true
-        case .categories:
-            return product.product.category?.name.isEmpty ?? false
+//        case .categories:
+//            return product.product.category?.name.isEmpty ?? false
 
         default:
             return false

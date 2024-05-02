@@ -1,0 +1,28 @@
+//
+//  ProductCategoryCellViewModel.swift
+//  Mate
+//
+//  Created by Adem Özsayın on 28.04.2024.
+//
+
+import Foundation
+
+/// Represents a row in the ProductCategoryList screen
+///
+struct ProductCategoryCellViewModel: Equatable {
+    /// Category ID
+    ///
+    let categoryID: Int64?
+
+    /// Category name
+    ///
+    let name: String
+
+    /// Category selected status
+    ///
+    let isSelected: Bool
+
+    /// Level of indentation as a subcategory
+    ///
+    let indentationLevel: Int
+}

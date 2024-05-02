@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Category
-public struct MateCategory: Codable, Equatable {
+public struct MateCategory: Codable, Equatable, Identifiable, Hashable {
     public let id: Int
     public let name: String
     public let createdAt: String?

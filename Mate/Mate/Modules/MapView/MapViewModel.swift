@@ -65,6 +65,10 @@ import MapKit
         }
     }
     
+    func fetch() {
+        manager?.startUpdatingLocation()
+    }
+    
     @MainActor
     func fetchEvents(location: CLLocationCoordinate2D) async {
     

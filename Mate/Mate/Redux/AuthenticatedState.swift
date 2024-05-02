@@ -40,7 +40,10 @@ class AuthenticatedState: StoresManagerState {
         var services: [ActionsProcessor] = [
             NotificationStore(dispatcher: dispatcher, storageManager: storageManager, network: network),
             EventStore(dispatcher: dispatcher, storageManager: storageManager, network: network),
-            SupportStore(dispatcher: dispatcher, storageManager: storageManager, network: network)
+            SupportStore(dispatcher: dispatcher, storageManager: storageManager, network: network),
+            EventCategoryStore(dispatcher: dispatcher, storageManager: storageManager, network: network),
+            GooglePlaceStore(dispatcher: dispatcher, storageManager: storageManager, network: network)
+
         ]
 
 

@@ -34,7 +34,7 @@ final class EventsViewController: UIViewController, GhostableViewController {
     
     lazy var ghostTableViewController = GhostTableViewController(
         options: GhostTableViewOptions(sectionHeaderVerticalSpace: .medium,
-                                       cellClass: ProductCategoryTableViewCell.self,
+                                       cellClass: ImageAndTitleAndTextTableViewCell.self,
                                        rowsPerSection: Constants.placeholderRowsPerSection,
                                        estimatedRowHeight: Constants.estimatedRowHeight,
                                        separatorStyle: .none,
@@ -494,7 +494,9 @@ private extension EventsViewController {
     /// Register table cells.
     ///
     func registerTableViewCells() {
-        tableView.register(ProductsTabProductTableViewCell.self)
+//        tableView.register(ProductsTabProductTableViewCell.self)
+        tableView.register(UITableViewCell.self)
+
     }
 
     /// Show or hide the toolbar based on number of products

@@ -101,7 +101,6 @@ private extension EventFormTableViewDataSource {
             configureDescription(cell: cell, description: description, isEditable: editable, isAIEnabled: isAIEnabled)
         case .separator:
             configureSeparator(cell: cell)
-     
         }
     }
 

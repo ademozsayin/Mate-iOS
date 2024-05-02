@@ -45,9 +45,8 @@ private extension DefaultEventFormTableViewModel {
             switch action {
          
             case .name(let editable):
-                return [.name(name: product.name, isEditable: editable, eventStatus: .published)]
-
-            
+                return [.name(name: product.name, isEditable: editable, eventStatus: .draft)]
+                
             default:
                 fatalError("Unexpected action in the primary section: \(action)")
             }
@@ -97,8 +96,8 @@ private extension DefaultEventFormTableViewModel {
 
     func categoriesRow(product: MateEvent, isEditable: Bool) -> EventFormSection.SettingsRow.ViewModel {
         let icon = UIImage.categoriesIcon
-        let title = "Localization.categoriesTitle"
-        let details = "product.categoriesDescription() ?? Localization.categoriesPlaceholder"
+        let title = Localization.categoriesTitle
+        let details = product.category?.name ?? Localization.categoriesPlaceholder
         return EventFormSection.SettingsRow.ViewModel(icon: icon, title: title, details: details, isActionable: isEditable)
     }
 }

@@ -11,6 +11,13 @@ import FiableFoundation
 import MateStorage
 import MateNetworking
 
+enum ProductFormType {
+    case add
+    case edit
+    case readonly
+}
+
+
 /// Controls navigation for the flow to add a product given a navigation controller.
 /// This class is not meant to be retained so that its life cycle is throughout the navigation. Example usage:
 ///
@@ -96,11 +103,7 @@ final class AddEventCoordinator: Coordinator {
     }
 
     func start() {
-        if shouldSkipBottomSheet {
-            presentEventForm(bottomSheetProductType: nil)
-        } else  {
-            presentProductCreationTypeBottomSheet()
-        }
+        presentProductCreationTypeBottomSheet()
     }
 }
 
@@ -131,7 +134,7 @@ private extension AddEventCoordinator {
     /// Presents a bottom sheet for users to choose if they want a create a product manually or via a template.
     ///
     func presentProductCreationTypeBottomSheet() {
-        let title = NSLocalizedString("Add a product",
+        let title = NSLocalizedString("Add an event",
                                       comment: "Message title of bottom sheet for selecting a template or manual product")
         let subtitle = NSLocalizedString("How do you want to start?",
                                          comment: "Message subtitle of bottom sheet for selecting a template or manual product")
@@ -186,9 +189,9 @@ private extension AddEventCoordinator {
             self.navigationController.dismiss(animated: true) {
                 switch creationType {
                 case .manual:
-                    self.presentProductForm(bottomSheetProductType: selectedBottomSheetProductType)
+                    self.presentProductForm(bottomSheetProductType: .football)
                 case .template:
-                    self.createAndPresentTemplate(productType: selectedBottomSheetProductType)
+                    self.presentProductForm(bottomSheetProductType: selectedBottomSheetProductType)
                 }
             }
         }
@@ -196,17 +199,19 @@ private extension AddEventCoordinator {
         switch creationType {
         case .template:
             command.data = [.football,.basketball, .tenins]
+            
+            let productTypesListPresenter = BottomSheetListSelectorPresenter(viewProperties: viewProperties, command: command)
+
+            // `topmostPresentedViewController` is used because another bottom sheet could have been presented before.
+            productTypesListPresenter.show(from: navigationController.topmostPresentedViewController,
+                                           sourceView: sourceView,
+                                           sourceBarButtonItem: sourceBarButtonItem,
+                                           arrowDirections: .any)
         case .manual:
-            command.data = []
+            self.navigationController.dismiss(animated: true) {
+                self.presentProductForm(bottomSheetProductType: .football)
+            }
         }
-
-        let productTypesListPresenter = BottomSheetListSelectorPresenter(viewProperties: viewProperties, command: command)
-
-        // `topmostPresentedViewController` is used because another bottom sheet could have been presented before.
-        productTypesListPresenter.show(from: navigationController.topmostPresentedViewController,
-                                       sourceView: sourceView,
-                                       sourceBarButtonItem: sourceBarButtonItem,
-                                       arrowDirections: .any)
     }
     
     /// Presents a new product based on the provided bottom sheet type.
@@ -226,27 +231,33 @@ private extension AddEventCoordinator {
     ///
     func presentProduct(_ product: MateEvent, formType: ProductFormType = .add, isAIContent: Bool = false) {
        
-        let model = EditableEventModel(product: product)
-//
-//
-        let viewModel = EventFormViewModel(product: model,
-                                             formType: formType)
+//        let model = EditableEventModel(product: product)
+//        let viewModel = EventFormViewModel(product: model,formType: formType)
+////        
+//        viewModel.onProductCreated = { [weak self] product in
+//            guard let self else { return }
+//            self.onProductCreated(product)
+//        }
+//        let viewController = ProductFormViewController(viewModel: viewModel,
+//                                                       presentationStyle: .navigationStack,
+//                                                       onDeleteCompletion: onDeleteCompletion)
+////        // Since the Add Product UI could hold local changes, disables the bottom bar (tab bar) to simplify app states.
+//        viewController.hidesBottomBarWhenPushed = true
+//        if let navigateToProductForm {
+//            navigateToProductForm(viewController)
+//        } else {
+//            navigationController.pushViewController(viewController, animated: true)
+//        }
 //        
-        viewModel.onProductCreated = { [weak self] product in
-            guard let self else { return }
-            self.onProductCreated(product)
-    
-        }
-        let viewController = ProductFormViewController(viewModel: viewModel,
-                                                       presentationStyle: .navigationStack,
-                                                       onDeleteCompletion: onDeleteCompletion)
-//        // Since the Add Product UI could hold local changes, disables the bottom bar (tab bar) to simplify app states.
-        viewController.hidesBottomBarWhenPushed = true
-        if let navigateToProductForm {
-            navigateToProductForm(viewController)
-        } else {
-            navigationController.pushViewController(viewController, animated: true)
-        }
+        
+        let addEditViewModel = AddEditEventViewModel(onSuccess: { [weak self] _ in
+//            self?.couponListViewController?.refreshCouponList()
+        })
+        let addEditHostingController = AddEditEventHostingController(viewModel: addEditViewModel, onDisappear: { [weak self] in
+            guard let self = self else { return }
+            navigationController.dismiss(animated: true)
+        })
+        navigationController.present(addEditHostingController, animated: true)
     }
 
 

@@ -17,7 +17,7 @@ struct CollapsibleView<Label: View, Content: View>: View {
     private let verticalPadding: CGFloat = 8
 
     init(isCollapsible: Bool = true,
-         isCollapsed: Binding<Bool> = .constant(false),
+         isCollapsed: Binding<Bool> = .constant(true),
          safeAreaInsets: EdgeInsets = EdgeInsets.zero,
          shouldShowDividers: Bool = true,
          backgroundColor: UIColor = .listForeground(modal: false),
