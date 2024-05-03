@@ -421,6 +421,13 @@
 		B768CFF92BE529ED00B4691A /* WhatsNewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768CFF62BE529ED00B4691A /* WhatsNewFactory.swift */; };
 		B768CFFA2BE529ED00B4691A /* WhatsNewHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768CFF72BE529ED00B4691A /* WhatsNewHostingController.swift */; };
 		B768CFFD2BE52E1400B4691A /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768CFFB2BE52E1400B4691A /* AccountSettingsView.swift */; };
+		B768D0042BE553BE00B4691A /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768CFFE2BE553BD00B4691A /* Inbox.swift */; };
+		B768D0052BE553BE00B4691A /* InboxEligibilityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768CFFF2BE553BD00B4691A /* InboxEligibilityUseCase.swift */; };
+		B768D0062BE553BE00B4691A /* InboxNoteRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0002BE553BD00B4691A /* InboxNoteRow.swift */; };
+		B768D0072BE553BE00B4691A /* InboxNoteRowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0012BE553BD00B4691A /* InboxNoteRowViewModel.swift */; };
+		B768D0082BE553BE00B4691A /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0022BE553BD00B4691A /* InboxViewModel.swift */; };
+		B768D00B2BE559F500B4691A /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = B768D00A2BE559F500B4691A /* Shimmer */; };
+		B768D00D2BE55B0600B4691A /* NSAttributedString+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D00C2BE55B0600B4691A /* NSAttributedString+Helpers.swift */; };
 		B76D32D32BDC64FB0014315B /* EventFormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76D32D22BDC64FB0014315B /* EventFormDataModel.swift */; };
 		B76D32D52BDC69BF0014315B /* EventFormPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76D32D42BDC69BF0014315B /* EventFormPresentationStyle.swift */; };
 		B76D32DC2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76D32DA2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib */; };
@@ -838,6 +845,12 @@
 		B768CFF62BE529ED00B4691A /* WhatsNewFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewFactory.swift; sourceTree = "<group>"; };
 		B768CFF72BE529ED00B4691A /* WhatsNewHostingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhatsNewHostingController.swift; sourceTree = "<group>"; };
 		B768CFFB2BE52E1400B4691A /* AccountSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		B768CFFE2BE553BD00B4691A /* Inbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Inbox.swift; sourceTree = "<group>"; };
+		B768CFFF2BE553BD00B4691A /* InboxEligibilityUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxEligibilityUseCase.swift; sourceTree = "<group>"; };
+		B768D0002BE553BD00B4691A /* InboxNoteRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxNoteRow.swift; sourceTree = "<group>"; };
+		B768D0012BE553BD00B4691A /* InboxNoteRowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxNoteRowViewModel.swift; sourceTree = "<group>"; };
+		B768D0022BE553BD00B4691A /* InboxViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
+		B768D00C2BE55B0600B4691A /* NSAttributedString+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Helpers.swift"; sourceTree = "<group>"; };
 		B76D32D22BDC64FB0014315B /* EventFormDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormDataModel.swift; sourceTree = "<group>"; };
 		B76D32D42BDC69BF0014315B /* EventFormPresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormPresentationStyle.swift; sourceTree = "<group>"; };
 		B76D32DA2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabeledTextViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -869,6 +882,7 @@
 				0D30FB252BC07431006AB81B /* FiableRedux in Frameworks */,
 				0D30FB052BC06DC7006AB81B /* Alamofire in Frameworks */,
 				0D9E99DF2BCED85700276FF0 /* FirebaseCrashlytics in Frameworks */,
+				B768D00B2BE559F500B4691A /* Shimmer in Frameworks */,
 				0DA0C58C2BC016C300D96B7F /* FiableKit in Frameworks */,
 				0DA0C5942BC016C300D96B7F /* MateComponents in Frameworks */,
 				0DA0C5962BC016C300D96B7F /* MateStorage in Frameworks */,
@@ -994,6 +1008,7 @@
 				B74AF49F2BD71FFE00D44F03 /* UIRefreshControl+Helper.swift */,
 				B74AF4A12BD7201D00D44F03 /* UIScrollView+Helpers.swift */,
 				B74AF4A32BD7204200D44F03 /* GhostStyle+Helpers.swift */,
+				B768D00C2BE55B0600B4691A /* NSAttributedString+Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1143,6 +1158,7 @@
 		0D8E44142B8CD0110057100C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B768D0032BE553BD00B4691A /* Inbox */,
 				B768CFFC2BE52E1400B4691A /* AccountSettings */,
 				B768CFF82BE529ED00B4691A /* WhatsNew */,
 				B768CFEC2BE511FB00B4691A /* Survey */,
@@ -1963,6 +1979,18 @@
 			path = AccountSettings;
 			sourceTree = "<group>";
 		};
+		B768D0032BE553BD00B4691A /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				B768CFFE2BE553BD00B4691A /* Inbox.swift */,
+				B768CFFF2BE553BD00B4691A /* InboxEligibilityUseCase.swift */,
+				B768D0002BE553BD00B4691A /* InboxNoteRow.swift */,
+				B768D0012BE553BD00B4691A /* InboxNoteRowViewModel.swift */,
+				B768D0022BE553BD00B4691A /* InboxViewModel.swift */,
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
 		B76D32E12BDC6E930014315B /* Feature Highlight */ = {
 			isa = PBXGroup;
 			children = (
@@ -2021,6 +2049,7 @@
 				0D9E99DE2BCED85700276FF0 /* FirebaseCrashlytics */,
 				0D9E99E02BCED85700276FF0 /* FirebaseMessaging */,
 				B75E7EBB2BD84B0000639DC3 /* Algorithms */,
+				B768D00A2BE559F500B4691A /* Shimmer */,
 			);
 			productName = Mate;
 			productReference = 0D2D26442B8C95FA008EB605 /* Mate.app */;
@@ -2058,6 +2087,7 @@
 				0D30FB1D2BC071C7006AB81B /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 				0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B75E7EBA2BD84B0000639DC3 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				B768D0092BE559F500B4691A /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
 			);
 			productRefGroup = 0D2D26452B8C95FA008EB605 /* Products */;
 			projectDirPath = "";
@@ -2154,6 +2184,7 @@
 				0D8D384F2BBC362700B362DD /* SingleSelectionList.swift in Sources */,
 				0DC2357A2BAA427700414B13 /* MateAnalyticsStat.swift in Sources */,
 				B768CFF32BE511FB00B4691A /* SurveyViewControllersFactory.swift in Sources */,
+				B768D0052BE553BE00B4691A /* InboxEligibilityUseCase.swift in Sources */,
 				0D8D382D2BBC362700B362DD /* ListHeaderView.swift in Sources */,
 				0DAF0ABC2BBFEC77004E9036 /* String+HTML.swift in Sources */,
 				0D8D383D2BBC362700B362DD /* RefreshableScrollView.swift in Sources */,
@@ -2211,6 +2242,7 @@
 				0DCA8B502BC7199C0052BA12 /* TopBannerView.swift in Sources */,
 				0DA8EFDD2BAF9D60001EF5BF /* Keychain+Entries.swift in Sources */,
 				B74AF4A22BD7201D00D44F03 /* UIScrollView+Helpers.swift in Sources */,
+				B768D00D2BE55B0600B4691A /* NSAttributedString+Helpers.swift in Sources */,
 				0DA8EFB62BAF9D60001EF5BF /* WooSetupWebViewModel.swift in Sources */,
 				0DC2348C2BA7BAF200414B13 /* CrashLoggingStack.swift in Sources */,
 				0DAF0ABA2BBFEBE0004E9036 /* View+ScrollModifier.swift in Sources */,
@@ -2261,6 +2293,7 @@
 				0DC2356F2BAA401300414B13 /* FancyAlertViewController+UnifiedLogin.swift in Sources */,
 				0DA8EF792BAF9D5F001EF5BF /* NavigationTitleView.swift in Sources */,
 				0D9856E22BADFBE3008F96E9 /* PushNotificationsConfiguration.swift in Sources */,
+				B768D0042BE553BE00B4691A /* Inbox.swift in Sources */,
 				B74AF4832BD6E17600D44F03 /* OrderSearchUICommand.swift in Sources */,
 				B768CFF92BE529ED00B4691A /* WhatsNewFactory.swift in Sources */,
 				B74AF4912BD6EBAD00D44F03 /* ProductReviewsTableViewCell.swift in Sources */,
@@ -2272,6 +2305,7 @@
 				0DAA47D82BCD3DCA00D16224 /* SettingsView.swift in Sources */,
 				0D8D38592BBC362700B362DD /* InfiniteScrollIndicator.swift in Sources */,
 				0D8D38302BBC362700B362DD /* ItemToFulfillRow.swift in Sources */,
+				B768D0062BE553BE00B4691A /* InboxNoteRow.swift in Sources */,
 				B74AF4982BD6EDE500D44F03 /* ProductTypeBottomSheetListSelectorCommand.swift in Sources */,
 				0DC2340A2BA78C0900414B13 /* DefaultStoresManager.swift in Sources */,
 				0D8D382C2BBC362700B362DD /* TooltipView.swift in Sources */,
@@ -2349,6 +2383,7 @@
 				0D8D38262BBC362700B362DD /* InProgressView.swift in Sources */,
 				0DA8EFB32BAF9D60001EF5BF /* ULErrorViewController.swift in Sources */,
 				0DCA8B5D2BC71A8A0052BA12 /* SupportForm+Presentation.swift in Sources */,
+				B768D0072BE553BE00B4691A /* InboxNoteRowViewModel.swift in Sources */,
 				0D8D38502BBC362700B362DD /* CelebrationView.swift in Sources */,
 				B74AF40E2BD6AF1A00D44F03 /* ToolbarView.swift in Sources */,
 				0D30FB1A2BC07096006AB81B /* FeatureFlagService.swift in Sources */,
@@ -2445,6 +2480,7 @@
 				0DA8EF7B2BAF9D5F001EF5BF /* WebProgressView.swift in Sources */,
 				0D8D38232BBC362700B362DD /* ReportList.swift in Sources */,
 				0DAA47EF2BCD42CC00D16224 /* SwitchTableViewCell.swift in Sources */,
+				B768D0082BE553BE00B4691A /* InboxViewModel.swift in Sources */,
 				0DA8EF742BAF9D5F001EF5BF /* LoginProloguePages.swift in Sources */,
 				B768CFE22BE50C7800B4691A /* PrivacyBannerViewModel.swift in Sources */,
 				B76D32D52BDC69BF0014315B /* EventFormPresentationStyle.swift in Sources */,
@@ -3104,6 +3140,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		B768D0092BE559F500B4691A /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/markiv/SwiftUI-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3205,6 +3249,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B75E7EBA2BD84B0000639DC3 /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		B768D00A2BE559F500B4691A /* Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B768D0092BE559F500B4691A /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
+			productName = Shimmer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

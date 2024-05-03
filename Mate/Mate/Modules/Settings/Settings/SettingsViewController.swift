@@ -307,7 +307,6 @@ private extension SettingsViewController {
             guard let self = self else { return }
             continuation.resume(throwing: OnsaApiError.requestFailed)
 //            continuation.resume(throwing: OnsaApiError.requestFailed)
-
 //            let action = AccountAction.closeAccount { result in
 //                continuation.resume(with: result)
 //            }

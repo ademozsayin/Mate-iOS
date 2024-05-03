@@ -112,15 +112,15 @@ final class HubMenuViewModel: ObservableObject {
 //            generalElements.append(InAppPurchases())
 //        }
 
-//        let inboxUseCase = InboxEligibilityUseCase(stores: stores, featureFlagService: featureFlagService)
-//        inboxUseCase.isEligibleForInbox(siteID: siteID) { [weak self] isInboxMenuShown in
-//            guard let self = self else { return }
-//            if let index = self.generalElements.firstIndex(where: { item in
-//                type(of: item).id == Reviews.id
-//            }), isInboxMenuShown {
-//                self.generalElements.insert(Inbox(), at: index + 1)
-//            }
-//        }
+        let inboxUseCase = InboxEligibilityUseCase(stores: stores, featureFlagService: featureFlagService)
+        inboxUseCase.isEligibleForInbox(siteID: 1) { [weak self] isInboxMenuShown in
+            guard let self = self else { return }
+            if let index = self.generalElements.firstIndex(where: { item in
+                type(of: item).id == Reviews.id
+            }), isInboxMenuShown {
+                self.generalElements.insert(Inbox(), at: index + 1)
+            }
+        }
 
         if let index = self.generalElements.firstIndex(where: { item in
             type(of: item).id == Reviews.id

@@ -20,6 +20,8 @@ public typealias BlazeTargetLanguage = MateNetworking.BlazeTargetLanguage
 public typealias Credentials = MateNetworking.Credentials
 public typealias EmailCheck = MateNetworking.EmailCheckData
 public typealias EventStatus = MateNetworking.EventStatus
+public typealias InboxNote = MateNetworking.InboxNote
+public typealias InboxAction = MateNetworking.InboxAction
 public typealias MateDevice = MateNetworking.MateDevice
 public typealias MateEvent = MateNetworking.MateEvent
 public typealias MateCategory = MateNetworking.MateCategory
@@ -38,7 +40,8 @@ public typealias StorageEvent = MateStorage.Event
 public typealias StorageEventCategory = MateStorage.EventCategory
 public typealias StorageGooglePlace = MateStorage.GooglePlace
 
-
+public typealias StorageInboxNote = MateStorage.InboxNote
+public typealias StorageInboxAction = MateStorage.InboxAction
 
 
 // MARK: - Internal ReadOnly Models

@@ -110,11 +110,11 @@ struct HubMenu: View {
 //                       isActive: $viewModel.showingPayments) {
 //            EmptyView()
 //        }.hidden()
-//        NavigationLink(destination:
-//                        Inbox(viewModel: .init(siteID: viewModel.siteID)),
-//                       isActive: $showingInbox) {
-//            EmptyView()
-//        }.hidden()
+        NavigationLink(destination:
+                        Inbox(viewModel: .init(siteID: -1)),
+                       isActive: $showingInbox) {
+            EmptyView()
+        }.hidden()
 //        NavigationLink(destination:
 //                        ReviewsView(siteID: viewModel.siteID),
 //                       isActive: $showingReviews) {

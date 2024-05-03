@@ -189,6 +189,15 @@
           "revision": "9f0c76544701845ad98716f3f6a774a892152bcb",
           "version": "1.26.0"
         }
+      },
+      {
+        "package": "SwiftUI-Shimmer",
+        "repositoryURL": "https://github.com/markiv/SwiftUI-Shimmer",
+        "state": {
+          "branch": null,
+          "revision": "5659a623567cefe258d1e3e67cb65585fbb6ecb6",
+          "version": "1.4.2"
+        }
       }
     ]
   },
