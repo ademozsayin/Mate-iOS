@@ -30,10 +30,10 @@ public class NetworkLogger {
      */
     public static func log(request: URLRequest) {
         
-//#if DEBUG
+#if DEBUG
         print("\n - - - - - - - - - - OUTGOING REQUEST - - - - - - - - - - \n")
         defer { print("\n - - - - - - - - - -  OUTGOING REQUEST END - - - - - - - - - - \n") }
-//#endif
+#endif
         
         let urlAsString = request.url?.absoluteString ?? ""
         let urlComponents = NSURLComponents(string: urlAsString)
@@ -55,9 +55,9 @@ public class NetworkLogger {
             logOutput += "\n \(NSString(data: body, encoding: String.Encoding.utf8.rawValue) ?? "")"
         }
         
-//#if DEBUG
+#if DEBUG
         print(logOutput)
-//#endif
+#endif
         
     }
     
@@ -94,6 +94,8 @@ public class NetworkLogger {
     public static func log(response: HTTPURLResponse?, data: Data?, error: Error?) {
         print("\n - - - - - - - - - - INCOMING RESPONSE- - - - - - - - - - \n")
         defer { print("\n - - - - - - - - - - INCOMING RESPONSE END - - - - - - - - - - \n") }
+        
+#if DEBUG
         let urlString = response?.url?.absoluteString
         let components = NSURLComponents(string: urlString ?? "")
         let path = "\(components?.path ?? "")"
@@ -119,7 +121,8 @@ public class NetworkLogger {
             output += "\nError: \(error!.localizedDescription)\n"
         }
         print(output)
-        
+#endif
+
     }
     
     

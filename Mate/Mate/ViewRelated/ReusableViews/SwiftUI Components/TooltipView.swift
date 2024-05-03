@@ -66,3 +66,7 @@ struct TooltipView: View {
         static let tooltipPointerOffset: CGFloat = -10
     }
 }
+
+#Preview {
+    TooltipView(toolTipTitle: "Title", toolTipDescription: "Description", offset: .zero, safeAreaInsets: .zero)
+}

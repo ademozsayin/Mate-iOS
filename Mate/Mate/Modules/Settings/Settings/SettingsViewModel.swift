@@ -12,7 +12,7 @@ protocol SettingsViewModelOutput {
 
     /// Announcement for the current app version
     ///
-//    var announcement: FiableReduc.Announcement? { get }
+    var announcement: FiableRedux.Announcement? { get }
 
     /// Main Account's displayName
     ///
@@ -72,12 +72,12 @@ final class SettingsViewModel: SettingsViewModelOutput, SettingsViewModelActions
     /// Main Account's displayName
     ///
     var accountName: String {
-        return "aASDASDSADAS"//stores.sessionManager.defaultAccount?.displayName ?? String()
+        return (stores.sessionManager.defaultAccount?.email ?? stores.sessionManager.defaultAccount?.name) ?? "Mate user"
     }
 
     /// Announcement for the current app version
     ///
-//    private(set) var announcement: Yosemite.Announcement?
+    private(set) var announcement: FiableRedux.Announcement?
 
     /// Main Site's Name
     ///
@@ -235,6 +235,7 @@ private extension SettingsViewModel {
 //
 //            self.announcement = announcement
 //        }))
+        self.announcement = Announcement(appVersionName: "asda", minimumAppVersion: "da", maximumAppVersion: "asda", appVersionTargets: [], detailsUrl: "asdasd", announcementVersion: "asdasd", isLocalized: false, responseLocale: "asdas", features: [])
     }
 
     /// Load our list of sites from the sitesResultsController
@@ -417,7 +418,7 @@ private extension SettingsViewModel {
 
     /// Returns `true` for the add-ons workaround.
     var couldShowBetaFeaturesRow: Bool {
-        true
+        false//true
     }
 }
 
@@ -467,14 +468,14 @@ private extension SettingsViewModel {
     }
 }
 
-//private extension Yosemite.Announcement {
-//    var isForThisAppVersion: Bool {
-//        appVersionName == UserAgent.bundleShortVersion
-//    }
-//
-//    var shownInThisAppVersion: Bool {
-//        return isForThisAppVersion || VersionHelpers.isVersionSupported(version: UserAgent.bundleShortVersion,
-//                                                                        minimumRequired: minimumAppVersion,
-//                                                                        maximumPermitted: maximumAppVersion)
-//    }
-//}
+private extension FiableRedux.Announcement {
+    var isForThisAppVersion: Bool {
+        appVersionName == UserAgent.bundleShortVersion
+    }
+
+    var shownInThisAppVersion: Bool {
+        return isForThisAppVersion || VersionHelpers.isVersionSupported(version: UserAgent.bundleShortVersion,
+                                                                        minimumRequired: minimumAppVersion,
+                                                                        maximumPermitted: maximumAppVersion)
+    }
+}

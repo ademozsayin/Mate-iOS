@@ -16,18 +16,20 @@ import SwiftUI
 /// View model for `AddEditCoupon` view
 ///
 final class AddEditEventViewModel: ObservableObject {
-
+    
     /// Based on the Editing Option, the `AddEditCoupon` view can be in Creation or Editing mode.
     ///
     private let editingOption: EditingOption
-
+    
     private let onSuccess: (MateEvent) -> Void
-
+    
     /// Defines the current notice that should be shown.
     /// Defaults to `nil`.
     ///
     @Published var notice: Notice?
-
+    
+    @State var  selectLocationViewModel:SelectLocationViewModel
+    
     var title: String {
         switch editingOption {
         case .creation:
@@ -36,20 +38,20 @@ final class AddEditEventViewModel: ObservableObject {
             return Localization.editCouponTitle
         }
     }
-
-
+    
+    
     private(set) var event: MateEvent?
     private let stores: StoresManager
     private let storageManager: StorageManagerType
-
+    
     @Published var isLoading: Bool = false
     @Published var showingCouponCreationSuccess: Bool = false
     
     @Published var eventName: String
     @Published var categoryID: Int64
     private var subscriptions: Set<AnyCancellable> = []
-
-
+    
+    
     /// View model for the category selector
     ///
     var categorySelectorViewModel: ProductCategorySelectorViewModel {
@@ -61,14 +63,25 @@ final class AddEditEventViewModel: ObservableObject {
     }
     
     // State variable to track the selected category
-    @Published var selectedCategory: MateCategory? = nil
-    @Published var selectedGooglePlace: GooglePlace? = nil
+    @Published var selectedCategory: MateCategory? {
+        didSet {
+            updateStepperMaximum(for: selectedCategory)
+        }
+    }
+    
+    @Published var selectedGooglePlace: GooglePlace? = nil {
+        didSet {
+            print("selectedGooglePlace: \(selectedGooglePlace) in AddEditEventViewModel ")
+        }
+    }
     /// Init method for coupon creation
-    ///
+    
+    @State var stepperViewModel: AttendeesStepperViewModel
+    
     init(
-         stores: StoresManager = ServiceLocator.stores,
-         storageManager: StorageManagerType = ServiceLocator.storageManager,
-         onSuccess: @escaping (MateEvent) -> Void
+        stores: StoresManager = ServiceLocator.stores,
+        storageManager: StorageManagerType = ServiceLocator.storageManager,
+        onSuccess: @escaping (MateEvent) -> Void
     ) {
         editingOption = .creation
         self.stores = stores
@@ -78,8 +91,59 @@ final class AddEditEventViewModel: ObservableObject {
         self.eventName = ""
         
         categoryID = 1
+        
+        self.selectLocationViewModel = SelectLocationViewModel()
+        
+        self.stepperViewModel = AttendeesStepperViewModel(
+            quantity: 2,
+            name: "Number of max player",
+            minimumQuantity: 2,
+            maximumQuantity: 14,
+            quantityUpdatedCallback: { _ in }  // Temporary empty closure
+        )
+        
+        // Now that self is fully initialized, set the real callback
+        self.stepperViewModel.quantityUpdatedCallback = { [weak self] newQuantity in
+            guard let self = self else { return }
+            print("Updated quantity to \(newQuantity)")
+            self.updateEventCapacity(with: newQuantity)
+        }
+        
+        
     }
-
+    
+    
+    private func updateStepperMaximum(for category: MateCategory?) {
+        if let category = category {
+            let newMax = determineMaxAttendees(for: category)
+            stepperViewModel.maximumQuantity = newMax
+            // Check if the current quantity exceeds the new maximum and adjust if necessary
+            if stepperViewModel.quantity > newMax {
+                stepperViewModel.changeQuantity(to: newMax)
+            }
+            stepperViewModel.adjustQuantityWithinLimits()  // Ensure the current quantity is adjusted
+            
+        }
+    }
+    
+    /// Updates the event capacity and performs additional business logic
+    private func updateEventCapacity(with newQuantity: Decimal) {
+        stepperViewModel.changeQuantity(to: newQuantity)
+        stepperViewModel.enteredQuantity = newQuantity
+    }
+    
+    private func determineMaxAttendees(for category: MateCategory) -> Decimal {
+        // Implement your logic to determine max attendees based on category
+        switch category.id {
+        case 1:
+            return 14
+        case 2:
+            return 10
+        default:
+            return 4
+        }
+    }
+    
     func completeCouponAddEdit(coupon: MateEvent, onUpdateFinished: @escaping () -> Void) {
         switch editingOption {
         case .creation:
@@ -89,12 +153,12 @@ final class AddEditEventViewModel: ObservableObject {
             print("editting ")
         }
     }
-
+    
     private func createCoupon(coupon: MateEvent) {
-
+        
     }
-
-   
+    
+    
     /// Default coupon when coupon creation is initiated
     private lazy var defaultCoupon: MateEvent = {
         .init(id: -1,
@@ -113,35 +177,35 @@ final class AddEditEventViewModel: ObservableObject {
               user: nil,
               status: nil)
     }()
-
+    
     /// Coupon generated from input
     var populatedCoupon: MateEvent {
         
         return defaultCoupon
     }
-
+    
     func validateCouponLocally(_ coupon: MateEvent) -> EventError? {
         return nil
-//        if coupon.code.isEmpty {
-//            return .couponCodeEmpty
-//        }
-//
-//        amountWarningTimer?.invalidate()
-//        isDisplayingAmountWarning = false
-//        
-//        return nil//svalidatePercentageAmountInput(withWarning: false)
+        //        if coupon.code.isEmpty {
+        //            return .couponCodeEmpty
+        //        }
+        //
+        //        amountWarningTimer?.invalidate()
+        //        isDisplayingAmountWarning = false
+        //
+        //        return nil//svalidatePercentageAmountInput(withWarning: false)
     }
-
+    
     enum EditingOption {
         case creation
         case editing
     }
-
+    
     enum EventError: Error, Equatable {
         case couponCodeEmpty
         case couponPercentAmountInvalid
         case other(error: Error)
-
+        
         static func ==(lhs: EventError, rhs: EventError) -> Bool {
             return lhs.localizedDescription == rhs.localizedDescription
         }
@@ -157,7 +221,7 @@ private extension AddEditEventViewModel {
 // MARK: - Constants
 //
 private extension AddEditEventViewModel {
-
+    
     /// Coupon notices
     ///
     enum NoticeFactory {
@@ -180,9 +244,9 @@ private extension AddEditEventViewModel {
             }
         }
     }
-
+    
     enum Localization {
-       
+        
         static let addDescriptionButton = NSLocalizedString("Add Description (Optional)",
                                                             comment: "Button for adding a description to a coupon in the view for adding or editing a coupon.")
         static let editDescriptionButton = NSLocalizedString("Edit Description",

@@ -124,17 +124,17 @@ private extension GooglePlaceStore {
     /// Updates (OR Inserts) the specified ReadOnly `AddOnGroups` entities into the Storage Layer.
     ///
     func upsertGooglePlaces( readOnlyGooglePlaces: [GooglePlace], in storage: StorageType) {
-        DDLogInfo("✅ Upsert Started")
+//        DDLogInfo("✅ Upsert Started")
         readOnlyGooglePlaces.forEach { readOnlyGooglePlace in
             //  Get or create the stored add-on group
             let storedGooglePlace: StorageGooglePlace = {
                 guard let existingGroup = storage.loadGooglePlace(placeId: readOnlyGooglePlace.placeID) else {
-                    DDLogInfo("✅ New place added")
+//                    DDLogInfo("✅ New place added")
                     return storage.insertNewObject(ofType: StorageGooglePlace.self)
                 }
                 return existingGroup
             }()
-            DDLogInfo("✅ Existing place. Updating")
+//            DDLogInfo("✅ Existing place. Updating")
             // Update values and relationships
             storedGooglePlace.update(with: readOnlyGooglePlace)
 //            handleGroupAddOns(readOnlyGroup: readOnlyAddOnGroup, storageGroup: storedAddOnGroup, storage: storage)

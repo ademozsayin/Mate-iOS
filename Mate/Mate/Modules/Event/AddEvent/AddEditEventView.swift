@@ -73,9 +73,12 @@ struct AddEditEventView: View {
                         
                         LazyNavigationLink(
                             destination: SelectAddress(
-                                viewModel: SelectLocationViewModel(), safeAreaInsets: .zero,onSelection: { place in
+                                viewModel: viewModel.selectLocationViewModel,
+                                safeAreaInsets: .zero,
+                                onSelection: { place in
                                     viewModel.selectedGooglePlace = place
-                                }),
+                                }
+                            ),
                             isActive: $isLocationVisible
                         ) {
                             HStack {
@@ -86,9 +89,19 @@ struct AddEditEventView: View {
                                 DisclosureIndicator()
                                     .padding(.trailing, 12)
                             }
-                        
                         }
+                                                
+                        Divider()
+                            .padding(.leading, 12)
                         
+                        HStack {
+                            Text("Number of max user")
+                            Spacer()
+                            ProductStepper(viewModel: viewModel.stepperViewModel)
+                            
+                        }
+                        .padding(.leading, 12)
+                       
                         Divider()
                             .padding(.leading, 12)
                                         
@@ -129,9 +142,9 @@ private extension AddEditEventView  {
     }
 }
 
-#Preview {
-    AddEditEventView(AddEditEventViewModel(onSuccess: { _ in }))
-}
+//#Preview {
+//    AddEditEventView(AddEditEventViewModel(onSuccess: { _ in }))
+//}
 
 // MARK: - Sample Data
 #if DEBUG

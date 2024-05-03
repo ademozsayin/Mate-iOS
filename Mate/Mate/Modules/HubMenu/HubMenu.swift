@@ -33,16 +33,16 @@ struct HubMenu: View {
                     Row(title: viewModel.email,
                         titleBadge: viewModel.planName,
                         iconBadge: nil,
-                        description: viewModel.storeURL.host ?? viewModel.storeURL.absoluteString,
+                        description: "",
                         icon: .remote(viewModel.avatarURL),
                         chevron: .none,
 //                        chevron: viewModel.switchStoreEnabled ? .down : .none,
-                        titleAccessibilityID: "store-title",
-                        descriptionAccessibilityID: "store-url",
-                        chevronAccessibilityID: "switch-store-button")
+                        titleAccessibilityID: "",
+                        descriptionAccessibilityID: "",
+                        chevronAccessibilityID: "")
                     .lineLimit(1)
                 }
-                .disabled(false)
+                .disabled(true)
 //                .disabled(!viewModel.switchStoreEnabled)
             }
 

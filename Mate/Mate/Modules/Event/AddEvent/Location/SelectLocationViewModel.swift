@@ -11,8 +11,7 @@ import FiableRedux
 import SwiftUI
 import protocol MateStorage.StorageManagerType
 
-@Observable 
-final class SelectLocationViewModel {
+final class SelectLocationViewModel: ObservableObject {
     
     private var resultsController: ResultsController<StorageGooglePlace>
 
@@ -21,22 +20,29 @@ final class SelectLocationViewModel {
             DDLogInfo("✅ State: \(SyncState.loading)")
         }
     }
-    var googlePlaces:[GooglePlaceLocationViewRowModel] = []
-    var selectedGooglePlace: GooglePlace
-    var eventName: String
-    var searchText = ""
+    
+    @Published var googlePlaces:[GooglePlaceLocationViewRowModel] = []
+    
+    @Published var eventName: String
+    @Published var searchText = ""
   
     private let stores: StoresManager
     private let storageManager: StorageManagerType
 
-    private var fetchedTopics: [GooglePlace] = []
-    private var isSyncingData: Bool = false {
+    @Published private var fetchedTopics: [GooglePlace] = []
+    @Published  private var isSyncingData: Bool = false {
         didSet {
             DDLogInfo("✅ Is Syncing Data: \(isSyncingData)")
         }
     }
-    private var syncError: Error?
-
+    @Published  private var syncError: Error?
+    
+    @Published var selectedPlaceID: String? {
+        didSet {
+            print("selectedPlaceID: \(selectedPlaceID)")
+        }
+    }
+    
     // MARK: - Init
     init(
         stores: StoresManager = ServiceLocator.stores,
@@ -46,7 +52,6 @@ final class SelectLocationViewModel {
         self.storageManager = storageManager
       
         self.eventName = ""
-        self.selectedGooglePlace = GooglePlace.emptyPlace()
        
         let sortDescriptorByID = NSSortDescriptor(keyPath: \StorageGooglePlace.name, ascending: true)
         self.resultsController = ResultsController<StorageGooglePlace>(storageManager: storageManager,
@@ -55,6 +60,7 @@ final class SelectLocationViewModel {
         
         configureResultsController()
 //        configureSyncState()
+        self.selectedPlaceID = nil
         
     }
     
@@ -89,7 +95,7 @@ final class SelectLocationViewModel {
                         }
                         continuation.resume(returning: Void())
 
-                        let places = data.map { GooglePlaceLocationViewRowModel(place: $0, isCollapsed: true, isFavorite: false) }
+                        let places = data.map { GooglePlaceLocationViewRowModel(place: $0, isCollapsed: true, isFavorite: false, isSelected: false) }
                         syncState = .content(events: places)
                     case .failure(let error):
                         continuation.resume(throwing: error)
@@ -129,7 +135,7 @@ private extension SelectLocationViewModel {
     func updateResults() {
         DDLogInfo("✅ Updating result")
         fetchedTopics = resultsController.fetchedObjects
-        googlePlaces = fetchedTopics.map { GooglePlaceLocationViewRowModel(place: $0, isCollapsed: true, isFavorite: false) }
+        googlePlaces = fetchedTopics.map { GooglePlaceLocationViewRowModel(place: $0, isCollapsed: true, isFavorite: false, isSelected: false) }
         syncState = .content(events: googlePlaces)
     }
 }
@@ -144,19 +150,30 @@ extension SelectLocationViewModel {
 }
 
 
-struct GooglePlaceLocationViewRowModel: Hashable {
+struct GooglePlaceLocationViewRowModel: Hashable, Identifiable {
+    let id: UUID
     var place: GooglePlace
     var isCollapsed: Bool
     var isFavorite: Bool
+    var isSelected: Bool
 
-    
-    init(place: GooglePlace, isCollapsed: Bool, isFavorite: Bool) {
+    init(place: GooglePlace, isCollapsed: Bool, isFavorite: Bool, isSelected: Bool) {
+        self.id = UUID() // Generating a unique identifier
         self.place = place
         self.isCollapsed = isCollapsed
         self.isFavorite = false
+        self.isSelected = false
     }
-    
+
     mutating func toggleExpansion() {
         isCollapsed.toggle()
+    }
+
+    static func == (lhs: GooglePlaceLocationViewRowModel, rhs: GooglePlaceLocationViewRowModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

@@ -37,3 +37,11 @@ struct WooNavigationSheet<Content: View>: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
+
+#Preview {
+    WooNavigationSheet(viewModel: WooNavigationSheetViewModel(
+        navigationTitle: "Title",
+        done: {})) {
+        Text("Adem")
+    }
+}

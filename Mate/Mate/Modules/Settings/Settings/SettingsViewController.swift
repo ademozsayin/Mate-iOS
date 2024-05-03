@@ -5,6 +5,7 @@ import SafariServices
 import FiableAbout
 import FiableRedux
 import SwiftUI
+import MateNetworking
 
 protocol SettingsViewPresenter: AnyObject {
     func refreshViewContent()
@@ -32,16 +33,16 @@ final class SettingsViewController: UIViewController {
     }
 
     private let stores: StoresManager
-//    private let pushNotesManager: PushNotesManager
+    private let pushNotesManager: PushNotesManager
 
 
     init(viewModel: ViewModel = SettingsViewModel(),
-         stores: StoresManager = ServiceLocator.stores
-//         pushNotesManager: PushNotesManager = ServiceLocator.pushNotesManager
+         stores: StoresManager = ServiceLocator.stores,
+         pushNotesManager: PushNotesManager = ServiceLocator.pushNotesManager
     ) {
         self.viewModel = viewModel
         self.stores = stores
-//        self.pushNotesManager = pushNotesManager
+        self.pushNotesManager = pushNotesManager
         super.init(nibName: nil, bundle: nil)
         self.viewModel.presenter = self
     }
@@ -293,21 +294,25 @@ private extension SettingsViewController {
 //
 private extension SettingsViewController {
     func accountSettingsWasPressed() {
-//        let controller = AccountSettingsHostingController(onCloseAccount: { [weak self] in
-//            ServiceLocator.analytics.track(event: .closeAccountTapped(source: .settings))
-//            self?.closeAccountCoordinator.start()
-//        })
-//        navigationController?.show(controller, sender: nil)
+        let controller = AccountSettingsHostingController(onCloseAccount: { [weak self] in
+            ServiceLocator.analytics.track(event: .closeAccountTapped(source: .settings))
+            self?.closeAccountCoordinator.start()
+        })
+        navigationController?.show(controller, sender: nil)
     }
 
     func closeAccount() async throws {
 //        try await withCheckedThrowingContinuation { [weak self] continuation in
-//            guard let self = self else { return }
+        try await withCheckedThrowingContinuation { [weak self] (continuation: CheckedContinuation<Void, Error>) in
+            guard let self = self else { return }
+            continuation.resume(throwing: OnsaApiError.requestFailed)
+//            continuation.resume(throwing: OnsaApiError.requestFailed)
+
 //            let action = AccountAction.closeAccount { result in
 //                continuation.resume(with: result)
 //            }
 //            self.stores.dispatch(action)
-//        }
+        }
     }
 
     func logoutWasPressed() {
@@ -343,11 +348,11 @@ private extension SettingsViewController {
     }
 
     func supportWasPressed() {
-//        ServiceLocator.analytics.track(.settingsContactSupportTapped)
-//        guard let viewController = UIStoryboard.dashboard.instantiateViewController(ofClass: HelpAndSupportViewController.self) else {
-//            fatalError("Cannot instantiate `HelpAndSupportViewController` from Dashboard storyboard")
-//        }
-//        show(viewController, sender: self)
+        ServiceLocator.analytics.track(.settingsContactSupportTapped)
+        guard let viewController = UIStoryboard.dashboard.instantiateViewController(ofClass: HelpAndSupportViewController.self) else {
+            fatalError("Cannot instantiate `HelpAndSupportViewController` from Dashboard storyboard")
+        }
+        show(viewController, sender: self)
     }
 
     func domainWasPressed() {
@@ -383,11 +388,11 @@ private extension SettingsViewController {
     }
 
     func privacyWasPressed() {
-//        ServiceLocator.analytics.track(.settingsPrivacySettingsTapped)
-//        guard let viewController = UIStoryboard.dashboard.instantiateViewController(ofClass: PrivacySettingsViewController.self) else {
-//            fatalError("Cannot instantiate `PrivacySettingsViewController` from Dashboard storyboard")
-//        }
-//        show(viewController, sender: self)
+        ServiceLocator.analytics.track(.settingsPrivacySettingsTapped)
+        guard let viewController = UIStoryboard.dashboard.instantiateViewController(ofClass: PrivacySettingsViewController.self) else {
+            fatalError("Cannot instantiate `PrivacySettingsViewController` from Dashboard storyboard")
+        }
+        show(viewController, sender: self)
     }
 
     func aboutWasPressed() {
@@ -409,8 +414,8 @@ private extension SettingsViewController {
     }
 
     func presentSurveyForFeedback() {
-//        let surveyNavigation = SurveyCoordinatingController(survey: .inAppFeedback)
-//        present(surveyNavigation, animated: true, completion: nil)
+        let surveyNavigation = SurveyCoordinatingController(survey: .inAppFeedback)
+        present(surveyNavigation, animated: true, completion: nil)
     }
 
     func deviceSettingsWasPressed() {
@@ -427,11 +432,11 @@ private extension SettingsViewController {
 
     func whatsNewWasPressed() {
 //        ServiceLocator.analytics.track(event: .featureAnnouncementShown(source: .appSettings))
-//        guard let announcement = viewModel.announcement else { return }
-//        let viewController = WhatsNewFactory.whatsNew(announcement) { [weak self] in
-//            self?.dismiss(animated: true)
-//        }
-//        present(viewController, animated: true, completion: nil)
+        guard let announcement = viewModel.announcement else { return }
+        let viewController = WhatsNewFactory.whatsNew(announcement) { [weak self] in
+            self?.dismiss(animated: true)
+        }
+        present(viewController, animated: true, completion: nil)
     }
 
     func logOutUser() {
@@ -568,8 +573,8 @@ extension SettingsViewController: UITableViewDelegate {
             storeNameWasPressed()
         case .privacy:
             privacyWasPressed()
-        case .betaFeatures:
-            betaFeaturesWasPressed()
+//        case .betaFeatures:
+//            betaFeaturesWasPressed()
         case .sendFeedback:
             presentSurveyForFeedback()
         case .about:
@@ -809,7 +814,7 @@ private extension SettingsViewController {
         )
 
         static let whatsNew = NSLocalizedString(
-            "What's New in WooCommerce",
+            "What's New in Mate",
             comment: "Navigates to screen containing the latest WooCommerce Features"
         )
 

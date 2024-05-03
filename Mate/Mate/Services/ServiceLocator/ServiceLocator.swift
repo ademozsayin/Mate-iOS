@@ -50,6 +50,10 @@ final class ServiceLocator {
     private static var _connectivityObserver: ConnectivityObserver = DefaultConnectivityObserver()
     
     
+    /// Cocoalumberjack DDLog
+    ///
+    private static var _fileLogger: Logs = DDFileLogger()
+    
     // MARK: - Getters
 
     /// Provides the access point to the analytics.
@@ -102,6 +106,12 @@ final class ServiceLocator {
     /// - Returns: An implementation of the ConnectivityObserver protocol.
     static var connectivityObserver: ConnectivityObserver {
         _connectivityObserver
+    }
+    
+    /// Provides the access point to the FileLogger.
+    /// - Returns: An implementation of the Logs protocol. It defaults to DDFileLogger
+    static var fileLogger: Logs {
+        return _fileLogger
     }
 
     /// Provides the last known `KeyboardState`.

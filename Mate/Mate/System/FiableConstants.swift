@@ -83,9 +83,9 @@ enum FiableConstants {
 
     /// App login deep link prefix
     ///
-    static let appLoginURLPrefix = "woocommerce://app-login"
+    static let appLoginURLPrefix = "onsamate://app-login"
 
-    static let wooPaymentsPluginPath = "woocommerce-payments/woocommerce-payments.php"
+    static let wooPaymentsPluginPath = "fiable-payments/mate-payments.php"
 }
 
 // MARK: URLs
@@ -117,11 +117,11 @@ extension FiableConstants {
 
         /// More Privacy Documentation URL.
         ///
-        case morePrivacyDocumentation = "https://woo.com/tracking-and-opt-outs/"
+        case morePrivacyDocumentation = "https://fiable.agency/tracking-and-opt-outs/"
 
         /// Documentation about WooCommerce Usage Tracking
         ///
-        case usageTrackingDocumentation = "https://woo.com/usage-tracking/"
+        case usageTrackingDocumentation = "https://fiable.agency/usage-tracking/"
 
         /// Privacy policy for California users URL
         ///
@@ -129,121 +129,121 @@ extension FiableConstants {
 
         /// Help Center URL
         ///
-        case helpCenter = "https://woo.com/document/woocommerce-ios/"
+        case helpCenter = "https://fiable.agency/document/mate-ios/"
 
         /// Help Center for "Enter your Store Address" screen
         ///
-        case helpCenterForEnterStoreAddress = "https://woo.com/document/android-ios-apps-login-help-faq/#enter-store-address"
+        case helpCenterForEnterStoreAddress = "https://fiable.agency/document/android-ios-apps-login-help-faq/#enter-store-address"
 
         /// Help Center for "Enter WordPress.com email" screen
         ///
         /// - Used for providing help in the "Enter WordPress.com email screen" when user tries to login using WordPress.com email address
         ///
         // swiftlint:disable:next line_length
-        case helpCenterForWPCOMEmailScreen = "https://woo.com/document/android-ios-apps-login-help-faq/#login-with-wordpress-com"
+        case helpCenterForWPCOMEmailScreen = "https://fiable.agency/document/android-ios-apps-login-help-faq/#login-with-mate"
 
         /// Help Center for "Enter WordPress.com email" screen
         ///
         /// - Used for providing help in the "Ente WordPress.comr email screen" when user tries to login using the store address
         ///
         // swiftlint:disable:next line_length
-        case helpCenterForWPCOMEmailFromSiteAddressFlow = "https://woo.com/document/android-ios-apps-login-help-faq/#enter-wordpress-com-email-address-login-using-store-address-flow"
+        case helpCenterForWPCOMEmailFromSiteAddressFlow = "https://fiable.agency/document/android-ios-apps-login-help-faq/#enter-email-address-login-using-store-address-flow"
 
         /// Help Center for "Open magic link from email " screen
         ///
-        case helpCenterForOpenEmail = "https://woo.com/document/android-ios-apps-login-help-faq/#open-mail-to-find-login-link"
+        case helpCenterForOpenEmail = "https://fiable.agency/document/android-ios-apps-login-help-faq/#open-mail-to-find-login-link"
 
         /// Help Center for "Enter WordPress.com password" screen
         ///
-        case helpCenterForWPCOMPasswordScreen = "https://woo.com/document/android-ios-apps-login-help-faq/#enter-wordpress-com-password"
+        case helpCenterForWPCOMPasswordScreen = "https://fiable.agency/document/android-ios-apps-login-help-faq/#enter-wordpress-com-password"
 
         /// Help Center for "Enter Store Credentials" screen
         ///
-        case helpCenterForEnterStoreCredentials = "https://woo.com/document/android-ios-apps-login-help-faq/#enter-store-credentials"
+        case helpCenterForEnterStoreCredentials = "https://fiable.agency/document/android-ios-apps-login-help-faq/#enter-store-credentials"
 
         /// Help Center for "Jetpack required error" screen
         ///
-        case helpCenterForJetpackRequiredError = "https://woo.com/document/android-ios-apps-login-help-faq/#jetpack-required"
+        case helpCenterForJetpackRequiredError = "https://fiable.agency/document/android-ios-apps-login-help-faq/#jetpack-required"
 
         /// Help Center for "Wrong Account error" screen
         ///
-        case helpCenterForWrongAccountError = "https://woo.com/document/android-ios-apps-login-help-faq/#wrong-account"
+        case helpCenterForWrongAccountError = "https://fiable.agency/document/android-ios-apps-login-help-faq/#wrong-account"
 
         /// Help Center for No WooCommerce site error
         ///
-        case helpCenterForNoWooError = "https://woo.com/document/android-ios-apps-login-help-faq/#not-a-woocommerce-site"
+        case helpCenterForNoWooError = "https://fiable.agency/document/android-ios-apps-login-help-faq/#not-a-woocommerce-site"
 
         /// Help Center for "Store picker" screen
         ///
-        case helpCenterForStorePicker = "https://woo.com/document/android-ios-apps-login-help-faq/#pick-store-after-entering-password"
+        case helpCenterForStorePicker = "https://fiable.agency/document/android-ios-apps-login-help-faq/#pick-store-after-entering-password"
 
         /// URL used for Learn More button in Orders empty state.
         ///
-        case blog = "https://woo.com/blog/"
+        case blog = "https://fiable.agency/blog/"
 
         /// Jetpack Setup URL when there are no stores available
         ///
-        case emptyStoresJetpackSetup = "https://woo.com/document/jetpack-setup-instructions-for-the-woocommerce-mobile-app/"
+        case emptyStoresJetpackSetup = "https://fiable.agency/document/jetpack-setup-instructions-for-the-woocommerce-mobile-app/"
 
         /// URL for in-app feedback survey
         ///
 #if DEBUG
-        case inAppFeedback = "https://automattic.survey.fm/woo-app-general-feedback-test-survey"
+        case inAppFeedback = "https://fiable.agency/woo-app-general-feedback-test-survey"
 #else
-        case inAppFeedback = "https://automattic.survey.fm/woo-app-general-feedback-user-survey"
+        case inAppFeedback = "https://fiable.agency/woo-app-general-feedback-user-survey"
 #endif
 
         /// URL for the Tap to Pay first payment survey
         ///
 #if DEBUG
-        case tapToPayFirstPaymentFeedback = "https://automattic.survey.fm/woo-app-tap-to-pay-survey"
+        case tapToPayFirstPaymentFeedback = "https://fiable.agency/woo-app-tap-to-pay-survey"
 #else
-        case tapToPayFirstPaymentFeedback = "https://automattic.survey.fm/woo-app-–-first-ttp-survey"
+        case tapToPayFirstPaymentFeedback = "https://fiable.agency/woo-app-–-first-ttp-survey"
 #endif
 
         /// URL for the products feedback survey
         ///
-        case productsFeedback = "https://automattic.survey.fm/woo-app-feature-feedback-products"
+        case productsFeedback = "https://fiable.agency/woo-app-feature-feedback-products"
 
         /// URL for the store setup feedback survey
         ///
 #if DEBUG
-        case storeSetupFeedback = "https://automattic.survey.fm/testing-debug-woo-mobile-–-store-setup-survey-2022"
+        case storeSetupFeedback = "https://fiable.agency/testing-debug-woo-mobile-–-store-setup-survey-2022"
 #else
-        case storeSetupFeedback = "https://automattic.survey.fm/woo-mobile-–-store-setup-survey-2022"
+        case storeSetupFeedback = "https://fiable.agency/woo-mobile-–-store-setup-survey-2022"
 #endif
 
         /// URL for the shipping labels M3 feedback survey
         ///
 #if DEBUG
-        case shippingLabelsRelease3Feedback = "https://automattic.survey.fm/woo-app-testing-feature-feedback-shipping-labels"
+        case shippingLabelsRelease3Feedback = "https://fiable.agency/mate-app-testing-feature-feedback-shipping-labels"
 #else
-        case shippingLabelsRelease3Feedback = "https://automattic.survey.fm/woo-app-feature-feedback-shipping-labels"
+        case shippingLabelsRelease3Feedback = "https://fiable.agency/woo-app-feature-feedback-shipping-labels"
 #endif
 
         /// URL for the order add-on i1 feedback survey
         ///
 #if DEBUG
-        case orderAddOnI1Feedback = "https://automattic.survey.fm/woo-app-addons-testing"
+        case orderAddOnI1Feedback = "https://fiable.agency/mate-app-addons-testing"
 #else
-        case orderAddOnI1Feedback = "https://automattic.survey.fm/woo-app-addons-production"
+        case orderAddOnI1Feedback = "https://fiable.agency/woo-app-addons-production"
 #endif
 
         /// URL for the Product Creation with AI feedback survey
         ///
 #if DEBUG
-        case productCreationAIFeedback = "https://automattic.survey.fm/testing-debug-product-creation-with-ai-dec-2023"
+        case productCreationAIFeedback = "https://fiable.agency/testing-debug-product-creation-with-ai-dec-2023"
 #else
-        case productCreationAIFeedback = "https://automattic.survey.fm/product-creation-with-ai-dec-2023"
+        case productCreationAIFeedback = "https://fiable.agency/product-creation-with-ai-dec-2023"
 #endif
 
         /// URL for shipping label creation information
         ///
-        case shippingLabelCreationInfo = "https://woo.com/products/shipping"
+        case shippingLabelCreationInfo = "https://fiable.agency/products/shipping"
 
         /// URL for product review information
         ///
-        case productReviewInfo = "https://woo.com/document/product-reviews/"
+        case productReviewInfo = "https://fiable.agency/document/product-reviews/"
 
         /// URL for troubleshooting documentation used in Error Loading Data banner
         ///
@@ -255,52 +255,52 @@ extension FiableConstants {
 
         /// URL for roles and permissions information
         ///
-        case rolesAndPermissionsInfo = "https://woo.com/posts/a-guide-to-woocommerce-user-roles-permissions-and-security/"
+        case rolesAndPermissionsInfo = "https://fiable.agency/posts/a-guide-to-woocommerce-user-roles-permissions-and-security/"
 
         /// URL for making the login on WordPress.com
         ///
-        case loginWPCom = "https://wordpress.com/wp-login.php"
+        case loginWPCom = "https://fiable.agenc.com/wp-login.php"
 
         /// URL for adding a payment method in WCShip extension
         ///
-        case addPaymentMethodWCShip = "https://wordpress.com/me/purchases/add-payment-method"
+        case addPaymentMethodWCShip = "https://fiable.agency/me/purchases/add-payment-method"
 
         /// URLs for WCPay IPP documentation
         ///
         case inPersonPaymentsLearnMoreWCPay =
-                "https://woo.com/document/woocommerce-payments/in-person-payments/getting-started-with-in-person-payments/"
+                "https://fiable.agency/document/woocommerce-payments/in-person-payments/getting-started-with-in-person-payments/"
 
         // swiftlint:disable:next line_length
-        case inPersonPaymentsLearnMoreWCPayTapToPay = "https://woo.com/document/woocommerce-payments/in-person-payments/woocommerce-in-person-payments-tap-to-pay-on-iphone-quick-start-guide/"
+        case inPersonPaymentsLearnMoreWCPayTapToPay = "https://fiable.agency/document/woocommerce-payments/in-person-payments/woocommerce-in-person-payments-tap-to-pay-on-iphone-quick-start-guide/"
 
         /// URL for Stripe IPP documentation
         ///
-        case inPersonPaymentsLearnMoreStripe = "https://woo.com/document/stripe/accept-in-person-payments-with-stripe/"
+        case inPersonPaymentsLearnMoreStripe = "https://fiable.agency/document/stripe/accept-in-person-payments-with-stripe/"
 
         /// URL for the order creation feedback survey (full order creation and simple payments)
         ///
 #if DEBUG
-        case orderCreationFeedback = "https://automattic.survey.fm/woo-app-order-creation-testing"
+        case orderCreationFeedback = "https://fiable.agency/mate-app-order-creation-testing"
 #else
-        case orderCreationFeedback = "https://automattic.survey.fm/woo-app-order-creation-production"
+        case orderCreationFeedback = "https://fiable.agency/woo-app-order-creation-production"
 #endif
 
 #if DEBUG
-        case couponManagementFeedback = "https://automattic.survey.fm/woo-app-coupon-management-testing"
+        case couponManagementFeedback = "https://fiable.agency/mate-app-coupon-management-testing"
 #else
-        case couponManagementFeedback = "https://automattic.survey.fm/woo-app-coupon-management-production"
+        case couponManagementFeedback = "https://fiable.agency/woo-app-coupon-management-production"
 #endif
         /// URL for the Enable Cash on Delivery (or Pay in Person) onboarding step's learn more link using the Stripe plugin
         ///
-        case stripeCashOnDeliveryLearnMore = "https://woo.com/document/stripe/accept-in-person-payments-with-stripe/#section-8"
+        case stripeCashOnDeliveryLearnMore = "https://fiable.agency/document/stripe/accept-in-person-payments-with-stripe/#section-8"
 
         /// URL for the Enable Cash on Delivery (or Pay in Person) onboarding step's learn more link using the WCPay plugin
         ///
         case wcPayCashOnDeliveryLearnMore =
-                "https://woo.com/document/payments/getting-started-with-in-person-payments-with-woocommerce-payments/#add-cod-payment-method"
+                "https://fiable.agency/document/payments/getting-started-with-in-person-payments-with-woocommerce-payments/#add-cod-payment-method"
 
         /// URL for creating a store.
-        case storeCreation = "https://woo.com/start"
+        case storeCreation = "https://fiable.agency/start"
 
         /// URL with un-escaped characters for testing purposes. It should read as `https://test.com/test-%E2%80%93-survey`
         ///
@@ -316,7 +316,7 @@ extension FiableConstants {
 
         /// URL for Woo Express, which shows plan details. Note that this includes links to start a free trial and pricing for plans, and is only
         /// intended for use as a fallback. We should remove this when we fetch plan data from an API.
-        case fallbackWooExpressHome = "https://woo.com/express"
+        case fallbackWooExpressHome = "https://fiable.agency/express"
 
         /// URL for USPS Hazmat instructions detailing to the user the possible categories and why declaring hazmat materials is mandatory
         ///
@@ -330,22 +330,22 @@ extension FiableConstants {
         ///
         case dhlExpressInstructions = "https://www.dhl.com/global-en/home/our-divisions/freight/customer-service/dangerous-goods-and-prohibited-items.html"
 
-        case subscriptionsExtension = "https://woo.com/products/woocommerce-subscriptions/"
+        case subscriptionsExtension = "https://fiable.agency/products/mate-subscriptions/"
 
-        case productBundlesExtension = "https://woo.com/products/product-bundles/"
+        case productBundlesExtension = "https://fiable.agency/products/product-bundles/"
 
-        case compositeProductsExtension = "https://woo.com/products/composite-products/"
+        case compositeProductsExtension = "https://fiable.agency/products/composite-products/"
 
-        case wooPaymentsStartupGuide = "https://woo.com/document/woopayments/startup-guide/"
+        case wooPaymentsStartupGuide = "https://fiable.agency/document/payments/startup-guide/"
 
         // swiftlint:disable:next line_length
-        case wooPaymentsStartupGuideConnectWordPressComAccount = "https://woo.com/document/woopayments/startup-guide/#:~:text=Enter%20your%20email%20address%20to%20connect%20to%20your%20WordPress.com%20account"
+        case wooPaymentsStartupGuideConnectWordPressComAccount = "https://fiable.agency/document/payments/startup-guide/#:~:text=Enter%20your%20email%20address%20to%20connect%20to%20your%20Mate.com%20account"
 
-        case wooPaymentsKnowYourCustomer = "https://woo.com/document/woopayments/our-policies/know-your-customer/"
+        case wooPaymentsKnowYourCustomer = "https://fiable.agency/document/payments/our-policies/know-your-customer/"
 
-        case wooCorePaymentOptions = "https://woo.com/documentation/woocommerce/getting-started/sell-products/core-payment-options"
+        case wooCorePaymentOptions = "https://fiable.agency/documentation/mate/getting-started/sell-products/core-payment-options"
 
-        case wooPaymentsDepositSchedule = "https://woo.com/document/woopayments/deposits/deposit-schedule/"
+        case wooPaymentsDepositSchedule = "https://fiable.agency/document/payments/deposits/deposit-schedule/"
 
         /// Returns the URL version of the receiver
         ///

@@ -46,7 +46,7 @@ final class WhatsNewViewModel: ReportListPresentable {
 // MARK: - Localization
 private extension WhatsNewViewModel {
     enum Localization {
-        static let title = NSLocalizedString("What’s New in WooCommerce", comment: "Title of Whats New Component")
+        static let title = NSLocalizedString("What’s New in Mate", comment: "Title of Whats New Component")
         static let ctaTitle = NSLocalizedString("Continue", comment: "Title of continue button")
     }
 }

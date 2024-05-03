@@ -1,5 +1,5 @@
 import SwiftUI
-
+import FiableFoundation
 /// Renders a Section Header/Footer with a label [Left / Center/Right].
 ///
 struct ListHeaderView: View {

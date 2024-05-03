@@ -13,21 +13,23 @@ import MateStorage
 // MARK: - Exported ReadOnly Symbols
 public typealias Account = MateNetworking.Account
 public typealias AccountSettings = MateNetworking.AccountSettings
+public typealias Announcement = MateNetworking.Announcement
+
 public typealias APNSDevice = MateNetworking.APNSDevice
+public typealias BlazeTargetLanguage = MateNetworking.BlazeTargetLanguage
+public typealias Credentials = MateNetworking.Credentials
+public typealias EmailCheck = MateNetworking.EmailCheckData
+public typealias EventStatus = MateNetworking.EventStatus
 public typealias MateDevice = MateNetworking.MateDevice
 public typealias MateEvent = MateNetworking.MateEvent
 public typealias MateCategory = MateNetworking.MateCategory
-public typealias EventStatus = MateNetworking.EventStatus
+public typealias Feature = MateNetworking.Feature
 public typealias GooglePlace = MateNetworking.GooglePlace
-
-public typealias EmailCheck = MateNetworking.EmailCheckData
 public typealias Note = MateNetworking.Note
 public typealias NoteBlock = MateNetworking.NoteBlock
 public typealias NoteMedia = MateNetworking.NoteMedia
-
-public typealias Credentials = MateNetworking.Credentials
 public typealias StoreOnboardingTask = MateNetworking.StoreOnboardingTask
-public typealias BlazeTargetLanguage = MateNetworking.BlazeTargetLanguage
+public typealias SystemStatus = MateNetworking.SystemStatus
 
 // MARK: - Exported Storage Symbols
 public typealias StorageAccount = MateStorage.Account
