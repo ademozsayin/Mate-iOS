@@ -1,6 +1,8 @@
 import Foundation
 
 public enum BuildConfiguration: String {
+    
+    case localhost
     /// Development build, usually run from Xcode
     case localDeveloper
 
@@ -12,7 +14,9 @@ public enum BuildConfiguration: String {
     case appStore
 
     public static var current: BuildConfiguration {
-        #if DEBUG 
+        #if LOCALHOST
+        return .localhost
+        #elseif DEBUG
         return testingOverride ?? .localDeveloper
         #elseif ALPHA
         return .alpha

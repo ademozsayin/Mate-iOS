@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FiableAuthenticator
 
 /// Abstracts the Authentication engine.
 ///
@@ -21,12 +22,11 @@ protocol Authentication {
     ///     - from: UIViewController instance from which to present the support interface
     ///     - screen: A case from `CustomHelpCenterContent.Screen` enum. This represents authentication related screens from WCiOS.
     ///
-//    func presentSupport(from sourceViewController: UIViewController, screen: CustomHelpCenterContent.Screen)
+    func presentSupport(from sourceViewController: UIViewController, screen: CustomHelpCenterContent.Screen)
 
     /// Presents the Support Interface from a given ViewController, with a specified SourceTag.
     ///
-//    func presentSupport(from sourceViewController: UIViewController, sourceTag: WordPressSupportSourceTag)
-    func presentSupport(from sourceViewController: UIViewController, sourceTag: String)
+    func presentSupport(from sourceViewController: UIViewController, sourceTag: WordPressSupportSourceTag?)
 
     /// Handles an Authentication URL Callback. Returns *true* on success.
     ///

@@ -11,9 +11,6 @@ import FiableShared
 /// Encapsulates all of the interactions with the WordPress Authenticator
 ///
 class AuthenticationManager: Authentication {
-    func presentSupport(from sourceViewController: UIViewController, sourceTag: String) {
-        
-    }
     
     var displayAuthenticatorIfLoggedOut: (() -> UINavigationController?)?
 
@@ -483,17 +480,17 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
     ///     - from: UIViewController instance from which to present the support interface
     ///     - screen: A case from `CustomHelpCenterContent.Screen` enum. This represents authentication related screens from WCiOS.
     ///
-//    func presentSupport(from sourceViewController: UIViewController, screen: CustomHelpCenterContent.Screen) {
-//        let customHelpCenterContent = CustomHelpCenterContent(screen: screen,
-//                                                              flow: AuthenticatorAnalyticsTracker.shared.state.lastFlow)
-//        presentHelpAndSupport(from: sourceViewController, customHelpCenterContent: customHelpCenterContent, sourceTag: nil)
-//    }
+    func presentSupport(from sourceViewController: UIViewController, screen: CustomHelpCenterContent.Screen) {
+        let customHelpCenterContent = CustomHelpCenterContent(screen: screen,
+                                                              flow: AuthenticatorAnalyticsTracker.shared.state.lastFlow)
+        presentHelpAndSupport(from: sourceViewController, customHelpCenterContent: customHelpCenterContent, sourceTag: nil)
+    }
 
     /// Presents the Support Interface from a given ViewController, with a specified SourceTag.
     ///
-//    func presentSupport(from sourceViewController: UIViewController, sourceTag: WordPressSupportSourceTag) {
-//        presentHelpAndSupport(from: sourceViewController, sourceTag: sourceTag)
-//    }
+    func presentSupport(from sourceViewController: UIViewController, sourceTag: WordPressSupportSourceTag?) {
+        presentHelpAndSupport(from: sourceViewController, sourceTag: sourceTag)
+    }
 
     /// Presents the Support Interface from a given ViewController.
     ///
@@ -507,20 +504,21 @@ extension AuthenticationManager: FiableAuthenticatorDelegate {
                         sourceTag: WordPressSupportSourceTag,
                         lastStep: AuthenticatorAnalyticsTracker.Step,
                         lastFlow: AuthenticatorAnalyticsTracker.Flow) {
-//        guard let customHelpCenterContent = CustomHelpCenterContent(step: lastStep, flow: lastFlow) else {
-//            presentSupport(from: sourceViewController, sourceTag: sourceTag)
-//            return
-//        }
-//
-//        presentHelpAndSupport(from: sourceViewController, customHelpCenterContent: customHelpCenterContent, sourceTag: sourceTag)
+        guard let customHelpCenterContent = CustomHelpCenterContent(step: lastStep, flow: lastFlow) else {
+            presentSupport(from: sourceViewController, sourceTag: sourceTag)
+            return
+        }
+
+        presentHelpAndSupport(from: sourceViewController, customHelpCenterContent: customHelpCenterContent, sourceTag: sourceTag)
     }
 
     /// Presents the Support new request, from a given ViewController, with a specified SourceTag.
     ///
     func presentSupportRequest(from sourceViewController: UIViewController, sourceTag: WordPressSupportSourceTag) {
-//        let supportForm = SupportFormHostingController(viewModel: .init(sourceTag: sourceTag.origin))
-//        supportForm.show(from: sourceViewController)
+        let supportForm = SupportFormHostingController(viewModel: .init(sourceTag: sourceTag.origin))
+        supportForm.show(from: sourceViewController)
     }
+
 
     /// Indicates if the Login Epilogue should be presented.
     ///
@@ -1022,26 +1020,26 @@ private extension AuthenticationManager {
 // MARK: - Help and support helpers
 private extension AuthenticationManager {
 
-//    func presentHelpAndSupport(from sourceViewController: UIViewController,
-//                               customHelpCenterContent: CustomHelpCenterContent? = nil,
-//                               sourceTag: WordPressSupportSourceTag?) {
-//        let identifier = HelpAndSupportViewController.classNameWithoutNamespaces
-//        let supportViewController = UIStoryboard.dashboard.instantiateViewController(identifier: identifier,
-//                                                                                     creator: { coder -> HelpAndSupportViewController? in
-//            guard let customHelpCenterContent = customHelpCenterContent else {
-//                /// Returning nil as we don't need to customise the HelpAndSupportViewController
-//                /// In this case `instantiateViewController` method will use the default `HelpAndSupportViewController` created from storyboard.
-//                ///
-//                return nil
-//            }
-//
-//            return HelpAndSupportViewController(customHelpCenterContent: customHelpCenterContent, sourceTag: sourceTag?.origin, coder: coder)
-//        })
-//        supportViewController.displaysDismissAction = true
-//
-//        let navController = WooNavigationController(rootViewController: supportViewController)
-//        navController.modalPresentationStyle = .formSheet
-//
-//        sourceViewController.present(navController, animated: true, completion: nil)
-//    }
+    func presentHelpAndSupport(from sourceViewController: UIViewController,
+                               customHelpCenterContent: CustomHelpCenterContent? = nil,
+                               sourceTag: WordPressSupportSourceTag?) {
+        let identifier = HelpAndSupportViewController.classNameWithoutNamespaces
+        let supportViewController = UIStoryboard.dashboard.instantiateViewController(identifier: identifier,
+                                                                                     creator: { coder -> HelpAndSupportViewController? in
+            guard let customHelpCenterContent = customHelpCenterContent else {
+                /// Returning nil as we don't need to customise the HelpAndSupportViewController
+                /// In this case `instantiateViewController` method will use the default `HelpAndSupportViewController` created from storyboard.
+                ///
+                return nil
+            }
+
+            return HelpAndSupportViewController(customHelpCenterContent: customHelpCenterContent, sourceTag: sourceTag?.origin, coder: coder)
+        })
+        supportViewController.displaysDismissAction = true
+
+        let navController = OnsaNavigationController(rootViewController: supportViewController)
+        navController.modalPresentationStyle = .formSheet
+
+        sourceViewController.present(navController, animated: true, completion: nil)
+    }
 }

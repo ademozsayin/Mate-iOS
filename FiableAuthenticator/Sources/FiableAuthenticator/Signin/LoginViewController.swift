@@ -51,7 +51,7 @@ open class LoginViewController: NUXViewController {
 
     override open func viewDidLoad() {
         super.viewDidLoad()
-        #if DEBUG
+        #if LOCALHOST
         logCurrentVC()
         #endif
 //        displayError(message: "")

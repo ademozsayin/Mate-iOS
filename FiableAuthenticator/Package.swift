@@ -30,7 +30,11 @@ let package = Package(
                            "SVProgressHUD",
                            "FiableKit",
                            "MateNetworking",
-                           "FiableRedux"]
+                           "FiableRedux"],
+            swiftSettings: [
+                        .define("LOCALHOST", .when(configuration: .debug)),
+                        .define("ALPHA", .when(configuration: .debug))
+                    ]
         ), // Specify dependencies for the main target
         .testTarget(
             name: "FiableAuthenticatorTests",

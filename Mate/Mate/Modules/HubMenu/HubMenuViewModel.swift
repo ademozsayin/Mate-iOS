@@ -104,16 +104,17 @@ final class HubMenuViewModel: ObservableObject {
     }
 
     private func setupGeneralElements() {
-        generalElements = [Payments(iconBadge: shouldShowNewFeatureBadgeOnPayments ? .dot : nil),
-                           WoocommerceAdmin(),
-                           ViewStore(),
-                           Reviews()]
+//        generalElements = [Payments(iconBadge: shouldShowNewFeatureBadgeOnPayments ? .dot : nil),
+//                           WoocommerceAdmin(),
+//                           ViewStore(),
+//                           Reviews()]
+        generalElements = [Reviews()]
 //        if generalAppSettings.betaFeatureEnabled(.inAppPurchases) {
 //            generalElements.append(InAppPurchases())
 //        }
 
         let inboxUseCase = InboxEligibilityUseCase(stores: stores, featureFlagService: featureFlagService)
-        inboxUseCase.isEligibleForInbox(siteID: 1) { [weak self] isInboxMenuShown in
+        inboxUseCase.isEligibleForInbox() { [weak self] isInboxMenuShown in
             guard let self = self else { return }
             if let index = self.generalElements.firstIndex(where: { item in
                 type(of: item).id == Reviews.id
@@ -122,13 +123,13 @@ final class HubMenuViewModel: ObservableObject {
             }
         }
 
-        if let index = self.generalElements.firstIndex(where: { item in
-            type(of: item).id == Reviews.id
-        }) {
-            self.generalElements.insert(Coupons(), at: index)
-        } else {
-            self.generalElements.append(Coupons())
-        }
+//        if let index = self.generalElements.firstIndex(where: { item in
+//            type(of: item).id == Reviews.id
+//        }) {
+//            self.generalElements.insert(Coupons(), at: index)
+//        } else {
+//            self.generalElements.append(Coupons())
+//        }
 
 
         // Blaze menu.

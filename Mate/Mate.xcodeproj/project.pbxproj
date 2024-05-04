@@ -265,7 +265,6 @@
 		0DAF0A9C2BBFD568004E9036 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0A9B2BBFD568004E9036 /* MapViewController.swift */; };
 		0DAF0A9E2BBFD5E0004E9036 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0A9D2BBFD5E0004E9036 /* MapViewModel.swift */; };
 		0DAF0AA22BBFD788004E9036 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0AA12BBFD788004E9036 /* MapCoordinator.swift */; };
-		0DAF0AA42BBFDAC3004E9036 /* View+Conditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0AA32BBFDAC3004E9036 /* View+Conditions.swift */; };
 		0DAF0AA62BBFE83C004E9036 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0AA52BBFE83C004E9036 /* EdgeInsets.swift */; };
 		0DAF0AAA2BBFE8E4004E9036 /* InProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DAF0AA72BBFE8E4004E9036 /* InProgressViewController.swift */; };
 		0DAF0AAB2BBFE8E4004E9036 /* InProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAF0AA82BBFE8E4004E9036 /* InProgressViewController.xib */; };
@@ -428,6 +427,35 @@
 		B768D0082BE553BE00B4691A /* InboxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0022BE553BD00B4691A /* InboxViewModel.swift */; };
 		B768D00B2BE559F500B4691A /* Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = B768D00A2BE559F500B4691A /* Shimmer */; };
 		B768D00D2BE55B0600B4691A /* NSAttributedString+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D00C2BE55B0600B4691A /* NSAttributedString+Helpers.swift */; };
+		B768D0242BE61C2100B4691A /* NoteDetailsCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0102BE61C2100B4691A /* NoteDetailsCommentTableViewCell.swift */; };
+		B768D0252BE61C2100B4691A /* NoteDetailsCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B768D0112BE61C2100B4691A /* NoteDetailsCommentTableViewCell.xib */; };
+		B768D0262BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0122BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.swift */; };
+		B768D0272BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B768D0132BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.xib */; };
+		B768D0282BE61C2100B4691A /* ProductReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0142BE61C2100B4691A /* ProductReviewTableViewCell.swift */; };
+		B768D0292BE61C2100B4691A /* ProductReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B768D0152BE61C2100B4691A /* ProductReviewTableViewCell.xib */; };
+		B768D02A2BE61C2100B4691A /* ReviewDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0172BE61C2100B4691A /* ReviewDetailsViewController.swift */; };
+		B768D02B2BE61C2100B4691A /* ReviewDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B768D0182BE61C2100B4691A /* ReviewDetailsViewController.xib */; };
+		B768D02C2BE61C2100B4691A /* ReviewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0192BE61C2100B4691A /* ReviewDetailView.swift */; };
+		B768D02D2BE61C2100B4691A /* ReviewReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D01A2BE61C2100B4691A /* ReviewReply.swift */; };
+		B768D02E2BE61C2100B4691A /* ReviewReplyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D01B2BE61C2100B4691A /* ReviewReplyViewModel.swift */; };
+		B768D02F2BE61C2100B4691A /* ReviewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D01C2BE61C2100B4691A /* ReviewsDataSource.swift */; };
+		B768D0302BE61C2100B4691A /* ReviewsDataSourceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D01D2BE61C2100B4691A /* ReviewsDataSourceProtocol.swift */; };
+		B768D0312BE61C2100B4691A /* ReviewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D01E2BE61C2100B4691A /* ReviewsView.swift */; };
+		B768D0322BE61C2100B4691A /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D01F2BE61C2100B4691A /* ReviewsViewController.swift */; };
+		B768D0332BE61C2100B4691A /* ReviewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B768D0202BE61C2100B4691A /* ReviewsViewController.xib */; };
+		B768D0342BE61C2100B4691A /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0212BE61C2100B4691A /* ReviewsViewModel.swift */; };
+		B768D0352BE61C2100B4691A /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0222BE61C2100B4691A /* ReviewViewModel.swift */; };
+		B768D0372BE6249000B4691A /* ResultController+UIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0362BE6249000B4691A /* ResultController+UIKit.swift */; };
+		B768D0442BE626B400B4691A /* View+AddingDividers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0382BE626B400B4691A /* View+AddingDividers.swift */; };
+		B768D0452BE626B400B4691A /* View+AutofocusTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0392BE626B400B4691A /* View+AutofocusTextModifier.swift */; };
+		B768D0462BE626B400B4691A /* View+Conditionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D03A2BE626B400B4691A /* View+Conditionals.swift */; };
+		B768D0482BE626B400B4691A /* View+DiscardChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D03C2BE626B400B4691A /* View+DiscardChanges.swift */; };
+		B768D0492BE626B400B4691A /* View+DividerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D03D2BE626B400B4691A /* View+DividerStyle.swift */; };
+		B768D04A2BE626B400B4691A /* View+HighlightModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D03E2BE626B400B4691A /* View+HighlightModifier.swift */; };
+		B768D04B2BE626B400B4691A /* View+InsetPaddings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D03F2BE626B400B4691A /* View+InsetPaddings.swift */; };
+		B768D04D2BE626B400B4691A /* View+NoticesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0412BE626B400B4691A /* View+NoticesModifier.swift */; };
+		B768D0502BE6276300B4691A /* Optinal+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D04F2BE6276300B4691A /* Optinal+String.swift */; };
+		B768D0532BE659A100B4691A /* Noticons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B768D0512BE659A100B4691A /* Noticons.ttf */; };
 		B76D32D32BDC64FB0014315B /* EventFormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76D32D22BDC64FB0014315B /* EventFormDataModel.swift */; };
 		B76D32D52BDC69BF0014315B /* EventFormPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76D32D42BDC69BF0014315B /* EventFormPresentationStyle.swift */; };
 		B76D32DC2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76D32DA2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib */; };
@@ -690,7 +718,6 @@
 		0DAF0A9B2BBFD568004E9036 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		0DAF0A9D2BBFD5E0004E9036 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		0DAF0AA12BBFD788004E9036 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
-		0DAF0AA32BBFDAC3004E9036 /* View+Conditions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Conditions.swift"; sourceTree = "<group>"; };
 		0DAF0AA52BBFE83C004E9036 /* EdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeInsets.swift; sourceTree = "<group>"; };
 		0DAF0AA72BBFE8E4004E9036 /* InProgressViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InProgressViewController.swift; sourceTree = "<group>"; };
 		0DAF0AA82BBFE8E4004E9036 /* InProgressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InProgressViewController.xib; sourceTree = "<group>"; };
@@ -851,6 +878,35 @@
 		B768D0012BE553BD00B4691A /* InboxNoteRowViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxNoteRowViewModel.swift; sourceTree = "<group>"; };
 		B768D0022BE553BD00B4691A /* InboxViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InboxViewModel.swift; sourceTree = "<group>"; };
 		B768D00C2BE55B0600B4691A /* NSAttributedString+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Helpers.swift"; sourceTree = "<group>"; };
+		B768D0102BE61C2100B4691A /* NoteDetailsCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailsCommentTableViewCell.swift; sourceTree = "<group>"; };
+		B768D0112BE61C2100B4691A /* NoteDetailsCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteDetailsCommentTableViewCell.xib; sourceTree = "<group>"; };
+		B768D0122BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailsHeaderPlainTableViewCell.swift; sourceTree = "<group>"; };
+		B768D0132BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteDetailsHeaderPlainTableViewCell.xib; sourceTree = "<group>"; };
+		B768D0142BE61C2100B4691A /* ProductReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductReviewTableViewCell.swift; sourceTree = "<group>"; };
+		B768D0152BE61C2100B4691A /* ProductReviewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductReviewTableViewCell.xib; sourceTree = "<group>"; };
+		B768D0172BE61C2100B4691A /* ReviewDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailsViewController.swift; sourceTree = "<group>"; };
+		B768D0182BE61C2100B4691A /* ReviewDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewDetailsViewController.xib; sourceTree = "<group>"; };
+		B768D0192BE61C2100B4691A /* ReviewDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailView.swift; sourceTree = "<group>"; };
+		B768D01A2BE61C2100B4691A /* ReviewReply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewReply.swift; sourceTree = "<group>"; };
+		B768D01B2BE61C2100B4691A /* ReviewReplyViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewReplyViewModel.swift; sourceTree = "<group>"; };
+		B768D01C2BE61C2100B4691A /* ReviewsDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsDataSource.swift; sourceTree = "<group>"; };
+		B768D01D2BE61C2100B4691A /* ReviewsDataSourceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsDataSourceProtocol.swift; sourceTree = "<group>"; };
+		B768D01E2BE61C2100B4691A /* ReviewsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsView.swift; sourceTree = "<group>"; };
+		B768D01F2BE61C2100B4691A /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		B768D0202BE61C2100B4691A /* ReviewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewsViewController.xib; sourceTree = "<group>"; };
+		B768D0212BE61C2100B4691A /* ReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewModel.swift; sourceTree = "<group>"; };
+		B768D0222BE61C2100B4691A /* ReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		B768D0362BE6249000B4691A /* ResultController+UIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ResultController+UIKit.swift"; sourceTree = "<group>"; };
+		B768D0382BE626B400B4691A /* View+AddingDividers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+AddingDividers.swift"; sourceTree = "<group>"; };
+		B768D0392BE626B400B4691A /* View+AutofocusTextModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+AutofocusTextModifier.swift"; sourceTree = "<group>"; };
+		B768D03A2BE626B400B4691A /* View+Conditionals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Conditionals.swift"; sourceTree = "<group>"; };
+		B768D03C2BE626B400B4691A /* View+DiscardChanges.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+DiscardChanges.swift"; sourceTree = "<group>"; };
+		B768D03D2BE626B400B4691A /* View+DividerStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+DividerStyle.swift"; sourceTree = "<group>"; };
+		B768D03E2BE626B400B4691A /* View+HighlightModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+HighlightModifier.swift"; sourceTree = "<group>"; };
+		B768D03F2BE626B400B4691A /* View+InsetPaddings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+InsetPaddings.swift"; sourceTree = "<group>"; };
+		B768D0412BE626B400B4691A /* View+NoticesModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+NoticesModifier.swift"; sourceTree = "<group>"; };
+		B768D04F2BE6276300B4691A /* Optinal+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optinal+String.swift"; sourceTree = "<group>"; };
+		B768D0512BE659A100B4691A /* Noticons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Noticons.ttf; sourceTree = "<group>"; };
 		B76D32D22BDC64FB0014315B /* EventFormDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormDataModel.swift; sourceTree = "<group>"; };
 		B76D32D42BDC69BF0014315B /* EventFormPresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormPresentationStyle.swift; sourceTree = "<group>"; };
 		B76D32DA2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabeledTextViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -991,7 +1047,6 @@
 				0D9856D52BADFB1C008F96E9 /* Array+Helpers.swift */,
 				0DA8EEE42BAE81DF001EF5BF /* FiableAuthenticator+Config.swift */,
 				0DA8EFE02BAFAE69001EF5BF /* UIFont+Fiable.swift */,
-				0DAF0AA32BBFDAC3004E9036 /* View+Conditions.swift */,
 				0DAF0AA52BBFE83C004E9036 /* EdgeInsets.swift */,
 				0DAF0ABB2BBFEC77004E9036 /* String+HTML.swift */,
 				0DCA8B412BC6F2EE0052BA12 /* UINavigation+Appearence.swift */,
@@ -1009,6 +1064,7 @@
 				B74AF4A12BD7201D00D44F03 /* UIScrollView+Helpers.swift */,
 				B74AF4A32BD7204200D44F03 /* GhostStyle+Helpers.swift */,
 				B768D00C2BE55B0600B4691A /* NSAttributedString+Helpers.swift */,
+				B768D04F2BE6276300B4691A /* Optinal+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1158,6 +1214,7 @@
 		0D8E44142B8CD0110057100C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B768D0232BE61C2100B4691A /* Reviews */,
 				B768D0032BE553BD00B4691A /* Inbox */,
 				B768CFFC2BE52E1400B4691A /* AccountSettings */,
 				B768CFF82BE529ED00B4691A /* WhatsNew */,
@@ -1177,6 +1234,7 @@
 		0D8E44232B8CD35D0057100C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B768D0522BE659A100B4691A /* Fonts */,
 				0D9E99CE2BCEB46F00276FF0 /* GoogleService-Info.plist */,
 				0DAA48092BCD601B00D16224 /* HTML */,
 				0D9856D02BADFA06008F96E9 /* InfoPlist.xcstrings */,
@@ -1192,7 +1250,7 @@
 		0D8E44292B8CD7F60057100C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
-				B74A24632BDD8EA700B9C392 /* New Group */,
+				B74A24632BDD8EA700B9C392 /* ResultController+UIKit */,
 				B74AF4512BD6D59400D44F03 /* SyncingCoordinator */,
 				B74AF4032BD6AD2D00D44F03 /* InfiniteScroll */,
 				0DAA47FE2BCD476700D16224 /* AppRatingManager */,
@@ -1548,6 +1606,14 @@
 		0DAF0AB82BBFEBCC004E9036 /* View Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				B768D0382BE626B400B4691A /* View+AddingDividers.swift */,
+				B768D0392BE626B400B4691A /* View+AutofocusTextModifier.swift */,
+				B768D03A2BE626B400B4691A /* View+Conditionals.swift */,
+				B768D03C2BE626B400B4691A /* View+DiscardChanges.swift */,
+				B768D03D2BE626B400B4691A /* View+DividerStyle.swift */,
+				B768D03E2BE626B400B4691A /* View+HighlightModifier.swift */,
+				B768D03F2BE626B400B4691A /* View+InsetPaddings.swift */,
+				B768D0412BE626B400B4691A /* View+NoticesModifier.swift */,
 				0DAF0AB92BBFEBE0004E9036 /* View+ScrollModifier.swift */,
 			);
 			path = "View Modifiers";
@@ -1685,11 +1751,12 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B74A24632BDD8EA700B9C392 /* New Group */ = {
+		B74A24632BDD8EA700B9C392 /* ResultController+UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				B768D0362BE6249000B4691A /* ResultController+UIKit.swift */,
 			);
-			path = "New Group";
+			path = "ResultController+UIKit";
 			sourceTree = "<group>";
 		};
 		B74A246A2BDDAA8C00B9C392 /* Category */ = {
@@ -1991,6 +2058,47 @@
 			path = Inbox;
 			sourceTree = "<group>";
 		};
+		B768D0162BE61C2100B4691A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B768D0102BE61C2100B4691A /* NoteDetailsCommentTableViewCell.swift */,
+				B768D0112BE61C2100B4691A /* NoteDetailsCommentTableViewCell.xib */,
+				B768D0122BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.swift */,
+				B768D0132BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.xib */,
+				B768D0142BE61C2100B4691A /* ProductReviewTableViewCell.swift */,
+				B768D0152BE61C2100B4691A /* ProductReviewTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B768D0232BE61C2100B4691A /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				B768D0162BE61C2100B4691A /* Cells */,
+				B768D0172BE61C2100B4691A /* ReviewDetailsViewController.swift */,
+				B768D0182BE61C2100B4691A /* ReviewDetailsViewController.xib */,
+				B768D0192BE61C2100B4691A /* ReviewDetailView.swift */,
+				B768D01A2BE61C2100B4691A /* ReviewReply.swift */,
+				B768D01B2BE61C2100B4691A /* ReviewReplyViewModel.swift */,
+				B768D01C2BE61C2100B4691A /* ReviewsDataSource.swift */,
+				B768D01D2BE61C2100B4691A /* ReviewsDataSourceProtocol.swift */,
+				B768D01E2BE61C2100B4691A /* ReviewsView.swift */,
+				B768D01F2BE61C2100B4691A /* ReviewsViewController.swift */,
+				B768D0202BE61C2100B4691A /* ReviewsViewController.xib */,
+				B768D0212BE61C2100B4691A /* ReviewsViewModel.swift */,
+				B768D0222BE61C2100B4691A /* ReviewViewModel.swift */,
+			);
+			path = Reviews;
+			sourceTree = "<group>";
+		};
+		B768D0522BE659A100B4691A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B768D0512BE659A100B4691A /* Noticons.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		B76D32E12BDC6E930014315B /* Feature Highlight */ = {
 			isa = PBXGroup;
 			children = (
@@ -2129,9 +2237,11 @@
 				0DA2D6FC2BC15ABE003734A6 /* FiableFoundation in Resources */,
 				B76D32DC2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib in Resources */,
 				0DAA47F02BCD42CC00D16224 /* BasicTableViewCell.xib in Resources */,
+				B768D0332BE61C2100B4691A /* ReviewsViewController.xib in Resources */,
 				0D9856D22BADFA06008F96E9 /* InfoPlist.xcstrings in Resources */,
 				0DAA48132BCD610200D16224 /* Dashboard.storyboard in Resources */,
 				B768CFB82BE499FE00B4691A /* Localizable.xcstrings in Resources */,
+				B768D02B2BE61C2100B4691A /* ReviewDetailsViewController.xib in Resources */,
 				B74AF4292BD6B37500D44F03 /* OverlayMessageView.xib in Resources */,
 				0D2D26542B8C95FE008EB605 /* Assets.xcassets in Resources */,
 				B74AF42F2BD6B49B00D44F03 /* TitleAndValueTableViewCell.xib in Resources */,
@@ -2139,14 +2249,18 @@
 				0DAA47F52BCD42CC00D16224 /* HeadlineLabelTableViewCell.xib in Resources */,
 				0DAA47F42BCD42CC00D16224 /* HeadlineTableViewCell.xib in Resources */,
 				0D30FB232BC07427006AB81B /* FiableRedux in Resources */,
+				B768D0272BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.xib in Resources */,
+				B768D0292BE61C2100B4691A /* ProductReviewTableViewCell.xib in Resources */,
 				B74AF4942BD6EBAD00D44F03 /* ProductReviewsTableViewCell.xib in Resources */,
 				0DAA47E12BCD3FC800D16224 /* FiableAbout in Resources */,
 				B74AF4922BD6EBAD00D44F03 /* ImageAndTitleAndTextTableViewCell.xib in Resources */,
 				0D30FB272BC0745D006AB81B /* MateStorage in Resources */,
+				B768D0252BE61C2100B4691A /* NoteDetailsCommentTableViewCell.xib in Resources */,
 				0DAA47F82BCD42F800D16224 /* TableFooterView.xib in Resources */,
 				B768CFF02BE511FB00B4691A /* SurveySubmittedViewController.xib in Resources */,
 				0DAA480B2BCD601B00D16224 /* pure-min.css in Resources */,
 				B74A24712BDDBC0D00B9C392 /* ProductCategoryListViewController.xib in Resources */,
+				B768D0532BE659A100B4691A /* Noticons.ttf in Resources */,
 				0DAA47DA2BCD3DCA00D16224 /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2166,6 +2280,7 @@
 				0D8D382A2BBC362700B362DD /* ActivityIndicator.swift in Sources */,
 				B74AF4232BD6B2F300D44F03 /* ListSelectorViewController.swift in Sources */,
 				0DC2342D2BA7929000414B13 /* FiableConstants.swift in Sources */,
+				B768D0492BE626B400B4691A /* View+DividerStyle.swift in Sources */,
 				B773F53D2BE378130044C444 /* AttendeesStepperViewModel.swift in Sources */,
 				0D8D384B2BBC362700B362DD /* BottomButtonView.swift in Sources */,
 				0D8798EC2BD3169000BC5443 /* Event+Coordinate.swift in Sources */,
@@ -2183,11 +2298,13 @@
 				0D8D38422BBC362700B362DD /* AttributedText.swift in Sources */,
 				0D8D384F2BBC362700B362DD /* SingleSelectionList.swift in Sources */,
 				0DC2357A2BAA427700414B13 /* MateAnalyticsStat.swift in Sources */,
+				B768D04A2BE626B400B4691A /* View+HighlightModifier.swift in Sources */,
 				B768CFF32BE511FB00B4691A /* SurveyViewControllersFactory.swift in Sources */,
 				B768D0052BE553BE00B4691A /* InboxEligibilityUseCase.swift in Sources */,
 				0D8D382D2BBC362700B362DD /* ListHeaderView.swift in Sources */,
 				0DAF0ABC2BBFEC77004E9036 /* String+HTML.swift in Sources */,
 				0D8D383D2BBC362700B362DD /* RefreshableScrollView.swift in Sources */,
+				B768D0242BE61C2100B4691A /* NoteDetailsCommentTableViewCell.swift in Sources */,
 				B74AF4932BD6EBAD00D44F03 /* ImageAndTitleAndTextTableViewCell.swift in Sources */,
 				0DC234D62BA8E1A000414B13 /* UIStackView+Helpers.swift in Sources */,
 				B74AF40B2BD6AE4500D44F03 /* EventListViewModel.swift in Sources */,
@@ -2207,8 +2324,8 @@
 				B74AF4B32BD743D000D44F03 /* FirebaseAnalyticsService.swift in Sources */,
 				0DAA47FB2BCD45E600D16224 /* UITableViewCell+Helpers.swift in Sources */,
 				B74A24652BDD8EBA00B9C392 /* IntegerInputFormatter.swift in Sources */,
+				B768D02F2BE61C2100B4691A /* ReviewsDataSource.swift in Sources */,
 				0D8D381F2BBC362700B362DD /* DisclosureIndicator.swift in Sources */,
-				0DAF0AA42BBFDAC3004E9036 /* View+Conditions.swift in Sources */,
 				0D8D385D2BBC362700B362DD /* BadgeView.swift in Sources */,
 				0D8D385E2BBC362700B362DD /* TitleAndToggleRow.swift in Sources */,
 				B74AF42B2BD6B3BD00D44F03 /* UIAlertController+Helpers.swift in Sources */,
@@ -2239,6 +2356,7 @@
 				0DAA47592BCD3DCA00D16224 /* MateAboutScreenConfiguration.swift in Sources */,
 				0DA8EFAD2BAF9D60001EF5BF /* RoleErrorViewController.swift in Sources */,
 				0D8D385A2BBC362700B362DD /* RangedDatePicker.swift in Sources */,
+				B768D0282BE61C2100B4691A /* ProductReviewTableViewCell.swift in Sources */,
 				0DCA8B502BC7199C0052BA12 /* TopBannerView.swift in Sources */,
 				0DA8EFDD2BAF9D60001EF5BF /* Keychain+Entries.swift in Sources */,
 				B74AF4A22BD7201D00D44F03 /* UIScrollView+Helpers.swift in Sources */,
@@ -2261,6 +2379,7 @@
 				0D8D38532BBC362700B362DD /* FormattableAmountTextField.swift in Sources */,
 				B74A24782BDDBCD000B9C392 /* ProductCategoryList.swift in Sources */,
 				0D9856E42BADFBE3008F96E9 /* UserNotificationsCenterAdapter.swift in Sources */,
+				B768D0262BE61C2100B4691A /* NoteDetailsHeaderPlainTableViewCell.swift in Sources */,
 				0D8D38192BBC362700B362DD /* ValidationErrorRow.swift in Sources */,
 				0D9856C32BAD1B7F008F96E9 /* KeyboardStateProvider.swift in Sources */,
 				0DC234022BA789F900414B13 /* AppCoordinator.swift in Sources */,
@@ -2290,8 +2409,10 @@
 				B74AF4B92BD74E7700D44F03 /* MateAnalyticsProtocol.swift in Sources */,
 				0DA8EF922BAF9D5F001EF5BF /* PostSiteCredentialLoginChecker.swift in Sources */,
 				0D9856882BAD161A008F96E9 /* OnsaNavigationController.swift in Sources */,
+				B768D02A2BE61C2100B4691A /* ReviewDetailsViewController.swift in Sources */,
 				0DC2356F2BAA401300414B13 /* FancyAlertViewController+UnifiedLogin.swift in Sources */,
 				0DA8EF792BAF9D5F001EF5BF /* NavigationTitleView.swift in Sources */,
+				B768D0372BE6249000B4691A /* ResultController+UIKit.swift in Sources */,
 				0D9856E22BADFBE3008F96E9 /* PushNotificationsConfiguration.swift in Sources */,
 				B768D0042BE553BE00B4691A /* Inbox.swift in Sources */,
 				B74AF4832BD6E17600D44F03 /* OrderSearchUICommand.swift in Sources */,
@@ -2315,6 +2436,7 @@
 				B768CFD72BE5077000B4691A /* SharingHelper.swift in Sources */,
 				0DAA48152BCD616300D16224 /* UIStoryBoard+Mate.swift in Sources */,
 				B76D32E22BDC6E930014315B /* ProductDescriptionAITooltipUseCase.swift in Sources */,
+				B768D0442BE626B400B4691A /* View+AddingDividers.swift in Sources */,
 				0D8D384D2BBC362700B362DD /* AnimatedPlaceholder.swift in Sources */,
 				0DAF0AA22BBFD788004E9036 /* MapCoordinator.swift in Sources */,
 				B74AF4252BD6B2F300D44F03 /* PaginatedListSelectorViewProperties.swift in Sources */,
@@ -2328,6 +2450,7 @@
 				0D9E99CD2BCEA83400276FF0 /* Bundle+Mate.swift in Sources */,
 				0D98567C2BAB9625008F96E9 /* MainTabbarController.swift in Sources */,
 				0D8D38212BBC362700B362DD /* EmptyState.swift in Sources */,
+				B768D04D2BE626B400B4691A /* View+NoticesModifier.swift in Sources */,
 				0D8D38512BBC362700B362DD /* ButtonStyles.swift in Sources */,
 				0DA8EFA32BAF9D5F001EF5BF /* ApplicationPasswordDisabledViewModel.swift in Sources */,
 				B74AF4072BD6AD5300D44F03 /* PaginationTracker.swift in Sources */,
@@ -2346,6 +2469,7 @@
 				0D9856AE2BAD1AB4008F96E9 /* PermanentNoticePresenter.swift in Sources */,
 				0D8D38362BBC362700B362DD /* SegmentedView.swift in Sources */,
 				B74AF4332BD6B5EE00D44F03 /* BottomButtonContainerView.swift in Sources */,
+				B768D0352BE61C2100B4691A /* ReviewViewModel.swift in Sources */,
 				0D9856A02BAD18FA008F96E9 /* TabContainerController.swift in Sources */,
 				B74AF4862BD6E17600D44F03 /* SearchUICommand.swift in Sources */,
 				B74AF49A2BD6EDFF00D44F03 /* BottomSheetProductType.swift in Sources */,
@@ -2354,6 +2478,7 @@
 				0D8D38432BBC362700B362DD /* ExpandableBottomSheet.swift in Sources */,
 				B768CFF52BE5125300B4691A /* LoadingView.swift in Sources */,
 				0DA8EFA82BAF9D60001EF5BF /* NonAtomicSiteViewModel.swift in Sources */,
+				B768D04B2BE626B400B4691A /* View+InsetPaddings.swift in Sources */,
 				0D8D38222BBC362700B362DD /* AdaptiveStack.swift in Sources */,
 				0DAF0AA62BBFE83C004E9036 /* EdgeInsets.swift in Sources */,
 				B74AF3F72BD6A4BF00D44F03 /* BottomSheetListSelectorViewController+DrawerPresentable.swift in Sources */,
@@ -2386,6 +2511,7 @@
 				B768D0072BE553BE00B4691A /* InboxNoteRowViewModel.swift in Sources */,
 				0D8D38502BBC362700B362DD /* CelebrationView.swift in Sources */,
 				B74AF40E2BD6AF1A00D44F03 /* ToolbarView.swift in Sources */,
+				B768D02C2BE61C2100B4691A /* ReviewDetailView.swift in Sources */,
 				0D30FB1A2BC07096006AB81B /* FeatureFlagService.swift in Sources */,
 				0D8D381C2BBC362700B362DD /* AdaptiveAsyncImage.swift in Sources */,
 				0D8D381B2BBC362700B362DD /* CollapsibleView.swift in Sources */,
@@ -2393,6 +2519,7 @@
 				B74AF4282BD6B37500D44F03 /* OverlayMessageView.swift in Sources */,
 				0DA8EFAB2BAF9D60001EF5BF /* NotWPErrorViewModel.swift in Sources */,
 				B76D32F12BDC84A20014315B /* EnhancedTextView.swift in Sources */,
+				B768D0322BE61C2100B4691A /* ReviewsViewController.swift in Sources */,
 				B76D32FB2BDC891F0014315B /* SpacerTableViewCell.swift in Sources */,
 				B74AF4242BD6B2F300D44F03 /* PaginatedListSelectorViewController.swift in Sources */,
 				0DA8EFA92BAF9D60001EF5BF /* NoSecureConnectionErrorViewModel.swift in Sources */,
@@ -2427,8 +2554,11 @@
 				B74AF4872BD6E17600D44F03 /* SearchViewController.swift in Sources */,
 				B74AF3DD2BD6A1A200D44F03 /* EventsViewController.swift in Sources */,
 				B74AF48A2BD6E47A00D44F03 /* BordersView.swift in Sources */,
+				B768D02D2BE61C2100B4691A /* ReviewReply.swift in Sources */,
 				0DA8EF7F2BAF9D5F001EF5BF /* AuthenticatedWebViewModel.swift in Sources */,
 				0D8D38582BBC362700B362DD /* SelectableItemRow.swift in Sources */,
+				B768D0462BE626B400B4691A /* View+Conditionals.swift in Sources */,
+				B768D0452BE626B400B4691A /* View+AutofocusTextModifier.swift in Sources */,
 				B74AF48C2BD6E53200D44F03 /* CircleSpinnerView.swift in Sources */,
 				0DA8EF6F2BAF9D5F001EF5BF /* ApplicationPasswordTutorialViewModel.swift in Sources */,
 				0DC234B32BA7C7BE00414B13 /* DeauthenticatedState.swift in Sources */,
@@ -2464,12 +2594,14 @@
 				B773F53F2BE378750044C444 /* ProductStepper.swift in Sources */,
 				B74AF42E2BD6B49B00D44F03 /* TitleAndValueTableViewCell.swift in Sources */,
 				B74AF4B72BD7447800D44F03 /* MateAnalytics.swift in Sources */,
+				B768D0482BE626B400B4691A /* View+DiscardChanges.swift in Sources */,
 				B768CFFD2BE52E1400B4691A /* AccountSettingsView.swift in Sources */,
 				0D23195F2B8E7B4500F969DD /* String+Helpers.swift in Sources */,
 				B74A24602BDD831F00B9C392 /* AddEditEventViewModel.swift in Sources */,
 				0DAA47E52BCD41BE00D16224 /* VersionHelpers.swift in Sources */,
 				0DCA8B492BC6FD360052BA12 /* EmptyStateViewController.swift in Sources */,
 				0D8D382F2BBC362700B362DD /* InfiniteScrollList.swift in Sources */,
+				B768D02E2BE61C2100B4691A /* ReviewReplyViewModel.swift in Sources */,
 				0DA8EF6D2BAF9D5F001EF5BF /* ApplicationPasswordAuthorizationWebViewController.swift in Sources */,
 				B74AF4192BD6B0DB00D44F03 /* FilterListViewController.swift in Sources */,
 				0DA8EFB82BAF9D60001EF5BF /* AuthenticatedWebViewController.swift in Sources */,
@@ -2492,8 +2624,10 @@
 				0DA8EF762BAF9D5F001EF5BF /* LoginPrologueViewController.swift in Sources */,
 				0D84B5D12BC96A5A00700F3F /* RouteMatcher.swift in Sources */,
 				B768CFCF2BE4FA1400B4691A /* ApplicationLogViewController.swift in Sources */,
+				B768D0502BE6276300B4691A /* Optinal+String.swift in Sources */,
 				B74AF4852BD6E17600D44F03 /* SearchResultCell.swift in Sources */,
 				0D9856972BAD17BE008F96E9 /* UIImage+Dot.swift in Sources */,
+				B768D0312BE61C2100B4691A /* ReviewsView.swift in Sources */,
 				0DCA8B422BC6F2EE0052BA12 /* UINavigation+Appearence.swift in Sources */,
 				B74A247F2BDECBFC00B9C392 /* SelectLocationViewModel.swift in Sources */,
 				B76D32E42BDC6E930014315B /* TooltipPresenter.swift in Sources */,
@@ -2511,6 +2645,7 @@
 				0D8D38282BBC362700B362DD /* LargeTitle.swift in Sources */,
 				B74AF4A42BD7204200D44F03 /* GhostStyle+Helpers.swift in Sources */,
 				B74AF3F92BD6A4BF00D44F03 /* BottomSheetListSelector.swift in Sources */,
+				B768D0302BE61C2100B4691A /* ReviewsDataSourceProtocol.swift in Sources */,
 				B768CFE42BE50C7800B4691A /* UpdateAnalyticsSettingsUseCase.swift in Sources */,
 				B74AF4092BD6ADAB00D44F03 /* PaginatedListViewControllerStateCoordinator.swift in Sources */,
 				0DAA48002BCD476E00D16224 /* AppRatingManager.swift in Sources */,
@@ -2521,6 +2656,7 @@
 				0D94CB8E2BD1E595004370A1 /* MapView.swift in Sources */,
 				B74AF3E02BD6A35800D44F03 /* GhostTableViewController.swift in Sources */,
 				B74AF4AF2BD7439C00D44F03 /* FirebaseAnalyticsProvider.swift in Sources */,
+				B768D0342BE61C2100B4691A /* ReviewsViewModel.swift in Sources */,
 				0D8E442B2B8CD8060057100C /* Logging.swift in Sources */,
 				0DA8EF7C2BAF9D5F001EF5BF /* WebViewControllerConfiguration.swift in Sources */,
 				0D84B5D22BC96A5A00700F3F /* UniversalLinkRouter.swift in Sources */,
@@ -2939,7 +3075,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.mate.alpha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = ALPHA;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "ALPHA DEBUG";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2947,7 +3083,7 @@
 			};
 			name = "Debug-Alpha";
 		};
-		0DCA8B642BC877180052BA12 /* Localhost */ = {
+		0DCA8B642BC877180052BA12 /* Debug-Localhost */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -3005,12 +3141,12 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited) LOCALHOST";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Localhost;
+			name = "Debug-Localhost";
 		};
-		0DCA8B652BC877180052BA12 /* Localhost */ = {
+		0DCA8B652BC877180052BA12 /* Debug-Localhost */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3046,13 +3182,110 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.mate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "LOCALHOST $(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "LOCALHOST DEBUG";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WEATHER_API_KEY = ad3cd45ba5993cb4c759b95cc4205850;
 			};
-			name = Localhost;
+			name = "Debug-Localhost";
+		};
+		B768D00E2BE6120E00B4691A /* Release-Localhost */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-Localhost";
+		};
+		B768D00F2BE6120E00B4691A /* Release-Localhost */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BASE_URL = "https://fiable.agency/public/";
+				CODE_SIGN_ENTITLEMENTS = Mate/MateRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7PX72NXP7V;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Mate/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Mate;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.social-networking";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide weather information even when the app is in the background.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide weather information even when the app is in the background.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide weather information.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = agency.fiable.mate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = LOCALHOST;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WEATHER_API_KEY = ad3cd45ba5993cb4c759b95cc4205850;
+			};
+			name = "Release-Localhost";
 		};
 /* End XCBuildConfiguration section */
 
@@ -3062,8 +3295,9 @@
 			buildConfigurations = (
 				0D2D266F2B8C95FE008EB605 /* Debug */,
 				0D9E99C32BCE9DEC00276FF0 /* Debug-Alpha */,
-				0DCA8B642BC877180052BA12 /* Localhost */,
+				0DCA8B642BC877180052BA12 /* Debug-Localhost */,
 				0D2D26702B8C95FE008EB605 /* Release */,
+				B768D00E2BE6120E00B4691A /* Release-Localhost */,
 				0D9E99BF2BCE9D3900276FF0 /* Release-Alpha */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -3074,8 +3308,9 @@
 			buildConfigurations = (
 				0D2D26722B8C95FE008EB605 /* Debug */,
 				0D9E99C42BCE9DEC00276FF0 /* Debug-Alpha */,
-				0DCA8B652BC877180052BA12 /* Localhost */,
+				0DCA8B652BC877180052BA12 /* Debug-Localhost */,
 				0D2D26732B8C95FE008EB605 /* Release */,
+				B768D00F2BE6120E00B4691A /* Release-Localhost */,
 				0D9E99C02BCE9D3900276FF0 /* Release-Alpha */,
 			);
 			defaultConfigurationIsVisible = 0;

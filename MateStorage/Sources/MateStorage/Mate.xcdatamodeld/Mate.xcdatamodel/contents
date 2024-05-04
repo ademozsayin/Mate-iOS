@@ -29,4 +29,53 @@
         <attribute name="rating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="vicinity" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="InboxAction" representedClassName="InboxAction" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="label" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="inboxNote" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InboxNote" inverseName="actions" inverseEntity="InboxNote"/>
+    </entity>
+    <entity name="InboxNote" representedClassName="InboxNote" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isRead" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isRemoved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="actions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InboxAction" inverseName="inboxNote" inverseEntity="InboxAction"/>
+    </entity>
+    <entity name="Note" representedClassName="Note" syncable="YES">
+        <attribute name="body" optional="YES" attributeType="Binary"/>
+        <attribute name="deleteInProgress" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="header" optional="YES" attributeType="Binary"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="meta" optional="YES" attributeType="Binary"/>
+        <attribute name="noteHash" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="noteID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="noticon" optional="YES" attributeType="String"/>
+        <attribute name="read" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="subject" optional="YES" attributeType="Binary"/>
+        <attribute name="subtype" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ProductReview" representedClassName="ProductReview" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="productId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="review" optional="YES" attributeType="String"/>
+        <attribute name="reviewer" optional="YES" attributeType="String"/>
+        <attribute name="reviewerAvatarURL" optional="YES" attributeType="String"/>
+        <attribute name="reviewerEmail" optional="YES" attributeType="String"/>
+        <attribute name="reviewID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="statusKey" optional="YES" attributeType="String"/>
+        <attribute name="verified" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+    </entity>
 </model>

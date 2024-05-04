@@ -12,7 +12,7 @@ public struct DefaultFeatureFlagService: FeatureFlagService {
 
         switch featureFlag {
         case .inbox:
-            return buildConfig == .localDeveloper || buildConfig == .alpha
+            return buildConfig == .localDeveloper || buildConfig == .alpha || buildConfig == .localhost
         case .sideBySideViewForOrderForm:
             return buildConfig == .localDeveloper || buildConfig == .alpha
         case .updateOrderOptimistically:

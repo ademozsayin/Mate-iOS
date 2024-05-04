@@ -33,6 +33,9 @@ public typealias NoteMedia = MateNetworking.NoteMedia
 public typealias StoreOnboardingTask = MateNetworking.StoreOnboardingTask
 public typealias SystemStatus = MateNetworking.SystemStatus
 
+public typealias ProductReview = MateNetworking.ProductReview
+public typealias ProductReviewStatus = MateNetworking.ProductReviewStatus
+
 // MARK: - Exported Storage Symbols
 public typealias StorageAccount = MateStorage.Account
 public typealias LocalAnnouncement = MateStorage.LocalAnnouncement
@@ -43,6 +46,9 @@ public typealias StorageGooglePlace = MateStorage.GooglePlace
 public typealias StorageInboxNote = MateStorage.InboxNote
 public typealias StorageInboxAction = MateStorage.InboxAction
 
+public typealias StorageProductReview = MateStorage.ProductReview
+
+public typealias StorageNote = MateStorage.Note
 
 // MARK: - Internal ReadOnly Models
 

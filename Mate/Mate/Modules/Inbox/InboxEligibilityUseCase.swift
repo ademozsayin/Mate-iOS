@@ -17,7 +17,7 @@ final class InboxEligibilityUseCase {
     /// - Parameters:
     ///   - siteID: the ID of the site to check for Inbox eligibility.
     ///   - completion: called when the Inbox eligibility is determined.
-    func isEligibleForInbox(siteID: Int64, completion: @escaping (Bool) -> Void) {
+    func isEligibleForInbox( completion: @escaping (Bool) -> Void) {
         guard featureFlagService.isFeatureFlagEnabled(.inbox) else {
             return completion(false)
         }

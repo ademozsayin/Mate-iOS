@@ -166,7 +166,7 @@ private extension PostSiteCredentialLoginChecker {
                 navigationController.popViewController(animated: true)
                 ServiceLocator.authenticationManager.presentSupport(
                     from: navigationController,
-                    sourceTag: "loginSiteAddress"
+                    sourceTag: .loginSiteAddress
                 )
             }
             alert.addAction(supportAction)

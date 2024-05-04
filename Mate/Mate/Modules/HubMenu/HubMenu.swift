@@ -115,11 +115,11 @@ struct HubMenu: View {
                        isActive: $showingInbox) {
             EmptyView()
         }.hidden()
-//        NavigationLink(destination:
-//                        ReviewsView(siteID: viewModel.siteID),
-//                       isActive: $showingReviews) {
-//            EmptyView()
-//        }.hidden()
+        NavigationLink(destination:
+                        ReviewsView(),
+                       isActive: $showingReviews) {
+            EmptyView()
+        }.hidden()
 //        NavigationLink(destination: EnhancedCouponListView(siteID: viewModel.siteID), isActive: $showingCoupons) {
 //            EmptyView()
 //        }.hidden()
