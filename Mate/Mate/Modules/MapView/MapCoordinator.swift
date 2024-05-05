@@ -19,15 +19,16 @@ final class MapCoordinator: Coordinator {
     
     init(navigationController: UINavigationController,
          storesManager: StoresManager = ServiceLocator.stores,
-         willPresentReviewDetailsFromPushNotification: @escaping () async -> Void) {
+         willPresentReviewDetailsFromPushNotification: @escaping () async -> Void
+    ) {
         self.storesManager = storesManager
         self.willPresentReviewDetailsFromPushNotification = willPresentReviewDetailsFromPushNotification
         self.navigationController = navigationController
     }
 
     convenience init(navigationController: UINavigationController,
-                     willPresentReviewDetailsFromPushNotification: @escaping () async -> Void)
-    {
+                     willPresentReviewDetailsFromPushNotification: @escaping () async -> Void
+    ) {
         let storesManager = ServiceLocator.stores
         self.init(
             navigationController: navigationController,
@@ -42,10 +43,19 @@ final class MapCoordinator: Coordinator {
     }
     
     /// Replaces `start()` because the menu tab's navigation stack could be updated multiple times when account ID changes.
+
     func activate() {
+        DDLogInfo("✅ Activating MapCoordinator")
+
         mapViewController = MapViewController(navigationController: navigationController)
         if let mapViewController = mapViewController {
+            DDLogInfo("✅ MapViewController instantiated and being set as root")
+
             navigationController.viewControllers = [mapViewController]
+        } else {
+            DDLogInfo("⛔️ Failed to instantiate MapViewController")
+
         }
     }
 }
+

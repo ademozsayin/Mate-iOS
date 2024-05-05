@@ -181,7 +181,9 @@ class DefaultStoresManager: StoresManager {
         invalidWPCOMTokenNotificationObserver = notificationCenter.addObserver(forName: .RemoteDidReceiveInvalidTokenError,
                                                                                object: nil,
                                                                                queue: .main) { [weak self] note in
-            _ = self?.deauthenticate()            
+            _ = self?.deauthenticate()     
+            
+//            ServiceLocator.stores.deauthenticate()
         }
     }
 

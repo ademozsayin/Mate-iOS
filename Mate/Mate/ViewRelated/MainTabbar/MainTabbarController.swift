@@ -18,7 +18,7 @@ enum WooTab {
     case map
     /// My Store Tab
     ///
-    case myStore
+//    case myStore
     
     //    /// Orders Tab
     //    ///
@@ -222,11 +222,16 @@ final class MainTabBarController: UITabBarController {
     /// Removes the view controllers in each tab's navigation controller, and resets any logged in properties.
     /// Called after the app is logged out and authentication UI is presented.
     func removeViewControllers() {
+        
+        hubMenuTabCoordinator = nil
+        mapTabCoordinator = nil
+        mapNavigationController.viewControllers = []
+        hubMenuNavigationController.viewControllers = []
+        
         viewControllers?.compactMap { $0 as? UINavigationController }.forEach { navigationController in
             navigationController.viewControllers = []
         }
-        hubMenuTabCoordinator = nil
-        mapTabCoordinator = nil
+       
     }
 }
 
@@ -305,7 +310,7 @@ extension MainTabBarController {
     /// Switches to the My Store tab and pops to the root view controller
     ///
     static func switchToMyStoreTab(animated: Bool = false) {
-        navigateTo(.myStore, animated: animated)
+//        navigateTo(.myStore, animated: animated)
     }
     
     /// Switches to the Orders tab and pops to the root view controller
@@ -435,34 +440,33 @@ private extension MainTabBarController {
             
         case .products:
             return isProductsSplitViewFeatureFlagOn ? eventsContainerController: eventsNavigationController
+        
         case .hubMenu:
             return hubMenuNavigationController
-       
-        case .myStore:
-            return dashboardNavigationController
+//       
+//        case .myStore:
+//            return dashboardNavigationController
         }
     }
     
     
     func observeSiteIDForViewControllers() {
         self.updateViewControllers()
-//        cancellableSiteID = stores.siteID.sink { [weak self] siteID in
-//            guard let self = self else {
-//                return
-//            }
-//            self.updateViewControllers(siteID: siteID)
-//        }
+        cancellableSiteID = stores.isLoggedInPublisher.sink { [weak self] isLoggedIn in
+            guard let self = self else {
+                return
+            }
+            
+            if isLoggedIn {
+                self.updateViewControllers()
+            }
+        }
     }
     
     func updateViewControllers() {
-        
-        // Update view model with `siteID` to query correct Orders Status
-//        viewModel.configureOrdersStatusesListener(for: siteID)
+
 
         // Initialize each tab's root view controller
-
-//        let dashboardViewController = createDashboardViewController()
-//        dashboardNavigationController.viewControllers = [dashboardViewController]
 
         if isProductsSplitViewFeatureFlagOn {
             eventsContainerController.wrappedController = EventsSplitViewWrapperController()
@@ -472,7 +476,6 @@ private extension MainTabBarController {
                                      navigateToContent: { _ in })
             ]
         }
-//        ordersContainerController.wrappedController = createOrdersViewController()
 
         // Configure hub menu tab coordinator once per logged in session potentially with multiple sites.
         if hubMenuTabCoordinator == nil {
@@ -490,6 +493,7 @@ private extension MainTabBarController {
         }
         mapTabCoordinator?.activate()
 
+        
         viewModel.loadHubMenuTabBadge()
 
         // Set map to be the default tab.
