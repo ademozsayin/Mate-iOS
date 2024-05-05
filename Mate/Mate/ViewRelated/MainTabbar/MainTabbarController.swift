@@ -222,16 +222,13 @@ final class MainTabBarController: UITabBarController {
     /// Removes the view controllers in each tab's navigation controller, and resets any logged in properties.
     /// Called after the app is logged out and authentication UI is presented.
     func removeViewControllers() {
-        
-        hubMenuTabCoordinator = nil
-        mapTabCoordinator = nil
-        mapNavigationController.viewControllers = []
-        hubMenuNavigationController.viewControllers = []
-        
+
         viewControllers?.compactMap { $0 as? UINavigationController }.forEach { navigationController in
             navigationController.viewControllers = []
         }
        
+        hubMenuTabCoordinator = nil
+        mapTabCoordinator = nil
     }
 }
 

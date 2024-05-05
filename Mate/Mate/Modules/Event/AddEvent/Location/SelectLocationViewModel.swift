@@ -103,7 +103,7 @@ final class SelectLocationViewModel: ObservableObject {
                 })
             }
         } catch {
-            DDLogError("⛔️ Error syncing Blaze target devices: \(error)")
+            DDLogError("⛔️ Error syncing Google Places: \(error)")
             syncError = error
             syncState = .error
         }

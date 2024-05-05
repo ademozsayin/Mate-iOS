@@ -37,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
     private var universalLinkRouter: UniversalLinkRouter?
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        FirebaseConfiguration.shared.setLoggerLevel(FirebaseLoggerLevel.min)
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         print(BuildConfiguration.current)
