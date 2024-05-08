@@ -28,4 +28,8 @@ public enum EventAction: Action {
     
     case getUserEvents(page: Int?, completion: (Result<PaginatedResponse<UserEvent>, Error>) -> Void)
 
+    
+    case syncUserEvents(page: Int?,completion: (Result<Bool, Error>) -> Void)
 }
+
+

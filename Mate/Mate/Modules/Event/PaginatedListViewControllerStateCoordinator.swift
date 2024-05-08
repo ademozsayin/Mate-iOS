@@ -16,7 +16,6 @@ enum PaginatedListViewControllerState {
     case noResultsPlaceholder
     case syncing(pageNumber: Int)
     case results
-    case loading
 }
 
 extension PaginatedListViewControllerState: Equatable {
@@ -27,8 +26,6 @@ extension PaginatedListViewControllerState: Equatable {
             case (.noResultsPlaceholder, .noResultsPlaceholder):
                 return true
             case (.results, .results):
-                return true
-            case (.loading, .loading):
                 return true
             default:
                 return false
@@ -73,9 +70,5 @@ final class PaginatedListViewControllerStateCoordinator {
     ///
     func transitionToResultsUpdatedState(hasData: Bool) {
         state = hasData ? .results: .noResultsPlaceholder
-    }
-    
-    func transitionToLoadingState() {
-        state = .loading
     }
 }

@@ -104,6 +104,7 @@ final class AddEventCoordinator: Coordinator {
 
     func start() {
         presentProductCreationTypeBottomSheet()
+//        showWooPaySetupCelebrationView()
     }
 }
 
@@ -362,5 +363,41 @@ final class ProductCreationTypeSelectorCommand: BottomSheetListSelectorCommand {
 
     func isSelected(model: ProductCreationType) -> Bool {
         return model == selected
+    }
+}
+
+extension AddEventCoordinator {
+    func showWooPaySetupCelebrationView() {
+        productCreationAISurveyPresenter = buildBottomSheetPresenter()
+        let controller = CelebrationHostingController(
+            title: Localization.Celebration.title,
+            subtitle: Localization.Celebration.subtitle,
+            closeButtonTitle: Localization.Celebration.done,
+            onTappingDone: { [weak self] in
+            self?.productCreationAISurveyPresenter.dismiss()
+//            self?.productCreationAISurveyPresenter = nil
+        })
+        productCreationAISurveyPresenter.present(controller, from: navigationController)
+    }
+}
+
+
+private extension AddEventCoordinator {
+    enum Localization {
+        enum Celebration {
+            static let title = NSLocalizedString(
+                "You did it!",
+                comment: "Title in Woo Payments setup celebration screen."
+            )
+
+            static let subtitle = NSLocalizedString(
+                "Congratulations! You've successfully navigated through the setup and your payment system is ready to roll.",
+                comment: "Subtitle in Woo Payments setup celebration screen."
+            )
+            static let done = NSLocalizedString(
+                "Done",
+                comment: "Dismiss button title in Woo Payments setup celebration screen."
+            )
+        }
     }
 }

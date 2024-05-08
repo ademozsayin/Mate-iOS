@@ -349,12 +349,6 @@ private extension PaginatedListSelectorViewController {
             }
         case .results:
             break
-        case .loading:
-            if isEmpty {
-                displayPlaceholderProducts()
-            } else {
-                ensureFooterSpinnerIsStarted()
-            }
         }
     }
 
@@ -367,9 +361,6 @@ private extension PaginatedListSelectorViewController {
             removePlaceholderProducts()
         case .results:
             break
-        case .loading:
-            ensureFooterSpinnerIsStopped()
-            removePlaceholderProducts()
         }
     }
 

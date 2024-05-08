@@ -32,6 +32,8 @@ public typealias NoteBlock = MateNetworking.NoteBlock
 public typealias NoteMedia = MateNetworking.NoteMedia
 public typealias StoreOnboardingTask = MateNetworking.StoreOnboardingTask
 public typealias SystemStatus = MateNetworking.SystemStatus
+public typealias UserEvent = MateNetworking.UserEvent
+
 
 public typealias ProductReview = MateNetworking.ProductReview
 public typealias ProductReviewStatus = MateNetworking.ProductReviewStatus
@@ -49,6 +51,7 @@ public typealias StorageInboxAction = MateStorage.InboxAction
 public typealias StorageProductReview = MateStorage.ProductReview
 
 public typealias StorageNote = MateStorage.Note
+public typealias StorageUserEvent = MateStorage.UserEvent
 
 // MARK: - Internal ReadOnly Models
 

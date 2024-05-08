@@ -46,23 +46,7 @@ public struct GooglePlace: Codable, Hashable {
     
     public init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-//        self.id = try container.decode(Int.self, forKey: .id)
-//      
-//        self.placeID = try container.decode(String.self, forKey: .placeID)
-//        self.name = try container.decode(String.self, forKey: .name)
-//        self.rating = try container.decodeIfPresent(Double.self, forKey: .rating)
-//        self.scope = try container.decode(String.self, forKey: .scope)
-//        self.vicinity = try container.decode(String.self, forKey: .vicinity)
-//        self.createdAt = try container.decodeIfPresent(String.self, forKey: .createdAt)
-//        self.updatedAt = try container.decodeIfPresent(String.self, forKey: .updatedAt)
-//        self.latitude = try container.decode(String.self, forKey: .latitude)
-//        self.longitude = try container.decode(String.self, forKey: .longitude)
-////        self.eventCategoryID = try container.decode(Int.self, forKey: .eventCategoryID)
-//        self.eventCategoryID = container.failsafeDecodeIfPresent(targetType: Int.self,
-//                                                       forKey: .eventCategoryID,
-//                                                       alternativeTypes: [
-//                                                        .string(transform: { Int($0) ?? 1  })
-//                                                       ]) ?? 1
+
         let id = try container.decode(Int.self, forKey: .id)
         let placeID = try container.decode(String.self, forKey: .placeID)
         let name = try container.decode(String.self, forKey: .name)

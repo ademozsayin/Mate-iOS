@@ -5,11 +5,18 @@ import Foundation
 //
 public extension StorageType {
 
-    // MARK: - Products
+    // MARK: - User Event
 
-    /// Deletes all of the stored Products for the provided siteID.
-    ///
-    ///
+    /// Deletes all of the stored UserEvent
+    func deleteProducts() {
+        guard let products = loadUserEvents() else {
+            return
+        }
+        for product in products {
+            deleteObject(product)
+        }
+    }
+
     ///
     // MARK: - InboxNotes
 

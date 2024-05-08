@@ -50,7 +50,7 @@ enum FiableConstants {
 
     /// Push Notifications ApplicationID
     ///
-#if ALPHA
+#if DEBUG
     static let pushApplicationID = "agency.fiable.mate.dev"
 #else
     static let pushApplicationID = "agency.fiable.mate"

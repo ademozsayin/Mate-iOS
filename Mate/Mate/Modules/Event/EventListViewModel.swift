@@ -36,24 +36,6 @@ protocol ProductsListViewModelProtocol { }
         self.stores = stores
         self.featureFlagService = featureFlagService
     }
-    
-    func getUserEvents(page:Int?) {
-        let action = EventAction.getUserEvents(
-            page: page,
-            completion: { result in
-                switch result {
-                case .success(let data):
-                    self.userEvent = data.data ?? []
-                    self.onDataLoadingError?(nil)
-
-                case .failure(let error):
-                    self.onDataLoadingError?(error)
-                }
-            }
-        )
-        
-        stores.dispatch(action)
-    }
 
     var selectedProductsCount: Int {
         selectedProducts.count

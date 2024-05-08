@@ -456,6 +456,11 @@
 		B768D04D2BE626B400B4691A /* View+NoticesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0412BE626B400B4691A /* View+NoticesModifier.swift */; };
 		B768D0502BE6276300B4691A /* Optinal+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D04F2BE6276300B4691A /* Optinal+String.swift */; };
 		B768D0532BE659A100B4691A /* Noticons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B768D0512BE659A100B4691A /* Noticons.ttf */; };
+		B768D0552BEA497A00B4691A /* ProductsTabProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0542BEA497A00B4691A /* ProductsTabProductTableViewCell.swift */; };
+		B768D0572BEB78E300B4691A /* AuthenticationFormFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0562BEB78E300B4691A /* AuthenticationFormFieldView.swift */; };
+		B768D0592BEB9BCF00B4691A /* FirstEventCreatedHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D0582BEB9BCF00B4691A /* FirstEventCreatedHostingController.swift */; };
+		B768D05C2BEB9C3F00B4691A /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B768D05B2BEB9C3F00B4691A /* ConfettiSwiftUI */; };
+		B768D05F2BEB9C8F00B4691A /* FirstEventCreatedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768D05E2BEB9C8F00B4691A /* FirstEventCreatedViewModel.swift */; };
 		B76D32D32BDC64FB0014315B /* EventFormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76D32D22BDC64FB0014315B /* EventFormDataModel.swift */; };
 		B76D32D52BDC69BF0014315B /* EventFormPresentationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76D32D42BDC69BF0014315B /* EventFormPresentationStyle.swift */; };
 		B76D32DC2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76D32DA2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib */; };
@@ -907,6 +912,10 @@
 		B768D0412BE626B400B4691A /* View+NoticesModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+NoticesModifier.swift"; sourceTree = "<group>"; };
 		B768D04F2BE6276300B4691A /* Optinal+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optinal+String.swift"; sourceTree = "<group>"; };
 		B768D0512BE659A100B4691A /* Noticons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Noticons.ttf; sourceTree = "<group>"; };
+		B768D0542BEA497A00B4691A /* ProductsTabProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTabProductTableViewCell.swift; sourceTree = "<group>"; };
+		B768D0562BEB78E300B4691A /* AuthenticationFormFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFormFieldView.swift; sourceTree = "<group>"; };
+		B768D0582BEB9BCF00B4691A /* FirstEventCreatedHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstEventCreatedHostingController.swift; sourceTree = "<group>"; };
+		B768D05E2BEB9C8F00B4691A /* FirstEventCreatedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstEventCreatedViewModel.swift; sourceTree = "<group>"; };
 		B76D32D22BDC64FB0014315B /* EventFormDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormDataModel.swift; sourceTree = "<group>"; };
 		B76D32D42BDC69BF0014315B /* EventFormPresentationStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFormPresentationStyle.swift; sourceTree = "<group>"; };
 		B76D32DA2BDC6CFF0014315B /* LabeledTextViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabeledTextViewTableViewCell.xib; sourceTree = "<group>"; };
@@ -937,6 +946,7 @@
 				0D9E99E12BCED85700276FF0 /* FirebaseMessaging in Frameworks */,
 				0D30FB252BC07431006AB81B /* FiableRedux in Frameworks */,
 				0D30FB052BC06DC7006AB81B /* Alamofire in Frameworks */,
+				B768D05C2BEB9C3F00B4691A /* ConfettiSwiftUI in Frameworks */,
 				0D9E99DF2BCED85700276FF0 /* FirebaseCrashlytics in Frameworks */,
 				B768D00B2BE559F500B4691A /* Shimmer in Frameworks */,
 				0DA0C58C2BC016C300D96B7F /* FiableKit in Frameworks */,
@@ -1662,6 +1672,7 @@
 				0DA8EEFF2BAF9D5D001EF5BF /* SiteCredentialLoginUseCase.swift */,
 				0DA8EEED2BAF9D5C001EF5BF /* ULAccountMatcher.swift */,
 				0DA8EEFB2BAF9D5C001EF5BF /* WebAuth */,
+				B768D0562BEB78E300B4691A /* AuthenticationFormFieldView.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1786,6 +1797,7 @@
 		B74AF3D72BD69FCA00D44F03 /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				B768D05D2BEB9C8000B4691A /* FirstEvent */,
 				B74AF44A2BD6BD4400D44F03 /* Edit Event */,
 				B74AF3E22BD6A42D00D44F03 /* AddEvent */,
 				B74AF3D82BD6A09500D44F03 /* EventsSplitViewWrapperController.swift */,
@@ -1794,6 +1806,7 @@
 				B74AF3DC2BD6A1A200D44F03 /* EventsViewController.swift */,
 				B74AF4082BD6ADAB00D44F03 /* PaginatedListViewControllerStateCoordinator.swift */,
 				B74AF40A2BD6AE4500D44F03 /* EventListViewModel.swift */,
+				B768D0542BEA497A00B4691A /* ProductsTabProductTableViewCell.swift */,
 			);
 			path = Event;
 			sourceTree = "<group>";
@@ -2099,6 +2112,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		B768D05D2BEB9C8000B4691A /* FirstEvent */ = {
+			isa = PBXGroup;
+			children = (
+				B768D0582BEB9BCF00B4691A /* FirstEventCreatedHostingController.swift */,
+				B768D05E2BEB9C8F00B4691A /* FirstEventCreatedViewModel.swift */,
+			);
+			path = FirstEvent;
+			sourceTree = "<group>";
+		};
 		B76D32E12BDC6E930014315B /* Feature Highlight */ = {
 			isa = PBXGroup;
 			children = (
@@ -2158,6 +2180,7 @@
 				0D9E99E02BCED85700276FF0 /* FirebaseMessaging */,
 				B75E7EBB2BD84B0000639DC3 /* Algorithms */,
 				B768D00A2BE559F500B4691A /* Shimmer */,
+				B768D05B2BEB9C3F00B4691A /* ConfettiSwiftUI */,
 			);
 			productName = Mate;
 			productReference = 0D2D26442B8C95FA008EB605 /* Mate.app */;
@@ -2196,6 +2219,7 @@
 				0D9E99D92BCED85700276FF0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				B75E7EBA2BD84B0000639DC3 /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 				B768D0092BE559F500B4691A /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */,
+				B768D05A2BEB9C3F00B4691A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = 0D2D26452B8C95FA008EB605 /* Products */;
 			projectDirPath = "";
@@ -2354,7 +2378,9 @@
 				0DA8EF6C2BAF9D5F001EF5BF /* ApplicationPasswordAuthorizationViewModel.swift in Sources */,
 				B76D32E32BDC6E930014315B /* Tooltip.swift in Sources */,
 				0DAA47592BCD3DCA00D16224 /* MateAboutScreenConfiguration.swift in Sources */,
+				B768D05F2BEB9C8F00B4691A /* FirstEventCreatedViewModel.swift in Sources */,
 				0DA8EFAD2BAF9D60001EF5BF /* RoleErrorViewController.swift in Sources */,
+				B768D0552BEA497A00B4691A /* ProductsTabProductTableViewCell.swift in Sources */,
 				0D8D385A2BBC362700B362DD /* RangedDatePicker.swift in Sources */,
 				B768D0282BE61C2100B4691A /* ProductReviewTableViewCell.swift in Sources */,
 				0DCA8B502BC7199C0052BA12 /* TopBannerView.swift in Sources */,
@@ -2388,6 +2414,7 @@
 				B768CFED2BE511FB00B4691A /* Survey.swift in Sources */,
 				0D8D38352BBC362700B362DD /* RefreshableInfiniteScrollList.swift in Sources */,
 				0D9856BF2BAD1B7F008F96E9 /* InputAccessoryView.swift in Sources */,
+				B768D0572BEB78E300B4691A /* AuthenticationFormFieldView.swift in Sources */,
 				B74AF4002BD6AB7700D44F03 /* FooterSpinnerView.swift in Sources */,
 				0DAA47582BCD3DCA00D16224 /* LicensesViewController.swift in Sources */,
 				0D2319612B8E7B9D00F969DD /* DateFormatter+Mate.swift in Sources */,
@@ -2465,6 +2492,7 @@
 				B7C64BAE2BD45AEE00D056FC /* LocationPermissionDeniedView.swift in Sources */,
 				0DC2340E2BA78DAC00414B13 /* AuthenticatedState.swift in Sources */,
 				0D8D383C2BBC362700B362DD /* FullScreenTextView.swift in Sources */,
+				B768D0592BEB9BCF00B4691A /* FirstEventCreatedHostingController.swift in Sources */,
 				0DAA47DB2BCD3DCA00D16224 /* SettingsViewModel.swift in Sources */,
 				0D9856AE2BAD1AB4008F96E9 /* PermanentNoticePresenter.swift in Sources */,
 				0D8D38362BBC362700B362DD /* SegmentedView.swift in Sources */,
@@ -3383,6 +3411,14 @@
 				minimumVersion = 1.4.2;
 			};
 		};
+		B768D05A2BEB9C3F00B4691A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -3489,6 +3525,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B768D0092BE559F500B4691A /* XCRemoteSwiftPackageReference "SwiftUI-Shimmer" */;
 			productName = Shimmer;
+		};
+		B768D05B2BEB9C3F00B4691A /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B768D05A2BEB9C3F00B4691A /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

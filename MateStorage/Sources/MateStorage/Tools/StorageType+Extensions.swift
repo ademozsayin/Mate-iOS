@@ -52,4 +52,19 @@ public extension StorageType {
         let descriptor = NSSortDescriptor(keyPath: \InboxNote.dateCreated, ascending: false)
         return allObjects(ofType: InboxNote.self, matching: predicate, sortedBy: [descriptor])
     }
+    
+    /// Retrieves a stored User Event
+    ///
+    func loadProduct( productID: Int64) -> UserEvent? {
+        let predicate =  \UserEvent.id == productID
+        return firstObject(ofType: UserEvent.self, matching: predicate)
+    }
+
+    /// Retrieves all of the stored User Events.
+    ///
+    func loadUserEvents() -> [UserEvent]? {
+        let descriptor = NSSortDescriptor(keyPath: \UserEvent.id, ascending: false)
+        return allObjects(ofType: UserEvent.self, matching: nil, sortedBy: [descriptor])
+    }
+
 }

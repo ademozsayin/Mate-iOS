@@ -26,7 +26,7 @@ final class PaginationTracker {
     /// Default Settings
     enum Defaults {
         static let pageFirstIndex = Store.Default.firstPageNumber
-        static let pageSize = 25
+        static let pageSize = 10
     }
 
     /// The index of the first page in the API. So far, both Woo and WP.com API have the first page index at 1.

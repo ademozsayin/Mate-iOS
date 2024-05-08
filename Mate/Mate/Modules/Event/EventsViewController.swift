@@ -13,18 +13,17 @@ import Combine
 import FiableFoundation
 import MateNetworking
 
-/// Shows a list of products with pull to refresh and infinite scroll
+/// Shows a list of events with pull to refresh and infinite scroll
 /// TODO: it will be good to have unit tests for this, introducing a `ViewModel`
 ///
 final class EventsViewController: UIViewController, GhostableViewController {
-    
     
     enum NavigationContentType {
         case productForm(product: MateEvent)
         case addProduct(sourceView: AddEventCoordinator.SourceView, isFirstProduct: Bool)
         case search
     }
-
+    
     @State var viewModel: EventListViewModel
 
     /// Main TableView
@@ -102,9 +101,16 @@ final class EventsViewController: UIViewController, GhostableViewController {
     ///
     private var topBannerView: TopBannerView?
 
-
-//    private var selectedEventListener: EntityListener<MateEvent>?
-
+    /// ResultsController: Surrounds us. Binds the galaxy together. And also, keeps the UITableView <> (Stored) Products in sync.
+    ///
+    private lazy var resultsController: ResultsController<StorageUserEvent> = {
+        let resultsController = createResultsController()
+        configureResultsController(resultsController, onReload: { [weak self] in
+            guard let self else { return }
+            self.reloadTableAndView()
+        })
+        return resultsController
+    }()
 
     /// Keep track of the (Autosizing Cell's) Height. This helps us prevent UI flickers, due to sizing recalculations.
     ///
@@ -112,14 +118,13 @@ final class EventsViewController: UIViewController, GhostableViewController {
 
     /// Indicates if there are no results onscreen.
     ///
-    private var isEmpty: Bool = true {
-        didSet {
-            print("isEmpty: \(isEmpty)")
-        }
+    private var isEmpty: Bool {
+        resultsController.isEmpty
     }
 
     /// Supports infinite scroll.
     private let scrollWatcher = ScrollWatcher()
+    private let paginationTracker: PaginationTracker
     private var scrollWatcherSubscription: AnyCancellable?
 
     private lazy var stateCoordinator: PaginatedListViewControllerStateCoordinator = {
@@ -130,9 +135,6 @@ final class EventsViewController: UIViewController, GhostableViewController {
         })
         return stateCoordinator
     }()
-
-//    private let imageService: ImageService = ServiceLocator.imageService
-
 
     /// Set to `true` when a category is applied to the product filters and the value has changed after a remote sync.
     private var categoryHasChangedRemotely: Bool = false
@@ -176,7 +178,7 @@ final class EventsViewController: UIViewController, GhostableViewController {
         self.selectedEvent = selectedEvent
         self.isSplitViewEnabled = featureFlagService.isFeatureFlagEnabled(.splitViewInProductsTab)
         self.navigateToContent = navigateToContent
-//        self.paginationTracker = PaginationTracker()
+        self.paginationTracker = PaginationTracker()
         super.init(nibName: type(of: self).nibName, bundle: nil)
 
         configureTabBarItem()
@@ -188,27 +190,17 @@ final class EventsViewController: UIViewController, GhostableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        registerUserActivity()
         configureNavigationBar()
         configureMainView()
         configureTableView()
         configureHiddenScrollView()
         configureToolbar()
         configureScrollWatcher()
+        configurePaginationTracker()
         registerTableViewCells()
         showTopBannerViewIfNeeded()
-        stateCoordinator.transitionToLoadingState()
         
-        viewModel.getUserEvents(page: 1)
-        
-        viewModel.onDataLoadingError = { [weak self] error in
-            self?.dataLoadingError = error
-            // Show error banner view if needed
-            self?.showTopBannerViewIfNeeded()
-            self?.stateCoordinator.transitionToResultsUpdatedState(hasData: false)
-        }
-        
+        paginationTracker.resync()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -223,7 +215,8 @@ final class EventsViewController: UIViewController, GhostableViewController {
             self.displayGhostContent(over: tableView)
         }
 
-//        navigationController?.navigationBar.removeShadow()
+        navigationController?.navigationBar.removeShadow()
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -406,14 +399,9 @@ private extension EventsViewController {
 
     func updateNavigationBarTitleForEditing() {
         let selectedProducts = viewModel.selectedProductsCount
-//        if selectedProducts == 0 {
-//            navigationItem.title = Localization.bulkEditingTitle
-//        } else {
-//            navigationItem.title = String.localizedStringWithFormat(Localization.bulkEditingItemsTitle, String(selectedProducts))
-//        }
     }
 
-    /// Apply Woo styles.
+    /// Apply Mate styles.
     ///
     func configureMainView() {
         view.backgroundColor = .listBackground
@@ -482,7 +470,6 @@ private extension EventsViewController {
 
     private func setupToolbar() {
     
-    
         toolbarBottomSeparator.backgroundColor = .systemColor(.separator)
         toolbarBottomSeparatorHeightConstraint.constant = 1.0 / UIScreen.main.scale
     }
@@ -490,13 +477,20 @@ private extension EventsViewController {
     func configureScrollWatcher() {
         scrollWatcher.startObservingScrollPosition(tableView: tableView)
     }
+    
+    func configurePaginationTracker() {
+        paginationTracker.delegate = self
+        scrollWatcherSubscription = scrollWatcher.trigger.sink { [weak self] _ in
+            guard let self else { return }
+            self.paginationTracker.ensureNextPageIsSynced()
+        }
+    }
+
 
     /// Register table cells.
     ///
     func registerTableViewCells() {
-//        tableView.register(ProductsTabProductTableViewCell.self)
-        tableView.register(UITableViewCell.self)
-
+        tableView.register(ProductsTabProductTableViewCell.self)
     }
 
     /// Show or hide the toolbar based on number of products
@@ -509,8 +503,6 @@ private extension EventsViewController {
             toolbar.isHidden = true
             return
         }
-
-//        toolbar.isHidden = filters.numberOfActiveFilters == 0 ? isEmpty : false
     }
 
 }
@@ -536,15 +528,6 @@ private extension EventsViewController {
             requestAndShowErrorTopBannerView(for: error)
         }
     }
-
-    /// Request a new product banner from `ProductsTopBannerFactory` and wire actionButtons actions
-    /// To show a top banner, we can dispatch a loadFeedbackVisibility action from AppSettingsStore and update the top banner accordingly
-    /// Ref: https://github.com/woocommerce/woocommerce-ios/issues/6682
-    ///
-//    func requestAndShowNewTopBannerView(for bannerType: ProductsTopBannerFactory.BannerType) {
-//        let isExpanded = topBannerView?.isExpanded ?? false
-//
-//    }
 
     /// Request a new error loading data banner from `ErrorTopBannerFactory` and display it in the table header
     ///
@@ -582,10 +565,40 @@ private extension EventsViewController {
     }
 
     
-
     /// Configure resultController.
     /// Assign closures and start performBatch
     ///
+    func configureResultsController(_ resultsController: ResultsController<StorageUserEvent>, onReload: @escaping () -> Void) {
+        setClosuresToResultController(resultsController, onReload: onReload)
+
+        do {
+            try resultsController.performFetch()
+        } catch {
+           DDLogError("Crashed")
+        }
+
+        tableView.reloadData()
+    }
+    
+    /// Set closure  to methods `onDidChangeContent` and `onDidResetContent
+    ///
+    func setClosuresToResultController(_ resultsController: ResultsController<StorageUserEvent>, onReload: @escaping () -> Void) {
+        resultsController.onDidChangeContent = {
+            onReload()
+        }
+
+        resultsController.onDidResetContent = {
+            onReload()
+        }
+    }
+    
+    func createResultsController() -> ResultsController<StorageUserEvent> {
+        let storageManager = ServiceLocator.storageManager
+        return ResultsController<StorageUserEvent>(
+            storageManager: storageManager,
+            matching: nil,
+            sortedBy: [NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString.localizedCompare(_:)))])
+    }
     
 
     /// Set closure  to methods `onDidChangeContent` and `onDidResetContent
@@ -625,21 +638,19 @@ private extension EventsViewController {
 extension EventsViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
-       return 1// resultsController.sections.count
+        resultsController.sections.count
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       return 1 //resultsController.sections[section].numberOfObjects
+        resultsController.sections[section].numberOfObjects
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(ProductsTabProductTableViewCell.self, for: indexPath)
-//        let product = resultsController.object(at: indexPath)
-//        let viewModel = ProductsTabProductViewModel(product: product)
-//        cell.update(viewModel: viewModel, imageService: imageService)
+        let cell = tableView.dequeueReusableCell(ProductsTabProductTableViewCell.self, for: indexPath)
+        let product = resultsController.object(at: indexPath)
+        cell.update(viewModel: product)
 
-//        return cell
-        return UITableViewCell()
+        return cell
     }
 }
 
@@ -661,16 +672,13 @@ extension EventsViewController: UITableViewDelegate {
             tableView.deselectRow(at: indexPath, animated: true)
         }
 
-//        let product = resultsController.object(at: indexPath)
+        let product = resultsController.object(at: indexPath)
 
         if tableView.isEditing {
 //            viewModel.selectProduct(product)
             updatedSelectedItems()
         } else {
-//            ServiceLocator.analytics.track(event:
-//                    .Products.productListProductTapped(horizontalSizeClass: UITraitCollection.current.horizontalSizeClass))
-
-//            didSelectProduct(product: product)
+            didSelectProduct(product: product)
         }
     }
 
@@ -678,32 +686,9 @@ extension EventsViewController: UITableViewDelegate {
         guard tableView.isEditing else {
             return
         }
-
-//        let product = resultsController.object(at: indexPath)
-//        viewModel.deselectProduct(product)
-//        updatedSelectedItems()
     }
 
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let productIndex = resultsController.objectIndex(from: indexPath)
-
-        // Preserve the Cell Height
-        // Why: Because Autosizing Cells, upon reload, will need to be laid yout yet again. This might cause
-        // UI glitches / unwanted animations. By preserving it, *then* the estimated will be extremely close to
-        // the actual value. AKA no flicker!
-        //
-        estimatedRowHeights[indexPath] = cell.frame.height
-
-        // Restore cell selection state
-//        if tableView.isEditing {
-//            let product = resultsController.object(at: indexPath)
-//            if self.viewModel.productIsSelected(product) {
-//                tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-//            } else {
-//                tableView.deselectRow(at: indexPath, animated: false)
-//            }
-//        }
-    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {}
 
     func tableView(_ tableView: UITableView, didEndEditingRowAt indexPath: IndexPath?) {
         onTableViewEditingEnd.send(())
@@ -713,50 +698,11 @@ extension EventsViewController: UITableViewDelegate {
         hiddenScrollView.updateFromScrollViewDidScrollEventForLargeTitleWorkaround(scrollView)
     }
 
-    /// Provide an implementation to show cell swipe actions. Return `nil` to provide no action.
-    ///
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let product = resultsController.object(at: indexPath)
-//        guard ServiceLocator.stores.sessionManager.defaultSite?.isPublic == true,
-//              product.productStatus == .published,
-//              let url = URL(string: product.permalink),
-//            let cell = tableView.cellForRow(at: indexPath) else {
-//            return nil
-//        }
-//        let shareAction = UIContextualAction(style: .normal, title: nil, handler: { [weak self] _, _, completionHandler in
-//            guard let self,
-//                  let navigationController = self.navigationController else {
-//                return
-//            }
-//            let shareProductCoordinator = ShareProductCoordinator(siteID: self.siteID,
-//                                                                  productURL: url,
-//                                                                  productName: product.name,
-//                                                                  productDescription: product.fullDescription ?? product.shortDescription ?? "",
-//                                                                  shareSheetAnchorView: cell,
-//                                                                  navigationController: navigationController)
-//            shareProductCoordinator.start()
-//            self.shareProductCoordinator = shareProductCoordinator
-//            ServiceLocator.analytics.track(.productListShareButtonTapped)
-//            completionHandler(true) // Tells the table that the action was performed and forces it to go back to its original state (un-swiped)
-//        })
-//        shareAction.backgroundColor = .brand
-//        shareAction.image = .init(systemName: "square.and.arrow.up")
-//
-//        return UISwipeActionsConfiguration(actions: [shareAction])
-//    }
 }
 
 private extension EventsViewController {
-    func didSelectProduct(product: MateEvent) {
-//        guard isSplitViewEnabled else {
-//            ProductDetailsFactory.productDetails(product: product,
-//                                                 presentationStyle: .navigationStack,
-//                                                 forceReadOnly: false) { [weak self] viewController in
-//                self?.navigationController?.pushViewController(viewController, animated: true)
-//            }
-//            return
-//        }
-//        navigateToContent(.productForm(product: product))
+    func didSelectProduct(product: UserEvent) {
+
     }
 }
 
@@ -764,18 +710,11 @@ private extension EventsViewController {
 //
 private extension EventsViewController {
     @objc private func pullToRefresh(sender: UIRefreshControl) {
-//        ServiceLocator.analytics.track(.productListPulledToRefresh)
+        ServiceLocator.analytics.track(.productListPulledToRefresh)
 
-        sender.endRefreshing()
-        
-//        refreshControl.resetAnimation(in: tableView) { [unowned self] in
-//            // ghost animation is also removed after switching tabs
-//            // show make sure it's displayed again
-//            self.refreshControl.endRefreshing()
-//            self.removeGhostContent()
-//            self.displayGhostContent(over: tableView)
-//        }
-
+        paginationTracker.resync {
+            sender.endRefreshing()
+        }
     }
     /// Presents productsFeedback survey.
     ///
@@ -801,8 +740,6 @@ private extension EventsViewController {
         displayEmptyStateViewController(emptyStateViewController)
         emptyStateViewController.configure(config)
 
-        // Make sure the banner is on top of the empty state view
-//        storePlanBannerPresenter?.bringBannerToFront()
     }
 
     func createFilterConfig() ->  EmptyStateViewController.Config {
@@ -862,8 +799,46 @@ private extension EventsViewController {
         emptyStateViewController.removeFromParent()
         self.emptyStateViewController = nil
     }
-
 }
+
+
+// MARK: - Sync'ing Helpers
+//
+extension EventsViewController: PaginationTrackerDelegate {
+
+    /// Synchronizes the Products for the Default Store (if any).
+    ///
+    func sync(pageNumber: Int, pageSize: Int, reason: String?, onCompletion: SyncCompletion?) {
+        
+    // Retrieve the last sync time from UserDefaults
+        let lastSyncTime = UserDefaults.standard.object(forKey: "lastSyncTime") as? Date ?? Date.distantPast
+        
+        // Check if the last sync was less than 10 minutes ago
+        if Date().timeIntervalSince(lastSyncTime) < 600 {
+            print("Sync not required, last sync was less than 10 minutes ago.")
+            return
+        }
+
+        // Update the last sync time in UserDefaults
+       UserDefaults.standard.set(Date(), forKey: "lastSyncTime")
+        
+        transitionToSyncingState(pageNumber: pageNumber)
+        dataLoadingError = nil
+        
+        let action = EventAction.syncUserEvents(page: pageSize) { [weak self] result in
+            guard let self else { return }
+            switch result {
+            case .failure(let error):
+                DDLogError("⛔️ Error synchronizing user events: \(error)")
+            case .success:
+                self.transitionToResultsUpdatedState()
+                onCompletion?(result)
+            }
+        }
+        ServiceLocator.stores.dispatch(action)
+    }
+}
+
 
 // MARK: - Finite State Machine Management
 private extension EventsViewController {
@@ -874,8 +849,7 @@ private extension EventsViewController {
             displayNoResultsOverlay()
         case .syncing(let pageNumber):
             let isFirstPage = pageNumber == SyncingCoordinator.Defaults.pageFirstIndex
-//            if isFirstPage && resultsController.isEmpty {
-            if isFirstPage  {
+            if isFirstPage && resultsController.isEmpty {
                 displayGhostContent(over: tableView)
             } else if !isFirstPage {
                 ensureFooterSpinnerIsStarted()
@@ -886,8 +860,6 @@ private extension EventsViewController {
             }
         case .results:
             glanceTrailingActionsIfNeeded()
-        case .loading:
-            displayGhostContent(over: tableView)
         }
     }
 
@@ -900,13 +872,7 @@ private extension EventsViewController {
             removeGhostContent()
             showTopBannerViewIfNeeded()
             showOrHideToolbar()
-        case .loading:
-            ensureFooterSpinnerIsStopped()
-            removeGhostContent()
-            showTopBannerViewIfNeeded()
-            showOrHideToolbar()
         case .results:
-            showTopBannerViewIfNeeded()
             break
         }
     }
