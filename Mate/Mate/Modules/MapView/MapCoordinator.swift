@@ -54,8 +54,16 @@ final class MapCoordinator: Coordinator {
             navigationController.viewControllers = [mapViewController]
         } else {
             DDLogInfo("⛔️ Failed to instantiate MapViewController")
-
         }
     }
 }
 
+
+private extension MapCoordinator {
+    /// Navigates the user to the plan subscription details view.
+    ///
+    func showPlanView() {
+        let subscriptionController = SubscriptionsHostingController(siteID: -1)
+        navigationController.show(subscriptionController, sender: self)
+    }
+}

@@ -34,6 +34,10 @@ public typealias StoreOnboardingTask = MateNetworking.StoreOnboardingTask
 public typealias SystemStatus = MateNetworking.SystemStatus
 public typealias UserEvent = MateNetworking.UserEvent
 
+public typealias ProductSubscription = MateNetworking.ProductSubscription
+public typealias SubscriptionPeriod = MateNetworking.SubscriptionPeriod
+
+
 
 public typealias ProductReview = MateNetworking.ProductReview
 public typealias ProductReviewStatus = MateNetworking.ProductReviewStatus

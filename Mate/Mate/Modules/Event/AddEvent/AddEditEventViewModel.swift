@@ -28,8 +28,6 @@ final class AddEditEventViewModel: ObservableObject {
     ///
     @Published var notice: Notice?
     
-    @State var  selectLocationViewModel:SelectLocationViewModel
-    
     var title: String {
         switch editingOption {
         case .creation:
@@ -48,71 +46,80 @@ final class AddEditEventViewModel: ObservableObject {
     @Published var showingCouponCreationSuccess: Bool = false
     
     @Published var eventName: String
-    @Published var categoryID: Int64
+    @Published var categoryID: Int64 = 1
+    @Published var selectedDate: Date?
+    
+    
     private var subscriptions: Set<AnyCancellable> = []
     
+    @Published var showingSelectCategories: Bool = false
     
-    /// View model for the category selector
-    ///
-    var categorySelectorViewModel: ProductCategorySelectorViewModel {
-        .init( selectedCategory: categoryID) { [weak self] category in
-            self?.categoryID = Int64(category.id)
-            self?.selectedCategory = category
-            print("selected category : \(category.name)")
-        }
-    }
     
     // State variable to track the selected category
     @Published var selectedCategory: MateCategory? {
         didSet {
             updateStepperMaximum(for: selectedCategory)
+            self.notice = NoticeFactory.createEventNoticeForCategorySelection(selectedCategory)
         }
     }
     
-    @Published var selectedGooglePlace: GooglePlace? = nil {
-        didSet {
-            print("selectedGooglePlace: \(selectedGooglePlace) in AddEditEventViewModel ")
-        }
-    }
-    /// Init method for coupon creation
+    @Published var selectedGooglePlace: GooglePlace? = nil
     
     @State var stepperViewModel: AttendeesStepperViewModel
     
-    init(
+    @State var selectLocationViewModel: SelectLocationViewModel
+
+    /// View model for the category selector
+    ///
+    var categorySelectorViewModel: ProductCategorySelectorViewModel?
+    
+    init(event: MateEvent?,
         stores: StoresManager = ServiceLocator.stores,
         storageManager: StorageManagerType = ServiceLocator.storageManager,
         onSuccess: @escaping (MateEvent) -> Void
     ) {
         editingOption = .creation
+        self.event = event
         self.stores = stores
         self.storageManager = storageManager
         self.onSuccess = onSuccess
-        
         self.eventName = ""
-        
-        categoryID = 1
+        self.categoryID = Int64(self.event?.category?.id ?? 1)
+        self.selectedCategory = self.event?.category ?? nil
         
         self.selectLocationViewModel = SelectLocationViewModel()
         
         self.stepperViewModel = AttendeesStepperViewModel(
             quantity: 2,
-            name: "Number of max player",
+            name: Localization.player,
             minimumQuantity: 2,
             maximumQuantity: 14,
             quantityUpdatedCallback: { _ in }  // Temporary empty closure
         )
         
         // Now that self is fully initialized, set the real callback
-        self.stepperViewModel.quantityUpdatedCallback = { [weak self] newQuantity in
-            guard let self = self else { return }
+        self.stepperViewModel.quantityUpdatedCallback = {  [weak self ] newQuantity in
+            guard let self else { return }
             print("Updated quantity to \(newQuantity)")
             self.updateEventCapacity(with: newQuantity)
         }
         
-        
+        self.setupCategorySelectorViewModel()
+
     }
     
+    private func setupCategorySelectorViewModel() {
+         self.categorySelectorViewModel = ProductCategorySelectorViewModel(
+             selectedCategory: self.event?.category,
+             selectedCategoryId: Int64(self.event?.category?.id ?? 1),
+             onCategorySelection: { [weak self] category in
+                 guard let self = self else { return }
+                 self.selectedCategory = category
+             }
+         )
+     }
     
+
     private func updateStepperMaximum(for category: MateCategory?) {
         if let category = category {
             let newMax = determineMaxAttendees(for: category)
@@ -158,6 +165,19 @@ final class AddEditEventViewModel: ObservableObject {
         
     }
     
+    
+    var canConfirmDetails: Bool {
+        selectedGooglePlace != nil && eventName.isNotEmpty && selectedDate != nil && selectedCategory != nil
+    }
+    // Method to set the date from the UI
+    func setDate(_ date: Date?) {
+        self.selectedDate = date
+    }
+    
+    // Method to clear the date when needed
+    func clearDate() {
+        self.selectedDate = nil
+    }
     
     /// Default coupon when coupon creation is initiated
     private lazy var defaultCoupon: MateEvent = {
@@ -210,6 +230,7 @@ final class AddEditEventViewModel: ObservableObject {
             return lhs.localizedDescription == rhs.localizedDescription
         }
     }
+    
 }
 
 // MARK: - Helpers
@@ -243,9 +264,19 @@ private extension AddEditEventViewModel {
                 }
             }
         }
+        
+        static func createEventNoticeForCategorySelection(_ category: MateCategory?) -> Notice {
+            let title = String.localizedStringWithFormat(Localization.changeCategoriesButton, category?.name ?? "Unknown")
+            return Notice(title: title, feedbackType: .warning)
+        }
     }
     
     enum Localization {
+        
+        static let changeCategoriesButton = NSLocalizedString(
+            "You have changed category to %@.",
+            comment: "Button for specify the product categories where a coupon can be applied in the view for adding or editing a coupon. " +
+            "Reads like: Edit Categories")
         
         static let addDescriptionButton = NSLocalizedString("Add Description (Optional)",
                                                             comment: "Button for adding a description to a coupon in the view for adding or editing a coupon.")
@@ -279,5 +310,7 @@ private extension AddEditEventViewModel {
         static let editCouponTitle = NSLocalizedString("Edit coupon", comment: "Title of the Edit coupon screen")
         static let saveButton = NSLocalizedString("Save", comment: "Action for saving a Coupon remotely")
         static let createButton = NSLocalizedString("Create", comment: "Action for creating a Coupon remotely")
+        static let player = NSLocalizedString("Player", comment: "")
+
     }
 }

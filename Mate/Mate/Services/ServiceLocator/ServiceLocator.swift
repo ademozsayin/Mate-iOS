@@ -49,6 +49,10 @@ final class ServiceLocator {
     ///
     private static var _connectivityObserver: ConnectivityObserver = DefaultConnectivityObserver()
     
+    /// Store WPCom plan synchronizer.
+    ///
+    private static var _storePlanSynchronizer: StorePlanSynchronizing = StorePlanSynchronizer()
+
     
     /// Cocoalumberjack DDLog
     ///
@@ -112,6 +116,12 @@ final class ServiceLocator {
     /// - Returns: An implementation of the Logs protocol. It defaults to DDFileLogger
     static var fileLogger: Logs {
         return _fileLogger
+    }
+    
+    /// Provides access point to the `StorePlanSynchronizer`.
+    ///
+    static var storePlanSynchronizer: StorePlanSynchronizing {
+        _storePlanSynchronizer
     }
 
     /// Provides the last known `KeyboardState`.

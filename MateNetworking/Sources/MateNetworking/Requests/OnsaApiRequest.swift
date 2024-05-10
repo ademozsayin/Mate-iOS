@@ -33,6 +33,9 @@ struct OnsaApiRequest: Request, RESTRequestConvertible {
     /// Jetpack-Tunneled Parameters
     ///
     let parameters: [String: Any]
+    
+    /// HTTP Headers
+    let headers: [String: String]
 
     /// Designated Initializer.
     ///
@@ -49,6 +52,7 @@ struct OnsaApiRequest: Request, RESTRequestConvertible {
         locale: String? = nil,
         path: String,
         parameters: [String: Any]? = nil,
+        headers: [String: String]? = nil,
         encoding: ParameterEncoding = URLEncoding.default
     ){
         self.method = method
@@ -56,6 +60,7 @@ struct OnsaApiRequest: Request, RESTRequestConvertible {
         self.path = path
         self.parameters = parameters ?? [:]
         self.encoding = encoding
+        self.headers = headers ?? [:]
     }
 
 
@@ -63,9 +68,8 @@ struct OnsaApiRequest: Request, RESTRequestConvertible {
     ///
     func asURLRequest() throws -> URLRequest {
         let onsaURL =  onsaApiPath + path
-        let fiableEndpoint = DotcomRequest(method: onsaMethod, path: onsaURL)
+        let fiableEndpoint = DotcomRequest(method: onsaMethod, path: onsaURL, headers: headers)
         let fiableRequest = try fiableEndpoint.asURLRequest()
-
         return try onsaEncoder.encode(fiableRequest, with: parameters)
 
     }

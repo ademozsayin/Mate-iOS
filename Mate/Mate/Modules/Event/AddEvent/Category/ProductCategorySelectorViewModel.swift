@@ -11,7 +11,7 @@ import FiableRedux
 
 /// View model for `ProductCategorySelector`.
 ///
-final class ProductCategorySelectorViewModel: ObservableObject {
+class ProductCategorySelectorViewModel: ObservableObject {
     private let onCategorySelection: (MateCategory) -> Void
     private var selectedCategoryId: Int64
     private let stores: StoresManager
@@ -24,24 +24,24 @@ final class ProductCategorySelectorViewModel: ObservableObject {
     @Published private(set) var selectedItemsCount: Int = 0
 
     init(
-        selectedCategory: Int64,
+        selectedCategory: MateCategory?,
+        selectedCategoryId: Int64,
         storesManager: StoresManager = ServiceLocator.stores,
         storageManager: StorageManagerType = ServiceLocator.storageManager,
         onCategorySelection: @escaping (MateCategory) -> Void
     ) {
-        self.selectedCategoryId = selectedCategory
+        self.selectedCategoryId = selectedCategoryId
         self.onCategorySelection = onCategorySelection
         self.stores = storesManager
         self.storageManager = storageManager
+        
 
         listViewModel = .init(
             selectedCategoryID: selectedCategoryId, 
-            selectedCategory: nil,
+            selectedCategory: selectedCategory,
             storesManager: stores,
             storageManager: storageManager)
-//        listViewModel.$selectedCategory
-//            .map { $0 }
-//            .assign(to: &$selectedItemsCount)
+
     }
 
     /// Triggered when selection is done.

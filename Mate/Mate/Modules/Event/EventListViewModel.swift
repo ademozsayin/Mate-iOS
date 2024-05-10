@@ -29,12 +29,16 @@ protocol ProductsListViewModelProtocol { }
     var userEvent:[UserEvent] = []
     var onDataLoadingError: ((Error?) -> Void)?
     
+    private let defaults: UserDefaults
+    
     init(
          stores: StoresManager = ServiceLocator.stores,
-         featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService
+         featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService,
+         defaults: UserDefaults
     ) {
         self.stores = stores
         self.featureFlagService = featureFlagService
+        self.defaults = defaults
     }
 
     var selectedProductsCount: Int {
@@ -74,5 +78,34 @@ protocol ProductsListViewModelProtocol { }
         case mixed
         /// None of the variation has a value
         case none
+    }
+    
+   
+}
+
+///
+/// Check if sync is necessary
+///
+extension EventListViewModel {
+    final func isSyncRequired() async -> Bool {
+        return lastSyncIfBiggerThan60Second()
+    }
+    
+    final func setLastSyncTime() {
+        defaults[.userEventsLastSyncDate] = Date()
+    }
+    
+    final func clearSyncDateAfterEventCreation() {
+        defaults[.userEventsLastSyncDate] = nil
+    }
+    
+    final func lastSyncIfBiggerThan60Second() -> Bool {
+        guard let lastSyncDate = defaults[.userEventsLastSyncDate] as? Date else {
+            DDLogInfo(" ✅ No last sync time recorded or wrong data type.")
+            return true // Assume sync is needed if no valid date is stored
+        }
+        let timeSinceLastSync = Date().timeIntervalSince(lastSyncDate)
+        DDLogInfo("  ✅Time since last sync: \(timeSinceLastSync) seconds")
+        return timeSinceLastSync > 60
     }
 }

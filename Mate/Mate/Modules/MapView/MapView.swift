@@ -19,7 +19,8 @@ struct MapView: View {
     @State private var selectedResult: MateEvent? // Use @State for selectedResult
     @State private var isTabBarHidden = false // State variable to control the visibility of the tab bar
 
-    
+    @State private var showSubscriptions = false
+
     init(viewModel: MapViewModel) {
         self.viewModel = viewModel
     }
@@ -34,6 +35,7 @@ struct MapView: View {
                 errorView(error)
             case .content(let events):
                 makeMapContentView(for: events)
+                
             }
         }
         .background(Color.clear)
@@ -106,6 +108,7 @@ private extension MapView {
                 }
             }
         }
+        
         .safeAreaInset(edge: .bottom) {
             HStack {
                 Spacer()
@@ -132,6 +135,12 @@ private extension MapView {
             MapUserLocationButton()
         }
         .showTabBar()
+        .onAppear {
+           self.showSubscriptions = true
+        }
+        .fullScreenCover(isPresented: $showSubscriptions) {
+            SubscriptionsView(viewModel: .init())
+        }
     }
 }
 

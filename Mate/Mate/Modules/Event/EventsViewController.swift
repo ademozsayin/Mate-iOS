@@ -174,7 +174,7 @@ final class EventsViewController: UIViewController, GhostableViewController {
         featureFlagService: FeatureFlagService = ServiceLocator.featureFlagService,
         navigateToContent: @escaping (NavigationContentType) -> Void
     ) {
-        self.viewModel = .init( stores: ServiceLocator.stores)
+        self.viewModel = .init( stores: ServiceLocator.stores, defaults: UserDefaults())
         self.selectedEvent = selectedEvent
         self.isSplitViewEnabled = featureFlagService.isFeatureFlagEnabled(.splitViewInProductsTab)
         self.navigateToContent = navigateToContent
@@ -810,32 +810,33 @@ extension EventsViewController: PaginationTrackerDelegate {
     ///
     func sync(pageNumber: Int, pageSize: Int, reason: String?, onCompletion: SyncCompletion?) {
         
-    // Retrieve the last sync time from UserDefaults
-        let lastSyncTime = UserDefaults.standard.object(forKey: "lastSyncTime") as? Date ?? Date.distantPast
-        
-        // Check if the last sync was less than 10 minutes ago
-        if Date().timeIntervalSince(lastSyncTime) < 600 {
-            print("Sync not required, last sync was less than 10 minutes ago.")
-            return
-        }
-
-        // Update the last sync time in UserDefaults
-       UserDefaults.standard.set(Date(), forKey: "lastSyncTime")
-        
-        transitionToSyncingState(pageNumber: pageNumber)
-        dataLoadingError = nil
-        
-        let action = EventAction.syncUserEvents(page: pageSize) { [weak self] result in
-            guard let self else { return }
-            switch result {
-            case .failure(let error):
-                DDLogError("⛔️ Error synchronizing user events: \(error)")
-            case .success:
-                self.transitionToResultsUpdatedState()
-                onCompletion?(result)
+        Task {
+            let required = await viewModel.isSyncRequired()
+            DDLogInfo("Sync is required: \(required)")
+            // Check if the last sync was less than 10 minutes ago
+            if !required {
+                DDLogInfo(" ✅ Sync not required, last sync was less than 60 seconds ago.")
+                refreshControl.endRefreshing()
+                return
+            } else {
+                viewModel.setLastSyncTime()
+                
+                transitionToSyncingState(pageNumber: pageNumber)
+                dataLoadingError = nil
+                
+                let action = EventAction.syncUserEvents(page: pageSize) { [weak self] result in
+                    guard let self else { return }
+                    switch result {
+                    case .failure(let error):
+                        DDLogError("⛔️ Error synchronizing user events: \(error)")
+                    case .success:
+                        self.transitionToResultsUpdatedState()
+                        onCompletion?(result)
+                    }
+                }
+                ServiceLocator.stores.dispatch(action)
             }
         }
-        ServiceLocator.stores.dispatch(action)
     }
 }
 

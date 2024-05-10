@@ -251,7 +251,7 @@ private extension AddEventCoordinator {
 //        }
 //        
         
-        let addEditViewModel = AddEditEventViewModel(onSuccess: { [weak self] _ in
+        let addEditViewModel = AddEditEventViewModel(event: product, onSuccess: { [weak self] _ in
 //            self?.couponListViewController?.refreshCouponList()
         })
         let addEditHostingController = AddEditEventHostingController(viewModel: addEditViewModel, onDisappear: { [weak self] in

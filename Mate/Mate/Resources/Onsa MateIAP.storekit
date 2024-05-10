@@ -1,0 +1,118 @@
+{
+  "identifier" : "0F284918",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6502470838",
+      "localizations" : [
+        {
+          "description" : "Mono pack",
+          "displayName" : "Mono",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "debug.agency.fiable.mate.monthly",
+      "referenceName" : "Mono",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6496357499",
+    "_developerTeamID" : "7PX72NXP7V",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 736985132.99177003,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21485315",
+      "localizations" : [
+
+      ],
+      "name" : "montla",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "0.99",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6502471122",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Mont",
+              "displayName" : "Mont",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "debug.agency.fiable.mate.monthlySubscription",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Montla",
+          "subscriptionGroupID" : "21485315",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

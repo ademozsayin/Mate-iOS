@@ -1,5 +1,5 @@
 import SwiftUI
-
+import FiableFoundation
 /// Renders a row with a label on the left side, and a text field on the right side, with eventually a symbol (like $)
 ///
 struct TitleAndTextFieldRow: View {

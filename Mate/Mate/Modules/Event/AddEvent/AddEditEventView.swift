@@ -22,14 +22,12 @@ struct AddEditEventView: View {
     private let categorySelectorConfig = ProductCategorySelector.Configuration.categoriesForCoupons
     private let categoryListConfig = EventCategoryConfiguration(searchEnabled: false, clearSelectionEnabled: false)
     
-    
     @ObservedObject private var viewModel: AddEditEventViewModel
+    
     @State private var showingSelectCategories: Bool = false
-    
-    
-    @State private var selectedDate = Date()
     @State private var isPickerVisible = false
     @State private var isLocationVisible = false
+    @State private var selectedDate = Date()
     
     init(_ viewModel: AddEditEventViewModel) {
         self.viewModel = viewModel
@@ -40,77 +38,47 @@ struct AddEditEventView: View {
             GeometryReader { geometry in
                 ScrollView {
                     VStack (alignment: .leading, spacing: 12) {
-                
+                        
                         TitleAndTextFieldRow(title: "Event Name", placeholder: "Event name", text: $viewModel.eventName)
                         Divider()
                             .padding(.leading, 12)
-                        TitleAndValueRow(title: Localization.category,
-                                         value: .placeholder(viewModel.selectedCategory?.name ?? ""),
-                                         selectionStyle: .disclosure) {
-                            showingSelectCategories.toggle()
-                        }
-                         .sheet(isPresented: $showingSelectCategories) {
-                             ProductCategorySelector(
-                                isPresented: $showingSelectCategories,
-                                viewConfig: categorySelectorConfig,
-                                categoryListConfig: categoryListConfig,
-                                viewModel: viewModel.categorySelectorViewModel
-                             )
-                         }
                         
-                        Divider()
-                            .padding(.leading, 12)
-                                                
-                        LazyNavigationLink(destination: DateTimePickerView(selectedDate: $selectedDate) {
-                            isPickerVisible = false
-                        }, isActive: $isPickerVisible) {
-                            TitleAndSubtitleRow(title: "Select Date", subtitle: selectedDate.toString(dateStyle: .medium, timeStyle: .short))
-                        }
-                        
-                        Divider()
-                            .padding(.leading, 12)
-
-                        
-                        LazyNavigationLink(
-                            destination: SelectAddress(
-                                viewModel: viewModel.selectLocationViewModel,
-                                safeAreaInsets: .zero,
-                                onSelection: { place in
-                                    viewModel.selectedGooglePlace = place
-                                }
-                            ),
-                            isActive: $isLocationVisible
-                        ) {
-                            HStack {
-                                TitleAndSubtitleRow(
-                                    title: "Location",
-                                    subtitle: viewModel.selectedGooglePlace?.name ?? "-"
-                                )
-                                DisclosureIndicator()
-                                    .padding(.trailing, 12)
-                            }
-                        }
-                                                
+                        category
                         Divider()
                             .padding(.leading, 12)
                         
-                        HStack {
-                            Text("Number of max user")
-                            Spacer()
-                            ProductStepper(viewModel: viewModel.stepperViewModel)
-                            
-                        }
-                        .padding(.leading, 12)
-                       
+                        datePicker
                         Divider()
                             .padding(.leading, 12)
-                                        
+                        
+                        address
+                        Divider()
+                            .padding(.leading, 12)
+                        
+                        stepper
+                            .padding(.leading, 12)
+                        Divider()
+                            .padding(.leading, 12)
+                        
                     }
                     .padding(.horizontal)
                     .background(Color(.systemBackground).ignoresSafeArea(.container, edges: .horizontal))
                     .padding(.leading, 12)
                 }
-                
+                .safeAreaInset(edge: .bottom) {
+                    VStack {
+                        Divider()
+                            .frame(height: 16)
+                            .foregroundColor(Color(.separator))
+                        Button("Continue") {
+                            //                            viewModel.continueButtonTapped()
+                        }
+                        .buttonStyle(PrimaryButtonStyle())
+                        .disabled(!viewModel.canConfirmDetails)
+                        .padding(16)
+                    }
+                    .background(Color(.systemBackground))
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -119,6 +87,7 @@ struct AddEditEventView: View {
                     })
                 }
             }
+            .notice($viewModel.notice)
             .navigationTitle(viewModel.title)
             .navigationBarTitleDisplayMode(.large)
             .wooNavigationBarStyle()
@@ -128,9 +97,70 @@ struct AddEditEventView: View {
             //            sonDisappear()
         }
     }
-
+    
+    var category: some View {
+        TitleAndValueRow(title: Localization.category,
+                         value: .placeholder(viewModel.selectedCategory?.name ?? ""),
+                         selectionStyle: .disclosure) {
+            showingSelectCategories.toggle()
+        }
+         .sheet(isPresented: $showingSelectCategories) {
+             ProductCategorySelector(
+                isPresented: $showingSelectCategories,
+                viewConfig: categorySelectorConfig,
+                categoryListConfig: categoryListConfig,
+                viewModel: viewModel.categorySelectorViewModel ?? ProductCategorySelectorViewModel(
+                    selectedCategory: nil,
+                    selectedCategoryId: 1,
+                    onCategorySelection: { _ in }
+                )
+             )
+         }
+    }
+    
+    var datePicker: some View {
+        LazyNavigationLink(
+            destination: DateTimePickerView(selectedDate: $selectedDate ) {
+                isPickerVisible = false
+                viewModel.setDate(selectedDate)
+            }, isActive: $isPickerVisible) {
+                TitleAndSubtitleRow(
+                    title: "Select Date",
+                    subtitle: viewModel.selectedDate?.toString(dateStyle: .medium, timeStyle: .short) ?? "Not set")
+            }
+    }
+    
+    var address: some View {
+        LazyNavigationLink(
+            destination: SelectAddress(
+                viewModel: viewModel.selectLocationViewModel,
+                safeAreaInsets: .zero,
+                onSelection: { place in
+                    viewModel.selectedGooglePlace = place
+                }
+            ),
+            isActive: $isLocationVisible
+        ) {
+            HStack {
+                TitleAndSubtitleRow(
+                    title: "Location",
+                    subtitle: viewModel.selectedGooglePlace?.name ?? "-"
+                )
+                DisclosureIndicator()
+                    .padding(.trailing, 12)
+            }
+        }
+    }
+    
+    var stepper: some View {
+        HStack {
+            Text(Localization.player)
+            Spacer()
+            ProductStepper(viewModel: viewModel.stepperViewModel)
+            
+        }
+    }
 }
-
 
 private extension AddEditEventView  {
     enum Layout {
@@ -183,17 +213,19 @@ private extension AddEditEventView {
         static let cancelButton = NSLocalizedString(
             "Cancel",
             comment: "Cancel button in the navigation bar of the view for adding or editing a coupon.")
-     
+        
         
         static let category = NSLocalizedString(
             "Category",
             comment: "Add event input name"
         )
+        
+        static let player = NSLocalizedString(
+            "Player",
+            comment: ""
+        )
     }
 }
-
-
-
 
 private extension ProductCategorySelector.Configuration {
     static let categoriesForCoupons: Self = .init(

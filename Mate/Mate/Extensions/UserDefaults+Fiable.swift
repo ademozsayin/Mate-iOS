@@ -63,6 +63,9 @@ extension UserDefaults {
         // Store Creation
         case siteIDPendingStoreSwitch
         case expectedStoreNamePendingStoreSwitch
+        
+        //Events
+        case userEventsLastSyncDate
     }
 }
 

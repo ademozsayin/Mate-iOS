@@ -93,7 +93,7 @@ private extension ProductCategorySelector {
 
 struct ProductCategorySelector_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = ProductCategorySelectorViewModel(selectedCategory: 1) { _ in }
+        let viewModel = ProductCategorySelectorViewModel(selectedCategory: nil, selectedCategoryId: 1) { _ in }
         let config = ProductCategorySelector.Configuration(
             title: "Select Categories",
             doneButtonSingularFormat: "",

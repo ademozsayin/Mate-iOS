@@ -47,7 +47,7 @@ private extension EventFactory {
         MateEvent(id: 0,
                   name: nil,
                   startTime: nil,
-                  categoryID: "1",
+                  categoryID: "\(type?.id)",
                   createdAt: nil,
                   updatedAt: nil,
                   userID: nil,
@@ -56,7 +56,7 @@ private extension EventFactory {
                   longitude: nil,
                   maxAttendees: nil,
                   joinedAttendees: nil,
-                  category: nil,
+                  category: type?.productType,
                   user: nil,
                   status: nil)
     }
